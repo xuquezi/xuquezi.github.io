@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="最近用原生servlet写小demo，想用动态代理实现事务处理。结果编写的动态代理陷入死循环。找了很久才找到原因。 123456789101112131415161718192021222324252627public class TransactionInvocationHandler implements InvocationHandler &amp;#123;    //这是需要被代理的对象">
+  <meta name="description" content="最近用原生servlet写小demo，想用动态代理实现事务处理。结果编写的动态代理陷入死循环。找了很久才找到原因。">
 <meta name="keywords" content="java,异常">
 <meta property="og:type" content="article">
 <meta property="og:title" content="动态代理死循环可能的原因">
 <meta property="og:url" content="http://yoursite.com/2018/09/04/动态代理死循环可能的原因/index.html">
 <meta property="og:site_name" content="甬城程序员日常">
-<meta property="og:description" content="最近用原生servlet写小demo，想用动态代理实现事务处理。结果编写的动态代理陷入死循环。找了很久才找到原因。 123456789101112131415161718192021222324252627public class TransactionInvocationHandler implements InvocationHandler &amp;#123;    //这是需要被代理的对象">
+<meta property="og:description" content="最近用原生servlet写小demo，想用动态代理实现事务处理。结果编写的动态代理陷入死循环。找了很久才找到原因。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-04T11:34:52.468Z">
+<meta property="og:updated_time" content="2018-09-04T12:12:05.435Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="动态代理死循环可能的原因">
-<meta name="twitter:description" content="最近用原生servlet写小demo，想用动态代理实现事务处理。结果编写的动态代理陷入死循环。找了很久才找到原因。 123456789101112131415161718192021222324252627public class TransactionInvocationHandler implements InvocationHandler &amp;#123;    //这是需要被代理的对象">
+<meta name="twitter:description" content="最近用原生servlet写小demo，想用动态代理实现事务处理。结果编写的动态代理陷入死循环。找了很久才找到原因。">
 
 
 
@@ -349,7 +349,7 @@
                 
               
 
-              <time title="创建时间：2018-09-04 19:08:59 / 修改时间：19:34:52" itemprop="dateCreated datePublished" datetime="2018-09-04T19:08:59+08:00">2018-09-04</time>
+              <time title="创建时间：2018-09-04 19:08:59 / 修改时间：20:12:05" itemprop="dateCreated datePublished" datetime="2018-09-04T19:08:59+08:00">2018-09-04</time>
             
 
             
@@ -413,6 +413,7 @@
 
       
         <p>最近用原生servlet写小demo，想用动态代理实现事务处理。结果编写的动态代理陷入死循环。找了很久才找到原因。</p>
+<a id="more"></a>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TransactionInvocationHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</span><br><span class="line">    <span class="comment">//这是需要被代理的对象</span></span><br><span class="line">    <span class="keyword">private</span> Object proxy;</span><br><span class="line">    <span class="comment">//通过构造传参方式，传递需要被代理对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TransactionInvocationHandler</span><span class="params">(Object proxy)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.proxy = proxy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] objects)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        ThreadLocalJDBCUtils.beginTransaction();</span><br><span class="line">        System.out.println(<span class="string">"开启事务"</span>);</span><br><span class="line">        Object result = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            result = method.invoke(proxy, objects);</span><br><span class="line">            ThreadLocalJDBCUtils.commit();</span><br><span class="line">            System.out.println(<span class="string">"提交事务"</span>);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            ThreadLocalJDBCUtils.rollback();</span><br><span class="line">            System.out.println(<span class="string">"回滚事务"</span>);</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            ThreadLocalJDBCUtils.close();</span><br><span class="line">            System.out.println(<span class="string">"释放资源"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TransactionProxyManager</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">proxyFor</span><span class="params">(Object object)</span></span>&#123;</span><br><span class="line">       <span class="keyword">return</span> Proxy.newProxyInstance(object.getClass().getClassLoader(),object.getClass().getInterfaces(),<span class="keyword">new</span> TransactionInvocationHandler(object));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>是不是乍一看没毛病。问题在下面两个代码片。</p>
