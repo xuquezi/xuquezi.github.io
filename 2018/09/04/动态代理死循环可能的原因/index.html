@@ -108,28 +108,18 @@
 
 
 
-  <meta name="description" content="1.tomcat部署项目的三种方式在纯tomcat环境下，不使用开发工具tomcat部署项目有三种方式。 ①把html放到tomcat的webapps目录下的hello文件夹中，如下图。 启动tomcat访问http://localhost:8080/hello/hello.html就能够连接到hello.html了。这里稍微提一下虚拟路径即web项目中ContextPath，servlet中配置">
-<meta name="keywords" content="原理,tomcat">
+  <meta name="description" content="最近用原生servlet写小demo，想用动态代理实现事务处理。结果编写的动态代理陷入死循环。找了很久才找到原因。 123456789101112131415161718192021222324252627public class TransactionInvocationHandler implements InvocationHandler &amp;#123;    //这是需要被代理的对象">
+<meta name="keywords" content="java,异常">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IDEA部署tomcat原理小解">
-<meta property="og:url" content="http://yoursite.com/2018/09/04/IDEA部署tomcat原理小解/index.html">
+<meta property="og:title" content="动态代理死循环可能的原因">
+<meta property="og:url" content="http://yoursite.com/2018/09/04/动态代理死循环可能的原因/index.html">
 <meta property="og:site_name" content="甬城程序员日常">
-<meta property="og:description" content="1.tomcat部署项目的三种方式在纯tomcat环境下，不使用开发工具tomcat部署项目有三种方式。 ①把html放到tomcat的webapps目录下的hello文件夹中，如下图。 启动tomcat访问http://localhost:8080/hello/hello.html就能够连接到hello.html了。这里稍微提一下虚拟路径即web项目中ContextPath，servlet中配置">
+<meta property="og:description" content="最近用原生servlet写小demo，想用动态代理实现事务处理。结果编写的动态代理陷入死循环。找了很久才找到原因。 123456789101112131415161718192021222324252627public class TransactionInvocationHandler implements InvocationHandler &amp;#123;    //这是需要被代理的对象">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="e:/myblog/pic/20180805222942863.png">
-<meta property="og:image" content="e:/myblog/pic/20180805223533485.png">
-<meta property="og:image" content="e:/myblog/pic/20180805223841368.png">
-<meta property="og:image" content="e:/myblog/pic/20180805225807301.png">
-<meta property="og:image" content="e:/myblog/pic/20180805225841562.png">
-<meta property="og:image" content="e:/myblog/pic/20180805230820579.png">
-<meta property="og:image" content="e:/myblog/pic/20180805231037459.png">
-<meta property="og:image" content="e:/myblog/pic/20180805231120546.png">
-<meta property="og:image" content="e:/myblog/pic/20180805231356819.png">
-<meta property="og:updated_time" content="2018-09-04T10:55:02.704Z">
+<meta property="og:updated_time" content="2018-09-04T11:34:52.468Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="IDEA部署tomcat原理小解">
-<meta name="twitter:description" content="1.tomcat部署项目的三种方式在纯tomcat环境下，不使用开发工具tomcat部署项目有三种方式。 ①把html放到tomcat的webapps目录下的hello文件夹中，如下图。 启动tomcat访问http://localhost:8080/hello/hello.html就能够连接到hello.html了。这里稍微提一下虚拟路径即web项目中ContextPath，servlet中配置">
-<meta name="twitter:image" content="e:/myblog/pic/20180805222942863.png">
+<meta name="twitter:title" content="动态代理死循环可能的原因">
+<meta name="twitter:description" content="最近用原生servlet写小demo，想用动态代理实现事务处理。结果编写的动态代理陷入死循环。找了很久才找到原因。 123456789101112131415161718192021222324252627public class TransactionInvocationHandler implements InvocationHandler &amp;#123;    //这是需要被代理的对象">
 
 
 
@@ -138,7 +128,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/04/IDEA部署tomcat原理小解/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/04/动态代理死循环可能的原因/"/>
 
 
 
@@ -148,7 +138,7 @@
   };
 </script>
 
-  <title>IDEA部署tomcat原理小解 | 甬城程序员日常</title>
+  <title>动态代理死循环可能的原因 | 甬城程序员日常</title>
   
 
 
@@ -317,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/04/IDEA部署tomcat原理小解/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/04/动态代理死循环可能的原因/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -334,7 +324,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">IDEA部署tomcat原理小解
+          <h1 class="post-title" itemprop="name headline">动态代理死循环可能的原因
               
             
           </h1>
@@ -359,7 +349,7 @@
                 
               
 
-              <time title="创建时间：2018-09-04 18:34:28 / 修改时间：18:55:02" itemprop="dateCreated datePublished" datetime="2018-09-04T18:34:28+08:00">2018-09-04</time>
+              <time title="创建时间：2018-09-04 19:08:59 / 修改时间：19:34:52" itemprop="dateCreated datePublished" datetime="2018-09-04T19:08:59+08:00">2018-09-04</time>
             
 
             
@@ -381,14 +371,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/tomcat/" itemprop="url" rel="index"><span itemprop="name">tomcat</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/tomcat/原理/" itemprop="url" rel="index"><span itemprop="name">原理</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/异常/" itemprop="url" rel="index"><span itemprop="name">异常</span></a></span>
 
                 
                 
@@ -422,29 +412,14 @@
       
 
       
-        <h3 id="1-tomcat部署项目的三种方式"><a href="#1-tomcat部署项目的三种方式" class="headerlink" title="1.tomcat部署项目的三种方式"></a>1.tomcat部署项目的三种方式</h3><p>在纯tomcat环境下，不使用开发工具tomcat部署项目有三种方式。</p>
-<h4 id="①把html放到tomcat的webapps目录下的hello文件夹中，如下图。"><a href="#①把html放到tomcat的webapps目录下的hello文件夹中，如下图。" class="headerlink" title="①把html放到tomcat的webapps目录下的hello文件夹中，如下图。"></a>①把html放到tomcat的webapps目录下的hello文件夹中，如下图。</h4><p><img src="E:\myblog\pic\20180805222942863.png" alt=""></p>
-<p>启动tomcat访问<a href="http://localhost:8080/hello/hello.html就能够连接到hello.html了。" target="_blank" rel="noopener">http://localhost:8080/hello/hello.html就能够连接到hello.html了。</a><br>这里稍微提一下虚拟路径即web项目中ContextPath，servlet中配置的是ServletPath。上面这种方式配置的虚拟路径”/hello”和项目路径是相等的。但是这个方法配置的web项目都要在webapps的目录下。eclipse的web项目部署方法应该就是这种。</p>
-<h4 id="②第二种方式如下图："><a href="#②第二种方式如下图：" class="headerlink" title="②第二种方式如下图："></a>②第二种方式如下图：</h4><p><img src="E:\myblog\pic\20180805223533485.png" alt=""></p>
-<p>区别与第一种方式，第二种的项目放在了d盘，没有在webapps的目录下。那么tomcat如何访问里面的资源呢？见下图 </p>
-<p><img src="E:\myblog\pic\20180805223841368.png" alt=""></p>
-<p>在tomcat的conf下有一个server.xml文件打开编辑文件在上图所圈位置加入了一段代码。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Context</span> <span class="attr">docBase</span> = <span class="string">"D:\hello"</span> <span class="attr">path</span> = <span class="string">"/hi"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-<p>不难发现，其中docBase指的是项目路径，path为虚拟路径。这里项目路径就和虚拟路径不一致了。大家可以联想到一个点：<strong>request有一个很常用的方法，就是request.getContextPath()，其实获取的就是这里的Context标签中属性名为path的值。</strong>启动tomcat，访问<a href="http://localhost:8080/hi/hello.html即能正确连接资源hello.html。使用eclipse的同学不妨去看一下自己的conf下的server.xml，会发现之前的web项目都有在context标签内配置。" target="_blank" rel="noopener">http://localhost:8080/hi/hello.html即能正确连接资源hello.html。使用eclipse的同学不妨去看一下自己的conf下的server.xml，会发现之前的web项目都有在context标签内配置。</a></p>
-<h4 id="③以上两种都不是idea的部署方式，idea的部署方式是第三种-。"><a href="#③以上两种都不是idea的部署方式，idea的部署方式是第三种-。" class="headerlink" title="③以上两种都不是idea的部署方式，idea的部署方式是第三种.。"></a>③以上两种都不是idea的部署方式，idea的部署方式是第三种.。</h4><p>在tomcat的conf\Catalina\localhost新建一个xml文件如下图 </p>
-<p><img src="E:\myblog\pic\20180805225807301.png" alt=""></p>
-<p><img src="E:\myblog\pic\20180805225841562.png" alt=""></p>
-<p>还是熟悉的配置，但是不需要在server.xml中修改，防止手残，把主要配置改了。<br>访问<a href="http://localhost:8080/hey/hello.html即可访问到资源。这里要说明一下，第三章方法的虚拟路径为xml文件名字，而不是xml中配置的path，当你修改xml文件中的path与xml文件名字不一致时，以xml文件名字作为虚拟路径可以访问到资源，而用path中配置作为虚拟路径则访问不到资源。" target="_blank" rel="noopener">http://localhost:8080/hey/hello.html即可访问到资源。这里要说明一下，第三章方法的虚拟路径为xml文件名字，而不是xml中配置的path，当你修改xml文件中的path与xml文件名字不一致时，以xml文件名字作为虚拟路径可以访问到资源，而用path中配置作为虚拟路径则访问不到资源。</a> </p>
-<h3 id="2-idea的部署方式"><a href="#2-idea的部署方式" class="headerlink" title="2.idea的部署方式"></a>2.idea的部署方式</h3><p>在idea中启动tomcat时会看到下面这段日志 </p>
-<p><img src="E:\myblog\pic\20180805230820579.png" alt=""></p>
-<p>这里使用的是之前做的小demo，不用在意。我们把路径复制在计算机中打开 </p>
-<p><img src="E:\myblog\pic\20180805231037459.png" alt=""></p>
-<p>打开下图的xml文件 </p>
-<p><img src="E:\myblog\pic\20180805231120546.png" alt=""></p>
-<p>可以从配置中看出虚拟路径配置的和xml文件的名称一致。这个虚拟路径是我在idea的tomcat配置中的部署选项中配置的如下图而项目的文件路径则在D:\ideawork\mycrm\out\artifacts\mycrm_war_exploded。</p>
-<p><img src="E:\myblog\pic\20180805231356819.png" alt=""></p>
-<p>这里有一个点蛮有意思：<br>idea采用的是上面说的第三种部署方式，而第三种部署的虚拟路径其实是xml文件名就算不配置Context标签中的Path也能访问到资源，那么idea为什么多此一举配置了<br>path而且path中的值和xml文件名一致，是单纯的巧合吗，有什么意义？<br>其实很简单，前面提到request.getContextPath获得的是Context标签中属性名为path的值。但是第三种部署的虚拟路径其实是xml文件名，保持一致可以认为获得的COntextPath就是虚拟路径。这样就可以访问到资源页面</p>
-<p>END！</p>
+        <p>最近用原生servlet写小demo，想用动态代理实现事务处理。结果编写的动态代理陷入死循环。找了很久才找到原因。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TransactionInvocationHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</span><br><span class="line">    <span class="comment">//这是需要被代理的对象</span></span><br><span class="line">    <span class="keyword">private</span> Object proxy;</span><br><span class="line">    <span class="comment">//通过构造传参方式，传递需要被代理对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TransactionInvocationHandler</span><span class="params">(Object proxy)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.proxy = proxy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] objects)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        ThreadLocalJDBCUtils.beginTransaction();</span><br><span class="line">        System.out.println(<span class="string">"开启事务"</span>);</span><br><span class="line">        Object result = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            result = method.invoke(proxy, objects);</span><br><span class="line">            ThreadLocalJDBCUtils.commit();</span><br><span class="line">            System.out.println(<span class="string">"提交事务"</span>);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            ThreadLocalJDBCUtils.rollback();</span><br><span class="line">            System.out.println(<span class="string">"回滚事务"</span>);</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            ThreadLocalJDBCUtils.close();</span><br><span class="line">            System.out.println(<span class="string">"释放资源"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TransactionProxyManager</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">proxyFor</span><span class="params">(Object object)</span></span>&#123;</span><br><span class="line">       <span class="keyword">return</span> Proxy.newProxyInstance(object.getClass().getClassLoader(),object.getClass().getInterfaces(),<span class="keyword">new</span> TransactionInvocationHandler(object));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>是不是乍一看没毛病。问题在下面两个代码片。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">TransactionInvocationHandler</span><span class="params">(Object proxy)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.proxy = proxy;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] objects)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">       ThreadLocalJDBCUtils.beginTransaction();</span><br><span class="line">       System.out.println(<span class="string">"开启事务"</span>);</span><br><span class="line">       Object result = <span class="keyword">null</span>;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           result = method.invoke(proxy, objects);</span><br></pre></td></tr></table></figure>
+<p>我自己的理解是构造方法传递的被代理对象和形式参数同名了。执行invoke方法时就先找形式参数而不会去找成员对象。而invoke方法中的proxy是需要外部传入的，不然就会陷入死循环。<strong>修改后代码如下，修改的4个地方用<em> </em>包含。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TransactionInvocationHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</span><br><span class="line">    <span class="comment">//这是需要被代理的对象</span></span><br><span class="line">    <span class="keyword">private</span> Object *object*;</span><br><span class="line">    <span class="comment">//通过构造传参方式，传递需要被代理对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TransactionInvocationHandler</span><span class="params">(*Object object*)</span> </span>&#123;</span><br><span class="line">        *<span class="keyword">this</span>.object = object;*</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] objects)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        ThreadLocalJDBCUtils.beginTransaction();</span><br><span class="line">        System.out.println(<span class="string">"开启事务"</span>);</span><br><span class="line">        Object result = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            result = method.invoke(*object*, objects);</span><br><span class="line">            ThreadLocalJDBCUtils.commit();</span><br><span class="line">            System.out.println(<span class="string">"提交事务"</span>);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            ThreadLocalJDBCUtils.rollback();</span><br><span class="line">            System.out.println(<span class="string">"回滚事务"</span>);</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            ThreadLocalJDBCUtils.close();</span><br><span class="line">            System.out.println(<span class="string">"释放资源"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -465,9 +440,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/原理/" rel="tag"># 原理</a>
+            <a href="/tags/java/" rel="tag"># java</a>
           
-            <a href="/tags/tomcat/" rel="tag"># tomcat</a>
+            <a href="/tags/异常/" rel="tag"># 异常</a>
           
         </div>
       
@@ -534,8 +509,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/03/BaseServlet应用原理/" rel="next" title="BaseServlet应用原理">
-                <i class="fa fa-chevron-left"></i> BaseServlet应用原理
+              <a href="/2018/09/04/IDEA部署tomcat原理小解/" rel="next" title="IDEA部署tomcat原理小解">
+                <i class="fa fa-chevron-left"></i> IDEA部署tomcat原理小解
               </a>
             
           </div>
@@ -543,10 +518,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/04/动态代理死循环可能的原因/" rel="prev" title="动态代理死循环可能的原因">
-                动态代理死循环可能的原因 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -591,17 +562,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -706,22 +668,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-tomcat部署项目的三种方式"><span class="nav-number">1.</span> <span class="nav-text">1.tomcat部署项目的三种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#①把html放到tomcat的webapps目录下的hello文件夹中，如下图。"><span class="nav-number">1.1.</span> <span class="nav-text">①把html放到tomcat的webapps目录下的hello文件夹中，如下图。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#②第二种方式如下图："><span class="nav-number">1.2.</span> <span class="nav-text">②第二种方式如下图：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#③以上两种都不是idea的部署方式，idea的部署方式是第三种-。"><span class="nav-number">1.3.</span> <span class="nav-text">③以上两种都不是idea的部署方式，idea的部署方式是第三种.。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-idea的部署方式"><span class="nav-number">2.</span> <span class="nav-text">2.idea的部署方式</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
