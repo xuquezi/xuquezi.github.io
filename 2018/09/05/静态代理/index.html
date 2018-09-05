@@ -116,12 +116,12 @@
 <meta property="og:site_name" content="写bug日常">
 <meta property="og:description" content="直接上代码。假设有一个接口StringUtils，在里面定义两个方法用于将字符串转为大写和转为小写如下。 1234public interface StringUtils &amp;#123;    String toUpperCase(String s);    String toLowerCase(String s);&amp;#125;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="e:/myblog/pic/20180818191022794.png">
-<meta property="og:updated_time" content="2018-09-05T02:10:50.229Z">
+<meta property="og:image" content="e:/myblog/source/img/20180818191022794.png">
+<meta property="og:updated_time" content="2018-09-05T02:40:19.661Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="静态代理">
 <meta name="twitter:description" content="直接上代码。假设有一个接口StringUtils，在里面定义两个方法用于将字符串转为大写和转为小写如下。 1234public interface StringUtils &amp;#123;    String toUpperCase(String s);    String toLowerCase(String s);&amp;#125;">
-<meta name="twitter:image" content="e:/myblog/pic/20180818191022794.png">
+<meta name="twitter:image" content="e:/myblog/source/img/20180818191022794.png">
 
 
 
@@ -351,7 +351,7 @@
                 
               
 
-              <time title="创建时间：2018-09-05 10:06:30 / 修改时间：10:10:50" itemprop="dateCreated datePublished" datetime="2018-09-05T10:06:30+08:00">2018-09-05</time>
+              <time title="创建时间：2018-09-05 10:06:30 / 修改时间：10:40:19" itemprop="dateCreated datePublished" datetime="2018-09-05T10:06:30+08:00">2018-09-05</time>
             
 
             
@@ -423,10 +423,10 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StringUtilsTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stringUtilsTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        StringUtilsImpl impl = <span class="keyword">new</span> StringUtilsImpl();</span><br><span class="line">        String s1 = impl.toLowerCase(<span class="string">" abcDE f GH"</span>);</span><br><span class="line">        System.out.println(s1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>测试结果并不能除去字符串中的空格。如果我想要取出字符串中的空格后在转为小写输出，那么就可以用静态代理。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyStringUtilsImpl</span> <span class="keyword">implements</span> <span class="title">StringUtils</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> StringUtilsImpl impl;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ProxyStringUtilsImpl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        impl = <span class="keyword">new</span> StringUtilsImpl();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toUpperCase</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> impl.toUpperCase(s.replace(<span class="string">" "</span>,<span class="string">""</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toLowerCase</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> impl.toLowerCase(s.replace(<span class="string">" "</span>,<span class="string">""</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>需要维护一个被代理的类，并实现同一个接口。在方法的具体实现中可以先进行去空格的操作然后在调用被代理对象方法。如上图。 </p>
+<p>需要维护一个被代理的类，并实现同一个接口。在方法的具体实现中可以先进行去空格的操作然后在调用被代理对象方法。</p>
 <p>测试结果如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StringUtilsTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stringUtilsTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        StringUtilsImpl impl = <span class="keyword">new</span> StringUtilsImpl();</span><br><span class="line">        String s1 = impl.toLowerCase(<span class="string">" abcDE f GH"</span>);</span><br><span class="line">        System.out.println(s1);</span><br><span class="line"></span><br><span class="line">        ProxyStringUtilsImpl proxyImpl = <span class="keyword">new</span> ProxyStringUtilsImpl();</span><br><span class="line">        String s2 = proxyImpl.toLowerCase(<span class="string">" abcDE f GH"</span>);</span><br><span class="line">        System.out.println(s2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="E:\myblog\pic\20180818191022794.png" alt=""></p>
+<p><img src="E:\myblog\source\img\20180818191022794.png" alt=""></p>
 
       
     </div>
