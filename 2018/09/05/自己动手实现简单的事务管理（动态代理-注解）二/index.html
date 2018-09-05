@@ -111,20 +111,20 @@
   <meta name="description" content="上一篇介绍了ThreadLocalJDBCUtils（用于获得与线程绑定的connection的工具类）。动态代理不做赘述。 我们用一个简单的保存用户说明问题：">
 <meta name="keywords" content="java,设计模式,事务管理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="自己动手实现简单的事务管理（动态代理+注解）二">
+<meta property="og:title" content="写bug日常">
 <meta property="og:url" content="http://yoursite.com/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）二/index.html">
 <meta property="og:site_name" content="写bug日常">
 <meta property="og:description" content="上一篇介绍了ThreadLocalJDBCUtils（用于获得与线程绑定的connection的工具类）。动态代理不做赘述。 我们用一个简单的保存用户说明问题：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）二/E:/myblog/source/img/20180822143639865.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）二/E:/myblog/source/img/2018082214374350.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）二/E:/myblog/source/img/20180822143858445.png">
-<meta property="og:image" content="http://yoursite.com/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）二/E:/myblog/source/img/20180822144327710.png">
-<meta property="og:updated_time" content="2018-09-05T02:38:58.535Z">
+<meta property="og:image" content="http://yoursite.com/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）二/20180822143639865.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）二/2018082214374350.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）二/20180822143858445.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）二/20180822144327710.png">
+<meta property="og:updated_time" content="2018-09-05T03:25:43.100Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="自己动手实现简单的事务管理（动态代理+注解）二">
+<meta name="twitter:title" content="写bug日常">
 <meta name="twitter:description" content="上一篇介绍了ThreadLocalJDBCUtils（用于获得与线程绑定的connection的工具类）。动态代理不做赘述。 我们用一个简单的保存用户说明问题：">
-<meta name="twitter:image" content="http://yoursite.com/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）二/E:/myblog/source/img/20180822143639865.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）二/20180822143639865.png">
 
 
 
@@ -143,7 +143,7 @@
   };
 </script>
 
-  <title>自己动手实现简单的事务管理（动态代理+注解）二 | 写bug日常</title>
+  <title> | 写bug日常</title>
   
 
 
@@ -329,7 +329,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">自己动手实现简单的事务管理（动态代理+注解）二
+          <h1 class="post-title" itemprop="name headline">
               
             
           </h1>
@@ -354,7 +354,7 @@
                 
               
 
-              <time title="创建时间：2018-09-05 10:20:19 / 修改时间：10:38:58" itemprop="dateCreated datePublished" datetime="2018-09-05T10:20:19+08:00">2018-09-05</time>
+              <time title="创建时间：2018-09-05 10:20:19 / 修改时间：11:25:43" itemprop="dateCreated datePublished" datetime="2018-09-05T10:20:19+08:00">2018-09-05</time>
             
 
             
@@ -442,16 +442,16 @@
 <p>dao层代码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoImpl</span> <span class="keyword">implements</span> <span class="title">UserDao</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveUser</span><span class="params">(User user)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">        QueryRunner qr = <span class="keyword">new</span> QueryRunner();</span><br><span class="line">        String sql = <span class="string">"insert into users values (?,?)"</span>;</span><br><span class="line">        Integer age = user.getAge();</span><br><span class="line">        String name = user.getName();</span><br><span class="line">        <span class="keyword">int</span> row = qr.update(ThreadLocalJDBCUtils.getCurrentConnection(), sql, age, name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>运行结果如下： </p>
-<p><img src="/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）二/E:/myblog\source\img\20180822143639865.png" alt=""></p>
+<p><img src="/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）二/20180822143639865.png" alt=""></p>
 <p>查看数据库有没有更新： </p>
-<p><img src="/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）二/E:/myblog\source\img\2018082214374350.png" alt=""></p>
+<p><img src="/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）二/2018082214374350.png" alt=""></p>
 <p>当我们取消在方法上的自定义注解@MyTransactional，运行UserTest。 </p>
-<p><img src="/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）二/E:/myblog\source\img\20180822143858445.png" alt=""></p>
+<p><img src="/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）二/20180822143858445.png" alt=""></p>
 <p>可见事务并没有进行处理，但是数据库又插入了一条数据。我们知道查询是不用进行事务处理的，在我们处理查询方法时，就可以不加自定义的注解，从而不对其进行事务管理。 </p>
 <p>下面我们在UserServiceImpl加入int i = 1/0;使其报异常</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserServiceImpl</span> <span class="keyword">implements</span> <span class="title">UserService</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> UserDao dao = <span class="keyword">new</span> UserDaoImpl();</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="meta">@MyTransactional</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveUser</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            dao.saveUser(user);</span><br><span class="line">            <span class="keyword">int</span> i = <span class="number">1</span>/<span class="number">0</span>;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>运行结果： </p>
-<p><img src="/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）二/E:/myblog\source\img\20180822144327710.png" alt=""></p>
+<p><img src="/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）二/20180822144327710.png" alt=""></p>
 <p>且数据没有插入。 </p>
 <p>这里提一个踩到的巨坑。如果回滚事务后仍然插入了数据，那么大概率是数据库引擎问题。之前遇到过这个问题，看了一下表的引擎是MyISAM，好像不支持事务，改成InnoDB就好了。</p>
 

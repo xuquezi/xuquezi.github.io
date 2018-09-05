@@ -116,12 +116,12 @@
 <meta property="og:site_name" content="写bug日常">
 <meta property="og:description" content="使用原生的servlet，没有使用框架。运用动态代理技术手动实现service层的事务管理。并增加注解功能，用于查询时无需事务管理。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）一/E:/myblog/source/img/20180822133752175.png">
-<meta property="og:updated_time" content="2018-09-05T02:38:18.829Z">
+<meta property="og:image" content="http://yoursite.com/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）一/20180822133752175.png">
+<meta property="og:updated_time" content="2018-09-05T03:24:13.913Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自己动手实现简单的事务管理（动态代理+注解）一">
 <meta name="twitter:description" content="使用原生的servlet，没有使用框架。运用动态代理技术手动实现service层的事务管理。并增加注解功能，用于查询时无需事务管理。">
-<meta name="twitter:image" content="http://yoursite.com/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）一/E:/myblog/source/img/20180822133752175.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）一/20180822133752175.png">
 
 
 
@@ -351,7 +351,7 @@
                 
               
 
-              <time title="创建时间：2018-09-05 10:16:54 / 修改时间：10:38:18" itemprop="dateCreated datePublished" datetime="2018-09-05T10:16:54+08:00">2018-09-05</time>
+              <time title="创建时间：2018-09-05 10:16:54 / 修改时间：11:24:13" itemprop="dateCreated datePublished" datetime="2018-09-05T10:16:54+08:00">2018-09-05</time>
             
 
             
@@ -431,7 +431,7 @@
 <p>说明：每次使用此工具类时使用getCurrentConnection()，获得与线程绑定的连接对象。第一次，线程中没有connection时从连接池中获得连接并存到线程中。释放资源时把连接从线程中移除。重点不在于此，工具类直接复制也行。注意配置好自己的数据库。</p>
 <p>测试utils，打印connection，没有报错打印出地址说明是成功的</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UtilsTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Connection connection = ThreadLocalJDBCUtils.getCurrentConnection();</span><br><span class="line">        System.out.println(connection);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）一/E:/myblog\source\img\20180822133752175.png" alt=""></p>
+<p><img src="/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）一/20180822133752175.png" alt=""></p>
 
       
     </div>
@@ -533,8 +533,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）二/" rel="prev" title="自己动手实现简单的事务管理（动态代理+注解）二">
-                自己动手实现简单的事务管理（动态代理+注解）二 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/05/自己动手实现简单的事务管理（动态代理-注解）二/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
