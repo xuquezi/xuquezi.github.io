@@ -108,18 +108,20 @@
 
 
 
-  <meta name="description" content="最近用原生servlet写小demo，想用动态代理实现事务处理。结果编写的动态代理陷入死循环。找了很久才找到原因。">
-<meta name="keywords" content="java,异常">
+  <meta name="description" content="直接上代码。假设有一个接口StringUtils，在里面定义两个方法用于将字符串转为大写和转为小写如下。 1234public interface StringUtils &amp;#123;    String toUpperCase(String s);    String toLowerCase(String s);&amp;#125;">
+<meta name="keywords" content="java,设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="动态代理死循环可能的原因">
-<meta property="og:url" content="http://yoursite.com/2018/09/04/动态代理死循环可能的原因/index.html">
+<meta property="og:title" content="静态代理">
+<meta property="og:url" content="http://yoursite.com/2018/09/05/静态代理/index.html">
 <meta property="og:site_name" content="写bug日常">
-<meta property="og:description" content="最近用原生servlet写小demo，想用动态代理实现事务处理。结果编写的动态代理陷入死循环。找了很久才找到原因。">
+<meta property="og:description" content="直接上代码。假设有一个接口StringUtils，在里面定义两个方法用于将字符串转为大写和转为小写如下。 1234public interface StringUtils &amp;#123;    String toUpperCase(String s);    String toLowerCase(String s);&amp;#125;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-04T12:12:05.435Z">
+<meta property="og:image" content="e:/myblog/pic/20180818191022794.png">
+<meta property="og:updated_time" content="2018-09-05T02:10:50.229Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="动态代理死循环可能的原因">
-<meta name="twitter:description" content="最近用原生servlet写小demo，想用动态代理实现事务处理。结果编写的动态代理陷入死循环。找了很久才找到原因。">
+<meta name="twitter:title" content="静态代理">
+<meta name="twitter:description" content="直接上代码。假设有一个接口StringUtils，在里面定义两个方法用于将字符串转为大写和转为小写如下。 1234public interface StringUtils &amp;#123;    String toUpperCase(String s);    String toLowerCase(String s);&amp;#125;">
+<meta name="twitter:image" content="e:/myblog/pic/20180818191022794.png">
 
 
 
@@ -128,7 +130,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/04/动态代理死循环可能的原因/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/05/静态代理/"/>
 
 
 
@@ -138,7 +140,7 @@
   };
 </script>
 
-  <title>动态代理死循环可能的原因 | 写bug日常</title>
+  <title>静态代理 | 写bug日常</title>
   
 
 
@@ -307,7 +309,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/04/动态代理死循环可能的原因/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/05/静态代理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -324,7 +326,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">动态代理死循环可能的原因
+          <h1 class="post-title" itemprop="name headline">静态代理
               
             
           </h1>
@@ -349,7 +351,7 @@
                 
               
 
-              <time title="创建时间：2018-09-04 19:08:59 / 修改时间：20:12:05" itemprop="dateCreated datePublished" datetime="2018-09-04T19:08:59+08:00">2018-09-04</time>
+              <time title="创建时间：2018-09-05 10:06:30 / 修改时间：10:10:50" itemprop="dateCreated datePublished" datetime="2018-09-05T10:06:30+08:00">2018-09-05</time>
             
 
             
@@ -378,7 +380,7 @@
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/异常/" itemprop="url" rel="index"><span itemprop="name">异常</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/设计模式/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a></span>
 
                 
                 
@@ -412,15 +414,19 @@
       
 
       
-        <p>最近用原生servlet写小demo，想用动态代理实现事务处理。结果编写的动态代理陷入死循环。找了很久才找到原因。</p>
+        <p>直接上代码。假设有一个接口StringUtils，在里面定义两个方法用于将字符串转为大写和转为小写如下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">StringUtils</span> </span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">toUpperCase</span><span class="params">(String s)</span></span>;</span><br><span class="line">    <span class="function">String <span class="title">toLowerCase</span><span class="params">(String s)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TransactionInvocationHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</span><br><span class="line">    <span class="comment">//这是需要被代理的对象</span></span><br><span class="line">    <span class="keyword">private</span> Object proxy;</span><br><span class="line">    <span class="comment">//通过构造传参方式，传递需要被代理对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TransactionInvocationHandler</span><span class="params">(Object proxy)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.proxy = proxy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] objects)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        ThreadLocalJDBCUtils.beginTransaction();</span><br><span class="line">        System.out.println(<span class="string">"开启事务"</span>);</span><br><span class="line">        Object result = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            result = method.invoke(proxy, objects);</span><br><span class="line">            ThreadLocalJDBCUtils.commit();</span><br><span class="line">            System.out.println(<span class="string">"提交事务"</span>);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            ThreadLocalJDBCUtils.rollback();</span><br><span class="line">            System.out.println(<span class="string">"回滚事务"</span>);</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            ThreadLocalJDBCUtils.close();</span><br><span class="line">            System.out.println(<span class="string">"释放资源"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TransactionProxyManager</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">proxyFor</span><span class="params">(Object object)</span></span>&#123;</span><br><span class="line">       <span class="keyword">return</span> Proxy.newProxyInstance(object.getClass().getClassLoader(),object.getClass().getInterfaces(),<span class="keyword">new</span> TransactionInvocationHandler(object));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>是不是乍一看没毛病。问题在下面两个代码片。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">TransactionInvocationHandler</span><span class="params">(Object proxy)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.proxy = proxy;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] objects)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">       ThreadLocalJDBCUtils.beginTransaction();</span><br><span class="line">       System.out.println(<span class="string">"开启事务"</span>);</span><br><span class="line">       Object result = <span class="keyword">null</span>;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           result = method.invoke(proxy, objects);</span><br></pre></td></tr></table></figure>
-<p>我自己的理解是构造方法传递的被代理对象和形式参数同名了。执行invoke方法时就先找形式参数而不会去找成员对象。而invoke方法中的proxy是需要外部传入的，不然就会陷入死循环。<strong>修改后代码如下，修改的4个地方用<em> </em>包含。</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TransactionInvocationHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</span><br><span class="line">    <span class="comment">//这是需要被代理的对象</span></span><br><span class="line">    <span class="keyword">private</span> Object *object*;</span><br><span class="line">    <span class="comment">//通过构造传参方式，传递需要被代理对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TransactionInvocationHandler</span><span class="params">(*Object object*)</span> </span>&#123;</span><br><span class="line">        *<span class="keyword">this</span>.object = object;*</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] objects)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        ThreadLocalJDBCUtils.beginTransaction();</span><br><span class="line">        System.out.println(<span class="string">"开启事务"</span>);</span><br><span class="line">        Object result = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            result = method.invoke(*object*, objects);</span><br><span class="line">            ThreadLocalJDBCUtils.commit();</span><br><span class="line">            System.out.println(<span class="string">"提交事务"</span>);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            ThreadLocalJDBCUtils.rollback();</span><br><span class="line">            System.out.println(<span class="string">"回滚事务"</span>);</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            ThreadLocalJDBCUtils.close();</span><br><span class="line">            System.out.println(<span class="string">"释放资源"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实现接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StringUtilsImpl</span> <span class="keyword">implements</span> <span class="title">StringUtils</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toUpperCase</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> s.toUpperCase();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toLowerCase</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> s.toLowerCase();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>进行测试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StringUtilsTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stringUtilsTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        StringUtilsImpl impl = <span class="keyword">new</span> StringUtilsImpl();</span><br><span class="line">        String s1 = impl.toLowerCase(<span class="string">" abcDE f GH"</span>);</span><br><span class="line">        System.out.println(s1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试结果并不能除去字符串中的空格。如果我想要取出字符串中的空格后在转为小写输出，那么就可以用静态代理。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyStringUtilsImpl</span> <span class="keyword">implements</span> <span class="title">StringUtils</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> StringUtilsImpl impl;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ProxyStringUtilsImpl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        impl = <span class="keyword">new</span> StringUtilsImpl();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toUpperCase</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> impl.toUpperCase(s.replace(<span class="string">" "</span>,<span class="string">""</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toLowerCase</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> impl.toLowerCase(s.replace(<span class="string">" "</span>,<span class="string">""</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>需要维护一个被代理的类，并实现同一个接口。在方法的具体实现中可以先进行去空格的操作然后在调用被代理对象方法。如上图。 </p>
+<p>测试结果如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StringUtilsTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stringUtilsTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        StringUtilsImpl impl = <span class="keyword">new</span> StringUtilsImpl();</span><br><span class="line">        String s1 = impl.toLowerCase(<span class="string">" abcDE f GH"</span>);</span><br><span class="line">        System.out.println(s1);</span><br><span class="line"></span><br><span class="line">        ProxyStringUtilsImpl proxyImpl = <span class="keyword">new</span> ProxyStringUtilsImpl();</span><br><span class="line">        String s2 = proxyImpl.toLowerCase(<span class="string">" abcDE f GH"</span>);</span><br><span class="line">        System.out.println(s2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="E:\myblog\pic\20180818191022794.png" alt=""></p>
 
       
     </div>
@@ -443,7 +449,7 @@
           
             <a href="/tags/java/" rel="tag"># java</a>
           
-            <a href="/tags/异常/" rel="tag"># 异常</a>
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
           
         </div>
       
@@ -510,8 +516,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/04/IDEA部署tomcat原理小解/" rel="next" title="IDEA部署tomcat原理小解">
-                <i class="fa fa-chevron-left"></i> IDEA部署tomcat原理小解
+              <a href="/2018/09/05/springboot异常处理/" rel="next" title="springboot异常处理">
+                <i class="fa fa-chevron-left"></i> springboot异常处理
               </a>
             
           </div>
@@ -520,8 +526,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/05/springboot异常处理/" rel="prev" title="springboot异常处理">
-                springboot异常处理 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/05/动态代理/" rel="prev" title="动态代理">
+                动态代理 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
