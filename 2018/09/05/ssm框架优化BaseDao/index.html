@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="写bug日常">
 <meta property="og:description" content="ssm框架的BaseDao下面的BaseDao举例了几种常用方法，如果在项目过程中，有使用比较频繁的dao代码，就可抽取到BaseDao中。 12345678910111213141516public interface BaseDao&amp;lt;T&amp;gt; &amp;#123;    void save(T entity);// 保存    void delete(T entity);// 删除    vo">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-05T05:45:07.601Z">
+<meta property="og:updated_time" content="2018-09-05T06:06:25.704Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ssm框架优化BaseDao">
 <meta name="twitter:description" content="ssm框架的BaseDao下面的BaseDao举例了几种常用方法，如果在项目过程中，有使用比较频繁的dao代码，就可抽取到BaseDao中。 12345678910111213141516public interface BaseDao&amp;lt;T&amp;gt; &amp;#123;    void save(T entity);// 保存    void delete(T entity);// 删除    vo">
@@ -349,7 +349,7 @@
                 
               
 
-              <time title="创建时间：2018-09-05 13:24:25 / 修改时间：13:45:07" itemprop="dateCreated datePublished" datetime="2018-09-05T13:24:25+08:00">2018-09-05</time>
+              <time title="创建时间：2018-09-05 13:24:25 / 修改时间：14:06:25" itemprop="dateCreated datePublished" datetime="2018-09-05T13:24:25+08:00">2018-09-05</time>
             
 
             
@@ -442,6 +442,7 @@
       
         <h3 id="ssm框架的BaseDao"><a href="#ssm框架的BaseDao" class="headerlink" title="ssm框架的BaseDao"></a>ssm框架的BaseDao</h3><p>下面的BaseDao举例了几种常用方法，如果在项目过程中，有使用比较频繁的dao代码，就可抽取到BaseDao中。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BaseDao</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">save</span><span class="params">(T entity)</span></span>;<span class="comment">// 保存</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">delete</span><span class="params">(T entity)</span></span>;<span class="comment">// 删除</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(T entity)</span></span>;<span class="comment">// 更新</span></span><br><span class="line"></span><br><span class="line">    <span class="function">T <span class="title">findById</span><span class="params">(Serializable id)</span></span>;<span class="comment">// 根据主键查找</span></span><br><span class="line"></span><br><span class="line">    <span class="function">List&lt;T&gt; <span class="title">getAll</span><span class="params">()</span></span>;<span class="comment">// 查看所有</span></span><br><span class="line"></span><br><span class="line">    <span class="function">Integer <span class="title">getTotalCount</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">List&lt;T&gt; <span class="title">list</span><span class="params">(@Param(<span class="string">"start"</span>)</span> Integer start, @<span class="title">Param</span><span class="params">(<span class="string">"pageSize"</span>)</span> Integer pageSize)</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>有了BaseDao后在编写dao层代码时只需要继承BaseDao就好了</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> dao;</span><br><span class="line"><span class="comment">//使用BaseDao,抽取dao的crud。</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserDao</span>&lt;<span class="title">User</span>&gt; <span class="keyword">extends</span> <span class="title">BaseDao</span>&lt;<span class="title">User</span>&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>但是即使继承了BaseDao，mapper.xml文件还是需要编写。</p>
