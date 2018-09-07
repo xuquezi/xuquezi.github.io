@@ -41,11 +41,11 @@
          
         <tag>springmvc</tag>
          
-        <tag>springboot</tag>
+        <tag>spring</tag>
          
         <tag>mybatis</tag>
          
-        <tag>spring</tag>
+        <tag>springboot</tag>
          
          
            
@@ -80,9 +80,9 @@
          
         <tag>springmvc</tag>
          
-        <tag>mybatis</tag>
-         
         <tag>spring</tag>
+         
+        <tag>mybatis</tag>
          
          
            
@@ -187,13 +187,13 @@
          
         <tag>框架</tag>
          
-        <tag>springmvc</tag>
+        <tag>优化</tag>
          
-        <tag>mybatis</tag>
+        <tag>springmvc</tag>
          
         <tag>spring</tag>
          
-        <tag>优化</tag>
+        <tag>mybatis</tag>
          
          
            
@@ -226,13 +226,13 @@
          
         <tag>框架</tag>
          
-        <tag>springmvc</tag>
+        <tag>优化</tag>
          
-        <tag>mybatis</tag>
+        <tag>springmvc</tag>
          
         <tag>spring</tag>
          
-        <tag>优化</tag>
+        <tag>mybatis</tag>
          
          
            
