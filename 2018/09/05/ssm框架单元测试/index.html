@@ -109,14 +109,14 @@
 
 
   <meta name="description" content="数据层的测试12345678910111213@RunWith(SpringJUnit4ClassRunner.class)@ContextConfiguration(&amp;#123; &quot;classpath:spring/spring-mybatis.xml&quot; &amp;#125;)public class UserDaoTest &amp;#123;	// 注入Dao实现类依赖	@Resource	private">
-<meta name="keywords" content="java,框架,springmvc,spring,mybatis">
+<meta name="keywords" content="java,框架,springmvc,mybatis,spring">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ssm框架单元测试">
 <meta property="og:url" content="http://yoursite.com/2018/09/05/ssm框架单元测试/index.html">
 <meta property="og:site_name" content="一天不写bug，浑身难受">
 <meta property="og:description" content="数据层的测试12345678910111213@RunWith(SpringJUnit4ClassRunner.class)@ContextConfiguration(&amp;#123; &quot;classpath:spring/spring-mybatis.xml&quot; &amp;#125;)public class UserDaoTest &amp;#123;	// 注入Dao实现类依赖	@Resource	private">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-06T01:34:58.199Z">
+<meta property="og:updated_time" content="2018-09-07T01:04:09.182Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ssm框架单元测试">
 <meta name="twitter:description" content="数据层的测试12345678910111213@RunWith(SpringJUnit4ClassRunner.class)@ContextConfiguration(&amp;#123; &quot;classpath:spring/spring-mybatis.xml&quot; &amp;#125;)public class UserDaoTest &amp;#123;	// 注入Dao实现类依赖	@Resource	private">
@@ -366,7 +366,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-09-06 09:34:58" itemprop="dateModified" datetime="2018-09-06T09:34:58+08:00">2018-09-06</time>
+                <time title="修改时间：2018-09-07 09:04:09" itemprop="dateModified" datetime="2018-09-07T09:04:09+08:00">2018-09-07</time>
               
             
           </span>
@@ -454,7 +454,8 @@
 <p><strong>Caused by: java.util.MissingResourceException: Can’t find bundle for base name javax.servlet.LocalStrings, locale zh_CN</strong></p>
 <p><strong>junit版本要在4.12以上</strong></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javax.servlet-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebAppConfiguration</span></span><br><span class="line"><span class="comment">//告诉junit spring的配置文件</span></span><br><span class="line"><span class="meta">@ContextConfiguration</span>(&#123; <span class="string">"classpath:spring-mybatis.xml"</span>,</span><br><span class="line">        <span class="string">"classpath:spring-mvc.xml"</span>&#125;)</span><br><span class="line"><span class="comment">//配置spring和junit整合，这样junit在启动时就会加载spring容器</span></span><br><span class="line"><span class="meta">@RunWith</span>(SpringJUnit4ClassRunner.class)</span><br><span class="line"><span class="comment">//事务</span></span><br><span class="line"><span class="meta">@Transactional</span>(transactionManager = <span class="string">"transactionManager"</span>)</span><br><span class="line"><span class="meta">@Rollback</span>(value = <span class="keyword">false</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserControllerTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> MockMvc mockMvc;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> WebApplicationContext wac;<span class="comment">//</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserController userController;<span class="comment">//注入要测试的Controller</span></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();  //初始化MockMvc对象</span></span><br><span class="line">        mockMvc = MockMvcBuilders.standaloneSetup(userController).build();<span class="comment">//两种方式都可以初始化mockMvc，推荐用这种，上面的会自动跳转地址status判断方法无效</span></span><br><span class="line">    &#125;<span class="comment">//这个方法在每个方法执行之前都会执行一遍</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">userControllerTest</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        String result = mockMvc.perform(</span><br><span class="line">                MockMvcRequestBuilders.post(<span class="string">"http://127.0.0.1:8888/user/checkUserName"</span>)<span class="comment">//请求的url,请求的方法是post</span></span><br><span class="line">                .param(<span class="string">"username"</span>,<span class="string">"1377262954"</span>))</span><br><span class="line">                .andExpect(status().isOk())<span class="comment">//返回的状态是200</span></span><br><span class="line">                .andDo(print())<span class="comment">//打印出请求和相应的内容</span></span><br><span class="line">                .andReturn().getResponse().getContentAsString();<span class="comment">//将相应的数据转换为字符串</span></span><br><span class="line">       </span><br><span class="line">        System.out.println(result);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebAppConfiguration</span></span><br><span class="line"><span class="comment">//告诉junit spring的配置文件</span></span><br><span class="line"><span class="meta">@ContextConfiguration</span>(&#123; <span class="string">"classpath:spring-mybatis.xml"</span>,</span><br><span class="line">        <span class="string">"classpath:spring-mvc.xml"</span>&#125;)</span><br><span class="line"><span class="comment">//配置spring和junit整合，这样junit在启动时就会加载spring容器</span></span><br><span class="line"><span class="meta">@RunWith</span>(SpringJUnit4ClassRunner.class)</span><br><span class="line"><span class="comment">//事务</span></span><br><span class="line"><span class="meta">@Transactional</span>(transactionManager = <span class="string">"transactionManager"</span>)</span><br><span class="line"><span class="meta">@Rollback</span>(value = <span class="keyword">false</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserControllerTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> MockMvc mockMvc;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> WebApplicationContext wac;<span class="comment">//</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserController userController;<span class="comment">//注入要测试的Controller</span></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();  //初始化MockMvc对象</span></span><br><span class="line">        mockMvc = MockMvcBuilders.standaloneSetup(userController).build();<span class="comment">//两种方式都可以初始化mockMvc，推荐用这种，上面的会自动跳转地址status判断方法无效</span></span><br><span class="line">    &#125;<span class="comment">//这个方法在每个方法执行之前都会执行一遍</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">userControllerTest</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        String result = mockMvc.perform(</span><br><span class="line">                MockMvcRequestBuilders.post(<span class="string">"http://127.0.0.1:8888/user/checkUserName"</span>)<span class="comment">//请求的url,请求的方法是post</span></span><br><span class="line">                .param(<span class="string">"username"</span>,<span class="string">"1377262954"</span>))</span><br><span class="line">                .andExpect(status().isOk())<span class="comment">//返回的状态是200</span></span><br><span class="line">                .andDo(print())<span class="comment">//打印出请求和相应的内容</span></span><br><span class="line">                .andReturn().getResponse().getContentAsString();<span class="comment">//将相应的数据转换为字符串</span></span><br><span class="line">       </span><br><span class="line">        System.out.println(result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -480,9 +481,9 @@
           
             <a href="/tags/springmvc/" rel="tag"># springmvc</a>
           
-            <a href="/tags/spring/" rel="tag"># spring</a>
-          
             <a href="/tags/mybatis/" rel="tag"># mybatis</a>
+          
+            <a href="/tags/spring/" rel="tag"># spring</a>
           
         </div>
       
@@ -631,7 +632,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -680,7 +681,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -725,7 +734,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">16</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -832,7 +847,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共11.7k字</span>
+  <span class="post-count">博客全站共14.0k字</span>
 </div>
 
         
