@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://yoursite.com/2018/09/07/http%E8%AF%B7%E6%B1%82%E5%92%8C%E5%93%8D%E5%BA%94/</loc>
-    <lastmod>2018-09-07T06:13:50.635Z</lastmod>
+    <lastmod>2018-09-07T07:01:10.013Z</lastmod>
     <data>
         <display>
         <title>http请求和响应</title>
@@ -101,7 +101,6 @@
     </data>
     </url>
 
-    
     
   <url>
     <loc>http://yoursite.com/2018/09/06/cglib%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/</loc>
@@ -401,9 +400,9 @@
         <title>IDEA部署tomcat原理小解</title>
         <pubTime>2018-09-04T10:34:28.000Z</pubTime>
         
-        <tag>原理</tag>
-         
         <tag>tomcat</tag>
+         
+        <tag>原理</tag>
          
          
            
