@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://yoursite.com/2018/09/07/http%E8%AF%B7%E6%B1%82%E5%92%8C%E5%93%8D%E5%BA%94/</loc>
-    <lastmod>2018-09-07T04:35:19.814Z</lastmod>
+    <lastmod>2018-09-07T06:06:16.648Z</lastmod>
     <data>
         <display>
         <title>http请求和响应</title>
@@ -401,9 +401,9 @@
         <title>IDEA部署tomcat原理小解</title>
         <pubTime>2018-09-04T10:34:28.000Z</pubTime>
         
-        <tag>原理</tag>
-         
         <tag>tomcat</tag>
+         
+        <tag>原理</tag>
          
          
            
@@ -493,9 +493,9 @@
         <title>BaseServlet应用原理</title>
         <pubTime>2018-09-03T08:46:44.000Z</pubTime>
         
-        <tag>java</tag>
-         
         <tag>原理</tag>
+         
+        <tag>java</tag>
          
          
            
