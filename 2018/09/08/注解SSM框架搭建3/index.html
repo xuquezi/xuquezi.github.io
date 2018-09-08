@@ -113,12 +113,12 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="注解SSM框架搭建3">
 <meta property="og:url" content="http://yoursite.com/2018/09/08/注解SSM框架搭建3/index.html">
-<meta property="og:site_name" content="一天不写bug，浑身难受">
+<meta property="og:site_name" content="天下不易其乐">
 <meta property="og:description" content="在用注解代替了spring-mybatis.xml配置和springmvc配置后，剩下的就是web.xml了web.xml的代替比较复杂。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2018/09/08/注解SSM框架搭建3/20180908161103.png">
 <meta property="og:image" content="http://yoursite.com/2018/09/08/注解SSM框架搭建3/20180908164039.png">
-<meta property="og:updated_time" content="2018-09-08T08:43:42.681Z">
+<meta property="og:updated_time" content="2018-09-08T09:03:25.342Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="注解SSM框架搭建3">
 <meta name="twitter:description" content="在用注解代替了spring-mybatis.xml配置和springmvc配置后，剩下的就是web.xml了web.xml的代替比较复杂。">
@@ -126,7 +126,7 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="一天不写bug，浑身难受" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="天下不易其乐" type="application/atom+xml" />
 
 
 
@@ -141,7 +141,7 @@
   };
 </script>
 
-  <title>注解SSM框架搭建3 | 一天不写bug，浑身难受</title>
+  <title>注解SSM框架搭建3 | 天下不易其乐</title>
   
 
 
@@ -199,10 +199,14 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">一天不写bug，浑身难受</span>
+        <span class="site-title">天下不易其乐</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
+      
+        <p class="site-subtitle">醉后不知天在水，满船星梦压星河。</p>
+      
     
   </div>
 
@@ -319,7 +323,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一天不写bug，浑身难受">
+      <meta itemprop="name" content="天下不易其乐">
     </span>
 
     
@@ -352,7 +356,7 @@
                 
               
 
-              <time title="创建时间：2018-09-08 16:00:23 / 修改时间：16:43:42" itemprop="dateCreated datePublished" datetime="2018-09-08T16:00:23+08:00">2018-09-08</time>
+              <time title="创建时间：2018-09-08 16:00:23 / 修改时间：17:03:25" itemprop="dateCreated datePublished" datetime="2018-09-08T16:00:23+08:00">2018-09-08</time>
             
 
             
@@ -457,7 +461,8 @@
 <p>@HandlesTypes，它的作用是将感兴趣的一些类注入到ServletContainerInitializerde。所以SpringServletContainerInitializer将WebApplicationInitializer进行了注入。</p>
 <p>onStartup方法其实就是对注入的WebApplicationInitializer集合中，取出所有WebApplicationInitializer的实现类并且执行他们的onStartup方法。</p>
 <p>综上我们可以吧WebApplicationInitializer当做Web.xml的替代，通过实现WebApplicationInitializer，在其中可以添加servlet，listener等，在加载Web项目的时候会加载这个接口实现类，从而起到web.xml相同的作用。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppConfig</span> <span class="keyword">implements</span> <span class="title">WebApplicationInitializer</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStartup</span><span class="params">(ServletContext servletContext)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">        <span class="comment">//1.1创建AnnotationConfigWebApplicationContext</span></span><br><span class="line">        AnnotationConfigWebApplicationContext MvcContext = <span class="keyword">new</span> AnnotationConfigWebApplicationContext();</span><br><span class="line">        <span class="comment">//1.2springMVC的注册配置类</span></span><br><span class="line">        MvcContext.register(SpringMvcConfig.class);</span><br><span class="line">        <span class="comment">//1.3创建mvc核心控制器,并将注册的springMVC配置类传入</span></span><br><span class="line">        ServletRegistration.Dynamic dispatcherServlet = servletContext.addServlet(<span class="string">"dispatcherServlet"</span>, <span class="keyword">new</span> DispatcherServlet(MvcContext));</span><br><span class="line">        <span class="comment">//1.4为核心控制器配置拦截路径</span></span><br><span class="line">        dispatcherServlet.addMapping(<span class="string">""</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.1创建AnnotationConfigWebApplicationContext</span></span><br><span class="line">        AnnotationConfigWebApplicationContext springContext = <span class="keyword">new</span> AnnotationConfigWebApplicationContext();</span><br><span class="line">        <span class="comment">//2.2spring的配置类</span></span><br><span class="line">        springContext.register(SpringConfig.class);</span><br><span class="line">        <span class="comment">//2.3创建初始化spring容器的监听器,并将注册的spring配置类传入</span></span><br><span class="line">        servletContext.addListener(<span class="keyword">new</span> ContextLoaderListener(springContext));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.1注册解决乱码过滤器,设置字符集utf-8</span></span><br><span class="line">        javax.servlet.FilterRegistration.Dynamic encodingFilter = servletContext.addFilter(<span class="string">"characterFilter"</span>,<span class="keyword">new</span> CharacterEncodingFilter(<span class="string">"utf-8"</span>));</span><br><span class="line">        <span class="comment">//3.2添加拦截的类型</span></span><br><span class="line">        EnumSet&lt;DispatcherType&gt; enumSet = EnumSet.noneOf(DispatcherType.class);</span><br><span class="line">        enumSet.add(DispatcherType.REQUEST);</span><br><span class="line">        enumSet.add(DispatcherType.FORWARD);</span><br><span class="line">        <span class="comment">//3.3添加拦截路径</span></span><br><span class="line">        encodingFilter.addMappingForUrlPatterns(enumSet, <span class="keyword">true</span>,<span class="string">"/*"</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>网上有些案例用的是XmlWebApplicationContext，这是配置xml文件的方式</strong><br><strong>由于我们已经把spring的xml换成了java类所以用AnnotationConfigWebApplicationContext</strong><br><strong>看表面意思就是有注解的ApplicationContext配置类。注解应该指的就是@Configuration</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppConfig</span> <span class="keyword">implements</span> <span class="title">WebApplicationInitializer</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStartup</span><span class="params">(ServletContext servletContext)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">        <span class="comment">//1.1创建AnnotationConfigWebApplicationContext</span></span><br><span class="line">        <span class="comment">//网上有些案例用的是XmlWebApplicationContext，这是配置xml文件的方式</span></span><br><span class="line">        <span class="comment">//由于我们已经把spring的xml换成了java类所以用AnnotationConfigWebApplicationContext</span></span><br><span class="line">        <span class="comment">//看表面意思就是有注解的ApplicationContext配置类。注解应该指的就是@Configuration</span></span><br><span class="line">        AnnotationConfigWebApplicationContext MvcContext = <span class="keyword">new</span> AnnotationConfigWebApplicationContext();</span><br><span class="line">        <span class="comment">//1.2springMVC的注册配置类</span></span><br><span class="line">        MvcContext.register(SpringMvcConfig.class);</span><br><span class="line">        <span class="comment">//1.3创建mvc核心控制器,并将注册的springMVC配置类传入</span></span><br><span class="line">        ServletRegistration.Dynamic dispatcherServlet = servletContext.addServlet(<span class="string">"dispatcherServlet"</span>, <span class="keyword">new</span> DispatcherServlet(MvcContext));</span><br><span class="line">        <span class="comment">//1.4为核心控制器配置拦截路径</span></span><br><span class="line">        dispatcherServlet.addMapping(<span class="string">""</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.1创建AnnotationConfigWebApplicationContext</span></span><br><span class="line">        AnnotationConfigWebApplicationContext springContext = <span class="keyword">new</span> AnnotationConfigWebApplicationContext();</span><br><span class="line">        <span class="comment">//2.2spring的配置类</span></span><br><span class="line">        springContext.register(SpringConfig.class);</span><br><span class="line">        <span class="comment">//2.3创建初始化spring容器的监听器,并将注册的spring配置类传入</span></span><br><span class="line">        servletContext.addListener(<span class="keyword">new</span> ContextLoaderListener(springContext));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.1注册解决乱码过滤器,设置字符集utf-8</span></span><br><span class="line">        javax.servlet.FilterRegistration.Dynamic encodingFilter = servletContext.addFilter(<span class="string">"characterFilter"</span>,<span class="keyword">new</span> CharacterEncodingFilter(<span class="string">"utf-8"</span>));</span><br><span class="line">        <span class="comment">//3.2添加拦截的类型</span></span><br><span class="line">        EnumSet&lt;DispatcherType&gt; enumSet = EnumSet.noneOf(DispatcherType.class);</span><br><span class="line">        enumSet.add(DispatcherType.REQUEST);</span><br><span class="line">        enumSet.add(DispatcherType.FORWARD);</span><br><span class="line">        <span class="comment">//3.3添加拦截路径</span></span><br><span class="line">        encodingFilter.addMappingForUrlPatterns(enumSet, <span class="keyword">true</span>,<span class="string">"/*"</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>删除web.xml，启动项目访问网址：</p>
 <p><img src="/2018/09/08/注解SSM框架搭建3/20180908164039.png" alt=""></p>
 <h3 id="参考博文网址"><a href="#参考博文网址" class="headerlink" title="参考博文网址"></a>参考博文网址</h3><p><a href="">https://blog.csdn.net/houysx/article/details/80197344</a></p>
@@ -866,7 +871,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共17.8k字</span>
+  <span class="post-count">博客全站共17.9k字</span>
 </div>
 
         
