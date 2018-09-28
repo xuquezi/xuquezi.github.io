@@ -4,6 +4,39 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/09/28/Springboot%E7%BB%93%E5%90%88Swagger2%E6%9E%84%E5%BB%BARESTfulAPI%E6%96%87%E6%A1%A3/</loc>
+    <lastmod>2018-09-28T06:34:12.027Z</lastmod>
+    <data>
+        <display>
+        <title>Springboot结合Swagger2构建RESTfulAPI文档</title>
+        <pubTime>2018-09-28T06:29:26.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+        <tag>swagger2</tag>
+         
+        <tag>springboot</tag>
+         
+        <tag>Restful</tag>
+         
+         
+           
+             
+              <breadCrumb title="java" url="http://yoursite.com/categories/java/"/>
+          
+             
+              <breadCrumb title="swagger2" url="http://yoursite.com/categories/java/swagger2/"/>
+          
+             
+              <breadCrumb title="springboot" url="http://yoursite.com/categories/java/swagger2/springboot/"/>
+          
+             
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/09/08/%E6%B3%A8%E8%A7%A3SSM%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA1/</loc>
     <lastmod>2018-09-26T10:32:27.499Z</lastmod>
     <data>
@@ -79,21 +112,6 @@
              
               <breadCrumb title="配置" url="http://yoursite.com/categories/%E9%85%8D%E7%BD%AE/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2018/09/16/Springboot%E7%BB%93%E5%90%88Swagger2%E6%9E%84%E5%BB%BARESTful%20API%E6%96%87%E6%A1%A3/</loc>
-    <lastmod>2018-09-16T03:48:42.235Z</lastmod>
-    <data>
-        <display>
-        <title></title>
-        <pubTime>2018-09-16T03:45:35.452Z</pubTime>
-        
-         
-           
         </display>
     </data>
     </url>
@@ -217,11 +235,11 @@
         
         <tag>java</tag>
          
+        <tag>springboot</tag>
+         
         <tag>框架</tag>
          
         <tag>springmvc</tag>
-         
-        <tag>springboot</tag>
          
         <tag>mybatis</tag>
          
@@ -281,11 +299,11 @@
         
         <tag>java</tag>
          
+        <tag>springboot</tag>
+         
         <tag>框架</tag>
          
         <tag>springmvc</tag>
-         
-        <tag>springboot</tag>
          
         <tag>mybatis</tag>
          

@@ -310,7 +310,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/Springboot结合Swagger2构建RESTful API文档/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/28/Springboot结合Swagger2构建RESTfulAPI文档/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -329,8 +329,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/16/Springboot结合Swagger2构建RESTful API文档/" itemprop="url">
-                  未命名
+                <a class="post-title-link" href="/2018/09/28/Springboot结合Swagger2构建RESTfulAPI文档/" itemprop="url">
+                  Springboot结合Swagger2构建RESTfulAPI文档
                 </a>
               
             
@@ -356,7 +356,7 @@
                 
               
 
-              <time title="创建时间：2018-09-16 11:45:35 / 修改时间：11:48:42" itemprop="dateCreated datePublished" datetime="2018-09-16T11:45:35+08:00">2018-09-16</time>
+              <time title="创建时间：2018-09-28 14:29:26 / 修改时间：14:34:12" itemprop="dateCreated datePublished" datetime="2018-09-28T14:29:26+08:00">2018-09-28</time>
             
 
             
@@ -366,6 +366,45 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/swagger2/" itemprop="url" rel="index"><span itemprop="name">swagger2</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/swagger2/springboot/" itemprop="url" rel="index"><span itemprop="name">springboot</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/swagger2/springboot/Restful/" itemprop="url" rel="index"><span itemprop="name">Restful</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -396,14 +435,14 @@
       
         
           
-            <h1 id="Springboot结合Swagger2构建RESTful-API文档"><a href="#Springboot结合Swagger2构建RESTful-API文档" class="headerlink" title="Springboot结合Swagger2构建RESTful API文档"></a>Springboot结合Swagger2构建RESTful API文档</h1><h3 id="Swagger2类"><a href="#Swagger2类" class="headerlink" title="Swagger2类"></a>Swagger2类</h3><p>该类要和springboot类同级</p>
+            <h3 id="Swagger2类"><a href="#Swagger2类" class="headerlink" title="Swagger2类"></a>Swagger2类</h3><p>该类要和springboot类同级</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span><span class="comment">//让Spring来加载该类配置</span></span><br><span class="line"><span class="meta">@EnableSwagger</span>2<span class="comment">//注解来启用Swagger2。</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Swagger2</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">createRestApi</span><span class="params">()</span> </span>&#123;<span class="comment">//通过createRestApi函数创建Docket的Bean</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">                .apiInfo(apiInfo())</span><br><span class="line">                .select()<span class="comment">//select()函数返回一个ApiSelectorBuilder实例用来控制哪些接口暴露给Swagger来展现</span></span><br><span class="line">                .apis(RequestHandlerSelectors.basePackage(<span class="string">"springboot.demo.controller"</span>))<span class="comment">//扫描的包路径</span></span><br><span class="line">                .paths(PathSelectors.any())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//创建该Api的基本信息</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> ApiInfo <span class="title">apiInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ApiInfoBuilder()</span><br><span class="line">                .title(<span class="string">"RESTful APIs"</span>)</span><br><span class="line">                .description(<span class="string">"Springboot中使用Swagger2构建RESTful APIs"</span>)</span><br><span class="line">                .contact(<span class="string">"天下不易其乐"</span>)</span><br><span class="line">                .version(<span class="string">"1.0"</span>)</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="修改controller代码"><a href="#修改controller代码" class="headerlink" title="修改controller代码"></a>修改controller代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/student"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RestFulController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> StudentService studentService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation</span>(value=<span class="string">"获取学生列表"</span>, notes=<span class="string">"获取学生列表"</span>)</span><br><span class="line">    <span class="meta">@RequestMapping</span>(method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Student&gt; <span class="title">getStudentList</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> studentService.getStudentList();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation</span>(value=<span class="string">"保存学生"</span>, notes=<span class="string">"根据Student对象保存学生"</span>)</span><br><span class="line">    <span class="meta">@ApiImplicitParam</span>(name = <span class="string">"student"</span>, value = <span class="string">"学生详细实体student"</span>, required = <span class="keyword">true</span>, dataType = <span class="string">"Student"</span>)</span><br><span class="line">    <span class="meta">@RequestMapping</span>(method = RequestMethod.POST)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">postStudent</span><span class="params">(Student student)</span></span>&#123;</span><br><span class="line">        <span class="comment">//System.out.println(student);</span></span><br><span class="line">        studentService.save(student);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation</span>(value=<span class="string">"获取学生信息"</span>, notes=<span class="string">"根据id获得学生详细信息"</span>)</span><br><span class="line">    <span class="meta">@ApiImplicitParam</span>(name = <span class="string">"id"</span>, value = <span class="string">"学生id"</span>, required = <span class="keyword">true</span>, dataType = <span class="string">"Integer"</span>)</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/&#123;id&#125;"</span>,method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Student <span class="title">getStudent</span><span class="params">(@PathVariable Integer id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> studentService.getStudent(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation</span>(value=<span class="string">"更新学生信息"</span>, notes=<span class="string">"根据id更新学生详细信息"</span>)</span><br><span class="line">    <span class="meta">@ApiImplicitParam</span>(name = <span class="string">"id"</span>, value = <span class="string">"学生id"</span>, required = <span class="keyword">true</span>, dataType = <span class="string">"Integer"</span>)</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/&#123;id&#125;"</span>,method = RequestMethod.PUT)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">putStudent</span><span class="params">(@PathVariable Integer id,Student student)</span></span>&#123;</span><br><span class="line">        studentService.updateStudnet(id,student);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation</span>(value=<span class="string">"删除学生"</span>, notes=<span class="string">"根据id删除学生"</span>)</span><br><span class="line">    <span class="meta">@ApiImplicitParam</span>(name = <span class="string">"id"</span>, value = <span class="string">"学生id"</span>, required = <span class="keyword">true</span>, dataType = <span class="string">"Integer"</span>)</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/&#123;id&#125;"</span>,method = RequestMethod.DELETE)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">deleteStudent</span><span class="params">(@PathVariable Integer id)</span></span>&#123;</span><br><span class="line">        studentService.deleteStudent(id);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="启动Spring-Boot程序"><a href="#启动Spring-Boot程序" class="headerlink" title="启动Spring Boot程序"></a>启动Spring Boot程序</h3><p>访问：<a href="http://localhost:8080/swagger-ui.html" target="_blank" rel="noopener">http://localhost:8080/swagger-ui.html</a></p>
 <p>下面截取几个方法说明。</p>
-<p><img src="/2018/09/16/Springboot结合Swagger2构建RESTful API文档/20180916114208.png" alt=""></p>
-<p><img src="/2018/09/16/Springboot结合Swagger2构建RESTful API文档/20180916114239.png" alt=""></p>
-<p><img src="/2018/09/16/Springboot结合Swagger2构建RESTful API文档/20180916114258.png" alt=""></p>
+<p><img src="/2018/09/28/Springboot结合Swagger2构建RESTfulAPI文档/20180916114208.png" alt=""></p>
+<p><img src="/2018/09/28/Springboot结合Swagger2构建RESTfulAPI文档/20180916114239.png" alt=""></p>
+<p><img src="/2018/09/28/Springboot结合Swagger2构建RESTfulAPI文档/20180916114258.png" alt=""></p>
 
           
         
@@ -2332,7 +2371,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">30</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2389,7 +2434,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">22</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
