@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="网页静态化技术和缓存技术的共同点都是为了减轻数据库的访问压力，我们如果将网页以纯静态化的形式展现，就可以使用Nginx这样的高性能的web服务器来部署。 Freemarker入门小DEMO工程引入依赖12345&amp;lt;dependency&amp;gt;		&amp;lt;groupId&amp;gt;org.freemarker&amp;lt;/groupId&amp;gt;		&amp;lt;artifactId&amp;gt;freemarker">
+<meta name="keywords" content="java,freemarker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网页模板引擎Freemarker">
+<meta property="og:url" content="http://neverloseyourself.top/2018/10/14/网页模板引擎Freemarker/index.html">
+<meta property="og:site_name" content="天下不易其乐">
+<meta property="og:description" content="网页静态化技术和缓存技术的共同点都是为了减轻数据库的访问压力，我们如果将网页以纯静态化的形式展现，就可以使用Nginx这样的高性能的web服务器来部署。 Freemarker入门小DEMO工程引入依赖12345&amp;lt;dependency&amp;gt;		&amp;lt;groupId&amp;gt;org.freemarker&amp;lt;/groupId&amp;gt;		&amp;lt;artifactId&amp;gt;freemarker">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-14T06:57:21.107Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网页模板引擎Freemarker">
+<meta name="twitter:description" content="网页静态化技术和缓存技术的共同点都是为了减轻数据库的访问压力，我们如果将网页以纯静态化的形式展现，就可以使用Nginx这样的高性能的web服务器来部署。 Freemarker入门小DEMO工程引入依赖12345&amp;lt;dependency&amp;gt;		&amp;lt;groupId&amp;gt;org.freemarker&amp;lt;/groupId&amp;gt;		&amp;lt;artifactId&amp;gt;freemarker">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="天下不易其乐" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://neverloseyourself.top/2018/10/14/网页模板引擎Freemarker/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>网页模板引擎Freemarker | 天下不易其乐</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">天下不易其乐</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">醉后不知天在水，满船清梦压星河。</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/10/14/网页模板引擎Freemarker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="York">
+      <meta itemprop="description" content="个人网站，用于记录一个来自甬城的java程序员的日常">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天下不易其乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">网页模板引擎Freemarker
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-10-14 14:55:27 / 修改时间：14:57:21" itemprop="dateCreated datePublished" datetime="2018-10-14T14:55:27+08:00">2018-10-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/freemarker/" itemprop="url" rel="index"><span itemprop="name">freemarker</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>网页静态化技术和缓存技术的共同点都是为了减轻数据库的访问压力，我们如果将网页以纯静态化的形式展现，就可以使用Nginx这样的高性能的web服务器来部署。</p>
+<h2 id="Freemarker入门小DEMO"><a href="#Freemarker入门小DEMO" class="headerlink" title="Freemarker入门小DEMO"></a>Freemarker入门小DEMO</h2><h3 id="工程引入依赖"><a href="#工程引入依赖" class="headerlink" title="工程引入依赖"></a>工程引入依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.freemarker<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>freemarker<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.23<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="创建模板文件"><a href="#创建模板文件" class="headerlink" title="创建模板文件"></a>创建模板文件</h3><p>模板文件中四种元素</p>
+<p>  1、文本，直接输出的部分<br>  2、注释，即&lt;#–…–&gt;格式不会输出<br>  3、插值（Interpolation）：即${..}部分,将使用数据模型中的部分替代输出<br>  4、FTL指令：FreeMarker指令，和HTML标记类似，名字前加#予以区分，不会输出。</p>
+<p>我们现在就创建一个简单的创建模板文件test.ftl</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>Freemarker入门小DEMO <span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">#--我只是一个注释，我不会有任何输出</span>  <span class="attr">--</span>&gt;</span></span><br><span class="line">$&#123;name&#125;,你好。$&#123;message&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="生成文件"><a href="#生成文件" class="headerlink" title="生成文件"></a>生成文件</h3><p>第一步：创建一个 Configuration 对象，直接 new 一个对象。构造方法的参数就是 freemarker的版本号。</p>
+<p>第二步：设置模板文件所在的路径。</p>
+<p>第三步：设置模板文件使用的字符集。一般就是 utf-8.</p>
+<p>第四步：加载一个模板，创建一个模板对象。</p>
+<p>第五步：创建一个模板使用的数据集，可以是 pojo 也可以是 map。一般是 Map。</p>
+<p>第六步：创建一个 Writer 对象，一般创建一FileWriter 对象，指定生成的文件名。</p>
+<p>第七步：调用模板对象的 process 方法输出文件。</p>
+<p>第八步：关闭流</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.创建配置类</span></span><br><span class="line">	Configuration configuration=<span class="keyword">new</span> Configuration(Configuration.getVersion());</span><br><span class="line">	<span class="comment">//2.设置模板所在的目录 </span></span><br><span class="line">	configuration.setDirectoryForTemplateLoading(<span class="keyword">new</span> File(<span class="string">"D:/freemarkerDemo/src/main/resources/"</span>));</span><br><span class="line">	<span class="comment">//3.设置字符集</span></span><br><span class="line">	configuration.setDefaultEncoding(<span class="string">"utf-8"</span>);</span><br><span class="line">	<span class="comment">//4.加载模板</span></span><br><span class="line">	Template template = configuration.getTemplate(<span class="string">"test.ftl"</span>);</span><br><span class="line">	<span class="comment">//5.创建数据模型</span></span><br><span class="line">	Map map=<span class="keyword">new</span> HashMap();</span><br><span class="line">	map.put(<span class="string">"name"</span>, <span class="string">"张三 "</span>);</span><br><span class="line">	map.put(<span class="string">"message"</span>, <span class="string">"Freemarker入门小DEMO"</span>);</span><br><span class="line">	<span class="comment">//6.创建Writer对象</span></span><br><span class="line">	Writer out =<span class="keyword">new</span> FileWriter(<span class="keyword">new</span> File(<span class="string">"d:\\test.html"</span>));</span><br><span class="line">	<span class="comment">//7.输出</span></span><br><span class="line">	template.process(map, out);</span><br><span class="line">	<span class="comment">//8.关闭Writer对象</span></span><br><span class="line">	out.close();</span><br></pre></td></tr></table></figure>
+<p>执行后，在D盘根目录即可看到生成的test.html 。</p>
+<h2 id="FTL指令"><a href="#FTL指令" class="headerlink" title="FTL指令"></a>FTL指令</h2><h3 id="assign指令"><a href="#assign指令" class="headerlink" title="assign指令"></a>assign指令</h3><p>定义简单类型：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">#assign</span> <span class="attr">linkman</span>=<span class="string">"周先生"</span>&gt;</span></span><br><span class="line">联系人：$&#123;linkman&#125;</span><br></pre></td></tr></table></figure>
+<p>定义对象类型：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">#assign</span> <span class="attr">info</span>=<span class="string">&#123;</span>"<span class="attr">mobile</span>"<span class="attr">:</span>"<span class="attr">13301231212</span>",'<span class="attr">address</span>'<span class="attr">:</span>'北京市昌平区王府街'&#125; &gt;</span></span><br><span class="line">电话：$&#123;info.mobile&#125;  地址：$&#123;info.address&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="include指令"><a href="#include指令" class="headerlink" title="include指令"></a>include指令</h3><p>可以在模板文件中使用include指令引入刚才我们建立的其他模板</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;#include &quot;head.ftl&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="if指令"><a href="#if指令" class="headerlink" title="if指令"></a>if指令</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">#if</span> <span class="attr">success</span>=<span class="string">true</span>&gt;</span></span><br><span class="line">  你已通过实名认证</span><br><span class="line"><span class="tag">&lt;<span class="name">#else</span>&gt;</span>  </span><br><span class="line">  你未通过实名认证</span><br><span class="line"><span class="tag">&lt;/<span class="name">#if</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="list指令"><a href="#list指令" class="headerlink" title="list指令"></a>list指令</h3><p>代码中对变量goodsList赋值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">List goodsList=<span class="keyword">new</span> ArrayList();</span><br><span class="line">		Map goods1=<span class="keyword">new</span> HashMap();</span><br><span class="line">		goods1.put(<span class="string">"name"</span>, <span class="string">"苹果"</span>);</span><br><span class="line">		goods1.put(<span class="string">"price"</span>, <span class="number">5.8</span>);</span><br><span class="line">		Map goods2=<span class="keyword">new</span> HashMap();</span><br><span class="line">		goods2.put(<span class="string">"name"</span>, <span class="string">"香蕉"</span>);</span><br><span class="line">		goods2.put(<span class="string">"price"</span>, <span class="number">2.5</span>);</span><br><span class="line">		Map goods3=<span class="keyword">new</span> HashMap();</span><br><span class="line">		goods3.put(<span class="string">"name"</span>, <span class="string">"橘子"</span>);</span><br><span class="line">		goods3.put(<span class="string">"price"</span>, <span class="number">3.2</span>);</span><br><span class="line">		goodsList.add(goods1);</span><br><span class="line">		goodsList.add(goods2);</span><br><span class="line">		goodsList.add(goods3);</span><br><span class="line">		map.put(<span class="string">"goodsList"</span>, goodsList);</span><br></pre></td></tr></table></figure>
+<p>在模板文件上使用list指令</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">#list</span> <span class="attr">goodsList</span> <span class="attr">as</span> <span class="attr">goods</span>&gt;</span></span><br><span class="line">  $&#123;goods_index+1&#125; 商品名称： $&#123;goods.name&#125; 价格：$&#123;goods.price&#125;<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">#list</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如果想在循环中得到索引，使用循环变量+_index就可以得到。</p>
+<h2 id="内建函数"><a href="#内建函数" class="headerlink" title="内建函数"></a>内建函数</h2><p>内建函数语法格式： 变量+?+函数名称  </p>
+<h3 id="获取集合大小"><a href="#获取集合大小" class="headerlink" title="获取集合大小"></a>获取集合大小</h3><p>我们使用size函数来实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;goodsList?size&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="转换JSON字符串为对象"><a href="#转换JSON字符串为对象" class="headerlink" title="转换JSON字符串为对象"></a>转换JSON字符串为对象</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   <span class="tag">&lt;<span class="name">#assign</span> <span class="attr">text</span>=<span class="string">"&#123;'bank':'工商银行','account':'10101920201920212'&#125;"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">#assign</span> <span class="attr">data</span>=<span class="string">text?eval</span> /&gt;</span></span><br><span class="line">开户行：$&#123;data.bank&#125;  账号：$&#123;data.account&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="日期格式化"><a href="#日期格式化" class="headerlink" title="日期格式化"></a>日期格式化</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">当前日期：$&#123;today?date&#125; <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">当前时间：$&#123;today?time&#125; <span class="tag">&lt;<span class="name">br</span>&gt;</span>   </span><br><span class="line">当前日期+时间：$&#123;today?datetime&#125; <span class="tag">&lt;<span class="name">br</span>&gt;</span>        </span><br><span class="line">日期格式化：  $&#123;today?string("yyyy年MM月")&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="空值处理运算符"><a href="#空值处理运算符" class="headerlink" title="空值处理运算符"></a>空值处理运算符</h2><p>如果你在模板中使用了变量但是在代码中没有对变量赋值，那么运行生成时会抛出异常。但是有些时候，有的变量确实是null，怎么解决这个问题呢？</p>
+<h3 id="判断某变量是否存在-“-”"><a href="#判断某变量是否存在-“-”" class="headerlink" title="判断某变量是否存在:“??”"></a>判断某变量是否存在:“??”</h3><p>用法为:variable??,如果该变量存在,返回true,否则返回false </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">#if</span> <span class="attr">aaa</span>??&gt;</span></span><br><span class="line">  aaa变量存在</span><br><span class="line"><span class="tag">&lt;<span class="name">#else</span>&gt;</span></span><br><span class="line">  aaa变量不存在</span><br><span class="line"><span class="tag">&lt;/<span class="name">#if</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="缺失变量默认值-“-”"><a href="#缺失变量默认值-“-”" class="headerlink" title="缺失变量默认值:“!”"></a>缺失变量默认值:“!”</h3><p>我们除了可以判断是否为空值，也可以使用!对null值做转换处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;aaa!&apos;-&apos;&#125;</span><br></pre></td></tr></table></figure>
+<p>在代码中不对aaa赋值，也不会报错了 ，当aaa为null则返回！后边的内容’-‘</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/freemarker/" rel="tag"># freemarker</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+               <div>
+                 
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+               </div>
+            
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/10/AOP日志/" rel="next" title="AOP日志">
+                <i class="fa fa-chevron-left"></i> AOP日志
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">York</p>
+              <p class="site-description motion-element" itemprop="description">个人网站，用于记录一个来自甬城的java程序员的日常</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/xuquezi" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Freemarker入门小DEMO"><span class="nav-number">1.</span> <span class="nav-text">Freemarker入门小DEMO</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#工程引入依赖"><span class="nav-number">1.1.</span> <span class="nav-text">工程引入依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建模板文件"><span class="nav-number">1.2.</span> <span class="nav-text">创建模板文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成文件"><span class="nav-number">1.3.</span> <span class="nav-text">生成文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FTL指令"><span class="nav-number">2.</span> <span class="nav-text">FTL指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#assign指令"><span class="nav-number">2.1.</span> <span class="nav-text">assign指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#include指令"><span class="nav-number">2.2.</span> <span class="nav-text">include指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#if指令"><span class="nav-number">2.3.</span> <span class="nav-text">if指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#list指令"><span class="nav-number">2.4.</span> <span class="nav-text">list指令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内建函数"><span class="nav-number">3.</span> <span class="nav-text">内建函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取集合大小"><span class="nav-number">3.1.</span> <span class="nav-text">获取集合大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转换JSON字符串为对象"><span class="nav-number">3.2.</span> <span class="nav-text">转换JSON字符串为对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日期格式化"><span class="nav-number">3.3.</span> <span class="nav-text">日期格式化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空值处理运算符"><span class="nav-number">4.</span> <span class="nav-text">空值处理运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#判断某变量是否存在-“-”"><span class="nav-number">4.1.</span> <span class="nav-text">判断某变量是否存在:“??”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺失变量默认值-“-”"><span class="nav-number">4.2.</span> <span class="nav-text">缺失变量默认值:“!”</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">York</span>
+
+  
+
+  
+</div>
+
+
+
+
+	<div class="powered-by">
+		<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+		  本站访客数:<span id="busuanzi_value_site_uv"></span>
+		</span>
+	</div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a> v6.4.1</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共37.4k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
