@@ -561,9 +561,9 @@
     
       <category term="java" scheme="http://neverloseyourself.top/tags/java/"/>
     
-      <category term="swagger2" scheme="http://neverloseyourself.top/tags/swagger2/"/>
-    
       <category term="springboot" scheme="http://neverloseyourself.top/tags/springboot/"/>
+    
+      <category term="swagger2" scheme="http://neverloseyourself.top/tags/swagger2/"/>
     
       <category term="Restful" scheme="http://neverloseyourself.top/tags/Restful/"/>
     
@@ -1249,9 +1249,9 @@
       <category term="原理" scheme="http://neverloseyourself.top/categories/tomcat/%E5%8E%9F%E7%90%86/"/>
     
     
-      <category term="原理" scheme="http://neverloseyourself.top/tags/%E5%8E%9F%E7%90%86/"/>
-    
       <category term="tomcat" scheme="http://neverloseyourself.top/tags/tomcat/"/>
+    
+      <category term="原理" scheme="http://neverloseyourself.top/tags/%E5%8E%9F%E7%90%86/"/>
     
   </entry>
   
