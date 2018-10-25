@@ -1099,7 +1099,7 @@ pre .javascript .function {
   bottom: 19px;
 }
 .header {
-  background: url("../image/timg.jpg");
+  background: url("../images/timg.jpg");
 }
 .header-inner {
   position: relative;
@@ -1950,7 +1950,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #d9ffff;
+  background: #66327f;
 }
 .links-of-blogroll {
   font-size: 13px;
