@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "e080c7a7"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.icon?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.icon?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: 'IE1WYPLC4A',
+      apiKey: 'your API Key',
+      indexName: 'your Index name',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="实体类映射12345678910111213@Getter@Setter@ToString@TableName(&quot;person&quot;)public class Person &amp;#123;    @TableId    private Integer pid;    private String pname;    private String page;&amp;#125; insert1234567@Tes">
+<meta name="keywords" content="java,mybatis-plus,mybatis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mybatis-plus操作示例">
+<meta property="og:url" content="http://neverloseyourself.top/2018/09/30/mybatis-plus操作示例/index.html">
+<meta property="og:site_name" content="天下不易其乐">
+<meta property="og:description" content="实体类映射12345678910111213@Getter@Setter@ToString@TableName(&quot;person&quot;)public class Person &amp;#123;    @TableId    private Integer pid;    private String pname;    private String page;&amp;#125; insert1234567@Tes">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-30T01:04:20.833Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mybatis-plus操作示例">
+<meta name="twitter:description" content="实体类映射12345678910111213@Getter@Setter@ToString@TableName(&quot;person&quot;)public class Person &amp;#123;    @TableId    private Integer pid;    private String pname;    private String page;&amp;#125; insert1234567@Tes">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="天下不易其乐" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://neverloseyourself.top/2018/09/30/mybatis-plus操作示例/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>mybatis-plus操作示例 | 天下不易其乐</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">天下不易其乐</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">醉后不知天在水，满船清梦压星河。</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/09/30/mybatis-plus操作示例/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="York">
+      <meta itemprop="description" content="一个来自甬城的java程序员的日常">
+      <meta itemprop="image" content="/images/timg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天下不易其乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">mybatis-plus操作示例
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-09-30 09:02:38 / 修改时间：09:04:20" itemprop="dateCreated datePublished" datetime="2018-09-30T09:02:38+08:00">2018-09-30</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/mybatis/" itemprop="url" rel="index"><span itemprop="name">mybatis</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/mybatis/mybatis-plus/" itemprop="url" rel="index"><span itemprop="name">mybatis-plus</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="实体类映射"><a href="#实体类映射" class="headerlink" title="实体类映射"></a>实体类映射</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="meta">@Setter</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="meta">@TableName</span>(<span class="string">"person"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="meta">@TableId</span></span><br><span class="line">    <span class="keyword">private</span> Integer pid;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String pname;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String page;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun2</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Person person = <span class="keyword">new</span> Person();</span><br><span class="line">    person.setPage(<span class="string">"10"</span>);</span><br><span class="line">    person.setPname(<span class="string">"南北"</span>);</span><br><span class="line">   personMapper.insert(person);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="deleteById"><a href="#deleteById" class="headerlink" title="deleteById"></a>deleteById</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun3</span><span class="params">()</span></span>&#123;</span><br><span class="line">    personMapper.deleteById(<span class="number">3</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="deleteByMap"><a href="#deleteByMap" class="headerlink" title="deleteByMap"></a>deleteByMap</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun4</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Map&lt;String, Object&gt; columnMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    String name = <span class="string">"南北"</span>;</span><br><span class="line">    columnMap.put(<span class="string">"pname"</span>,name);</span><br><span class="line">    <span class="comment">//删除所有pname列是南北的数据</span></span><br><span class="line">    personMapper.deleteByMap(columnMap);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h3><p>UpdateWrapper为更新操作的条件构造器，父类是AbstractWrapper</p>
+<h4 id="allEq有一个入参是Map-lt-R-V-gt-params"><a href="#allEq有一个入参是Map-lt-R-V-gt-params" class="headerlink" title="allEq有一个入参是Map&lt;R, V&gt; params"></a>allEq有一个入参是Map&lt;R, V&gt; params</h4><p>R为泛型，在普通wrapper中是<code>String</code>，他这里区分了两种wrapper，一种是普通的</p>
+<p>一种是LambdaWrapper</p>
+<p>在LambdaWrapper中是R泛型为<strong>函数</strong></p>
+<p>(例:<code>Entity::getId</code>,<code>Entity</code>为实体类,<code>getId</code>为字段<code>id</code>的<strong>getMethod</strong>)</p>
+<p>R表示数据库字段，V表示值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除名字是南北同时年龄是8的数据</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun5</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Map&lt;String, Object&gt; columnMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    String name = <span class="string">"南北"</span>;</span><br><span class="line">    columnMap.put(<span class="string">"pname"</span>,name);</span><br><span class="line">    columnMap.put(<span class="string">"page"</span>,<span class="number">8</span>);</span><br><span class="line">    <span class="keyword">int</span> delete = personMapper.delete(</span><br><span class="line">           <span class="keyword">new</span> UpdateWrapper&lt;Person&gt;()</span><br><span class="line">            .allEq(columnMap)</span><br><span class="line">    );</span><br><span class="line">    System.out.println(delete);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(k,v) -&gt; k.indexOf(“n”) &gt; 0会过滤掉不含n的条件。即下面的page并没有加入到条件构造中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun6</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Map&lt;String, Object&gt; columnMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    String name = <span class="string">"南北"</span>;</span><br><span class="line">    columnMap.put(<span class="string">"pname"</span>,name);</span><br><span class="line">    columnMap.put(<span class="string">"page"</span>,<span class="number">10</span>);</span><br><span class="line">    <span class="keyword">int</span> delete = personMapper.delete(</span><br><span class="line">            <span class="keyword">new</span> UpdateWrapper&lt;Person&gt;()</span><br><span class="line">                    .allEq((k,v) -&gt; k.indexOf(<span class="string">"n"</span>) &gt; <span class="number">0</span>,columnMap)</span><br><span class="line">    );</span><br><span class="line">    System.out.println(delete);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun7</span><span class="params">()</span></span>&#123;</span><br><span class="line">    personMapper.delete(</span><br><span class="line">            <span class="keyword">new</span> UpdateWrapper&lt;Person&gt;()</span><br><span class="line">            <span class="comment">//删除pname是南北的数据</span></span><br><span class="line">            .eq(<span class="string">"pname"</span>,<span class="string">"南北"</span>)</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun8</span><span class="params">()</span></span>&#123;</span><br><span class="line">    personMapper.delete(</span><br><span class="line">            <span class="keyword">new</span> UpdateWrapper&lt;Person&gt;()</span><br><span class="line">        <span class="comment">//删除pname不是左右的数据</span></span><br><span class="line">                    .ne(<span class="string">"pname"</span>,<span class="string">"左右"</span>)</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun9</span><span class="params">()</span></span>&#123;</span><br><span class="line">    personMapper.delete(</span><br><span class="line">            <span class="keyword">new</span> UpdateWrapper&lt;Person&gt;()</span><br><span class="line">        <span class="comment">//删除page&gt;15的数据</span></span><br><span class="line">                    .gt(<span class="string">"page"</span>,<span class="number">15</span>)</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun10</span><span class="params">()</span></span>&#123;</span><br><span class="line">    personMapper.delete(</span><br><span class="line">            <span class="keyword">new</span> UpdateWrapper&lt;Person&gt;()</span><br><span class="line">            <span class="comment">//删除page在15到20之间的数据，包含头和包含尾</span></span><br><span class="line">                    .between(<span class="string">"page"</span>,<span class="number">15</span>,<span class="number">20</span>)</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun11</span><span class="params">()</span></span>&#123;</span><br><span class="line">    personMapper.delete(</span><br><span class="line">            <span class="keyword">new</span> UpdateWrapper&lt;Person&gt;()</span><br><span class="line">            <span class="comment">//删除pname包含东的数据</span></span><br><span class="line">                    .like(<span class="string">"pname"</span>,<span class="string">"东"</span>)</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun12</span><span class="params">()</span></span>&#123;</span><br><span class="line">    personMapper.delete(</span><br><span class="line">            <span class="keyword">new</span> UpdateWrapper&lt;Person&gt;()</span><br><span class="line">        <span class="comment">//pname like '%东'</span></span><br><span class="line">        <span class="comment">//删除pname以东结尾的数据</span></span><br><span class="line">                    .likeLeft(<span class="string">"pname"</span>,<span class="string">"东"</span>)</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun13</span><span class="params">()</span></span>&#123;</span><br><span class="line">    personMapper.delete(</span><br><span class="line">            <span class="keyword">new</span> UpdateWrapper&lt;Person&gt;()</span><br><span class="line">            <span class="comment">//删除pname为null的数据</span></span><br><span class="line">                    .isNull(<span class="string">"pname"</span>)</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>后面的条件构造方式省略</strong></p>
+<h3 id="deleteBatchIds"><a href="#deleteBatchIds" class="headerlink" title="deleteBatchIds"></a>deleteBatchIds</h3><p>根据id批量删除，把id放到集合中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun14</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ArrayList&lt;Integer&gt; arrayList = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    arrayList.add(<span class="number">16</span>);</span><br><span class="line">    arrayList.add(<span class="number">18</span>);</span><br><span class="line">    personMapper.deleteBatchIds(arrayList);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="updateById"><a href="#updateById" class="headerlink" title="updateById"></a>updateById</h3><p>根据id更新数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun15</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Person person = <span class="keyword">new</span> Person();</span><br><span class="line">    person.setPname(<span class="string">"东西"</span>);</span><br><span class="line">    person.setPage(<span class="string">"10"</span>);</span><br><span class="line">    person.setPid(<span class="number">20</span>);</span><br><span class="line">    personMapper.updateById(person);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="update"><a href="#update" class="headerlink" title="update"></a>update</h3><p>更新pname以东开头的数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun16</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Person person = <span class="keyword">new</span> Person();</span><br><span class="line">    person.setPname(<span class="string">"南北"</span>);</span><br><span class="line">    person.setPage(<span class="string">"10"</span>);</span><br><span class="line">    personMapper.update(person,</span><br><span class="line">            <span class="keyword">new</span> UpdateWrapper&lt;Person&gt;()</span><br><span class="line">            .likeRight(<span class="string">"pname"</span>,<span class="string">"东"</span>)</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="selectById"><a href="#selectById" class="headerlink" title="selectById"></a>selectById</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun17</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Person person = personMapper.selectById(<span class="number">13</span>);</span><br><span class="line">    System.out.println(person);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="selectBatchIds"><a href="#selectBatchIds" class="headerlink" title="selectBatchIds"></a>selectBatchIds</h3><p>批量根据id查询，把id放到集合中即可</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun18</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ArrayList&lt;Integer&gt; arrayList = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    arrayList.add(<span class="number">13</span>);</span><br><span class="line">    arrayList.add(<span class="number">20</span>);</span><br><span class="line">    List&lt;Person&gt; peoples = personMapper.selectBatchIds(arrayList);</span><br><span class="line">    <span class="keyword">for</span> (Person people : peoples) &#123;</span><br><span class="line">        System.out.println(people);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="selectByMap"><a href="#selectByMap" class="headerlink" title="selectByMap"></a>selectByMap</h3><p>封装成map查询</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun19</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Map&lt;String, Object&gt; columnMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    String name = <span class="string">"南北"</span>;</span><br><span class="line">    columnMap.put(<span class="string">"pname"</span>,name);</span><br><span class="line">    columnMap.put(<span class="string">"page"</span>,<span class="number">10</span>);</span><br><span class="line">    List&lt;Person&gt; peoples = personMapper.selectByMap(columnMap);</span><br><span class="line">    System.out.println(peoples.size());</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="selectOne"><a href="#selectOne" class="headerlink" title="selectOne"></a>selectOne</h3><p>查询一条记录，如果条件导致查询到多条记录，会报错!!</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun20</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    Person person = personMapper.selectOne(</span><br><span class="line">            <span class="keyword">new</span> QueryWrapper&lt;Person&gt;()</span><br><span class="line">                    .likeRight(<span class="string">"pname"</span>, <span class="string">"东"</span>)</span><br><span class="line">    );</span><br><span class="line">    System.out.println(person);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="selectCount"><a href="#selectCount" class="headerlink" title="selectCount"></a>selectCount</h3><p>查询记录</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun21</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    Integer integer = personMapper.selectCount(</span><br><span class="line">            <span class="keyword">new</span> QueryWrapper&lt;Person&gt;()</span><br><span class="line">                    .likeRight(<span class="string">"pname"</span>, <span class="string">"东"</span>)</span><br><span class="line">    );</span><br><span class="line">    System.out.println(integer);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="selectList"><a href="#selectList" class="headerlink" title="selectList"></a>selectList</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun22</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    List&lt;Person&gt; peoples = personMapper.selectList(</span><br><span class="line">            <span class="keyword">new</span> QueryWrapper&lt;Person&gt;()</span><br><span class="line">                    .likeRight(<span class="string">"pname"</span>, <span class="string">"东"</span>)</span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">for</span> (Person people : peoples) &#123;</span><br><span class="line">        System.out.println(people);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="selectMaps"><a href="#selectMaps" class="headerlink" title="selectMaps"></a>selectMaps</h3><p>把结果封装成map</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun23</span><span class="params">()</span></span>&#123;</span><br><span class="line">    List&lt;Map&lt;String, Object&gt;&gt; maps = personMapper.selectMaps(</span><br><span class="line">            <span class="keyword">new</span> QueryWrapper&lt;Person&gt;()</span><br><span class="line">                    .likeRight(<span class="string">"pname"</span>, <span class="string">"东"</span>)</span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">for</span> (Map&lt;String, Object&gt; map : maps) &#123;</span><br><span class="line">        Set&lt;String&gt; keySet = map.keySet();</span><br><span class="line">        <span class="keyword">for</span> (String key : keySet) &#123;</span><br><span class="line">            Object o = map.get(key);</span><br><span class="line">            System.out.println(key+<span class="string">" : "</span>+o.toString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>打印结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pname : 东西</span><br><span class="line">pid : 21</span><br><span class="line">page : 15</span><br><span class="line">pname : 东北</span><br><span class="line">pid : 23</span><br><span class="line">page : 20</span><br></pre></td></tr></table></figure>
+<h3 id="selectObjs"><a href="#selectObjs" class="headerlink" title="selectObjs"></a>selectObjs</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun24</span><span class="params">()</span></span>&#123;</span><br><span class="line">    List&lt;Object&gt; objects = personMapper.selectObjs(</span><br><span class="line">            <span class="keyword">new</span> QueryWrapper&lt;Person&gt;()</span><br><span class="line">                    .likeRight(<span class="string">"pname"</span>, <span class="string">"东"</span>)</span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">for</span> (Object object : objects) &#123;</span><br><span class="line">        System.out.println(object.toString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Person(pid=21, pname=东西, page=15)</span><br><span class="line">Person(pid=23, pname=东北, page=20)</span><br></pre></td></tr></table></figure>
+<h3 id="selectPage"><a href="#selectPage" class="headerlink" title="selectPage"></a>selectPage</h3><p><strong>分页</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun25</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">      IPage&lt;Person&gt; iPage = personMapper.selectPage(<span class="keyword">new</span> Page&lt;&gt;(<span class="number">1</span>, <span class="number">5</span>),</span><br><span class="line">              <span class="keyword">new</span> QueryWrapper&lt;Person&gt;()</span><br><span class="line">                      .likeRight(<span class="string">"pname"</span>, <span class="string">"东"</span>)</span><br><span class="line">      );</span><br><span class="line">      System.out.println(iPage.getSize());</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>这里的分页有点懵，另外在开一篇介绍mybatis-plus的分页。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/mybatis-plus/" rel="tag"># mybatis-plus</a>
+          
+            <a href="/tags/mybatis/" rel="tag"># mybatis</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/30/mybatis-plus条件构造器/" rel="next" title="mybatis-plus条件构造器">
+                <i class="fa fa-chevron-left"></i> mybatis-plus条件构造器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/04/spring集成shiro简单版/" rel="prev" title="spring集成shiro简单版">
+                spring集成shiro简单版 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/timg.jpg"
+                alt="York" />
+            
+              <p class="site-author-name" itemprop="name">York</p>
+              <p class="site-description motion-element" itemprop="description">一个来自甬城的java程序员的日常</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/xuquezi" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#实体类映射"><span class="nav-number">1.</span> <span class="nav-text">实体类映射</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#insert"><span class="nav-number"></span> <span class="nav-text">insert</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#deleteById"><span class="nav-number">1.</span> <span class="nav-text">deleteById</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deleteByMap"><span class="nav-number">2.</span> <span class="nav-text">deleteByMap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete"><span class="nav-number">3.</span> <span class="nav-text">delete</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#allEq有一个入参是Map-lt-R-V-gt-params"><span class="nav-number">3.1.</span> <span class="nav-text">allEq有一个入参是Map&lt;R, V&gt; params</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deleteBatchIds"><span class="nav-number">4.</span> <span class="nav-text">deleteBatchIds</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#updateById"><span class="nav-number">5.</span> <span class="nav-text">updateById</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#update"><span class="nav-number">6.</span> <span class="nav-text">update</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#selectById"><span class="nav-number">7.</span> <span class="nav-text">selectById</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#selectBatchIds"><span class="nav-number">8.</span> <span class="nav-text">selectBatchIds</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#selectByMap"><span class="nav-number">9.</span> <span class="nav-text">selectByMap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#selectOne"><span class="nav-number">10.</span> <span class="nav-text">selectOne</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#selectCount"><span class="nav-number">11.</span> <span class="nav-text">selectCount</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#selectList"><span class="nav-number">12.</span> <span class="nav-text">selectList</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#selectMaps"><span class="nav-number">13.</span> <span class="nav-text">selectMaps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#selectObjs"><span class="nav-number">14.</span> <span class="nav-text">selectObjs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#selectPage"><span class="nav-number">15.</span> <span class="nav-text">selectPage</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">York</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.1</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共47.0k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
