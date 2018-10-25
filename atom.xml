@@ -233,9 +233,9 @@
     
       <category term="java" scheme="http://neverloseyourself.top/tags/java/"/>
     
-      <category term="springsecurity" scheme="http://neverloseyourself.top/tags/springsecurity/"/>
-    
       <category term="spring" scheme="http://neverloseyourself.top/tags/spring/"/>
+    
+      <category term="springsecurity" scheme="http://neverloseyourself.top/tags/springsecurity/"/>
     
   </entry>
   
