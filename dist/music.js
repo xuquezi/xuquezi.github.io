@@ -6,8 +6,8 @@ const ap = new APlayer({
       {
         name: "春风十里",
         artist: '鹿先森',
-        url: '/resources/music/chunfengshili.mp3',
-        cover: '/resources/images/luxiansen.jpg',
+        url: '/music/chunfengshili.mp3',
+        cover: '/images/luxiansen.jpg',
       }
     ]
 });
