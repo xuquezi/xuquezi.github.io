@@ -329,9 +329,9 @@
     
       <category term="java" scheme="http://neverloseyourself.top/tags/java/"/>
     
-      <category term="springsecurity" scheme="http://neverloseyourself.top/tags/springsecurity/"/>
-    
       <category term="spring" scheme="http://neverloseyourself.top/tags/spring/"/>
+    
+      <category term="springsecurity" scheme="http://neverloseyourself.top/tags/springsecurity/"/>
     
   </entry>
   
@@ -1345,9 +1345,9 @@
       <category term="原理" scheme="http://neverloseyourself.top/categories/tomcat/%E5%8E%9F%E7%90%86/"/>
     
     
-      <category term="tomcat" scheme="http://neverloseyourself.top/tags/tomcat/"/>
-    
       <category term="原理" scheme="http://neverloseyourself.top/tags/%E5%8E%9F%E7%90%86/"/>
+    
+      <category term="tomcat" scheme="http://neverloseyourself.top/tags/tomcat/"/>
     
   </entry>
   
