@@ -329,9 +329,9 @@
     
       <category term="java" scheme="http://neverloseyourself.top/tags/java/"/>
     
-      <category term="spring" scheme="http://neverloseyourself.top/tags/spring/"/>
-    
       <category term="springsecurity" scheme="http://neverloseyourself.top/tags/springsecurity/"/>
+    
+      <category term="spring" scheme="http://neverloseyourself.top/tags/spring/"/>
     
   </entry>
   
@@ -541,9 +541,9 @@
     
       <category term="java" scheme="http://neverloseyourself.top/tags/java/"/>
     
-      <category term="mybatis-plus" scheme="http://neverloseyourself.top/tags/mybatis-plus/"/>
-    
       <category term="mybatis" scheme="http://neverloseyourself.top/tags/mybatis/"/>
+    
+      <category term="mybatis-plus" scheme="http://neverloseyourself.top/tags/mybatis-plus/"/>
     
   </entry>
   
@@ -584,9 +584,9 @@
     
       <category term="java" scheme="http://neverloseyourself.top/tags/java/"/>
     
-      <category term="mybatis-plus" scheme="http://neverloseyourself.top/tags/mybatis-plus/"/>
-    
       <category term="mybatis" scheme="http://neverloseyourself.top/tags/mybatis/"/>
+    
+      <category term="mybatis-plus" scheme="http://neverloseyourself.top/tags/mybatis-plus/"/>
     
   </entry>
   
@@ -621,9 +621,9 @@
     
       <category term="java" scheme="http://neverloseyourself.top/tags/java/"/>
     
-      <category term="mybatis-plus" scheme="http://neverloseyourself.top/tags/mybatis-plus/"/>
-    
       <category term="mybatis" scheme="http://neverloseyourself.top/tags/mybatis/"/>
+    
+      <category term="mybatis-plus" scheme="http://neverloseyourself.top/tags/mybatis-plus/"/>
     
   </entry>
   
@@ -657,9 +657,9 @@
     
       <category term="java" scheme="http://neverloseyourself.top/tags/java/"/>
     
-      <category term="swagger2" scheme="http://neverloseyourself.top/tags/swagger2/"/>
-    
       <category term="springboot" scheme="http://neverloseyourself.top/tags/springboot/"/>
+    
+      <category term="swagger2" scheme="http://neverloseyourself.top/tags/swagger2/"/>
     
       <category term="Restful" scheme="http://neverloseyourself.top/tags/Restful/"/>
     
@@ -860,9 +860,9 @@
     
       <category term="java" scheme="http://neverloseyourself.top/tags/java/"/>
     
-      <category term="springboot" scheme="http://neverloseyourself.top/tags/springboot/"/>
-    
       <category term="mybatis" scheme="http://neverloseyourself.top/tags/mybatis/"/>
+    
+      <category term="springboot" scheme="http://neverloseyourself.top/tags/springboot/"/>
     
       <category term="spring" scheme="http://neverloseyourself.top/tags/spring/"/>
     
@@ -932,9 +932,9 @@
     
       <category term="java" scheme="http://neverloseyourself.top/tags/java/"/>
     
-      <category term="springboot" scheme="http://neverloseyourself.top/tags/springboot/"/>
-    
       <category term="mybatis" scheme="http://neverloseyourself.top/tags/mybatis/"/>
+    
+      <category term="springboot" scheme="http://neverloseyourself.top/tags/springboot/"/>
     
       <category term="spring" scheme="http://neverloseyourself.top/tags/spring/"/>
     
@@ -1345,9 +1345,9 @@
       <category term="原理" scheme="http://neverloseyourself.top/categories/tomcat/%E5%8E%9F%E7%90%86/"/>
     
     
-      <category term="原理" scheme="http://neverloseyourself.top/tags/%E5%8E%9F%E7%90%86/"/>
-    
       <category term="tomcat" scheme="http://neverloseyourself.top/tags/tomcat/"/>
+    
+      <category term="原理" scheme="http://neverloseyourself.top/tags/%E5%8E%9F%E7%90%86/"/>
     
   </entry>
   

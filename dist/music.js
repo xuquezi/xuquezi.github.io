@@ -8,6 +8,19 @@ const ap = new APlayer({
         artist: '鹿先森',
         url: '/music/chunfengshili.mp3',
         cover: '/images/luxiansen.jpg',
+      },
+	  {
+        name: "很久以前",
+        artist: '鹿先森',
+        url: '/music/henjiuyiqian.mp3',
+        cover: '/images/luxiansen.jpg',
+      },
+	  {
+        name: "失眠",
+        artist: '鹿先森',
+        url: '/music/shimian.mp3',
+        cover: '/images/luxiansen.jpg',
       }
+	  
     ]
 });
