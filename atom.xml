@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://neverloseyourself.top/"/>
-  <updated>2018-10-29T11:55:55.830Z</updated>
+  <updated>2018-10-31T05:48:08.474Z</updated>
   <id>http://neverloseyourself.top/</id>
   
   <author>
@@ -15,6 +15,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>UsernamePasswordAuthenticationFilter</title>
+    <link href="http://neverloseyourself.top/2018/10/31/UsernamePasswordAuthenticationFilter/"/>
+    <id>http://neverloseyourself.top/2018/10/31/UsernamePasswordAuthenticationFilter/</id>
+    <published>2018-10-31T05:46:28.000Z</published>
+    <updated>2018-10-31T05:48:08.474Z</updated>
+    
+    <content type="html"><![CDATA[<p>内容转载参考自：</p><p><a href="https://www.cnblogs.com/xuwenjin/p/9565356.html" target="_blank" rel="noopener">https://www.cnblogs.com/xuwenjin/p/9565356.html</a></p><p><a href="https://www.cnblogs.com/zsxneil/p/6622564.html" target="_blank" rel="noopener">https://www.cnblogs.com/zsxneil/p/6622564.html</a></p><p><a href="https://blog.csdn.net/yecong111/article/details/17015199" target="_blank" rel="noopener">https://blog.csdn.net/yecong111/article/details/17015199</a></p><h3 id="UsernamePasswordAuthenticationFilter"><a href="#UsernamePasswordAuthenticationFilter" class="headerlink" title="UsernamePasswordAuthenticationFilter"></a>UsernamePasswordAuthenticationFilter</h3><p>UsernamePasswordAuthenticationFilter，实现了我们最常用的基于用户名和密码的认证逻辑。</p><p>UsernamePasswordAuthenticationFilter继承虚拟类AbstractAuthenticationProcessingFilter。</p><p>AbstractAuthenticationProcessingFilter要求设置一个authenticationManager。</p><p>authenticationManager的实现类将实现处理请求的认证。</p><p>AbstractAuthenticationProcessingFilter将拦截符合过滤规则的request，并试图执行认证。子类必须实现 <code>attemptAuthentication</code> 方法，这个方法执行具体的认证。</p><p>认证处理：如果认证成功，将会把返回的Authentication对象存放在SecurityContext；然后setAuthenticationSuccessHandler(AuthenticationSuccessHandler)方法将会调用；这里处理认证成功后跳转url的逻辑；可以重新实现AuthenticationSuccessHandler的onAuthenticationSuccess方法，实现自己的逻辑，比如需要返回json格式数据时，就可以在这里重新相关逻辑。</p><p>如果认证失败，默认会返回401代码给客户端，当然也可以在<code>&lt;form-login&gt;</code>节点中配置失败后跳转的url，还可以重写AuthenticationFailureHandler的onAuthenticationFailure方法实现自己的逻辑。</p><a id="more"></a><h3 id="AuthenticationManager"><a href="#AuthenticationManager" class="headerlink" title="AuthenticationManager"></a>AuthenticationManager</h3><p>顾名思义就是认证管理器，用于管理使用什么AuthenticationProvider验证用户的合法性，它拥有2个重要的参数类:</p><p><code>List&lt;AuthenticationProvider&gt; providers</code></p><p><code>AuthenticationManager parent</code></p><p>其中providers是AuthenticationProvider（接口，认证实现者）的集合</p><p><code>AuthenticationProvider</code></p><p>可以处理一个特定的Authentication，实现身份验证。它有2个方法</p><ul><li>Authentication authenticate(Authentication authentication) throws AuthenticationException;（根据authentication信息实现身份验证）</li></ul><ul><li>​     boolean supports(Class&lt;?&gt; authentication); 用于判断该AnonymousAuthenticationProvider能够验证某种类型的Authentication</li></ul><h3 id="AuthenticationManager的方法authenticate执行逻辑"><a href="#AuthenticationManager的方法authenticate执行逻辑" class="headerlink" title="AuthenticationManager的方法authenticate执行逻辑"></a>AuthenticationManager的方法authenticate执行逻辑</h3><p>（1）、判断是否有Authentication 对应的AuthenticationProvider，有就执行AuthenticationProvider的authenticate方法，没有就获取父类AuthenticationManager，查看父类中是否有Authentication 对应的AuthenticationProvider，如果也没有则抛出ProviderNotFoundException异常。</p><p>（2）执行AuthenticationProvider的authenticate方法</p><p>  1、根据输入名，查看缓存中是否已经有有用户实体对象，如果有，则对密码重新验证；如果没有，则进行用户的信息验证，及执行DaoAuthenticationProvider中的retrieveUser方法，获取一个UserDetails对象，如果UserDetails对象为null或者获取时出错就抛出异常UsernameNotFoundException或AuthenticationServiceException异常，然后一些属性验证之后，对用户密码进行验证。</p><p> 2、给新获取的UserDetails对象放入缓存中</p><p>3、新建一个UsernamePasswordAuthenticationToken一个对象，将authenticated设为true(原来传入的UsernamePasswordAuthenticationToken对象authenticated为false)并返回。</p><h3 id="ProviderManager"><a href="#ProviderManager" class="headerlink" title="ProviderManager"></a>ProviderManager</h3><p>它是AuthenticationManager的一个实现类，实现了authenticate(Authentication authentication)方法，还有一个成员变量</p><p><code>List&lt;AuthenticationProvider&gt; providers</code></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProviderManager</span> <span class="keyword">implements</span> <span class="title">AuthenticationManager</span>, <span class="title">MessageSourceAware</span>,</span></span><br><span class="line"><span class="class"><span class="title">InitializingBean</span> </span>&#123;</span><br><span class="line">    ...... </span><br><span class="line">    <span class="keyword">private</span> List&lt;AuthenticationProvider&gt; providers = Collections.emptyList();</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> Authentication <span class="title">authenticate</span><span class="params">(Authentication authentication)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> AuthenticationException </span>&#123;</span><br><span class="line">        </span><br><span class="line">        ......</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="AuthenticationProvider"><a href="#AuthenticationProvider" class="headerlink" title="AuthenticationProvider"></a>AuthenticationProvider</h3><p>AuthenticationProvider也是一个接口，包含两个函数authenticate和supports。当Spring Security默认提供的Provider不能满足需求的时候，可以通过实现AuthenticationProvider接口来扩展出不同的认证提供者</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">AuthenticationProvider</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//通过参数Authentication对象，进行认证</span></span><br><span class="line">    <span class="function">Authentication <span class="title">authenticate</span><span class="params">(Authentication authentication)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> AuthenticationException</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//是否支持该认证类型</span></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">supports</span><span class="params">(Class&lt;?&gt; authentication)</span></span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="Authentication"><a href="#Authentication" class="headerlink" title="Authentication"></a>Authentication</h3><p>Authentication是一个接口，通过该接口可以获得用户相关信息、安全实体的标识以及认证请求的上下文信息等</p><p>在Spring Security中，有很多Authentication的实现类。如UsernamePasswordAuthenticationToken、AnonymousAuthenticationToken和</p><p>RememberMeAuthenticationToken等等</p><p>通常不会被扩展，除非是为了支持某种特定类型的认证</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Authentication</span> <span class="keyword">extends</span> <span class="title">Principal</span>, <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//权限结合，可使用AuthorityUtils.commaSeparatedStringToAuthorityList("admin, ROLE_ADMIN")返回字符串权限集合</span></span><br><span class="line">    Collection&lt;? extends GrantedAuthority&gt; getAuthorities();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//用户名密码认证时可以理解为密码</span></span><br><span class="line">    <span class="function">Object <span class="title">getCredentials</span><span class="params">()</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//认证时包含的一些信息。如remoteAddress、sessionId</span></span><br><span class="line">    <span class="function">Object <span class="title">getDetails</span><span class="params">()</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//用户名密码认证时可理解时用户名</span></span><br><span class="line">    <span class="function">Object <span class="title">getPrincipal</span><span class="params">()</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//是否被认证，认证为true    </span></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isAuthenticated</span><span class="params">()</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//设置是否被认证</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setAuthenticated</span><span class="params">(<span class="keyword">boolean</span> isAuthenticated)</span> <span class="keyword">throws</span> IllegalArgumentException</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="UserDetails"><a href="#UserDetails" class="headerlink" title="UserDetails"></a>UserDetails</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserDetails</span> <span class="keyword">extends</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">         <span class="comment">//权限集合</span></span><br><span class="line">         Collection&lt;? extends GrantedAuthority&gt; getAuthorities();</span><br><span class="line">         </span><br><span class="line">         <span class="comment">//密码    </span></span><br><span class="line">         <span class="function">String <span class="title">getPassword</span><span class="params">()</span></span>;</span><br><span class="line">         </span><br><span class="line">         <span class="comment">//用户名</span></span><br><span class="line">         <span class="function">String <span class="title">getUsername</span><span class="params">()</span></span>;</span><br><span class="line">         </span><br><span class="line">         <span class="comment">//用户名是否没有过期</span></span><br><span class="line">         <span class="function"><span class="keyword">boolean</span> <span class="title">isAccountNonExpired</span><span class="params">()</span></span>;</span><br><span class="line">         </span><br><span class="line">         <span class="comment">//用户名是否没有锁定    </span></span><br><span class="line">         <span class="function"><span class="keyword">boolean</span> <span class="title">isAccountNonLocked</span><span class="params">()</span></span>;</span><br><span class="line">         </span><br><span class="line">         <span class="comment">//用户密码是否没有过期</span></span><br><span class="line">         <span class="function"><span class="keyword">boolean</span> <span class="title">isCredentialsNonExpired</span><span class="params">()</span></span>;</span><br><span class="line">         </span><br><span class="line">         <span class="comment">//账号是否可用(可理解为是否删除)</span></span><br><span class="line">         <span class="function"><span class="keyword">boolean</span> <span class="title">isEnabled</span><span class="params">()</span></span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><h3 id="认证过程总结"><a href="#认证过程总结" class="headerlink" title="认证过程总结"></a>认证过程总结</h3><p><img src="/2018/10/31/UsernamePasswordAuthenticationFilter/UsernamePasswordAuthenticationFilter.png" alt=""></p><ul><li>AbstractAuthenticationProcessingFilter将拦截符合过滤规则的request，并试图执行认证。</li></ul><ul><li>UsernamePasswordAuthenticationFilter为AbstractAuthenticationProcessingFilter子类处理用户名密码的认证逻辑</li><li>在UsernamePasswordAuthenticationFilter的attemptAuthentication()方法中，调用AuthenticationManager进行认证</li><li>AuthenticationManager接收Authentication对象作为参数，并通过authenticate方法对其进行验证(实际由默认的其实现类ProviderManager完成)</li><li>在ProviderManager的authenticate方法中，轮训成员变量<code>List&lt;AuthenticationProvider&gt; providers</code>。该providers中如果有一个AuthenticationProvider的supports函数返回true，那么就会调用该AuthenticationProvider的authenticate函数认证，如果认证成功则整个认证过程结束。如果不成功，则继续使用下一个合适的AuthenticationProvider进行认证，只要有一个认证成功则为认证成功。</li><li>UsernamePasswordAuthenticationToken实现了Authentication，主要是将用户输入的用户名密码进行封装，并提供给AuthenticationManager进行验证，验证成功后，返回一个认证成功的UsernamePasswordAuthenticationToken对象</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;内容转载参考自：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/xuwenjin/p/9565356.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.cnblogs.com/xuwenjin/p/9565356.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/zsxneil/p/6622564.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.cnblogs.com/zsxneil/p/6622564.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/yecong111/article/details/17015199&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://blog.csdn.net/yecong111/article/details/17015199&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;UsernamePasswordAuthenticationFilter&quot;&gt;&lt;a href=&quot;#UsernamePasswordAuthenticationFilter&quot; class=&quot;headerlink&quot; title=&quot;UsernamePasswordAuthenticationFilter&quot;&gt;&lt;/a&gt;UsernamePasswordAuthenticationFilter&lt;/h3&gt;&lt;p&gt;UsernamePasswordAuthenticationFilter，实现了我们最常用的基于用户名和密码的认证逻辑。&lt;/p&gt;
+&lt;p&gt;UsernamePasswordAuthenticationFilter继承虚拟类AbstractAuthenticationProcessingFilter。&lt;/p&gt;
+&lt;p&gt;AbstractAuthenticationProcessingFilter要求设置一个authenticationManager。&lt;/p&gt;
+&lt;p&gt;authenticationManager的实现类将实现处理请求的认证。&lt;/p&gt;
+&lt;p&gt;AbstractAuthenticationProcessingFilter将拦截符合过滤规则的request，并试图执行认证。子类必须实现 &lt;code&gt;attemptAuthentication&lt;/code&gt; 方法，这个方法执行具体的认证。&lt;/p&gt;
+&lt;p&gt;认证处理：如果认证成功，将会把返回的Authentication对象存放在SecurityContext；然后setAuthenticationSuccessHandler(AuthenticationSuccessHandler)方法将会调用；这里处理认证成功后跳转url的逻辑；可以重新实现AuthenticationSuccessHandler的onAuthenticationSuccess方法，实现自己的逻辑，比如需要返回json格式数据时，就可以在这里重新相关逻辑。&lt;/p&gt;
+&lt;p&gt;如果认证失败，默认会返回401代码给客户端，当然也可以在&lt;code&gt;&amp;lt;form-login&amp;gt;&lt;/code&gt;节点中配置失败后跳转的url，还可以重写AuthenticationFailureHandler的onAuthenticationFailure方法实现自己的逻辑。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="java" scheme="http://neverloseyourself.top/categories/java/"/>
+    
+      <category term="springsecurity" scheme="http://neverloseyourself.top/categories/java/springsecurity/"/>
+    
+    
+      <category term="java" scheme="http://neverloseyourself.top/tags/java/"/>
+    
+      <category term="springsecurity" scheme="http://neverloseyourself.top/tags/springsecurity/"/>
+    
+  </entry>
   
   <entry>
     <title>spring集成Quartz</title>
@@ -636,9 +672,9 @@
     
       <category term="java" scheme="http://neverloseyourself.top/tags/java/"/>
     
-      <category term="mybatis" scheme="http://neverloseyourself.top/tags/mybatis/"/>
-    
       <category term="注解" scheme="http://neverloseyourself.top/tags/%E6%B3%A8%E8%A7%A3/"/>
+    
+      <category term="mybatis" scheme="http://neverloseyourself.top/tags/mybatis/"/>
     
   </entry>
   
@@ -911,9 +947,9 @@
     
       <category term="java" scheme="http://neverloseyourself.top/tags/java/"/>
     
-      <category term="mybatis" scheme="http://neverloseyourself.top/tags/mybatis/"/>
-    
       <category term="注解" scheme="http://neverloseyourself.top/tags/%E6%B3%A8%E8%A7%A3/"/>
+    
+      <category term="mybatis" scheme="http://neverloseyourself.top/tags/mybatis/"/>
     
       <category term="spring" scheme="http://neverloseyourself.top/tags/spring/"/>
     
@@ -953,9 +989,9 @@
     
       <category term="java" scheme="http://neverloseyourself.top/tags/java/"/>
     
-      <category term="mybatis" scheme="http://neverloseyourself.top/tags/mybatis/"/>
-    
       <category term="注解" scheme="http://neverloseyourself.top/tags/%E6%B3%A8%E8%A7%A3/"/>
+    
+      <category term="mybatis" scheme="http://neverloseyourself.top/tags/mybatis/"/>
     
       <category term="spring" scheme="http://neverloseyourself.top/tags/spring/"/>
     
@@ -995,9 +1031,9 @@
     
       <category term="java" scheme="http://neverloseyourself.top/tags/java/"/>
     
-      <category term="mybatis" scheme="http://neverloseyourself.top/tags/mybatis/"/>
-    
       <category term="注解" scheme="http://neverloseyourself.top/tags/%E6%B3%A8%E8%A7%A3/"/>
+    
+      <category term="mybatis" scheme="http://neverloseyourself.top/tags/mybatis/"/>
     
       <category term="spring" scheme="http://neverloseyourself.top/tags/spring/"/>
     
@@ -1044,9 +1080,9 @@
     
       <category term="mybatis" scheme="http://neverloseyourself.top/tags/mybatis/"/>
     
-      <category term="springboot" scheme="http://neverloseyourself.top/tags/springboot/"/>
-    
       <category term="spring" scheme="http://neverloseyourself.top/tags/spring/"/>
+    
+      <category term="springboot" scheme="http://neverloseyourself.top/tags/springboot/"/>
     
       <category term="框架" scheme="http://neverloseyourself.top/tags/%E6%A1%86%E6%9E%B6/"/>
     
@@ -1116,9 +1152,9 @@
     
       <category term="mybatis" scheme="http://neverloseyourself.top/tags/mybatis/"/>
     
-      <category term="springboot" scheme="http://neverloseyourself.top/tags/springboot/"/>
-    
       <category term="spring" scheme="http://neverloseyourself.top/tags/spring/"/>
+    
+      <category term="springboot" scheme="http://neverloseyourself.top/tags/springboot/"/>
     
       <category term="框架" scheme="http://neverloseyourself.top/tags/%E6%A1%86%E6%9E%B6/"/>
     
