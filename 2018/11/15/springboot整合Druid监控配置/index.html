@@ -118,18 +118,18 @@
 
 
 
-  <meta name="description" content="依赖注意添加log4j依赖否则会报错 1234567891011121314151617181920212223242526272829303132333435363738&amp;lt;dependencies&amp;gt;   &amp;lt;dependency&amp;gt;      &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;      &amp;lt;ar">
+  <meta name="description" content="依赖注意添加log4j依赖否则会报错，或者把spring.datasource.filters=stat,wall,log4j中的log4j去掉 1234567891011121314151617181920212223242526272829303132333435363738&amp;lt;dependencies&amp;gt;   &amp;lt;dependency&amp;gt;      &amp;lt;groupId&amp;g">
 <meta name="keywords" content="springboot,druid">
 <meta property="og:type" content="article">
 <meta property="og:title" content="springboot整合Druid监控配置">
 <meta property="og:url" content="http://neverloseyourself.top/2018/11/15/springboot整合Druid监控配置/index.html">
 <meta property="og:site_name" content="天下不易其乐">
-<meta property="og:description" content="依赖注意添加log4j依赖否则会报错 1234567891011121314151617181920212223242526272829303132333435363738&amp;lt;dependencies&amp;gt;   &amp;lt;dependency&amp;gt;      &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;      &amp;lt;ar">
+<meta property="og:description" content="依赖注意添加log4j依赖否则会报错，或者把spring.datasource.filters=stat,wall,log4j中的log4j去掉 1234567891011121314151617181920212223242526272829303132333435363738&amp;lt;dependencies&amp;gt;   &amp;lt;dependency&amp;gt;      &amp;lt;groupId&amp;g">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-15T10:27:00.461Z">
+<meta property="og:updated_time" content="2018-11-15T10:46:15.846Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="springboot整合Druid监控配置">
-<meta name="twitter:description" content="依赖注意添加log4j依赖否则会报错 1234567891011121314151617181920212223242526272829303132333435363738&amp;lt;dependencies&amp;gt;   &amp;lt;dependency&amp;gt;      &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;      &amp;lt;ar">
+<meta name="twitter:description" content="依赖注意添加log4j依赖否则会报错，或者把spring.datasource.filters=stat,wall,log4j中的log4j去掉 1234567891011121314151617181920212223242526272829303132333435363738&amp;lt;dependencies&amp;gt;   &amp;lt;dependency&amp;gt;      &amp;lt;groupId&amp;g">
 
 
 
@@ -367,7 +367,7 @@
                 
               
 
-              <time title="创建时间：2018-11-15 18:22:47 / 修改时间：18:27:00" itemprop="dateCreated datePublished" datetime="2018-11-15T18:22:47+08:00">2018-11-15</time>
+              <time title="创建时间：2018-11-15 18:22:47 / 修改时间：18:46:15" itemprop="dateCreated datePublished" datetime="2018-11-15T18:22:47+08:00">2018-11-15</time>
             
 
             
@@ -430,7 +430,7 @@
       
 
       
-        <h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><p>注意添加log4j依赖否则会报错</p>
+        <h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><p>注意添加log4j依赖否则会报错，或者把spring.datasource.filters=stat,wall,log4j中的log4j去掉</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- jdbcTemplate --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">&lt;!-- druid数据库连接池 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>druid<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.26<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">&lt;!-- mysql connector --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.38<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!--log4j--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.17<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h2 id="Druid配置"><a href="#Druid配置" class="headerlink" title="Druid配置"></a>Druid配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#数据库设置</span><br><span class="line">spring.datasource.driverClassName=com.mysql.jdbc.Driver</span><br><span class="line">spring.datasource.url=jdbc:mysql://localhost:3306/druid_demo?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true</span><br><span class="line">spring.datasource.username=root</span><br><span class="line">spring.datasource.password=123</span><br><span class="line">#--------------------------</span><br><span class="line"># 下面为连接池的补充设置，应用到上面所有数据源中</span><br><span class="line"># 初始化大小，最小，最大</span><br><span class="line">spring.datasource.initialSize=5</span><br><span class="line">spring.datasource.minIdle=1</span><br><span class="line">spring.datasource.maxActive=50</span><br><span class="line"># 配置获取连接等待超时的时间</span><br><span class="line">spring.datasource.maxWait=60000</span><br><span class="line"># 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒</span><br><span class="line">spring.datasource.timeBetweenEvictionRunsMillis=60000</span><br><span class="line"># 配置一个连接在池中最小生存的时间，单位是毫秒</span><br><span class="line">spring.datasource.minEvictableIdleTimeMillis=300000</span><br><span class="line">spring.datasource.validationQuery=SELECT 1 FROM DUAL</span><br><span class="line">spring.datasource.testWhileIdle=true</span><br><span class="line">spring.datasource.testOnBorrow=false</span><br><span class="line">spring.datasource.testOnReturn=false</span><br><span class="line"># 打开PSCache，并且指定每个连接上PSCache的大小</span><br><span class="line">spring.datasource.poolPreparedStatements=false</span><br><span class="line">#spring.datasource.maxPoolPreparedStatementPerConnectionSize=20</span><br><span class="line"># 配置监控统计拦截的filters，去掉后监控界面sql无法统计，&apos;wall&apos;用于防火墙</span><br><span class="line">spring.datasource.filters=stat,wall,log4j</span><br><span class="line"># 通过connectProperties属性来打开mergeSql功能；慢SQL记录</span><br><span class="line">spring.datasource.connectionProperties=druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000</span><br><span class="line"># 合并多个DruidDataSource的监控数据</span><br><span class="line">#spring.datasource.useGlobalDataSourceStat=true</span><br></pre></td></tr></table></figure>
@@ -489,6 +489,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/16/跨域总结/" rel="prev" title="跨域总结">
+                跨域总结 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -562,7 +566,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">51</span>
+                    <span class="site-state-item-count">52</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -705,7 +709,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">65</span>
+                      
+                    
+                    <span class="site-state-item-count">66</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -810,7 +816,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">46</span>
+                      
+                    
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -912,7 +920,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共62.2k字</span>
+  <span class="post-count">博客全站共62.8k字</span>
 </div>
 
         
