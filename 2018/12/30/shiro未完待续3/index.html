@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "e080c7a7"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.icon?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.icon?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: 'IE1WYPLC4A',
+      apiKey: 'your API Key',
+      indexName: 'your Index name',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="转自http://blog.51cto.com/luchunli/1833372 https://www.cnblogs.com/yoohot/p/6085830.html 1.AbstractFilterShiro通过抽象类对Servlet的Filter接口进行了封装，并通过继承ServletContextSupport对ServletContext也进行了封装。 123456789101112">
+<meta name="keywords" content="java,shiro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shiro未完待续3">
+<meta property="og:url" content="http://neverloseyourself.top/2018/12/30/shiro未完待续3/index.html">
+<meta property="og:site_name" content="天下不易其乐">
+<meta property="og:description" content="转自http://blog.51cto.com/luchunli/1833372 https://www.cnblogs.com/yoohot/p/6085830.html 1.AbstractFilterShiro通过抽象类对Servlet的Filter接口进行了封装，并通过继承ServletContextSupport对ServletContext也进行了封装。 123456789101112">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-30T11:12:27.860Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shiro未完待续3">
+<meta name="twitter:description" content="转自http://blog.51cto.com/luchunli/1833372 https://www.cnblogs.com/yoohot/p/6085830.html 1.AbstractFilterShiro通过抽象类对Servlet的Filter接口进行了封装，并通过继承ServletContextSupport对ServletContext也进行了封装。 123456789101112">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="天下不易其乐" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://neverloseyourself.top/2018/12/30/shiro未完待续3/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>shiro未完待续3 | 天下不易其乐</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">天下不易其乐</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Talk is cheap,show me your code.</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/12/30/shiro未完待续3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="York">
+      <meta itemprop="description" content="先生卖我几两仁义道德">
+      <meta itemprop="image" content="/images/timg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天下不易其乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">shiro未完待续3
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-30 19:10:57 / 修改时间：19:12:27" itemprop="dateCreated datePublished" datetime="2018-12-30T19:10:57+08:00">2018-12-30</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/shiro/" itemprop="url" rel="index"><span itemprop="name">shiro</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>转自<a href="http://blog.51cto.com/luchunli/1833372" target="_blank" rel="noopener">http://blog.51cto.com/luchunli/1833372</a></p>
+<p><a href="https://www.cnblogs.com/yoohot/p/6085830.html" target="_blank" rel="noopener">https://www.cnblogs.com/yoohot/p/6085830.html</a></p>
+<h2 id="1-AbstractFilter"><a href="#1-AbstractFilter" class="headerlink" title="1.AbstractFilter"></a>1.AbstractFilter</h2><p>Shiro通过抽象类对Servlet的Filter接口进行了封装，并通过继承ServletContextSupport对ServletContext也进行了封装。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractFilter</span> <span class="keyword">extends</span> <span class="title">ServletContextSupport</span> <span class="keyword">implements</span> <span class="title">Filter</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">transient</span> Logger log = LoggerFactory.getLogger(AbstractFilter.class);</span><br><span class="line">    <span class="keyword">protected</span> FilterConfig filterConfig;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AbstractFilter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> FilterConfig <span class="title">getFilterConfig</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.filterConfig;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 初始化 FilterConfig 与 ServletContext</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFilterConfig</span><span class="params">(FilterConfig filterConfig)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.filterConfig = filterConfig;</span><br><span class="line">        <span class="comment">// 调用ServletContextSupport的方法来封装ServletContext</span></span><br><span class="line">        <span class="keyword">this</span>.setServletContext(filterConfig.getServletContext());</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">// 从 FilterConfig 中获取初始参数</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> String <span class="title">getInitParam</span><span class="params">(String paramName)</span> </span>&#123;</span><br><span class="line">        FilterConfig config = <span class="keyword">this</span>.getFilterConfig();</span><br><span class="line">        <span class="keyword">return</span> config != <span class="keyword">null</span> ? StringUtils.clean(config.getInitParameter(paramName)) : <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(FilterConfig filterConfig)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.setFilterConfig(filterConfig);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.onFilterConfigSet();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception var3) &#123;</span><br><span class="line">            <span class="keyword">if</span> (var3 <span class="keyword">instanceof</span> ServletException) &#123;</span><br><span class="line">                <span class="keyword">throw</span> (ServletException)var3;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (log.isErrorEnabled()) &#123;</span><br><span class="line">                    log.error(<span class="string">"Unable to start Filter: ["</span> + var3.getMessage() + <span class="string">"]."</span>, var3);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> ServletException(var3);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onFilterConfigSet</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="2、NameableFilter"><a href="#2、NameableFilter" class="headerlink" title="2、NameableFilter"></a>2、NameableFilter</h2><p>继承了AbstractFilter实现了Nameable</p>
+<p>每个 Filter 必须有一个名字，可通过 setName 方法设置的，如果不设置就取该 Filter 默认的名字</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">NameableFilter</span> <span class="keyword">extends</span> <span class="title">AbstractFilter</span> <span class="keyword">implements</span> <span class="title">Nameable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">NameableFilter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">         <span class="comment">// 若成员变量 name 为空，则从 FilterConfig 中获取 Filter Name</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.name == <span class="keyword">null</span>) &#123;</span><br><span class="line">            FilterConfig config = <span class="keyword">this</span>.getFilterConfig();</span><br><span class="line">            <span class="keyword">if</span> (config != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">this</span>.name = config.getFilterName();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> StringBuilder <span class="title">toStringBuilder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String name = <span class="keyword">this</span>.getName();</span><br><span class="line">        <span class="keyword">if</span> (name == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">super</span>.toStringBuilder();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            sb.append(name);</span><br><span class="line">            <span class="keyword">return</span> sb;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3、OncePerRequestFilter"><a href="#3、OncePerRequestFilter" class="headerlink" title="3、OncePerRequestFilter"></a>3、OncePerRequestFilter</h2><p>OncePerRequestFilter extends NameableFilter</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">OncePerRequestFilter</span> <span class="keyword">extends</span> <span class="title">NameableFilter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">     <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 已执行过的过滤器（"already filtered"）附加的后缀名</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@see</span> #getAlreadyFilteredAttributeName</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String ALREADY_FILTERED_SUFFIX = <span class="string">".FILTERED"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 是否开启过滤功能</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@see</span> #isEnabled()</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> enabled = <span class="keyword">true</span>; <span class="comment">//most filters wish to execute when configured, so default to true</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">doFilter</span><span class="params">(ServletRequest request, ServletResponse response, FilterChain filterChain)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">// 获取 Filter 已过滤的属性名</span></span><br><span class="line">        String alreadyFilteredAttributeName = getAlreadyFilteredAttributeName();</span><br><span class="line">        <span class="comment">// 判断是否已过滤</span></span><br><span class="line">        <span class="keyword">if</span> ( request.getAttribute(alreadyFilteredAttributeName) != <span class="keyword">null</span> ) &#123;</span><br><span class="line">            <span class="comment">// 若已过滤，则进入 FilterChain 中下一个 Filter</span></span><br><span class="line">            filterChain.doFilter(request, response);</span><br><span class="line">            </span><br><span class="line">        <span class="comment">// 若未过滤，则判断是否未开启过滤功能（其中 shouldNotFilter 方法将被废弃</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!isEnabled(request, response) || shouldNotFilter(request) ) &#123;</span><br><span class="line">            <span class="comment">// 若未开启，则进入 FilterChain 中下一个 Filter</span></span><br><span class="line">            filterChain.doFilter(request, response);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// Do invoke this filter...（执行过滤）</span></span><br><span class="line">            <span class="comment">// 将已过滤属性设置为 true（只要保证 Request 中有这个属性即可）</span></span><br><span class="line">            request.setAttribute(alreadyFilteredAttributeName, Boolean.TRUE);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">// 在子类中执行具体的过滤操作</span></span><br><span class="line">                doFilterInternal(request, response, filterChain);</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                <span class="comment">// 当前 Filter 执行结束需移除 Request 中的已过滤属性</span></span><br><span class="line">                request.removeAttribute(alreadyFilteredAttributeName);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">protected</span> String <span class="title">getAlreadyFilteredAttributeName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String name = getName();</span><br><span class="line">        <span class="keyword">if</span> (name == <span class="keyword">null</span>) &#123;</span><br><span class="line">            name = getClass().getName();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> name + ALREADY_FILTERED_SUFFIX;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 抽象方法，由子类实现</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">doFilterInternal</span><span class="params">(ServletRequest request, ServletResponse response, FilterChain chain)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> ServletException, IOException</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如何确保每个请求只会被同一个 Filter 拦截一次呢？Shiro 提供了一个超简单的解决方案：在 Requet 中放置一个后缀为<br>.FILTERED 的属性，在执行具体拦截操作（即 doFilterInternal 方法）之前放入该属性，执行完毕后移除该属性。</p>
+<p> 在 Shiro 的 Filter Chian 配置中，如果我们想禁用某个 Filter，如何实现呢？OncePerRequestFilter<br>也为我们提供了一个 enabled 的属性，方便我们可以在 shiro.ini 中随时禁用某个 Filter，例如：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[main]</span></span><br><span class="line">ssl.enabled = false</span><br><span class="line"></span><br><span class="line"><span class="section">[urls]</span></span><br><span class="line">/foo = ssl, authc</span><br></pre></td></tr></table></figure>
+<p>  这样一来 ssl 这个 Filter 就被我们给禁用了，以后想开启 ssl 的话，完全不需要在 urls配置中一个个手工来添加，只需把 ssl.enabled 设置为 true，或注释掉该行，或直接删除该行即可。</p>
+<h2 id="4-AdviceFilter"><a href="#4-AdviceFilter" class="headerlink" title="4.AdviceFilter"></a>4.AdviceFilter</h2><p>OncePerRequestFilter有两个子类</p>
+<p><code>AdviceFilter和AbstractShiroFilter</code></p>
+<p>AdviceFilter extends OncePerRequestFilter</p>
+<p>doFilterInternal会先调用preHandle做一些前置判断，如果返回false则filter链不继续往下执行，postHandle在目标方法（即客户端请求的接口）正常（未抛出异常）执行后完成一些操作，默认不做任何操作。在finally中的cleanup方法中会调用afterCompletion方法，不管目标方法是否出现异常都会继续操作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//类似于AOP中的后置返回增强；在拦截器链执行完成后执行；进行后处理（如记录执行时间之类的）</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(ServletRequest request, ServletResponse response)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//类似于AOP中的前置增强；在拦截器链执行之前执行；如果返回true则继续拦截器链；否则中断后续的拦截器链的执行直接返回</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">postHandle</span><span class="params">(ServletRequest request, ServletResponse response)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//类似于AOP中的后置最终增强；即不管有没有异常都会执行；可以进行清理资源</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterCompletion</span><span class="params">(ServletRequest request, ServletResponse response, Exception exception)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">executeChain</span><span class="params">(ServletRequest request, ServletResponse response, FilterChain chain)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        chain.doFilter(request, response);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//父类OncePerRequestFilter会调用，</span></span><br><span class="line"><span class="comment">//OncePerRequestFilter中实现了doFilter方法具体逻辑在子类的doFilterInternal中。</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> doFilterInternal中。(ServletRequest request, ServletResponse response, FilterChain chain) <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        Exception exception = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">boolean</span> continueChain = <span class="keyword">this</span>.preHandle(request, response);</span><br><span class="line">            <span class="keyword">if</span> (log.isTraceEnabled()) &#123;</span><br><span class="line">                log.trace(<span class="string">"Invoked preHandle method.  Continuing chain?: ["</span> + continueChain + <span class="string">"]"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (continueChain) &#123;</span><br><span class="line">                <span class="keyword">this</span>.executeChain(request, response, chain);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">this</span>.postHandle(request, response);</span><br><span class="line">            <span class="keyword">if</span> (log.isTraceEnabled()) &#123;</span><br><span class="line">                log.trace(<span class="string">"Successfully invoked postHandle method"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception var9) &#123;</span><br><span class="line">            exception = var9;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.cleanup(request, response, exception);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5-PathMatchingFilter"><a href="#5-PathMatchingFilter" class="headerlink" title="5.PathMatchingFilter"></a>5.PathMatchingFilter</h2><p>PathMatchingFilter extends AdviceFilter implements PathConfigProcessor</p>
+<p>PathMatchingFilter主要是对preHandle做进一步细化控制</p>
+<p>该filter为抽象类，其他路径直接通过：preHandle中，若请求的路径非该filter中配置的拦截路径，则直接返回true进行下一个filter。若包含在此filter路径中，则会在isFilterChainContinued做一些控制，该方法中会调用onPreHandle方法，所以子类可以在onPreHandle中编写filter控制流程代码（返回true或false）。</p>
+<h2 id="6-AccessControlFilter"><a href="#6-AccessControlFilter" class="headerlink" title="6.AccessControlFilter"></a>6.AccessControlFilter</h2><p>AccessControlFilter extends PathMatchingFilter</p>
+<p>isAccessAllowed方法和onAccessDenied方法达到控制效果，这两个方法都是抽象方法，由子类去实现。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onPreHandle</span><span class="params">(ServletRequest request, ServletResponse response, Object mappedValue)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.isAccessAllowed(request, response, mappedValue) || <span class="keyword">this</span>.onAccessDenied(request, response, mappedValue);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="isAccessAllowed和onAccessDenied方法会影响到onPreHandle方法，而onPreHandle方法会影响到preHandle方法，而preHandle方法会达到控制filter链是否执行下去的效果。"><a href="#isAccessAllowed和onAccessDenied方法会影响到onPreHandle方法，而onPreHandle方法会影响到preHandle方法，而preHandle方法会达到控制filter链是否执行下去的效果。" class="headerlink" title="isAccessAllowed和onAccessDenied方法会影响到onPreHandle方法，而onPreHandle方法会影响到preHandle方法，而preHandle方法会达到控制filter链是否执行下去的效果。"></a>isAccessAllowed和onAccessDenied方法会影响到onPreHandle方法，而onPreHandle方法会影响到preHandle方法，而preHandle方法会达到控制filter链是否执行下去的效果。</h3><p>。所以如果正在执行的filter中isAccessAllowed和onAccessDenied都返回false，则整个filter控制链都将结束，不会到达目标方法（客户端请求的接口），而是直接跳转到某个页面（由filter定义的，将会在authc中看到）</p>
+<h2 id="7-AuthenticationFilter和AuthenticatingFilter认证的filter"><a href="#7-AuthenticationFilter和AuthenticatingFilter认证的filter" class="headerlink" title="7.AuthenticationFilter和AuthenticatingFilter认证的filter"></a>7.AuthenticationFilter和AuthenticatingFilter认证的filter</h2><p><strong>AuthenticatingFilter extends AuthenticationFilter</strong></p>
+<p>在抽象类中AuthenticatingFilter实现了isAccessAllowed方法，该方法是用来判断用户是否已登录，若未登录再判断是否请求的是登录地址，是登录地址则放行，否则返回false终止filter链。</p>
+<p><strong>AuthenticationFilter</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  AuthenticationFilter</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">isAccessAllowed</span><span class="params">(ServletRequest request, ServletResponse response, Object mappedValue)</span> </span>&#123;</span><br><span class="line">        Subject subject = <span class="keyword">this</span>.getSubject(request, response);</span><br><span class="line">        <span class="keyword">return</span> subject.isAuthenticated();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>AuthenticatingFilter</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">isAccessAllowed</span><span class="params">(ServletRequest request, ServletResponse response, Object mappedValue)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.isAccessAllowed(request, response, mappedValue) || !<span class="keyword">this</span>.isLoginRequest(request, response) &amp;&amp; <span class="keyword">this</span>.isPermissive(mappedValue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>提供了executeLogin方法实现用户登录的，还定义了onLoginSuccess和onLoginFailure方法，在登录成功或者失败时做一些操作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">executeLogin</span><span class="params">(ServletRequest request, ServletResponse response)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">       AuthenticationToken token = <span class="keyword">this</span>.createToken(request, response);</span><br><span class="line">       <span class="keyword">if</span> (token == <span class="keyword">null</span>) &#123;</span><br><span class="line">           String msg = <span class="string">"createToken method implementation returned null. A valid non-null AuthenticationToken must be created in order to execute a login attempt."</span>;</span><br><span class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(msg);</span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">           <span class="keyword">try</span> &#123;</span><br><span class="line">               Subject subject = <span class="keyword">this</span>.getSubject(request, response);</span><br><span class="line">               subject.login(token);</span><br><span class="line">               <span class="keyword">return</span> <span class="keyword">this</span>.onLoginSuccess(token, subject, request, response);</span><br><span class="line">           &#125; <span class="keyword">catch</span> (AuthenticationException var5) &#123;</span><br><span class="line">               <span class="keyword">return</span> <span class="keyword">this</span>.onLoginFailure(token, var5, request, response);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">onLoginSuccess</span><span class="params">(AuthenticationToken token, Subject subject, ServletRequest request, ServletResponse response)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">onLoginFailure</span><span class="params">(AuthenticationToken token, AuthenticationException e, ServletRequest request, ServletResponse response)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="8-FormAuthenticationFilter"><a href="#8-FormAuthenticationFilter" class="headerlink" title="8.FormAuthenticationFilter"></a>8.FormAuthenticationFilter</h2><p>FormAuthenticationFilter extends AuthenticatingFilter</p>
+<p>实现了onAccessDenied方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">onAccessDenied</span><span class="params">(ServletRequest request, ServletResponse response)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.isLoginRequest(request, response)) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.isLoginSubmission(request, response)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (log.isTraceEnabled()) &#123;</span><br><span class="line">                log.trace(<span class="string">"Login submission detected.  Attempting to execute login."</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.executeLogin(request, response);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (log.isTraceEnabled()) &#123;</span><br><span class="line">                log.trace(<span class="string">"Login page view."</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (log.isTraceEnabled()) &#123;</span><br><span class="line">            log.trace(<span class="string">"Attempting to access a path which requires authentication.  Forwarding to the Authentication url ["</span> + <span class="keyword">this</span>.getLoginUrl() + <span class="string">"]"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.saveRequestAndRedirectToLogin(request, response);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果用户未登录，即AuthenticatingFilter中的isAccessAllowed判断了用户未登录，则会调用onAccessDenied方法做用户登录操作</p>
+<p>调用AuthenticatingFilter中的executeLogin，executeLogin中调用onLoginSuccess和onLoginFailure。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">onLoginSuccess</span><span class="params">(AuthenticationToken token, Subject subject, ServletRequest request, ServletResponse response)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">       <span class="keyword">this</span>.issueSuccessRedirect(request, response);</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">onLoginFailure</span><span class="params">(AuthenticationToken token, AuthenticationException e, ServletRequest request, ServletResponse response)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (log.isDebugEnabled()) &#123;</span><br><span class="line">           log.debug(<span class="string">"Authentication exception"</span>, e);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">this</span>.setFailureAttribute(request, e);</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="9-自定义filter"><a href="#9-自定义filter" class="headerlink" title="9.自定义filter"></a>9.自定义filter</h2><p>一般自定义filter可以继承三种：</p>
+<p>①OncePerRequestFilter只需实现doFilterInternal方法即可，在这里面实现filter的功能。切记在该方法中最后调用filterChain.doFilter(request, response)，允许filter链继续执行下去。可以在这个自定义filter中覆盖isEnable达到控制该filter是否需要被执行（实质是doFilterInternal方法）以达到动态控制的效果，一般不建议直接继承这个类;</p>
+<p>②AdviceFilter  中提供三个方法preHandle postHandle afterCompletion：若需要在目标方法执行前后都做一些判断的话应该继承这个类覆盖preHandle 和postHandle 。</p>
+<p>③PathMatchingFilter中preHandle实质会判断onPreHandle来决定是否继续往下执行。所以只需覆盖onPreHandle方法即可。</p>
+<p>④AccessControlFilter：最常用的，该filter中onPreHandle调用isAccessAllowed和onAccessDenied决定是否继续执行。一般继承该filter，isAccessAllowed决定是否继续执行。onAccessDenied做后续的操作，如重定向到另外一个地址、添加一些信息到request域等等。</p>
+<p> ④若要自定义登录filter，一般是由于前端传过来的需求所定义的token与shiro默认提供token的不符，可以继承AuthenticatingFilter ，在这里面实现createToken来创建自定义token。另外需要自定义凭证匹配器credentialsMatcher。重写public boolean doCredentialsMatch(AuthenticationToken token, AuthenticationInfo info)即可。realm也需要自定义以返回自定义的token。</p>
+<h2 id="10、总结"><a href="#10、总结" class="headerlink" title="10、总结"></a>10、总结</h2><ul>
+<li>filter的核心是doFilter。shiro中对应的类是<code>OncePerRequestFilter</code></li>
+</ul>
+<ul>
+<li>OncePerRequestFilter确保每个请求只会被同一个 Filter 拦截一次。</li>
+</ul>
+<ul>
+<li>OncePerRequestFilter会调用doFilterInternal(request, response, filterChain)，doFilterInternal具体由子类实现。</li>
+</ul>
+<ul>
+<li>子类AdviceFilter的doFilterInternal方法中主要是调用preHandle方法,preHandle方法主要逻辑有其子类实现。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">boolean</span> continueChain = <span class="keyword">this</span>.preHandle(request, response);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>PathMatchingFilter为AdviceFilter子类，实现了preHandle逻辑，其结果主要由onPreHandle控制。</li>
+</ul>
+<p>onPreHandle逻辑由其子类实现控制。</p>
+<p>AccessControlFilter继承PathMatchingFilter。实现了onPreHandle方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onPreHandle</span><span class="params">(ServletRequest request, ServletResponse response, Object mappedValue)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.isAccessAllowed(request, response, mappedValue) || <span class="keyword">this</span>.onAccessDenied(request, response, mappedValue);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>其结果主要是isAccessAllowed和onAccessDenied逻辑控制。即登录成功要干什么，失败又要干什么。</p>
+<ul>
+<li>对于登录而言isAccessAllowed和onAccessDenied逻辑在AuthenticationFilter，AuthenticatingFilter,FormAuthenticationFilter逻辑中</li>
+</ul>
+<ul>
+<li>对于权限认证而言则在AuthorizationFilter，PermissionsAuthorizationFilter等类中</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/shiro/" rel="tag"># shiro</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/30/Filter/" rel="next" title="Filter">
+                <i class="fa fa-chevron-left"></i> Filter
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/timg.jpg"
+                alt="York" />
+            
+              <p class="site-author-name" itemprop="name">York</p>
+              <p class="site-description motion-element" itemprop="description">先生卖我几两仁义道德</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">67</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">73</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">53</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/xuquezi" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-AbstractFilter"><span class="nav-number">1.</span> <span class="nav-text">1.AbstractFilter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、NameableFilter"><span class="nav-number">2.</span> <span class="nav-text">2、NameableFilter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、OncePerRequestFilter"><span class="nav-number">3.</span> <span class="nav-text">3、OncePerRequestFilter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-AdviceFilter"><span class="nav-number">4.</span> <span class="nav-text">4.AdviceFilter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-PathMatchingFilter"><span class="nav-number">5.</span> <span class="nav-text">5.PathMatchingFilter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-AccessControlFilter"><span class="nav-number">6.</span> <span class="nav-text">6.AccessControlFilter</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#isAccessAllowed和onAccessDenied方法会影响到onPreHandle方法，而onPreHandle方法会影响到preHandle方法，而preHandle方法会达到控制filter链是否执行下去的效果。"><span class="nav-number">6.1.</span> <span class="nav-text">isAccessAllowed和onAccessDenied方法会影响到onPreHandle方法，而onPreHandle方法会影响到preHandle方法，而preHandle方法会达到控制filter链是否执行下去的效果。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-AuthenticationFilter和AuthenticatingFilter认证的filter"><span class="nav-number">7.</span> <span class="nav-text">7.AuthenticationFilter和AuthenticatingFilter认证的filter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-FormAuthenticationFilter"><span class="nav-number">8.</span> <span class="nav-text">8.FormAuthenticationFilter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-自定义filter"><span class="nav-number">9.</span> <span class="nav-text">9.自定义filter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10、总结"><span class="nav-number">10.</span> <span class="nav-text">10、总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">York</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.1</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共83.3k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
