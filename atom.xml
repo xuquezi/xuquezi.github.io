@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://neverloseyourself.top/"/>
-  <updated>2018-12-30T11:12:27.860Z</updated>
+  <updated>2018-12-30T14:17:33.999Z</updated>
   <id>http://neverloseyourself.top/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>spring整合shiro注解</title>
+    <link href="http://neverloseyourself.top/2018/12/30/spring%E6%95%B4%E5%90%88shiro%E6%B3%A8%E8%A7%A3/"/>
+    <id>http://neverloseyourself.top/2018/12/30/spring整合shiro注解/</id>
+    <published>2018-12-30T14:15:41.000Z</published>
+    <updated>2018-12-30T14:17:33.999Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="shiro注解权限控制-5个权限注解"><a href="#shiro注解权限控制-5个权限注解" class="headerlink" title="shiro注解权限控制-5个权限注解"></a>shiro注解权限控制-5个权限注解</h2><p><strong>RequiresAuthentication:</strong></p><blockquote><p>使用该注解标注的类，实例，方法在访问或调用时，当前Subject必须在当前session中已经过认证。</p></blockquote><p><strong>RequiresGuest:</strong></p><blockquote><p>使用该注解标注的类，实例，方法在访问或调用时，当前Subject可以是“gust”身份，不需要经过认证或者在原先的session中存在记录。</p></blockquote><p><strong>RequiresPermissions:</strong></p><blockquote><p>当前Subject需要拥有某些特定的权限时，才能执行被该注解标注的方法。如果当前Subject不具有这样的权限，则方法不会被执行。</p></blockquote><p><strong>RequiresRoles:</strong></p><blockquote><p>当前Subject必须拥有所有指定的角色时，才能访问被该注解标注的方法。如果当天Subject不同时拥有所有指定角色，则方法不会执行还会抛出AuthorizationException异常。</p></blockquote><p><strong>RequiresUser</strong></p><blockquote><p>当前Subject必须是应用的用户，才能访问或调用被该注解标注的类，实例，方法。</p></blockquote><h2 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h2><p><strong>Shiro的认证注解处理是有内定的处理顺序的，如果有个多个注解的话，前面的通过了会继续检查后面的，若不通过则直接返回，处理顺序依次为（与实际声明顺序无关）：</strong></p><blockquote><p><strong>RequiresRoles</strong><br>      <strong>RequiresPermissions</strong><br>      <strong>RequiresAuthentication</strong><br>      <strong>RequiresUser</strong><br>      <strong>RequiresGuest</strong></p></blockquote><p>例如：你同时声明了RequiresRoles和RequiresPermissions，那就要求拥有此角色的同时还得拥有相应的权限。</p><h3 id="RequiresRoles"><a href="#RequiresRoles" class="headerlink" title="@RequiresRoles"></a>@RequiresRoles</h3><p>可以用在Controller或者方法上。可以多个roles，多个roles时默认逻辑为 AND也就是所有具备所有role才能访问。</p><h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//属于user角色</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@RequiresRoles</span>(<span class="string">"user"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//必须同时属于user和admin角色</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@RequiresRoles</span>(&#123;<span class="string">"user"</span>,<span class="string">"admin"</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//属于user或者admin之一;修改logical为OR 即可</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@RequiresRoles</span>(value=&#123;<span class="string">"user"</span>,<span class="string">"admin"</span>&#125;,logical=Logical.OR)</span><br></pre></td></tr></table></figure><h3 id="RequiresPermissions"><a href="#RequiresPermissions" class="headerlink" title="@RequiresPermissions"></a>@RequiresPermissions</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//符合index:hello权限要求</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@RequiresPermissions</span>(<span class="string">"index:hello"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//必须同时复核index:hello和index:world权限要求</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@RequiresPermissions</span>(&#123;<span class="string">"index:hello"</span>,<span class="string">"index:world"</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//符合index:hello或index:world权限要求即可</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@RequiresPermissions</span>(value=&#123;<span class="string">"index:hello"</span>,<span class="string">"index:world"</span>&#125;,logical=Logical.OR)</span><br></pre></td></tr></table></figure><p>  <strong>RequiresAuthentication，RequiresUser，RequiresGuest都一样。</strong></p><h3 id="spring整合shiro开启注解"><a href="#spring整合shiro开启注解" class="headerlink" title="spring整合shiro开启注解"></a>spring整合shiro开启注解</h3><p><strong>需要引入aspectj依赖，如果有spring aop的话就不用了</strong></p><p><strong>在xml文件中加入以下即可使用上述注解</strong></p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">&lt;!--开启aop，对类代理--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">aop:config</span> <span class="attr">proxy-target-class</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"securityManager"</span> <span class="attr">ref</span>=<span class="string">"securityManager"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;shiro注解权限控制-5个权限注解&quot;&gt;&lt;a href=&quot;#shiro注解权限控制-5个权限注解&quot; class=&quot;headerlink&quot; title=&quot;shiro注解权限控制-5个权限注解&quot;&gt;&lt;/a&gt;shiro注解权限控制-5个权限注解&lt;/h2&gt;&lt;p&gt;&lt;stron
+      
+    
+    </summary>
+    
+      <category term="shiro" scheme="http://neverloseyourself.top/categories/shiro/"/>
+    
+    
+      <category term="shiro" scheme="http://neverloseyourself.top/tags/shiro/"/>
+    
+  </entry>
   
   <entry>
     <title>shiro未完待续3</title>
@@ -1051,9 +1076,9 @@
     
       <category term="java" scheme="http://neverloseyourself.top/tags/java/"/>
     
-      <category term="springsecurity" scheme="http://neverloseyourself.top/tags/springsecurity/"/>
-    
       <category term="spring" scheme="http://neverloseyourself.top/tags/spring/"/>
+    
+      <category term="springsecurity" scheme="http://neverloseyourself.top/tags/springsecurity/"/>
     
   </entry>
   
@@ -1263,9 +1288,9 @@
     
       <category term="java" scheme="http://neverloseyourself.top/tags/java/"/>
     
-      <category term="mybatis-plus" scheme="http://neverloseyourself.top/tags/mybatis-plus/"/>
-    
       <category term="mybatis" scheme="http://neverloseyourself.top/tags/mybatis/"/>
+    
+      <category term="mybatis-plus" scheme="http://neverloseyourself.top/tags/mybatis-plus/"/>
     
   </entry>
   
@@ -1306,9 +1331,9 @@
     
       <category term="java" scheme="http://neverloseyourself.top/tags/java/"/>
     
-      <category term="mybatis-plus" scheme="http://neverloseyourself.top/tags/mybatis-plus/"/>
-    
       <category term="mybatis" scheme="http://neverloseyourself.top/tags/mybatis/"/>
+    
+      <category term="mybatis-plus" scheme="http://neverloseyourself.top/tags/mybatis-plus/"/>
     
   </entry>
   
@@ -1343,9 +1368,9 @@
     
       <category term="java" scheme="http://neverloseyourself.top/tags/java/"/>
     
-      <category term="mybatis-plus" scheme="http://neverloseyourself.top/tags/mybatis-plus/"/>
-    
       <category term="mybatis" scheme="http://neverloseyourself.top/tags/mybatis/"/>
+    
+      <category term="mybatis-plus" scheme="http://neverloseyourself.top/tags/mybatis-plus/"/>
     
   </entry>
   
@@ -1582,9 +1607,9 @@
     
       <category term="java" scheme="http://neverloseyourself.top/tags/java/"/>
     
-      <category term="springboot" scheme="http://neverloseyourself.top/tags/springboot/"/>
-    
       <category term="mybatis" scheme="http://neverloseyourself.top/tags/mybatis/"/>
+    
+      <category term="springboot" scheme="http://neverloseyourself.top/tags/springboot/"/>
     
       <category term="spring" scheme="http://neverloseyourself.top/tags/spring/"/>
     
@@ -1654,9 +1679,9 @@
     
       <category term="java" scheme="http://neverloseyourself.top/tags/java/"/>
     
-      <category term="springboot" scheme="http://neverloseyourself.top/tags/springboot/"/>
-    
       <category term="mybatis" scheme="http://neverloseyourself.top/tags/mybatis/"/>
+    
+      <category term="springboot" scheme="http://neverloseyourself.top/tags/springboot/"/>
     
       <category term="spring" scheme="http://neverloseyourself.top/tags/spring/"/>
     
@@ -2015,9 +2040,9 @@
     
       <category term="java" scheme="http://neverloseyourself.top/tags/java/"/>
     
-      <category term="springboot" scheme="http://neverloseyourself.top/tags/springboot/"/>
-    
       <category term="异常" scheme="http://neverloseyourself.top/tags/%E5%BC%82%E5%B8%B8/"/>
+    
+      <category term="springboot" scheme="http://neverloseyourself.top/tags/springboot/"/>
     
   </entry>
   
