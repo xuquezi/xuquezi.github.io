@@ -7,7 +7,7 @@ const ap = new APlayer({
         name: "像鱼",
         artist: '王贰浪',
         url: '/music/xiangyu.mp3',
-        cover: '/images/dayu.jpeg',
+        cover: '/images/dayu.jpg',
       }
     ]
 });
