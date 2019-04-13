@@ -4,8 +4,8 @@ const ap = new APlayer({
     autoplay: false,
     audio: [
       {
-        name: "春风十里",
-        artist: '鹿先森',
+        name: "像鱼",
+        artist: '王贰浪',
         url: '/music/xiangyu.mp3',
         cover: '/images/dayu.jpeg',
       }
