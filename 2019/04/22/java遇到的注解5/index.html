@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "e080c7a7"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.icon?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.icon?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: 'IE1WYPLC4A',
+      apiKey: 'your API Key',
+      indexName: 'your Index name',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="@RequestParam@RequestParam用于将请求参数区数据映射到功能处理方法的参数上。 1public String queryUserName(@RequestParam String userName) 在url中输入:localhost:8080/**/?userName=zhangsan 请求中包含username参数（如/requestparam1?userName=zha">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java遇到的注解5">
+<meta property="og:url" content="http://neverloseyourself.top/2019/04/22/java遇到的注解5/index.html">
+<meta property="og:site_name" content="天下不易其乐">
+<meta property="og:description" content="@RequestParam@RequestParam用于将请求参数区数据映射到功能处理方法的参数上。 1public String queryUserName(@RequestParam String userName) 在url中输入:localhost:8080/**/?userName=zhangsan 请求中包含username参数（如/requestparam1?userName=zha">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-22T13:34:50.718Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java遇到的注解5">
+<meta name="twitter:description" content="@RequestParam@RequestParam用于将请求参数区数据映射到功能处理方法的参数上。 1public String queryUserName(@RequestParam String userName) 在url中输入:localhost:8080/**/?userName=zhangsan 请求中包含username参数（如/requestparam1?userName=zha">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="天下不易其乐" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://neverloseyourself.top/2019/04/22/java遇到的注解5/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>java遇到的注解5 | 天下不易其乐</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">天下不易其乐</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Talk is cheap,show me your code.</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/04/22/java遇到的注解5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="York">
+      <meta itemprop="description" content="先生卖我几两仁义道德">
+      <meta itemprop="image" content="/images/timg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天下不易其乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java遇到的注解5
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-22 21:34:16 / 修改时间：21:34:50" itemprop="dateCreated datePublished" datetime="2019-04-22T21:34:16+08:00">2019-04-22</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="RequestParam"><a href="#RequestParam" class="headerlink" title="@RequestParam"></a>@RequestParam</h3><p>@RequestParam用于将请求参数区数据映射到功能处理方法的参数上。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">queryUserName</span><span class="params">(@RequestParam String userName)</span></span></span><br></pre></td></tr></table></figure>
+<p>在url中输入:localhost:8080/**/?userName=zhangsan</p>
+<p>请求中包含username参数（如/requestparam1?userName=zhang），则自动传入。</p>
+<p>接下来我们看一下@RequestParam注解主要有哪些参数：</p>
+<p>value：参数名字，即入参的请求参数名字，如username表示请求的参数区中的名字为username的参数的值将传入；</p>
+<p>required：是否必须，默认是true，表示请求中一定要有相应的参数，否则将报404错误码；</p>
+<p>defaultValue：默认值，表示如果请求中没有同名参数时的默认值，默认值可以是SpEL表达式，如“#{systemProperties[‘java.vm.version’]}”。表示请求中可以没有名字为username的参数，如果没有默认为null，此处需要注意如下几点：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">queryUserName</span><span class="params">(@RequestParam(value=<span class="string">"userName"</span> ,required =<span class="keyword">false</span> )</span> String userName)</span></span><br></pre></td></tr></table></figure>
+<p>原子类型：必须有值，否则抛出异常，如果允许空值请使用包装类代替。</p>
+<p>​     Boolean包装类型类型：默认Boolean.FALSE，其他引用类型默认为null。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">requestparam5</span><span class="params">(  </span></span></span><br><span class="line"><span class="function"><span class="params">@RequestParam(value=<span class="string">"username"</span>, required=<span class="keyword">true</span>, defaultValue=<span class="string">"zhang"</span>)</span> String username)</span></span><br></pre></td></tr></table></figure>
+<p>如果没有传入参数,则默认是”zhangsan”.</p>
+<p>但是在传递参数的时候如果是url?userName=zhangsan&amp;userName=wangwu时怎么办呢?</p>
+<p>其实在实际roleList参数入参的数据为“zhangsan,wangwu”，即多个数据之间使用“，”分割；我们应该使用如下方式来接收多个请求参数：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">requestparam8</span><span class="params">(@RequestParam(value=<span class="string">"userName"</span>)</span> String []  userNames)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">requestparam8</span><span class="params">(@RequestParam(value=<span class="string">"list"</span>)</span> List&lt;String&gt; list)</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="RequestHeader"><a href="#RequestHeader" class="headerlink" title="@RequestHeader"></a>@RequestHeader</h3><p>@RequestHeader用于将请求的头信息区数据映射到功能处理方法的参数上。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"/header"</span>)  </span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(  </span></span></span><br><span class="line"><span class="function"><span class="params">       @RequestHeader(<span class="string">"User-Agent"</span>)</span> String userAgent,  </span></span><br><span class="line"><span class="function">       @<span class="title">RequestHeader</span><span class="params">(value=<span class="string">"Accept"</span>)</span> String[] accepts)</span></span><br></pre></td></tr></table></figure>
+<p>如上配置将自动将请求头“User-Agent”值入参到userAgent参数上，并将“Accept”请求头值入参到accepts参数上。</p>
+<p>@RequestHeader也拥有和@RequestParam相同的三个参数，含义一样。</p>
+<h3 id="SessionAttributes"><a href="#SessionAttributes" class="headerlink" title="@SessionAttributes"></a>@SessionAttributes</h3><h4 id="绑定命令对象到session"><a href="#绑定命令对象到session" class="headerlink" title="绑定命令对象到session"></a>绑定命令对象到session</h4><p>有时候我们需要在多次请求之间保持数据，一般情况需要我们明确的调用HttpSession的API来存取会话数据，如多步骤提交的表单。Spring Web MVC提供了@SessionAttributes进行请求间透明的存取会话数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1、在控制器类头上添加@SessionAttributes注解  </span></span><br><span class="line"><span class="meta">@SessionAttributes</span>(value = &#123;<span class="string">"user"</span>&#125;)    <span class="comment">//①  </span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SessionAttributeController</span>   </span></span><br><span class="line"><span class="class">  </span></span><br><span class="line"><span class="class">//2、@<span class="title">ModelAttribute</span>注解的方法进行表单引用对象的创建  </span></span><br><span class="line">@ModelAttribute("user")    //②  </span><br><span class="line"><span class="function"><span class="keyword">public</span> UserModel <span class="title">initUser</span><span class="params">()</span>   </span></span><br><span class="line"><span class="function">  </span></span><br><span class="line"><span class="function"><span class="comment">//3、@RequestMapping注解方法的@ModelAttribute注解的参数进行命令对象的绑定  </span></span></span><br><span class="line"><span class="function">@<span class="title">RequestMapping</span><span class="params">(<span class="string">"/session1"</span>)</span>   <span class="comment">//③  </span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">session1</span><span class="params">(@ModelAttribute(<span class="string">"user"</span>)</span> UserModel user)  </span></span><br><span class="line"><span class="function">  </span></span><br><span class="line"><span class="function"><span class="comment">//4、通过SessionStatus的setComplete()方法清除@SessionAttributes指定的会话数据  </span></span></span><br><span class="line"><span class="function">@<span class="title">RequestMapping</span><span class="params">(<span class="string">"/session2"</span>)</span>   <span class="comment">//③  </span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">session</span><span class="params">(@ModelAttribute(<span class="string">"user"</span>)</span> UserModel user, SessionStatus status) </span>&#123;  </span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">true</span>) &#123; <span class="comment">//④  </span></span><br><span class="line">        status.setComplete();  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> <span class="string">"success"</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>@SessionAttributes(value = {“user”})含义：</p>
+<p>@SessionAttributes(value = {“user”}) 标识将模型数据中的名字为“user” 的对象存储到会话中（默认HttpSession），此处value指定将模型数据中的哪些数据（名字进行匹配）存储到会话中，此外还有一个types属性表示模型数据中的哪些类型的对象存储到会话范围内，如果同时指定value和types属性则那些名字和类型都匹配的对象才能存储到会话范围内。</p>
+<p>包含@SessionAttributes的执行流程如下所示：</p>
+<p>① 首先根据@SessionAttributes注解信息查找会话内的对象放入到模型数据中；</p>
+<p>② 执行@ModelAttribute注解的方法：如果模型数据中包含同名的数据，则不执行@ModelAttribute注解方法进行准备表单引用数据，而是使用①步骤中的会话数据；如果模型数据中不包含同名的数据，执行@ModelAttribute注解的方法并将返回值添加到模型数据中；</p>
+<p>③ 执行@RequestMapping方法，绑定@ModelAttribute注解的参数：查找模型数据中是否有@ModelAttribute注解的同名对象，如果有直接使用，否则通过反射创建一个；并将请求参数绑定到该命令对象；</p>
+<p>此处需要注意：如果使用@SessionAttributes注解控制器类之后，③步骤一定是从模型对象中取得同名的命令对象，如果模型数据中不存在将抛出HttpSessionRequiredException Expected session attribute ‘user’(Spring3.1)</p>
+<p>或HttpSessionRequiredException Session attribute ‘user’ required - not found in session(Spring3.0)异常。</p>
+<p>④ 如果会话可以销毁了，如多步骤提交表单的最后一步，此时可以调用SessionStatus对象的setComplete()标识当前会话的@SessionAttributes指定的数据可以清理了，此时当@RequestMapping功能处理方法执行完毕会进行清理会话数据。</p>
+<h3 id="CookieValue"><a href="#CookieValue" class="headerlink" title="@CookieValue"></a>@CookieValue</h3><h4 id="绑定Cookie数据值"><a href="#绑定Cookie数据值" class="headerlink" title="绑定Cookie数据值"></a>绑定Cookie数据值</h4><p>@CookieValue用于将请求的Cookie数据映射到功能处理方法的参数上。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(@CookieValue(value=<span class="string">"JSESSIONID"</span>, defaultValue=<span class="string">""</span>)</span> String sessionId)</span></span><br></pre></td></tr></table></figure>
+<p>如上配置将自动将JSESSIONID值入参到sessionId参数上，defaultValue表示Cookie中没有JSESSIONID时默认为空。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">test2</span><span class="params">(@CookieValue(value=<span class="string">"JSESSIONID"</span>, defaultValue=<span class="string">""</span>)</span> Cookie sessionId)</span></span><br></pre></td></tr></table></figure>
+<p>传入参数类型也可以是javax.servlet.http.Cookie类型</p>
+<p>测试代码在CookieValueTypeController中。@CookieValue也拥有和@RequestParam相同的三个参数，含义一样。</p>
+<h3 id="RequestBody"><a href="#RequestBody" class="headerlink" title="@RequestBody"></a>@RequestBody</h3><p>主要用来接收前端传递给后端的json字符串中的数据的(请求体中的数据的);</p>
+<p>GET方式无请求体，所以使用@RequestBody接收数据时，前端不能使用GET方式提交数据，而是用POST方式进行提交。</p>
+<p>只接收POST请求Body里的数据。 </p>
+<h3 id="InitBinder"><a href="#InitBinder" class="headerlink" title="@InitBinder"></a>@InitBinder</h3><p>在使用SpingMVC框架的项目中，经常会遇到页面某些数据类型是Date、Integer、Double等的数据要绑定到控制器的实体，或者控制器需要接受这些数据，如果这类数据类型不做处理的话将无法绑定。</p>
+<p>由@InitBinder表示的方法，可以对WebDataBinder对象进行初始化。WebDataBinder是DataBinder的子类，用于完成由表单到JavaBean属性的绑定。</p>
+<p>@InitBinder方法不能有返回值，它必须盛名为void。</p>
+<p>@InitBinder方法的参数通常是WebDataBinder，@InitBinder可以对WebDataBinder进行初始化。</p>
+<h3 id="DateTimeFormat"><a href="#DateTimeFormat" class="headerlink" title="@DateTimeFormat"></a>@DateTimeFormat</h3><p>用于springmvc封装数据时转换日期格式</p>
+<p>加载实体类的属性上，很方便</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DateTimeFormat</span>(pattern=<span class="string">"yyyy-MM-dd HH:mm"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="com-alibaba-dubbo-config-annotation-Service-Service"><a href="#com-alibaba-dubbo-config-annotation-Service-Service" class="headerlink" title="com.alibaba.dubbo.config.annotation.Service @Service"></a>com.alibaba.dubbo.config.annotation.Service @Service</h3><p>dubbo的service</p>
+<h3 id="reference"><a href="#reference" class="headerlink" title="@reference"></a>@reference</h3><p>是dubbo注解</p>
+<p>@reference也是注入，但是一般用来注入分布式的远程服务对象，需要配合dubbo配置使用。</p>
+<h3 id="Field"><a href="#Field" class="headerlink" title="@Field"></a>@Field</h3><p>solr注解如下面示例代表该属性和Solrhome 的 schema.xml中名为item_title的域对应。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Field</span>(<span class="string">"item_title"</span>)</span><br><span class="line">   <span class="keyword">private</span> String title;</span><br></pre></td></tr></table></figure>
+<h3 id="Dynamic"><a href="#Dynamic" class="headerlink" title="@Dynamic"></a>@Dynamic</h3><p>solr注解代表该属性为动态域</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Dynamic</span></span><br><span class="line">    <span class="meta">@Field</span>(<span class="string">"item_spec_*"</span>)</span><br><span class="line">    <span class="keyword">private</span> Map&lt;String,String&gt; specMap;</span><br></pre></td></tr></table></figure>
+<h3 id="JmsListener"><a href="#JmsListener" class="headerlink" title="@JmsListener"></a>@JmsListener</h3><p>通过@JmsListener(destination = “queueName”) 注解，实现对特定队列的消费。</p>
+<h3 id="InitBinder-1"><a href="#InitBinder-1" class="headerlink" title="@InitBinder"></a>@InitBinder</h3><p>在使用SpingMVC框架的项目中，经常会遇到页面某些数据类型是Date、Integer、Double等的数据要绑定到控制器的实体，或者控制器需要接受这些数据，如果这类数据类型不做处理的话将无法绑定。</p>
+<p>这里我们可以使用注解@InitBinder来解决这些问题，这样SpingMVC在绑定表单之前，都会先注册这些编辑器。一般会将这些方法些在BaseController中，需要进行这类转换的控制器只需继承BaseController即可。</p>
+<p>其实Spring提供了很多的实现类，如CustomDateEditor、CustomBooleanEditor、CustomNumberEditor等，基本上是够用的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@InitBinder</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initBinder</span><span class="params">(WebDataBinder binder)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    SimpleDateFormat dateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">    dateFormat.setLenient(<span class="keyword">false</span>);</span><br><span class="line">    binder.registerCustomEditor(Date.class, <span class="keyword">new</span> CustomDateEditor(dateFormat, <span class="keyword">true</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="PostConstruct和-PreConstruct注解"><a href="#PostConstruct和-PreConstruct注解" class="headerlink" title="@PostConstruct和@PreConstruct注解"></a>@PostConstruct和@PreConstruct注解</h3><p>1.@PostConstruct说明</p>
+<p>​     被@PostConstruct修饰的方法会在服务器加载Servlet的时候运行，并且只会被服务器调用一次，类似于Serclet的inti()方法。被@PostConstruct修饰的方法会在构造函数之后，init()方法之前运行。</p>
+<p>2.@PreDestroy说明</p>
+<p>​     被@PreDestroy修饰的方法会在服务器卸载Servlet的时候运行，并且只会被服务器调用一次，类似于Servlet的destroy()方法。被@PreDestroy修饰的方法会在destroy()方法之后运行，在Servlet被彻底卸载之前。</p>
+<h3 id="Entity注解"><a href="#Entity注解" class="headerlink" title="@Entity注解"></a>@Entity注解</h3><p>必须与@Id注解 结合使用<br>     否则  No identifier specified for entity:   </p>
+<p>name 属性<br>        (可选)实体名称。 缺省为实体类的非限定名称。<br>        该名称用于引用查询中的实体。<br>        该名称不能是Java持久性查询语言中的保留字面值。  </p>
+<p>   不与@Table结合的话 表名 默认为 SnakeCaseStrategy(命名策略 )为表名  </p>
+<p>​    若使用 name属性 且没有与@Table结合 则表名为 name值的SnakeCaseStrategy(命名策略 ) </p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@Entity public class UserEntity&#123;...&#125; 表名 user_entity </span><br><span class="line">@Entity(name=&quot;UE&quot;) public class UserEntity&#123;...&#125; 表名 ue </span><br><span class="line">@Entity(name=&quot;UsEntity&quot;) public class UserEntity&#123;...&#125; 表名</span><br></pre></td></tr></table></figure>
+<h3 id="ServletComponentScan"><a href="#ServletComponentScan" class="headerlink" title="@ServletComponentScan"></a>@ServletComponentScan</h3><p>SpringBootApplication 上使用@ServletComponentScan 注解后</p>
+<p>Servlet可以直接通过@WebServlet注解自动注册</p>
+<p>Filter可以直接通过@WebFilter注解自动注册</p>
+<p>Listener可以直接通过@WebListener 注解自动注册</p>
+<h3 id="JsonProperty"><a href="#JsonProperty" class="headerlink" title="@JsonProperty"></a>@JsonProperty</h3><p>此注解用于属性上，作用是把该属性的名称序列化为另外一个名称，如把trueName属性序列化为name，@JsonProperty(“name”)。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@JsonProperty</span>(<span class="string">"name"</span>) </span><br><span class="line">   <span class="keyword">private</span> String trueName;</span><br></pre></td></tr></table></figure>
+<p>@JsonProperty不仅仅是在序列化的时候有用，反序列化的时候也有用，比如有些接口返回的是json字符串，命名又不是标准的驼峰形式，在映射成对象的时候，将类的属性上加上@JsonProperty注解，<br>里面写上返回的json串对应的名字</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/22/java遇到的注解4/" rel="next" title="java遇到的注解4">
+                <i class="fa fa-chevron-left"></i> java遇到的注解4
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/timg.jpg"
+                alt="York" />
+            
+              <p class="site-author-name" itemprop="name">York</p>
+              <p class="site-description motion-element" itemprop="description">先生卖我几两仁义道德</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">73</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">74</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">53</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/xuquezi" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#RequestParam"><span class="nav-number">1.</span> <span class="nav-text">@RequestParam</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RequestHeader"><span class="nav-number">2.</span> <span class="nav-text">@RequestHeader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SessionAttributes"><span class="nav-number">3.</span> <span class="nav-text">@SessionAttributes</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#绑定命令对象到session"><span class="nav-number">3.1.</span> <span class="nav-text">绑定命令对象到session</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CookieValue"><span class="nav-number">4.</span> <span class="nav-text">@CookieValue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#绑定Cookie数据值"><span class="nav-number">4.1.</span> <span class="nav-text">绑定Cookie数据值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RequestBody"><span class="nav-number">5.</span> <span class="nav-text">@RequestBody</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#InitBinder"><span class="nav-number">6.</span> <span class="nav-text">@InitBinder</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DateTimeFormat"><span class="nav-number">7.</span> <span class="nav-text">@DateTimeFormat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#com-alibaba-dubbo-config-annotation-Service-Service"><span class="nav-number">8.</span> <span class="nav-text">com.alibaba.dubbo.config.annotation.Service @Service</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reference"><span class="nav-number">9.</span> <span class="nav-text">@reference</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Field"><span class="nav-number">10.</span> <span class="nav-text">@Field</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dynamic"><span class="nav-number">11.</span> <span class="nav-text">@Dynamic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JmsListener"><span class="nav-number">12.</span> <span class="nav-text">@JmsListener</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#InitBinder-1"><span class="nav-number">13.</span> <span class="nav-text">@InitBinder</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PostConstruct和-PreConstruct注解"><span class="nav-number">14.</span> <span class="nav-text">@PostConstruct和@PreConstruct注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Entity注解"><span class="nav-number">15.</span> <span class="nav-text">@Entity注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ServletComponentScan"><span class="nav-number">16.</span> <span class="nav-text">@ServletComponentScan</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JsonProperty"><span class="nav-number">17.</span> <span class="nav-text">@JsonProperty</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">York</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.1</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共93.9k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

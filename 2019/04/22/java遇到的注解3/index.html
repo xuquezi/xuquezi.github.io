@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "e080c7a7"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.icon?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.icon?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: 'IE1WYPLC4A',
+      apiKey: 'your API Key',
+      indexName: 'your Index name',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="@RestController@RestController = @Controller + @ResponseBody。 @Transactional   属性 类型 描述     value String 可选的限定描述符，指定使用的事务管理器   propagation enum: Propagation 可选的事务传播行为设置   isolation enum: Isolation 可选的">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java遇到的注解3">
+<meta property="og:url" content="http://neverloseyourself.top/2019/04/22/java遇到的注解3/index.html">
+<meta property="og:site_name" content="天下不易其乐">
+<meta property="og:description" content="@RestController@RestController = @Controller + @ResponseBody。 @Transactional   属性 类型 描述     value String 可选的限定描述符，指定使用的事务管理器   propagation enum: Propagation 可选的事务传播行为设置   isolation enum: Isolation 可选的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-22T13:32:46.349Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java遇到的注解3">
+<meta name="twitter:description" content="@RestController@RestController = @Controller + @ResponseBody。 @Transactional   属性 类型 描述     value String 可选的限定描述符，指定使用的事务管理器   propagation enum: Propagation 可选的事务传播行为设置   isolation enum: Isolation 可选的">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="天下不易其乐" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://neverloseyourself.top/2019/04/22/java遇到的注解3/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>java遇到的注解3 | 天下不易其乐</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">天下不易其乐</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Talk is cheap,show me your code.</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/04/22/java遇到的注解3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="York">
+      <meta itemprop="description" content="先生卖我几两仁义道德">
+      <meta itemprop="image" content="/images/timg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天下不易其乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java遇到的注解3
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-22 21:31:55 / 修改时间：21:32:46" itemprop="dateCreated datePublished" datetime="2019-04-22T21:31:55+08:00">2019-04-22</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="RestController"><a href="#RestController" class="headerlink" title="@RestController"></a>@RestController</h3><p>@RestController = @Controller + @ResponseBody。</p>
+<h3 id="Transactional"><a href="#Transactional" class="headerlink" title="@Transactional"></a>@Transactional</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>String</td>
+<td>可选的限定描述符，指定使用的事务管理器</td>
+</tr>
+<tr>
+<td>propagation</td>
+<td>enum: Propagation</td>
+<td>可选的事务传播行为设置</td>
+</tr>
+<tr>
+<td>isolation</td>
+<td>enum: Isolation</td>
+<td>可选的事务隔离级别设置</td>
+</tr>
+<tr>
+<td>readOnly</td>
+<td>boolean</td>
+<td>读写或只读事务，默认读写</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>int (in seconds granularity)</td>
+<td>事务超时时间设置</td>
+</tr>
+<tr>
+<td>rollbackFor</td>
+<td>Class对象数组，必须继承自Throwable</td>
+<td>导致事务回滚的异常类数组</td>
+</tr>
+<tr>
+<td>rollbackForClassName</td>
+<td>类名数组，必须继承自Throwable</td>
+<td>导致事务回滚的异常类名字数组</td>
+</tr>
+<tr>
+<td>noRollbackFor</td>
+<td>Class对象数组，必须继承自Throwable</td>
+<td>不会导致事务回滚的异常类数组</td>
+</tr>
+<tr>
+<td>noRollbackForClassName</td>
+<td>类名数组，必须继承自Throwable</td>
+<td>不会导致事务回滚的异常类名字数组</td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<p>指示spring事务管理器回滚一个事务的推荐方法是在当前事务的上下文内抛出异常 </p>
+<p>spring事务管理器会捕捉任何未处理的异常，然后依据规则决定是否回滚抛出异常的事务 </p>
+<p>默认配置下，spring只有在抛出的异常为运行时unchecked异常时才回滚该事务，也就是抛出的异常为</p>
+<p>RuntimeException的子类(Errors也会导致事务回滚)，而抛出checked异常则不会导致事务回滚。</p>
+<p>用 spring 事务管理器,由spring来负责数据库的打开,提交,回滚.默认遇到运行期异常(throw new </p>
+<p>RuntimeException(“注释”);)会回滚，即遇到不受检查（unchecked）的异常时回滚；而遇到需要捕获的异常</p>
+<p>(throw new Exception(“注释”);)不会回滚,即遇到受检查的异常（就是非运行时抛出的异常，编译器会检查到的异</p>
+<p>常叫受检查异常或说受检查异常）时，需我们指定方式来让事务回滚要想所有异常都回滚,要加上 @Transactional( </p>
+<p>rollbackFor={Exception.class,其它异常}) .如果让unchecked异常不回滚： </p>
+<p>@Transactional(notRollbackFor=RunTimeException.class)</p>
+<p><strong>@Transactional 使用位置 类上方、方法上方</strong><br>Spring 建议不要在接口或者接口方法上使用该注解，因为这只有在使用基于接口的代理时它才会生效<br>当作用于类上时，该类的所有 public 方法将都具有该类型的事务属性，同时，我们也可以在方法级别使用该标注来覆盖类级别的定义。</p>
+<p><strong>方法的访问权限为 public</strong><br>@Transactional 注解应该只被应用到 public 方法上，这是由 Spring AOP 的本质决定的。在 protected、private 或者默认可见性的方法上使用 @Transactional 注解，这将被忽略，也不会抛出任何异常</p>
+<p><strong>默认情况下，只有来自外部的方法调用才会被AOP代理捕获，也就是，类内部方法调用本类内部的其他方法并不会引起事务行为，即使被调用方法使用@Transactional注解进行修饰</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">例如一：同一个类中方法，A方法未使用此标签，B使用了，C未使用，A 调用 B , B 调用 C ；则外部调用A之后，B的事务是不会起作用的</span><br><span class="line">例如二：若是有上层（按照 Controller层、Service层、DAO层的顺序）由Action 调用 Service 直接调用，发生异常会发生回滚；若间接调用，Action 调用 Service 中 的A 方法，A无@Transactional 注解，B有，A调用B，B的注解无效</span><br></pre></td></tr></table></figure>
+<h3 id="ContextConfiguration"><a href="#ContextConfiguration" class="headerlink" title="@ContextConfiguration"></a>@ContextConfiguration</h3><p>用来指定加载的Spring配置文件的位置,会加载默认配置文件。</p>
+<p>Spring整合JUnit4测试时，使用注解引入多个配置文件。</p>
+<p>@ContextConfiguration 注解有以下两个常用的属性：</p>
+<p>locations：可以通过该属性手工指定 Spring 配置文件所在的位置，可以指定一个或多个 Spring 配置文件。</p>
+<p>inheritLocations：是否要继承父测试用例类中的 Spring 配置文件，默认为 true。</p>
+<h3 id="Rollback"><a href="#Rollback" class="headerlink" title="@Rollback"></a>@Rollback</h3><p>Spring整合JUnit4测试时：</p>
+<p>表明被注解方法的事务在完成后是否需要被回滚。 如果true，事务将被回滚，否则事务将被提交。</p>
+<h3 id="NotTransactional"><a href="#NotTransactional" class="headerlink" title="@NotTransactional"></a>@NotTransactional</h3><p>Spring整合JUnit4测试时：</p>
+<p>出现该注解表明测试方法必须不在事务中执行。</p>
+<h3 id="TransactionConfiguration"><a href="#TransactionConfiguration" class="headerlink" title="@TransactionConfiguration"></a>@TransactionConfiguration</h3><p>为配置事务性测试定义了类级别的元数据。特别地，如果需要的PlatformTransactionManager不是“transactionManager”的话， 那么可以显式配置驱动事务的PlatformTransactionManager的bean名字。此外， 可以将defaultRollback标志改为false。通常， @TransactionConfiguration与@ContextConfiguration搭配使用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(SpringJUnit4ClassRunner.class)</span><br><span class="line"><span class="meta">@WebAppConfiguration</span></span><br><span class="line"><span class="meta">@ContextConfiguration</span>(locations = &#123; <span class="string">"classpath:spring.xml"</span>, <span class="string">"classpath:spring-mvc.xml"</span>, <span class="string">"classpath:spring/spring-mybatis.xml"</span>&#125;)</span><br><span class="line"><span class="comment">//当然 你可以声明一个事务管理 每个单元测试都进行事务回滚 无论成功与否</span></span><br><span class="line"><span class="meta">@TransactionConfiguration</span></span><br><span class="line"><span class="meta">@Transactional</span></span><br></pre></td></tr></table></figure>
+<p>但是上述写法已经过时，替代写法为</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(SpringJUnit4ClassRunner.class)</span><br><span class="line"><span class="meta">@WebAppConfiguration</span></span><br><span class="line"><span class="meta">@ContextConfiguration</span>(locations = &#123; <span class="string">"classpath:spring.xml"</span>, <span class="string">"classpath:spring-mvc.xml"</span>, <span class="string">"classpath:spring/spring-mybatis.xml"</span>&#125;)</span><br><span class="line"><span class="comment">//当然 你可以声明一个事务管理 每个单元测试都进行事务回滚 无论成功与否</span></span><br><span class="line"><span class="meta">@Rollback</span></span><br><span class="line"><span class="meta">@Transactional</span></span><br></pre></td></tr></table></figure>
+<h3 id="WebAppConfiguration-“src-main-resources”"><a href="#WebAppConfiguration-“src-main-resources”" class="headerlink" title="@WebAppConfiguration(“src/main/resources”)"></a>@WebAppConfiguration(“src/main/resources”)</h3><p>注解在类上,用来声明加载的ApplicationContex 是一个WebApplicationContext ,它的属性指定的是Web资源的位置,默认为src/main/webapp ,自定义修改为 resource。</p>
+<h3 id="Junit常用注解"><a href="#Junit常用注解" class="headerlink" title="Junit常用注解"></a>Junit常用注解</h3><p><strong>@Before</strong>：初始化方法，@Test之前执行</p>
+<p><strong>@After</strong>：释放资源，@Test之后执行</p>
+<p><strong>@Test</strong>：测试方法，在这里可以测试期望异常和超时时间</p>
+<p><strong>@Ignore</strong>：忽略的测试方法</p>
+<p><strong>@BeforeClass</strong>：针对所有测试，只执行一次，且必须为static void</p>
+<p><strong>@AfterClass</strong>：针对所有测试，只执行一次，且必须为static void</p>
+<p><strong>@RunWith</strong>：指定使用的单元测试执行类</p>
+<p>测试用例执行顺序 @BeforeClass ==&gt; @Before ==&gt; @Test ==&gt; @After ==&gt; @AfterClass </p>
+<h3 id="ControllerAdvice"><a href="#ControllerAdvice" class="headerlink" title="@ControllerAdvice"></a>@ControllerAdvice</h3><p>从名字上可以看出大体意思是控制器增强。</p>
+<p>注解了@Controller的类的方法可以使用@ExceptionHandler、@InitBinder、@ModelAttribute注解到方法上，@ControllerAdvice注解将作用在 所有注解了@RequestMapping的控制器的方法上。</p>
+<p>简单来说注解了@ControllerAdvice的类的方法就可以注解@ExceptionHandler、@InitBinder、@ModelAttribute。并将方法应用与注解了@RequestMapping的控制器的方法上。</p>
+<p>典型的例子就是全局异常处理。</p>
+<h3 id="RestControllerAdvice"><a href="#RestControllerAdvice" class="headerlink" title="@RestControllerAdvice"></a>@RestControllerAdvice</h3><p>类似于 @RestController 与 @Controller的区别。</p>
+<p>@RestControllerAdvice = @ControllerAdvice + @ResponseBody。</p>
+<h3 id="MapperScan和-ComponentScan"><a href="#MapperScan和-ComponentScan" class="headerlink" title="@MapperScan和@ComponentScan"></a>@MapperScan和@ComponentScan</h3><p>@MapperScan是mybatis的注解，@MapperScan扫描dao包代表包下的是mybatis的Mapper类。</p>
+<p>Mapper类是接口，不需要我们写实现类，所以我们能看到service层使用@Service，controller层使用了@Controller却没有看到dao层使用@Repository注解。</p>
+<p>测试时遇到过userDao报红如下，因为没有注入dao，即没有@Repository注解，但是已经配置了@MapperScan，所以虽然idea报红了但是仍然可以测试运行。如果要想不报红的话也很简单，只要加上@Repository并用@ComponentScan扫描就好了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DaoTest</span> <span class="keyword">extends</span> <span class="title">AnnotationSSMTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserDao userDao;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">userDaoTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">        User user = userDao.queryUserByName(<span class="string">"haha"</span>);</span><br><span class="line">        System.out.println(user);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>@ComponentScan是把类注入到SpringIOC中。</p>
+<h3 id="SpringBootApplication"><a href="#SpringBootApplication" class="headerlink" title="@SpringBootApplication"></a>@SpringBootApplication</h3><p>包含了@ComponentScan、@Configuration和@EnableAutoConfiguration等注解。</p>
+<p>其中@ComponentScan让springboot扫描到Configuration类并把它加入到程序上下文。</p>
+<h3 id="EnableAutoConfiguration"><a href="#EnableAutoConfiguration" class="headerlink" title="@EnableAutoConfiguration"></a>@EnableAutoConfiguration</h3><p>自动配置。</p>
+<h3 id="Inject"><a href="#Inject" class="headerlink" title="@Inject"></a>@Inject</h3><p>@Inject是JSR330 (Dependency Injection for Java)中的规范，需要导入javax.inject.Inject;实现注入。</p>
+<p>@Inject是根据类型进行自动装配的，如果需要按名称进行装配，则需要配合@Named；</p>
+<p>@Inject可以作用在变量、setter方法、构造函数上。</p>
+<h3 id="Named"><a href="#Named" class="headerlink" title="@Named"></a>@Named</h3><p>@Named(“XXX”) 中的 XX是 Bean 的名称，所以 @Inject和 @Named结合使用时，自动注入的策略就从 byType 转变成 byName 了。</p>
+<p><strong>@Autowired是spring自带的，@Inject是JSR330规范实现的，@Resource是JSR250规范实现的，需要导入不同的包</strong></p>
+<p><strong>@Autowired、@Inject用法基本一样，不同的是@Autowired有一个request属性</strong></p>
+<p><strong>@Autowired、@Inject是默认按照类型匹配的，@Resource是按照名称匹配的</strong></p>
+<p><strong>@Autowired如果需要按照名称匹配需要和@Qualifier一起使用，@Inject和@Name一起使用</strong></p>
+<h3 id="MapperScan和-Mapper"><a href="#MapperScan和-Mapper" class="headerlink" title="@MapperScan和@Mapper"></a>@MapperScan和@Mapper</h3><p>@MapperScan用于扫描dao包。在springboot项目中加在启动类上如下。也可以用@Mapper达到同样效果。只不过是在每一个dao类都要加。当启动类不和dao层，service层等同级时，@Mapper则不会有效果，而@MapperScan只要路径正确仍然有效。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@MapperScan</span>(<span class="string">"springboot.demo.dao"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">      SpringApplication.run(DemoApplication.class, args);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="SpringApplicationConfiguration-Application-class"><a href="#SpringApplicationConfiguration-Application-class" class="headerlink" title="@SpringApplicationConfiguration(Application.class)"></a>@SpringApplicationConfiguration(Application.class)</h3><p>新版的Spring Boot取消了@SpringApplicationConfiguration这个注解，用@SpringBootTest就可以了。</p>
+<h3 id="swagger注解"><a href="#swagger注解" class="headerlink" title="swagger注解"></a>swagger注解</h3><ul>
+<li>@Api：修饰整个类，描述Controller的作用</li>
+<li>@ApiOperation：描述一个类的一个方法，或者说一个接口</li>
+<li>@ApiParam：单个参数描述</li>
+<li>@ApiModel：用对象来接收参数</li>
+<li>@ApiProperty：用对象接收参数时，描述对象的一个字段</li>
+<li>@ApiResponse：HTTP响应其中1个描述</li>
+<li>@ApiResponses：HTTP响应整体描述</li>
+<li>@ApiIgnore：使用该注解忽略这个API </li>
+<li>@ApiError ：发生错误返回的信息</li>
+<li>@ApiParamImplicitL：一个请求参数</li>
+<li>@ApiParamsImplicit 多个请求参数</li>
+</ul>
+<h3 id="GetMapping、-PostMapping、-PutMapping、-DeleteMapping、-PatchMapping"><a href="#GetMapping、-PostMapping、-PutMapping、-DeleteMapping、-PatchMapping" class="headerlink" title="@GetMapping、@PostMapping、@PutMapping、@DeleteMapping、@PatchMapping"></a>@GetMapping、@PostMapping、@PutMapping、@DeleteMapping、@PatchMapping</h3><p>以@GetMapping为例</p>
+<p>@GetMapping是一个组合注解，是@RequestMapping(method = RequestMethod.GET)的缩写。该注解将HTTP Get 映射到 特定的处理方法上。以此类推。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/22/java遇到的注解2/" rel="next" title="java遇到的注解2">
+                <i class="fa fa-chevron-left"></i> java遇到的注解2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/22/java遇到的注解4/" rel="prev" title="java遇到的注解4">
+                java遇到的注解4 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/timg.jpg"
+                alt="York" />
+            
+              <p class="site-author-name" itemprop="name">York</p>
+              <p class="site-description motion-element" itemprop="description">先生卖我几两仁义道德</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">73</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">74</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">53</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/xuquezi" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#RestController"><span class="nav-number">1.</span> <span class="nav-text">@RestController</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transactional"><span class="nav-number">2.</span> <span class="nav-text">@Transactional</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ContextConfiguration"><span class="nav-number">3.</span> <span class="nav-text">@ContextConfiguration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rollback"><span class="nav-number">4.</span> <span class="nav-text">@Rollback</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NotTransactional"><span class="nav-number">5.</span> <span class="nav-text">@NotTransactional</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TransactionConfiguration"><span class="nav-number">6.</span> <span class="nav-text">@TransactionConfiguration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WebAppConfiguration-“src-main-resources”"><span class="nav-number">7.</span> <span class="nav-text">@WebAppConfiguration(“src/main/resources”)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Junit常用注解"><span class="nav-number">8.</span> <span class="nav-text">Junit常用注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ControllerAdvice"><span class="nav-number">9.</span> <span class="nav-text">@ControllerAdvice</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RestControllerAdvice"><span class="nav-number">10.</span> <span class="nav-text">@RestControllerAdvice</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MapperScan和-ComponentScan"><span class="nav-number">11.</span> <span class="nav-text">@MapperScan和@ComponentScan</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringBootApplication"><span class="nav-number">12.</span> <span class="nav-text">@SpringBootApplication</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EnableAutoConfiguration"><span class="nav-number">13.</span> <span class="nav-text">@EnableAutoConfiguration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Inject"><span class="nav-number">14.</span> <span class="nav-text">@Inject</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Named"><span class="nav-number">15.</span> <span class="nav-text">@Named</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MapperScan和-Mapper"><span class="nav-number">16.</span> <span class="nav-text">@MapperScan和@Mapper</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringApplicationConfiguration-Application-class"><span class="nav-number">17.</span> <span class="nav-text">@SpringApplicationConfiguration(Application.class)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#swagger注解"><span class="nav-number">18.</span> <span class="nav-text">swagger注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GetMapping、-PostMapping、-PutMapping、-DeleteMapping、-PatchMapping"><span class="nav-number">19.</span> <span class="nav-text">@GetMapping、@PostMapping、@PutMapping、@DeleteMapping、@PatchMapping</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">York</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.1</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共93.9k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
