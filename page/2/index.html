@@ -355,7 +355,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/12/25/springboot注解事务处理/">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/05/11/SpringMVC中Controller通过Map给JSP页面传值/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -374,8 +374,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/25/springboot注解事务处理/" itemprop="url">
-                  springboot注解事务处理
+                <a class="post-title-link" href="/2019/05/11/SpringMVC中Controller通过Map给JSP页面传值/" itemprop="url">
+                  SpringMVC中Controller通过Map给JSP页面传值
                 </a>
               
             
@@ -401,180 +401,7 @@
                 
               
 
-              <time title="创建时间：2018-12-25 22:07:49 / 修改时间：22:08:50" itemprop="dateCreated datePublished" datetime="2018-12-25T22:07:49+08:00">2018-12-25</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>用的注解都是@Transactional</p>
-<p>指示spring事务管理器回滚一个事务的推荐方法是在当前事务的上下文内抛出异常 </p>
-<p>spring事务管理器会捕捉任何未处理的异常，然后依据规则决定是否回滚抛出异常的事务 </p>
-<p>默认配置下，spring只有在抛出的异常为运行时unchecked异常时才回滚该事务，也就是抛出的异常为</p>
-<p>RuntimeException的子类(Errors也会导致事务回滚)，而抛出checked异常则不会导致事务回滚。</p>
-<p>用 spring 事务管理器,由spring来负责数据库的打开,提交,回滚.默认遇到运行期例外(throw new </p>
-<p>RuntimeException(“注释”);)会回滚，即遇到不受检查（unchecked）的例外时回滚；而遇到需要捕获的例外</p>
-<p>(throw new Exception(“注释”);)不会回滚,即遇到受检查的例外（就是非运行时抛出的异常，编译器会检查到的异</p>
-<p>常叫受检查例外或说受检查异常）时，需我们指定方式来让事务回滚要想所有异常都回滚,要加上 @Transactional( </p>
-<p>rollbackFor={Exception.class,其它异常}) .如果让unchecked异常不回滚： </p>
-<p>@Transactional(notRollbackFor=RunTimeException.class)</p>
-<p><strong>同样适用与springboot</strong></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/25/springboot注解事务处理/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/12/25/shiro未完待续1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="York">
-      <meta itemprop="description" content="先生卖我几两仁义道德">
-      <meta itemprop="image" content="/images/timg.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="天下不易其乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/25/shiro未完待续1/" itemprop="url">
-                  shiro未完待续1
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-12-25 22:01:44 / 修改时间：22:03:15" itemprop="dateCreated datePublished" datetime="2018-12-25T22:01:44+08:00">2018-12-25</time>
+              <time title="创建时间：2019-05-11 15:30:22 / 修改时间：15:32:10" itemprop="dateCreated datePublished" datetime="2019-05-11T15:30:22+08:00">2019-05-11</time>
             
 
             
@@ -603,7 +430,7 @@
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/shiro/" itemprop="url" rel="index"><span itemprop="name">shiro</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/spring/" itemprop="url" rel="index"><span itemprop="name">spring</span></a></span>
 
                 
                 
@@ -638,28 +465,17 @@
 
       
         
-          <h2 id="1-入门"><a href="#1-入门" class="headerlink" title="1.入门"></a>1.入门</h2><p>Apache Shiro 是 Java 的一个安全框架。</p>
-<p>1) Authentication：身份认证/登录，验证用户是不是拥有相应的身份。</p>
-<p>2) Authorization：授权，即权限验证，验证某个已认证的用户是否拥有某个权限；即判断用户是否能做事情，常见的如：验证某个用户是否拥有某个角色。或者细粒度的验证某个用户对某个资源是否具有某个权限。</p>
-<p>3) Session Manager：会话管理，即用户登录后就是一次会话，在没有退出之前，它的所有信息都在会话中；会话可以是普通 JavaSE 环境的，也可以是如 Web 环境的。</p>
-<p>4) Cryptography：加密，保护数据的安全性，如密码加密存储到数据库，而不是明文存储。</p>
-<p>5) Web Support：Web支持，可以非常容易的集成到 web 环境。</p>
-<p>6) Caching：缓存，比如用户登录后，其用户信息、拥有的角色/权限不必每次去查，这样可以提高效率。</p>
-<p>7) Concurrency：shiro 支持多线程应用的并发验证，即如在一个线程中开启另一个线程，能把权限自动传播过去。</p>
-<p>8) Testing：提供测试支持。</p>
-<p>9) Run As：允许一个用户假装为另一个用户（如果他们允许）的身份进行访问。</p>
-<p>10) Remember Me：记住我，这个是非常常见的功能，即一次登录后，下次再来的话不用登录了。</p>
-<p>Shiro有三个主要的概念：<code>Subject</code>，<code>SecurityManager</code>，<code>Realms</code></p>
-<p><strong>Subject：</strong>翻译为主角，当前参与应用安全部分的主角。可以是用户，可以试第三方服务，可以是cron 任务，或者任何东西。主要指一个正在与当前软件交互的东西。<br>所有Subject都需要SecurityManager，当你与Subject进行交互，这些交互行为实际上被转换为与SecurityManager的交互</p>
-<p><strong>SecurityManager：</strong>安全管理员，Shiro架构的核心，它就像Shiro内部所有原件的保护伞。然而一旦配置了SecurityManager，SecurityManager就用到的比较少，开发者大部分时间都花在Subject上面。<br>请记得，当你与Subject进行交互的时候，实际上是SecurityManager在背后帮你举起Subject来做一些安全操作。</p>
-<p><strong>Realms：</strong>Realms作为Shiro和你的应用的连接桥，当需要与安全数据交互的时候，像用户账户，或者访问控制，Shiro就从一个或多个Realms中查找。<br>Shiro提供了一些可以直接使用的Realms，如果默认的Realms不能满足你的需求，你也可以定制自己的Realms</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/25/shiro未完待续1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>一开始理解不了，后来看做是ModelMap方式传数据，稍微能理解点。。因为ModelMap也是继承与LinkedHashMap。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ModelMap</span> <span class="keyword">extends</span> <span class="title">LinkedHashMap</span>&lt;<span class="title">String</span>, <span class="title">Object</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ModelMap</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ModelMap</span><span class="params">(String attributeName, Object attributeValue)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.addAttribute(attributeName, attributeValue);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ModelMap</span><span class="params">(Object attributeValue)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.addAttribute(attributeValue);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ModelMap <span class="title">addAttribute</span><span class="params">(String attributeName, Object attributeValue)</span> </span>&#123;</span><br><span class="line">        Assert.notNull(attributeName, <span class="string">"Model attribute name must not be null"</span>);</span><br><span class="line">        <span class="keyword">this</span>.put(attributeName, attributeValue);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ModelMap <span class="title">addAttribute</span><span class="params">(Object attributeValue)</span> </span>&#123;</span><br><span class="line">        Assert.notNull(attributeValue, <span class="string">"Model object must not be null"</span>);</span><br><span class="line">        <span class="keyword">return</span> attributeValue <span class="keyword">instanceof</span> Collection &amp;&amp; ((Collection)attributeValue).isEmpty() ? <span class="keyword">this</span> : <span class="keyword">this</span>.addAttribute(Conventions.getVariableName(attributeValue), attributeValue);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ModelMap <span class="title">addAllAttributes</span><span class="params">(Collection&lt;?&gt; attributeValues)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (attributeValues != <span class="keyword">null</span>) &#123;</span><br><span class="line">            Iterator var2 = attributeValues.iterator();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(var2.hasNext()) &#123;</span><br><span class="line">                Object attributeValue = var2.next();</span><br><span class="line">                <span class="keyword">this</span>.addAttribute(attributeValue);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ModelMap <span class="title">addAllAttributes</span><span class="params">(Map&lt;String, ?&gt; attributes)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (attributes != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">this</span>.putAll(attributes);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ModelMap <span class="title">mergeAttributes</span><span class="params">(Map&lt;String, ?&gt; attributes)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (attributes != <span class="keyword">null</span>) &#123;</span><br><span class="line">            Iterator var2 = attributes.entrySet().iterator();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(var2.hasNext()) &#123;</span><br><span class="line">                Entry&lt;String, ?&gt; entry = (Entry)var2.next();</span><br><span class="line">                String key = (String)entry.getKey();</span><br><span class="line">                <span class="keyword">if</span> (!<span class="keyword">this</span>.containsKey(key)) &#123;</span><br><span class="line">                    <span class="keyword">this</span>.put(key, entry.getValue());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsAttribute</span><span class="params">(String attributeName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.containsKey(attributeName);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>请求的jsp页面：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=<span class="string">"addUser"</span> method=<span class="string">"post"</span> enctype=<span class="string">"multipart/form-data"</span>&gt;</span><br><span class="line">		&lt;input type=<span class="string">"submit"</span> value=<span class="string">"新增用户"</span>&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+<p>Controller：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 新增用户</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> user</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"/addUser"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">addUser</span><span class="params">(User user,Map&lt;String, Object&gt; map)</span></span>&#123;</span><br><span class="line">		System.out.println(user);</span><br><span class="line">		map.put(<span class="string">"names"</span>, <span class="string">"小明"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>jsp页面取值：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/html4/loose.dtd"</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	新增成功</span><br><span class="line">	$&#123;requestScope.names&#125;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+          
         
       
     </div>
@@ -711,7 +527,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/12/22/springboot整合邮件/">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/05/11/springboot配置filter/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -730,8 +546,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/22/springboot整合邮件/" itemprop="url">
-                  springboot整合邮件
+                <a class="post-title-link" href="/2019/05/11/springboot配置filter/" itemprop="url">
+                  springboot配置filter
                 </a>
               
             
@@ -757,7 +573,7 @@
                 
               
 
-              <time title="创建时间：2018-12-22 23:36:38 / 修改时间：23:37:38" itemprop="dateCreated datePublished" datetime="2018-12-22T23:36:38+08:00">2018-12-22</time>
+              <time title="创建时间：2019-05-11 15:22:34 / 修改时间：15:25:01" itemprop="dateCreated datePublished" datetime="2019-05-11T15:22:34+08:00">2019-05-11</time>
             
 
             
@@ -779,14 +595,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/springboot/" itemprop="url" rel="index"><span itemprop="name">springboot</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/filter/" itemprop="url" rel="index"><span itemprop="name">filter</span></a></span>
 
                 
                 
@@ -821,15 +630,16 @@
 
       
         
-          <h3 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--mail--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-mail<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="添加配置"><a href="#添加配置" class="headerlink" title="添加配置"></a>添加配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#邮件配置</span><br><span class="line">spring.mail.host=smtp.qq.com</span><br><span class="line">spring.mail.username=1377262954@qq.com</span><br><span class="line">#这里不是邮箱的登录密码，而是开启PO3/SMTP服务时邮箱的授权码</span><br><span class="line">spring.mail.password=vntbnlrepwppgchb</span><br><span class="line">spring.mail.default-encoding=UTF-8</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/22/springboot整合邮件/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h2 id="使用Filter实例"><a href="#使用Filter实例" class="headerlink" title="使用Filter实例"></a>使用Filter实例</h2><h5 id="在SpringBoot中使用Filter也有两种方式：注解注册Filter和代码注册，同样也分别进行举例："><a href="#在SpringBoot中使用Filter也有两种方式：注解注册Filter和代码注册，同样也分别进行举例：" class="headerlink" title="在SpringBoot中使用Filter也有两种方式：注解注册Filter和代码注册，同样也分别进行举例："></a>在SpringBoot中使用Filter也有两种方式：注解注册Filter和代码注册，同样也分别进行举例：</h5><h3 id="通过注解的方式进行注册："><a href="#通过注解的方式进行注册：" class="headerlink" title="通过注解的方式进行注册："></a>通过注解的方式进行注册：</h3><p>配合@Order(1)指定过滤器顺序</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebFilter</span>(urlPatterns = <span class="string">"/*"</span>, filterName = <span class="string">"myfilter"</span>)</span><br><span class="line"><span class="meta">@Order</span>(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileterController</span> <span class="keyword">implements</span> <span class="title">Filter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(FilterConfig filterConfig)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Filter初始化中"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doFilter</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"开始进行过滤处理"</span>);</span><br><span class="line">        <span class="comment">//调用该方法后，表示过滤器经过原来的url请求处理方法</span></span><br><span class="line">        filterChain.doFilter(servletRequest, servletResponse);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Filter销毁中"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="启动类中-SpringBootApplication使用-ServletComponentScan-注解"><a href="#启动类中-SpringBootApplication使用-ServletComponentScan-注解" class="headerlink" title="启动类中@SpringBootApplication使用@ServletComponentScan 注解"></a>启动类中@SpringBootApplication<strong>使用@ServletComponentScan</strong> 注解</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@ServletComponentScan(value = &quot;com.example.admin.config.filter&quot;)//配置扫描filter位置</span><br></pre></td></tr></table></figure>
+<p>@ServletComponentScan作用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Servlet可以直接通过@WebServlet注解自动注册</span><br><span class="line"></span><br><span class="line">Filter可以直接通过@WebFilter注解自动注册</span><br><span class="line"></span><br><span class="line">Listener可以直接通过@WebListener 注解自动注册</span><br></pre></td></tr></table></figure>
+<h3 id="通过代码注册的方式来使用Filter："><a href="#通过代码注册的方式来使用Filter：" class="headerlink" title="通过代码注册的方式来使用Filter："></a>通过代码注册的方式来使用Filter：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileterController</span> <span class="keyword">implements</span> <span class="title">Filter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(FilterConfig filterConfig)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Filter初始化中"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doFilter</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"开始进行过滤处理"</span>);</span><br><span class="line">        <span class="comment">//调用该方法后，表示过滤器经过原来的url请求处理方法</span></span><br><span class="line">        filterChain.doFilter(servletRequest, servletResponse);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Filter销毁中"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 代码方式注册Bean</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> FilterRegistrationBean <span class="title">setFilter</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        FilterRegistrationBean filterBean = <span class="keyword">new</span> FilterRegistrationBean();</span><br><span class="line">        filterBean.setFilter(<span class="keyword">new</span> FilterController());</span><br><span class="line">        filterBean.setName(<span class="string">"FilterController"</span>);</span><br><span class="line">        filterBean.addUrlPatterns(<span class="string">"/*"</span>);</span><br><span class="line">        <span class="keyword">return</span> filterBean;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        SpringApplication.run(Main.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
         
       
     </div>
@@ -881,7 +691,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/12/22/SpringMVC异常统一处理的三种方式/">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/05/11/freemarker静态化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -900,8 +710,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/22/SpringMVC异常统一处理的三种方式/" itemprop="url">
-                  SpringMVC异常统一处理的三种方式
+                <a class="post-title-link" href="/2019/05/11/freemarker静态化/" itemprop="url">
+                  freemarker静态化
                 </a>
               
             
@@ -927,7 +737,7 @@
                 
               
 
-              <time title="创建时间：2018-12-22 23:35:13 / 修改时间：23:36:00" itemprop="dateCreated datePublished" datetime="2018-12-22T23:35:13+08:00">2018-12-22</time>
+              <time title="创建时间：2019-05-11 15:17:08 / 修改时间：15:18:03" itemprop="dateCreated datePublished" datetime="2019-05-11T15:17:08+08:00">2019-05-11</time>
             
 
             
@@ -949,14 +759,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/异常/" itemprop="url" rel="index"><span itemprop="name">异常</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/freemarker/" itemprop="url" rel="index"><span itemprop="name">freemarker</span></a></span>
 
                 
                 
@@ -991,19 +794,13 @@
 
       
         
-          <p>Spring 统一异常处理有 3 种方式，分别为：</p>
-<ol>
-<li>使用 @ ExceptionHandler 注解</li>
-<li>实现 HandlerExceptionResolver 接口</li>
-<li>使用 @controlleradvice 注解</li>
-</ol>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/22/SpringMVC异常统一处理的三种方式/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h1 id="freemarker静态化"><a href="#freemarker静态化" class="headerlink" title="freemarker静态化"></a>freemarker静态化</h1><p>1、使用模板文件静态化<br>定义模板文件，使用freemarker静态化程序生成html文件。<br>2、使用模板字符串静态化<br>定义模板字符串，使用freemarker静态化程序生成html文件。</p>
+<h2 id="使用模板文件静态化"><a href="#使用模板文件静态化" class="headerlink" title="使用模板文件静态化"></a>使用模板文件静态化</h2><p>模板省略，依赖省略</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//基于模板生成静态化文件</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testGenerateHtml</span><span class="params">()</span> <span class="keyword">throws</span> IOException, TemplateException </span>&#123;</span><br><span class="line">    <span class="comment">//创建配置类</span></span><br><span class="line">    Configuration configuration=<span class="keyword">new</span> Configuration(Configuration.getVersion());</span><br><span class="line">北京市昌平区建材城西路金燕龙办公楼一层 电话：<span class="number">400</span>-<span class="number">618</span>-<span class="number">9090</span></span><br><span class="line"><span class="number">1.3</span>.3.2 使用模板字符串静态化</span><br><span class="line">    <span class="comment">//设置模板路径</span></span><br><span class="line">    String classpath = <span class="keyword">this</span>.getClass().getResource(<span class="string">"/"</span>).getPath();</span><br><span class="line">    configuration.setDirectoryForTemplateLoading(<span class="keyword">new</span> File(classpath + <span class="string">"/templates/"</span>));</span><br><span class="line">    <span class="comment">//设置字符集</span></span><br><span class="line">    configuration.setDefaultEncoding(<span class="string">"utf‐8"</span>);</span><br><span class="line">    <span class="comment">//加载模板</span></span><br><span class="line">    Template template = configuration.getTemplate(<span class="string">"test1.ftl"</span>);</span><br><span class="line">    <span class="comment">//数据模型</span></span><br><span class="line">    Map&lt;String,Object&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    map.put(<span class="string">"name"</span>,<span class="string">"黑马程序员"</span>);</span><br><span class="line">    <span class="comment">//静态化</span></span><br><span class="line">    String content = FreeMarkerTemplateUtils.processTemplateIntoString(template, map);</span><br><span class="line">    <span class="comment">//静态化内容</span></span><br><span class="line">    System.out.println(content);</span><br><span class="line">    InputStream inputStream = IOUtils.toInputStream(content);</span><br><span class="line">    <span class="comment">//输出文件</span></span><br><span class="line">    FileOutputStream fileOutputStream = <span class="keyword">new</span> FileOutputStream(<span class="keyword">new</span> File(<span class="string">"d:/test1.html"</span>));</span><br><span class="line">    <span class="keyword">int</span> copy = IOUtils.copy(inputStream, fileOutputStream);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用模板字符串静态化"><a href="#使用模板字符串静态化" class="headerlink" title="使用模板字符串静态化"></a>使用模板字符串静态化</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//基于模板字符串生成静态化文件</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testGenerateHtmlByString</span><span class="params">()</span> <span class="keyword">throws</span> IOException, TemplateException </span>&#123;</span><br><span class="line">    <span class="comment">//创建配置类</span></span><br><span class="line">    Configuration configuration=<span class="keyword">new</span> Configuration(Configuration.getVersion());</span><br><span class="line">    <span class="comment">//模板内容，这里测试时使用简单的字符串作为模板</span></span><br><span class="line">    String templateString=<span class="string">""</span> +</span><br><span class="line">            <span class="string">"&lt;html&gt;\n"</span> +</span><br><span class="line">            <span class="string">"    &lt;head&gt;&lt;/head&gt;\n"</span> +</span><br><span class="line">            <span class="string">"    &lt;body&gt;\n"</span> +</span><br><span class="line">            <span class="string">"    名称：$&#123;name&#125;\n"</span> +</span><br><span class="line">            <span class="string">"    &lt;/body&gt;\n"</span> +</span><br><span class="line">            <span class="string">"&lt;/html&gt;"</span>;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">//模板加载器</span></span><br><span class="line">    StringTemplateLoader stringTemplateLoader = <span class="keyword">new</span> StringTemplateLoader();</span><br><span class="line">    stringTemplateLoader.putTemplate(<span class="string">"template"</span>,templateString);</span><br><span class="line">    configuration.setTemplateLoader(stringTemplateLoader);</span><br><span class="line">    <span class="comment">//得到模板</span></span><br><span class="line">    Template template = configuration.getTemplate(<span class="string">"template"</span>,<span class="string">"utf‐8"</span>);</span><br><span class="line">    <span class="comment">//数据模型</span></span><br><span class="line">    Map&lt;String,Object&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    map.put(<span class="string">"name"</span>,<span class="string">"黑马程序员"</span>);</span><br><span class="line">    <span class="comment">//静态化</span></span><br><span class="line">    String content = FreeMarkerTemplateUtils.processTemplateIntoString(template, map);</span><br><span class="line">    <span class="comment">//静态化内容</span></span><br><span class="line">    System.out.println(content);</span><br><span class="line">北京市昌平区建材城西路金燕龙办公楼一层 电话：<span class="number">400</span>-<span class="number">618</span>-<span class="number">9090</span></span><br><span class="line">    InputStream inputStream = IOUtils.toInputStream(content);</span><br><span class="line">    <span class="comment">//输出文件</span></span><br><span class="line">    FileOutputStream fileOutputStream = <span class="keyword">new</span> FileOutputStream(<span class="keyword">new</span> File(<span class="string">"d:/test1.html"</span>));</span><br><span class="line">    IOUtils.copy(inputStream, fileOutputStream);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
         
       
     </div>
@@ -1055,7 +852,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/12/22/Json和FastJson/">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/05/11/RestTemplate/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -1074,8 +871,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/22/Json和FastJson/" itemprop="url">
-                  Json和FastJson
+                <a class="post-title-link" href="/2019/05/11/RestTemplate/" itemprop="url">
+                  RestTemplate
                 </a>
               
             
@@ -1101,7 +898,7 @@
                 
               
 
-              <time title="创建时间：2018-12-22 23:33:16 / 修改时间：23:34:23" itemprop="dateCreated datePublished" datetime="2018-12-22T23:33:16+08:00">2018-12-22</time>
+              <time title="创建时间：2019-05-11 15:13:29 / 修改时间：15:14:37" itemprop="dateCreated datePublished" datetime="2019-05-11T15:13:29+08:00">2019-05-11</time>
             
 
             
@@ -1123,14 +920,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/json/" itemprop="url" rel="index"><span itemprop="name">json</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/RestTemplate/" itemprop="url" rel="index"><span itemprop="name">RestTemplate</span></a></span>
 
                 
                 
@@ -1165,17 +955,14 @@
 
       
         
-          <h2 id="Json格式"><a href="#Json格式" class="headerlink" title="Json格式"></a>Json格式</h2><p>JSON字符串：特殊字符可在字符前面加 \ 或使用 \u 加 4位16进制数来处理</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"name"</span>:<span class="string">"jobs"</span>&#125;</span><br></pre></td></tr></table></figure>
-<p>JSON布尔：必须小写的true和false</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"bool"</span>:<span class="literal">true</span>&#125;</span><br></pre></td></tr></table></figure>
-<p>JSON空：必须小写的null</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"object"</span>:<span class="literal">null</span>&#125;</span><br></pre></td></tr></table></figure>
-<p>JSON数值：不能使用8/16进制</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"num"</span>:<span class="number">60</span>&#125;</span><br><span class="line">&#123;<span class="attr">"num"</span>:<span class="number">-60</span>&#125;</span><br><span class="line">&#123;<span class="attr">"num"</span>:<span class="number">6.6666</span>&#125;</span><br><span class="line">&#123;"num":1e+6&#125;&lt;!-- 1乘10的6次方，e不区分大小写 --&gt;</span><br><span class="line">&#123;"num":1e-6&#125;&lt;!-- 1乘10的负6次方，e不区分大小写 --&gt;</span><br></pre></td></tr></table></figure>
+          <h1 id="RestTemplate"><a href="#RestTemplate" class="headerlink" title="RestTemplate"></a>RestTemplate</h1><p>转自<a href="https://www.jianshu.com/p/0fd5f3f64137" target="_blank" rel="noopener">https://www.jianshu.com/p/0fd5f3f64137</a></p>
+<p>这个作者写的真全！！！</p>
+<p>RestTemplate默认依赖jdk的HTTP连接工具。当然你也可以 通过setRequestFactory属性切换到不同的HTTP源，比如Apache HttpComponents、Netty和OkHttp。</p>
+<h3 id="1-创建RestTemplate"><a href="#1-创建RestTemplate" class="headerlink" title="1.创建RestTemplate"></a>1.创建RestTemplate</h3><p>创建RestTemplate很简单，只需要<code>new RestTemplate()</code>，如果使用Spring架构，将创建的RestTemplate实例通过XML或注解的方式注册到Spring容器中即可</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> RestTemplate <span class="title">restTemplate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> RestTemplate();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/22/Json和FastJson/#more" rel="contents">
+            <a class="btn" href="/2019/05/11/RestTemplate/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1231,7 +1018,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/12/22/异常处理思路/">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/05/11/GridFS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -1250,8 +1037,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/22/异常处理思路/" itemprop="url">
-                  异常处理思路
+                <a class="post-title-link" href="/2019/05/11/GridFS/" itemprop="url">
+                  GridFS
                 </a>
               
             
@@ -1277,7 +1064,7 @@
                 
               
 
-              <time title="创建时间：2018-12-22 23:29:52 / 修改时间：23:31:02" itemprop="dateCreated datePublished" datetime="2018-12-22T23:29:52+08:00">2018-12-22</time>
+              <time title="创建时间：2019-05-11 15:10:56 / 修改时间：15:11:47" itemprop="dateCreated datePublished" datetime="2019-05-11T15:10:56+08:00">2019-05-11</time>
             
 
             
@@ -1299,14 +1086,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/异常/" itemprop="url" rel="index"><span itemprop="name">异常</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/GridFS/" itemprop="url" rel="index"><span itemprop="name">GridFS</span></a></span>
 
                 
                 
@@ -1341,19 +1121,19 @@
 
       
         
-          <p>异常处理思路分为3个层次</p>
-<ul>
-<li>使用try catch处理异常，对controller中一个方法的处理</li>
-<li>使用@ ExceptionHandler 注解,对整个个controller处理</li>
-<li>使用@ControllerAdvice+@ ExceptionHandler全局处理，即所有的controller</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/22/异常处理思路/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h1 id="GridFS"><a href="#GridFS" class="headerlink" title="GridFS"></a>GridFS</h1><h2 id="GridFS简介"><a href="#GridFS简介" class="headerlink" title="GridFS简介"></a>GridFS简介</h2><p>GridFS是MongoDB提供的用于持久化存储文件的模块，CMS使用MongoDB存储数据，使用GridFS可以快速集成<br>开发。</p>
+<p>在GridFS存储文件是将文件分块存储，文件会按照256KB的大小分割成多个块进行存储，GridFS使用两个集合<br>（collection）存储文件，一个集合是chunks, 用于存储文件的二进制数据；一个集合是files，用于存储文件的元数<br>据信息（文件名称、块大小、上传时间等信息）。</p>
+<h2 id="GridFS-存文件"><a href="#GridFS-存文件" class="headerlink" title="GridFS 存文件"></a>GridFS 存文件</h2><p>需要MongoDB依赖</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Resource</span></span><br><span class="line">GridFsTemplate gridFsTemplate;</span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testGridFs</span><span class="params">()</span> <span class="keyword">throws</span> FileNotFoundException </span>&#123;</span><br><span class="line">        <span class="comment">//要存储的文件</span></span><br><span class="line">        File file = <span class="keyword">new</span> File(<span class="string">"d:/index_banner.html"</span>);</span><br><span class="line">        <span class="comment">//定义输入流</span></span><br><span class="line">        FileInputStream inputStram = <span class="keyword">new</span> FileInputStream(file);</span><br><span class="line">        <span class="comment">//向GridFS存储文件</span></span><br><span class="line">        ObjectId objectId = = gridFsTemplate.store(inputStram, <span class="string">"轮播图测试文件01"</span>, <span class="string">""</span>);</span><br><span class="line">        <span class="comment">//得到文件ID</span></span><br><span class="line">        String fileId = objectId.toString();</span><br><span class="line">        System.out.println(fileId);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>文件存储成功得到一个文件id<br>此文件id是fs.files集合中的主键。<br>可以通过文件id查询fs.chunks表中的记录，得到文件的内容。</p>
+<h2 id="GridFS-读取文件"><a href="#GridFS-读取文件" class="headerlink" title="GridFS 读取文件"></a>GridFS 读取文件</h2><p>在config包中定义Mongodb的配置类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MongoConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;spring.data.mongodb.database&#125;"</span>)</span><br><span class="line">    String db;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> GridFSBucket <span class="title">getGridFSBucket</span><span class="params">(MongoClient mongoClient)</span></span>&#123;</span><br><span class="line">        MongoDatabase database = mongoClient.getDatabase(db);</span><br><span class="line">        GridFSBucket bucket = GridFSBuckets.create(database);</span><br><span class="line">        <span class="keyword">return</span> bucket;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line">  <span class="meta">@RunWith</span>(SpringRunner.class)</span><br><span class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GridFsTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    GridFsTemplate gridFsTemplate;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    GridFSBucket gridFSBucket;</span><br><span class="line">   </span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">queryFile</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        String fileId = <span class="string">"5b9c54e264c614237c271a99"</span>;</span><br><span class="line">        <span class="comment">//根据id查询文件</span></span><br><span class="line">        GridFSFile gridFSFile =</span><br><span class="line">gridFsTemplate.findOne(Query.query(Criteria.where(<span class="string">"_id"</span>).is(fileId)));</span><br><span class="line">        <span class="comment">//打开下载流对象</span></span><br><span class="line">        GridFSDownloadStream gridFSDownloadStream =</span><br><span class="line">gridFSBucket.openDownloadStream(gridFSFile.getObjectId());</span><br><span class="line">        <span class="comment">//创建gridFsResource，用于获取流对象</span></span><br><span class="line">        GridFsResource gridFsResource = <span class="keyword">new</span> GridFsResource(gridFSFile,gridFSDownloadStream);</span><br><span class="line">        <span class="comment">//获取流中的数据</span></span><br><span class="line">        String s = IOUtils.toString(gridFsResource.getInputStream(), <span class="string">"UTF‐8"</span>);</span><br><span class="line">        System.out.println(s);</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<h2 id="GridFS删除文件"><a href="#GridFS删除文件" class="headerlink" title="GridFS删除文件"></a>GridFS删除文件</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testDelFile</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    <span class="comment">//根据文件id删除fs.files和fs.chunks中的记录</span></span><br><span class="line">    gridFsTemplate.delete(Query.query(Criteria.where(<span class="string">"_id"</span>).is(<span class="string">"5b32480ed3a022164c4d2f92"</span>)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
         
       
     </div>
@@ -1405,7 +1185,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/12/22/分布式ID生成Twitter的snowflake算法/">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/04/22/java遇到的注解5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -1424,8 +1204,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/22/分布式ID生成Twitter的snowflake算法/" itemprop="url">
-                  分布式ID生成Twitter的snowflake算法
+                <a class="post-title-link" href="/2019/04/22/java遇到的注解5/" itemprop="url">
+                  java遇到的注解5
                 </a>
               
             
@@ -1451,7 +1231,7 @@
                 
               
 
-              <time title="创建时间：2018-12-22 23:27:26 / 修改时间：23:28:48" itemprop="dateCreated datePublished" datetime="2018-12-22T23:27:26+08:00">2018-12-22</time>
+              <time title="创建时间：2019-04-22 21:34:16 / 修改时间：21:34:50" itemprop="dateCreated datePublished" datetime="2019-04-22T21:34:16+08:00">2019-04-22</time>
             
 
             
@@ -1508,170 +1288,26 @@
 
       
         
-          
-            <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;名称：IdWorker.java&lt;/p&gt;</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;描述：分布式自增长ID&lt;/p&gt;</span></span><br><span class="line"><span class="comment"> * &lt;pre&gt;</span></span><br><span class="line"><span class="comment"> *     Twitter的 Snowflake　JAVA实现方案</span></span><br><span class="line"><span class="comment"> * &lt;/pre&gt;</span></span><br><span class="line"><span class="comment"> * 核心代码为其IdWorker这个类实现，其原理结构如下，我分别用一个0表示一位，用—分割开部分的作用：</span></span><br><span class="line"><span class="comment"> * 1||0---0000000000 0000000000 0000000000 0000000000 0 --- 00000 ---00000 ---000000000000</span></span><br><span class="line"><span class="comment"> * 在上面的字符串中，第一位为未使用（实际上也可作为long的符号位），接下来的41位为毫秒级时间，</span></span><br><span class="line"><span class="comment"> * 然后5位datacenter标识位，5位机器ID（并不算标识符，实际是为线程标识），</span></span><br><span class="line"><span class="comment"> * 然后12位该毫秒内的当前毫秒内的计数，加起来刚好64位，为一个Long型。</span></span><br><span class="line"><span class="comment"> * 这样的好处是，整体上按照时间自增排序，并且整个分布式系统内不会产生ID碰撞（由datacenter和机器ID作区分），</span></span><br><span class="line"><span class="comment"> * 并且效率较高，经测试，snowflake每秒能够产生26万ID左右，完全满足需要。</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * 64位ID (42(毫秒)+5(机器ID)+5(业务编码)+12(重复累加))</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Polim</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IdWorker</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 时间起始标记点，作为基准，一般取系统的最近时间（一旦确定不能变动）</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">long</span> twepoch = <span class="number">1288834974657L</span>;</span><br><span class="line">    <span class="comment">// 机器标识位数</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">long</span> workerIdBits = <span class="number">5L</span>;</span><br><span class="line">    <span class="comment">// 数据中心标识位数</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">long</span> datacenterIdBits = <span class="number">5L</span>;</span><br><span class="line">    <span class="comment">// 机器ID最大值</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">long</span> maxWorkerId = -<span class="number">1L</span> ^ (-<span class="number">1L</span> &lt;&lt; workerIdBits);</span><br><span class="line">    <span class="comment">// 数据中心ID最大值</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">long</span> maxDatacenterId = -<span class="number">1L</span> ^ (-<span class="number">1L</span> &lt;&lt; datacenterIdBits);</span><br><span class="line">    <span class="comment">// 毫秒内自增位</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">long</span> sequenceBits = <span class="number">12L</span>;</span><br><span class="line">    <span class="comment">// 机器ID偏左移12位</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">long</span> workerIdShift = sequenceBits;</span><br><span class="line">    <span class="comment">// 数据中心ID左移17位</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">long</span> datacenterIdShift = sequenceBits + workerIdBits;</span><br><span class="line">    <span class="comment">// 时间毫秒左移22位</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">long</span> timestampLeftShift = sequenceBits + workerIdBits + datacenterIdBits;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">long</span> sequenceMask = -<span class="number">1L</span> ^ (-<span class="number">1L</span> &lt;&lt; sequenceBits);</span><br><span class="line">    <span class="comment">/* 上次生产id时间戳 */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">long</span> lastTimestamp = -<span class="number">1L</span>;</span><br><span class="line">    <span class="comment">// 0，并发控制</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> sequence = <span class="number">0L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> workerId;</span><br><span class="line">    <span class="comment">// 数据标识id部分</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> datacenterId;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">IdWorker</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.datacenterId = getDatacenterId(maxDatacenterId);</span><br><span class="line">        <span class="keyword">this</span>.workerId = getMaxWorkerId(datacenterId, maxWorkerId);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> workerId</span></span><br><span class="line"><span class="comment">     *            工作机器ID</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> datacenterId</span></span><br><span class="line"><span class="comment">     *            序列号</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">IdWorker</span><span class="params">(<span class="keyword">long</span> workerId, <span class="keyword">long</span> datacenterId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (workerId &gt; maxWorkerId || workerId &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(String.format(<span class="string">"worker Id can't be greater than %d or less than 0"</span>, maxWorkerId));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (datacenterId &gt; maxDatacenterId || datacenterId &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(String.format(<span class="string">"datacenter Id can't be greater than %d or less than 0"</span>, maxDatacenterId));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.workerId = workerId;</span><br><span class="line">        <span class="keyword">this</span>.datacenterId = datacenterId;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取下一个ID</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">long</span> <span class="title">nextId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> timestamp = timeGen();</span><br><span class="line">        <span class="keyword">if</span> (timestamp &lt; lastTimestamp) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(String.format(<span class="string">"Clock moved backwards.  Refusing to generate id for %d milliseconds"</span>, lastTimestamp - timestamp));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (lastTimestamp == timestamp) &#123;</span><br><span class="line">            <span class="comment">// 当前毫秒内，则+1</span></span><br><span class="line">            sequence = (sequence + <span class="number">1</span>) &amp; sequenceMask;</span><br><span class="line">            <span class="keyword">if</span> (sequence == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">// 当前毫秒内计数满了，则等待下一秒</span></span><br><span class="line">                timestamp = tilNextMillis(lastTimestamp);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            sequence = <span class="number">0L</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        lastTimestamp = timestamp;</span><br><span class="line">        <span class="comment">// ID偏移组合生成最终的ID，并返回ID</span></span><br><span class="line">        <span class="keyword">long</span> nextId = ((timestamp - twepoch) &lt;&lt; timestampLeftShift)</span><br><span class="line">                | (datacenterId &lt;&lt; datacenterIdShift)</span><br><span class="line">                | (workerId &lt;&lt; workerIdShift) | sequence;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> nextId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">long</span> <span class="title">tilNextMillis</span><span class="params">(<span class="keyword">final</span> <span class="keyword">long</span> lastTimestamp)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> timestamp = <span class="keyword">this</span>.timeGen();</span><br><span class="line">        <span class="keyword">while</span> (timestamp &lt;= lastTimestamp) &#123;</span><br><span class="line">            timestamp = <span class="keyword">this</span>.timeGen();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> timestamp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">long</span> <span class="title">timeGen</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> System.currentTimeMillis();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * &lt;p&gt;</span></span><br><span class="line"><span class="comment">     * 获取 maxWorkerId</span></span><br><span class="line"><span class="comment">     * &lt;/p&gt;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">getMaxWorkerId</span><span class="params">(<span class="keyword">long</span> datacenterId, <span class="keyword">long</span> maxWorkerId)</span> </span>&#123;</span><br><span class="line">        StringBuffer mpid = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        mpid.append(datacenterId);</span><br><span class="line">        String name = ManagementFactory.getRuntimeMXBean().getName();</span><br><span class="line">        <span class="keyword">if</span> (!name.isEmpty()) &#123;</span><br><span class="line">         <span class="comment">/*</span></span><br><span class="line"><span class="comment">          * GET jvmPid</span></span><br><span class="line"><span class="comment">          */</span></span><br><span class="line">            mpid.append(name.split(<span class="string">"@"</span>)[<span class="number">0</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">      <span class="comment">/*</span></span><br><span class="line"><span class="comment">       * MAC + PID 的 hashcode 获取16个低位</span></span><br><span class="line"><span class="comment">       */</span></span><br><span class="line">        <span class="keyword">return</span> (mpid.toString().hashCode() &amp; <span class="number">0xffff</span>) % (maxWorkerId + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * &lt;p&gt;</span></span><br><span class="line"><span class="comment">     * 数据标识id部分</span></span><br><span class="line"><span class="comment">     * &lt;/p&gt;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">getDatacenterId</span><span class="params">(<span class="keyword">long</span> maxDatacenterId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> id = <span class="number">0L</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            InetAddress ip = InetAddress.getLocalHost();</span><br><span class="line">            NetworkInterface network = NetworkInterface.getByInetAddress(ip);</span><br><span class="line">            <span class="keyword">if</span> (network == <span class="keyword">null</span>) &#123;</span><br><span class="line">                id = <span class="number">1L</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">byte</span>[] mac = network.getHardwareAddress();</span><br><span class="line">                id = ((<span class="number">0x000000FF</span> &amp; (<span class="keyword">long</span>) mac[mac.length - <span class="number">1</span>])</span><br><span class="line">                        | (<span class="number">0x0000FF00</span> &amp; (((<span class="keyword">long</span>) mac[mac.length - <span class="number">2</span>]) &lt;&lt; <span class="number">8</span>))) &gt;&gt; <span class="number">6</span>;</span><br><span class="line">                id = id % (maxDatacenterId + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            System.out.println(<span class="string">" getDatacenterId: "</span> + e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">    	IdWorker idWorker=<span class="keyword">new</span> IdWorker(<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">    	</span><br><span class="line">    	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)&#123;</span><br><span class="line">    		<span class="keyword">long</span> nextId = idWorker.nextId();</span><br><span class="line">        	System.out.println(nextId);</span><br><span class="line">    	&#125;</span><br><span class="line">    	</span><br><span class="line">    	</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/11/22/vue-cli/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="York">
-      <meta itemprop="description" content="先生卖我几两仁义道德">
-      <meta itemprop="image" content="/images/timg.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="天下不易其乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/22/vue-cli/" itemprop="url">
-                  vue-cli
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-11-22 10:36:28 / 修改时间：10:43:54" itemprop="dateCreated datePublished" datetime="2018-11-22T10:36:28+08:00">2018-11-22</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/vuecli/" itemprop="url" rel="index"><span itemprop="name">vuecli</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>转自<a href="https://blog.csdn.net/wulala_hei/article/details/80488674" target="_blank" rel="noopener">https://blog.csdn.net/wulala_hei/article/details/80488674</a></p>
-<p>vue.js有著名的全家桶系列，包含了vue-router，vuex， vue-resource，再加上构建工具vue-cli，就是一个完整的vue项目的核心构成。</p>
-<p>vue-cli这个构建工具大大降低了webpack的使用难度，支持热更新，有webpack-dev-server的支持，相当于启动了一个请求服务器，给你搭建了一个测试环境，只关注开发就OK。</p>
+          <h3 id="RequestParam"><a href="#RequestParam" class="headerlink" title="@RequestParam"></a>@RequestParam</h3><p>@RequestParam用于将请求参数区数据映射到功能处理方法的参数上。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">queryUserName</span><span class="params">(@RequestParam String userName)</span></span></span><br></pre></td></tr></table></figure>
+<p>在url中输入:localhost:8080/**/?userName=zhangsan</p>
+<p>请求中包含username参数（如/requestparam1?userName=zhang），则自动传入。</p>
+<p>接下来我们看一下@RequestParam注解主要有哪些参数：</p>
+<p>value：参数名字，即入参的请求参数名字，如username表示请求的参数区中的名字为username的参数的值将传入；</p>
+<p>required：是否必须，默认是true，表示请求中一定要有相应的参数，否则将报404错误码；</p>
+<p>defaultValue：默认值，表示如果请求中没有同名参数时的默认值，默认值可以是SpEL表达式，如“#{systemProperties[‘java.vm.version’]}”。表示请求中可以没有名字为username的参数，如果没有默认为null，此处需要注意如下几点：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">queryUserName</span><span class="params">(@RequestParam(value=<span class="string">"userName"</span> ,required =<span class="keyword">false</span> )</span> String userName)</span></span><br></pre></td></tr></table></figure>
+<p>原子类型：必须有值，否则抛出异常，如果允许空值请使用包装类代替。</p>
+<p>​     Boolean包装类型类型：默认Boolean.FALSE，其他引用类型默认为null。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">requestparam5</span><span class="params">(  </span></span></span><br><span class="line"><span class="function"><span class="params">@RequestParam(value=<span class="string">"username"</span>, required=<span class="keyword">true</span>, defaultValue=<span class="string">"zhang"</span>)</span> String username)</span></span><br></pre></td></tr></table></figure>
+<p>如果没有传入参数,则默认是”zhangsan”.</p>
+<p>但是在传递参数的时候如果是url?userName=zhangsan&amp;userName=wangwu时怎么办呢?</p>
+<p>其实在实际roleList参数入参的数据为“zhangsan,wangwu”，即多个数据之间使用“，”分割；我们应该使用如下方式来接收多个请求参数：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">requestparam8</span><span class="params">(@RequestParam(value=<span class="string">"userName"</span>)</span> String []  userNames)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">requestparam8</span><span class="params">(@RequestParam(value=<span class="string">"list"</span>)</span> List&lt;String&gt; list)</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/11/22/vue-cli/#more" rel="contents">
+            <a class="btn" href="/2019/04/22/java遇到的注解5/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1727,7 +1363,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/11/22/vue-cli和webpack配置分析/">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/04/22/java遇到的注解4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -1746,8 +1382,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/22/vue-cli和webpack配置分析/" itemprop="url">
-                  vue-cli和webpack配置分析
+                <a class="post-title-link" href="/2019/04/22/java遇到的注解4/" itemprop="url">
+                  java遇到的注解4
                 </a>
               
             
@@ -1773,7 +1409,7 @@
                 
               
 
-              <time title="创建时间：2018-11-22 10:34:35 / 修改时间：13:33:43" itemprop="dateCreated datePublished" datetime="2018-11-22T10:34:35+08:00">2018-11-22</time>
+              <time title="创建时间：2019-04-22 21:33:05 / 修改时间：21:33:58" itemprop="dateCreated datePublished" datetime="2019-04-22T21:33:05+08:00">2019-04-22</time>
             
 
             
@@ -1795,14 +1431,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/webpack/" itemprop="url" rel="index"><span itemprop="name">webpack</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/webpack/vuecli/" itemprop="url" rel="index"><span itemprop="name">vuecli</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
 
                 
                 
@@ -1837,13 +1466,10 @@
 
       
         
-          <p>转自<a href="https://segmentfault.com/a/1190000008644830" target="_blank" rel="noopener">https://segmentfault.com/a/1190000008644830</a></p>
-<h2 id="入口"><a href="#入口" class="headerlink" title="入口"></a>入口</h2><p>从<code>package.json</code>可以看到开发和生产环境的入口。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">   <span class="string">"dev"</span>: <span class="string">"node build/dev-server.js"</span>,</span><br><span class="line">   <span class="string">"build"</span>: <span class="string">"node build/build.js"</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><h4 id="最新的vue里dev-server-js被替换成了webpack-dev-conf-js！！！"><a href="#最新的vue里dev-server-js被替换成了webpack-dev-conf-js！！！" class="headerlink" title="最新的vue里dev-server.js被替换成了webpack-dev-conf.js！！！"></a>最新的vue里dev-server.js被替换成了webpack-dev-conf.js！！！</h4><p>开发环境的入口文件是 build/dev-server.js</p>
+          <h3 id="Cacheable"><a href="#Cacheable" class="headerlink" title="@Cacheable"></a>@Cacheable</h3><p>@Cacheable可以标记在一个方法上，也可以标记在一个类上。当标记在一个方法上时表示该方法是支持缓存的，当标记在一个类上时则表示该类所有的方法都是支持缓存的。对于一个支持缓存的方法，Spring会在其被调用后将其返回值缓存起来，以保证下次利用同样的参数来执行该方法时可以直接从缓存中获取结果，而不需要再次执行该方法。Spring在缓存方法的返回值时是以键值对进行缓存的，值就是方法的返回结果，至于键的话，Spring又支持两种策略，默认策略和自定义策略，这个稍后会进行说明。需要注意的是当一个支持缓存的方法在对象内部被调用时是不会触发缓存功能的。@Cacheable可以指定三个属性，value、key和condition。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/11/22/vue-cli和webpack配置分析/#more" rel="contents">
+            <a class="btn" href="/2019/04/22/java遇到的注解4/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1899,7 +1525,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/11/22/webpack/">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/04/22/java遇到的注解3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -1918,8 +1544,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/22/webpack/" itemprop="url">
-                  webpack
+                <a class="post-title-link" href="/2019/04/22/java遇到的注解3/" itemprop="url">
+                  java遇到的注解3
                 </a>
               
             
@@ -1945,7 +1571,7 @@
                 
               
 
-              <time title="创建时间：2018-11-22 10:32:29 / 修改时间：10:45:23" itemprop="dateCreated datePublished" datetime="2018-11-22T10:32:29+08:00">2018-11-22</time>
+              <time title="创建时间：2019-04-22 21:31:55 / 修改时间：21:32:46" itemprop="dateCreated datePublished" datetime="2019-04-22T21:31:55+08:00">2019-04-22</time>
             
 
             
@@ -1967,7 +1593,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/webpack/" itemprop="url" rel="index"><span itemprop="name">webpack</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
 
                 
                 
@@ -2002,18 +1628,394 @@
 
       
         
-          <h2 id="四个核心概念："><a href="#四个核心概念：" class="headerlink" title="四个核心概念："></a>四个<strong>核心概念</strong>：</h2><ul>
-<li>入口(entry)</li>
-<li>输出(output)</li>
-<li>loader</li>
-<li>插件(plugins)</li>
-</ul>
-<h3 id="入口"><a href="#入口" class="headerlink" title="入口"></a>入口</h3><p><strong>入口起点(entry point)</strong>指示 webpack 应该使用哪个模块，来作为构建其内部<em>依赖图</em>的开始。进入入口起点后，webpack 会找出有哪些模块和库是入口起点（直接和间接）依赖的。</p>
-<p>每个依赖项随即被处理，最后输出到称之为 <em>bundles</em> 的文件中。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">'./path/to/my/entry/file.js'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+          <h3 id="RestController"><a href="#RestController" class="headerlink" title="@RestController"></a>@RestController</h3><p>@RestController = @Controller + @ResponseBody。</p>
+<h3 id="Transactional"><a href="#Transactional" class="headerlink" title="@Transactional"></a>@Transactional</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>String</td>
+<td>可选的限定描述符，指定使用的事务管理器</td>
+</tr>
+<tr>
+<td>propagation</td>
+<td>enum: Propagation</td>
+<td>可选的事务传播行为设置</td>
+</tr>
+<tr>
+<td>isolation</td>
+<td>enum: Isolation</td>
+<td>可选的事务隔离级别设置</td>
+</tr>
+<tr>
+<td>readOnly</td>
+<td>boolean</td>
+<td>读写或只读事务，默认读写</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>int (in seconds granularity)</td>
+<td>事务超时时间设置</td>
+</tr>
+<tr>
+<td>rollbackFor</td>
+<td>Class对象数组，必须继承自Throwable</td>
+<td>导致事务回滚的异常类数组</td>
+</tr>
+<tr>
+<td>rollbackForClassName</td>
+<td>类名数组，必须继承自Throwable</td>
+<td>导致事务回滚的异常类名字数组</td>
+</tr>
+<tr>
+<td>noRollbackFor</td>
+<td>Class对象数组，必须继承自Throwable</td>
+<td>不会导致事务回滚的异常类数组</td>
+</tr>
+<tr>
+<td>noRollbackForClassName</td>
+<td>类名数组，必须继承自Throwable</td>
+<td>不会导致事务回滚的异常类名字数组</td>
+</tr>
+</tbody>
+</table>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/11/22/webpack/#more" rel="contents">
+            <a class="btn" href="/2019/04/22/java遇到的注解3/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/04/22/java遇到的注解2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="York">
+      <meta itemprop="description" content="先生卖我几两仁义道德">
+      <meta itemprop="image" content="/images/timg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天下不易其乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/22/java遇到的注解2/" itemprop="url">
+                  java遇到的注解2
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-22 21:30:26 / 修改时间：21:31:35" itemprop="dateCreated datePublished" datetime="2019-04-22T21:30:26+08:00">2019-04-22</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Resource-和-Autowired"><a href="#Resource-和-Autowired" class="headerlink" title="@Resource 和 @Autowired"></a>@Resource 和 @Autowired</h2><p><strong>@Resource默认按照名称方式进行bean匹配。</strong> </p>
+<p><strong>@Autowired默认按照类型方式进行bean匹配</strong></p>
+<p>@Resource的作用相当于@Autowired，只不过@Autowired按byType自动注入，而@Resource默认按 byName自动注入罢了。@Resource有两个属性是比较重要的，分是name和type，Spring将@Resource注解的name属性解析为bean的名字，而type属性则解析为bean的类型。所以如果使用name属性，则使用byName的自动注入策略，而使用type属性时则使用byType自动注入策略。如果既不指定name也不指定type属性，这时将通过反射机制使用byName自动注入策略。<br>@Autowired默认按类型装配（这个注解是属业spring的），默认情况下必须要求依赖对象必须存在，如果我们想使用名称装配可以结合@Qualifier注解进行使用。 </p>
+<p>如果一个接口有许多实现类，就无法光靠type决定。<br>推荐用@Resource，稳妥，而且@Resource属于J2EE的，减少了与spring的耦合。 </p>
+<p><strong>@Resource 默认的名字是把类名前面的大写变成小写</strong></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/22/java遇到的注解2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/04/22/java遇到的注解1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="York">
+      <meta itemprop="description" content="先生卖我几两仁义道德">
+      <meta itemprop="image" content="/images/timg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天下不易其乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/22/java遇到的注解1/" itemprop="url">
+                  java遇到的注解1
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-22 21:27:54 / 修改时间：21:30:07" itemprop="dateCreated datePublished" datetime="2019-04-22T21:27:54+08:00">2019-04-22</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面:"></a>写在前面:</h2><p>注解的可用的类型包括以下几种：所有基本类型、String、Class、enum、Annotation、以上类型的数组形式。元素不能有不确定的值，即要么有默认值，要么在使用注解的时候提供元素的值。而且元素不能使用null作为默认值。注解在只有一个元素且该元素的名称是value的情况下，在使用注解的时候可以省略“value=”，直接写需要的值即可。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/22/java遇到的注解1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2058,7 +2060,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2105,7 +2107,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">73</span>
+                    <span class="site-state-item-count">88</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2266,7 +2268,29 @@
                     
                       
                     
-                    <span class="site-state-item-count">74</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">85</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2385,7 +2409,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">53</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">58</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2471,7 +2505,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共93.9k字</span>
+  <span class="post-count">博客全站共110.1k字</span>
 </div>
 
         

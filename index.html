@@ -355,7 +355,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/04/22/java遇到的注解5/">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/05/11/springboot整合连接远程redis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -374,8 +374,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/22/java遇到的注解5/" itemprop="url">
-                  java遇到的注解5
+                <a class="post-title-link" href="/2019/05/11/springboot整合连接远程redis/" itemprop="url">
+                  springboot整合连接远程redis
                 </a>
               
             
@@ -401,7 +401,7 @@
                 
               
 
-              <time title="创建时间：2019-04-22 21:34:16 / 修改时间：21:34:50" itemprop="dateCreated datePublished" datetime="2019-04-22T21:34:16+08:00">2019-04-22</time>
+              <time title="创建时间：2019-05-11 16:11:07 / 修改时间：16:11:56" itemprop="dateCreated datePublished" datetime="2019-05-11T16:11:07+08:00">2019-05-11</time>
             
 
             
@@ -423,7 +423,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/redis/" itemprop="url" rel="index"><span itemprop="name">redis</span></a></span>
 
                 
                 
@@ -458,26 +458,365 @@
 
       
         
-          <h3 id="RequestParam"><a href="#RequestParam" class="headerlink" title="@RequestParam"></a>@RequestParam</h3><p>@RequestParam用于将请求参数区数据映射到功能处理方法的参数上。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">queryUserName</span><span class="params">(@RequestParam String userName)</span></span></span><br></pre></td></tr></table></figure>
-<p>在url中输入:localhost:8080/**/?userName=zhangsan</p>
-<p>请求中包含username参数（如/requestparam1?userName=zhang），则自动传入。</p>
-<p>接下来我们看一下@RequestParam注解主要有哪些参数：</p>
-<p>value：参数名字，即入参的请求参数名字，如username表示请求的参数区中的名字为username的参数的值将传入；</p>
-<p>required：是否必须，默认是true，表示请求中一定要有相应的参数，否则将报404错误码；</p>
-<p>defaultValue：默认值，表示如果请求中没有同名参数时的默认值，默认值可以是SpEL表达式，如“#{systemProperties[‘java.vm.version’]}”。表示请求中可以没有名字为username的参数，如果没有默认为null，此处需要注意如下几点：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">queryUserName</span><span class="params">(@RequestParam(value=<span class="string">"userName"</span> ,required =<span class="keyword">false</span> )</span> String userName)</span></span><br></pre></td></tr></table></figure>
-<p>原子类型：必须有值，否则抛出异常，如果允许空值请使用包装类代替。</p>
-<p>​     Boolean包装类型类型：默认Boolean.FALSE，其他引用类型默认为null。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">requestparam5</span><span class="params">(  </span></span></span><br><span class="line"><span class="function"><span class="params">@RequestParam(value=<span class="string">"username"</span>, required=<span class="keyword">true</span>, defaultValue=<span class="string">"zhang"</span>)</span> String username)</span></span><br></pre></td></tr></table></figure>
-<p>如果没有传入参数,则默认是”zhangsan”.</p>
-<p>但是在传递参数的时候如果是url?userName=zhangsan&amp;userName=wangwu时怎么办呢?</p>
-<p>其实在实际roleList参数入参的数据为“zhangsan,wangwu”，即多个数据之间使用“，”分割；我们应该使用如下方式来接收多个请求参数：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">requestparam8</span><span class="params">(@RequestParam(value=<span class="string">"userName"</span>)</span> String []  userNames)</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">requestparam8</span><span class="params">(@RequestParam(value=<span class="string">"list"</span>)</span> List&lt;String&gt; list)</span></span><br></pre></td></tr></table></figure>
+          
+            <p>redis的安装很简单，主要是配置文件<strong>redis.conf</strong></p>
+<h3 id="1-直接启动redis"><a href="#1-直接启动redis" class="headerlink" title="1.直接启动redis"></a>1.直接启动redis</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./redis-server</span><br></pre></td></tr></table></figure>
+<p>是这种启动方式需要一直打开窗口，不能进行其他操作，不太方便。</p>
+<h3 id="2-以后台进程方式启动redis"><a href="#2-以后台进程方式启动redis" class="headerlink" title="2.以后台进程方式启动redis"></a>2.以后台进程方式启动redis</h3><p>将redis.conf复制到redis-server同级目录下</p>
+<p>修改redis.conf文件</p>
+<p>将 <code>daemonize no</code></p>
+<p>修改为 <code>daemonize yes</code></p>
+<p>后台启动</p>
+<p><code>./redis-server redis.conf</code></p>
+<p>具体操作可以通过redis-cli</p>
+<h3 id="3-开启远程连接"><a href="#3-开启远程连接" class="headerlink" title="3.开启远程连接"></a>3.开启远程连接</h3><p>修改redis.conf文件</p>
+<p>保护模式控制：protected-model yes 改为no</p>
+<p>本地访问控制：bind 127.0.0.1注释掉</p>
+<h3 id="4-Linux-防火墙"><a href="#4-Linux-防火墙" class="headerlink" title="4.Linux 防火墙"></a>4.Linux 防火墙</h3><p>redis端口号为6379</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/sbin/iptables -I INPUT -p tcp --dport 6379 -j ACCEPT</span><br><span class="line">/etc/rc.d/init.d/iptables save</span><br></pre></td></tr></table></figure>
+<h3 id="5-springboot整合redis"><a href="#5-springboot整合redis" class="headerlink" title="5.springboot整合redis"></a>5.springboot整合redis</h3><h4 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--redis--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="添加配置-使用的是百度云服务器，host填服务器ip"><a href="#添加配置-使用的是百度云服务器，host填服务器ip" class="headerlink" title="添加配置(使用的是百度云服务器，host填服务器ip)"></a>添加配置(使用的是百度云服务器，host填服务器ip)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#redis</span><br><span class="line">spring.redis.host=180.76.244.162</span><br><span class="line">spring.redis.port=6379</span><br><span class="line">spring.redis.database=1</span><br><span class="line">spring.redis.jedis.pool.max-active=8</span><br><span class="line">spring.redis.jedis.pool.max-idle=500</span><br><span class="line">spring.redis.jedis.pool.min-idle=0</span><br></pre></td></tr></table></figure>
+<h4 id="编写dao"><a href="#编写dao" class="headerlink" title="编写dao"></a>编写dao</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RedisDao</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> StringRedisTemplate template;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">setKey</span><span class="params">(String key,String value)</span></span>&#123;</span><br><span class="line">        ValueOperations&lt;String, String&gt; ops = template.opsForValue();</span><br><span class="line">        ops.set(key,value,<span class="number">1</span>, TimeUnit.MINUTES);<span class="comment">//1分钟过期</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getValue</span><span class="params">(String key)</span></span>&#123;</span><br><span class="line">        ValueOperations&lt;String, String&gt; ops = <span class="keyword">this</span>.template.opsForValue();</span><br><span class="line">        <span class="keyword">return</span> ops.get(key);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="编写测试"><a href="#编写测试" class="headerlink" title="编写测试"></a>编写测试</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebAppConfiguration</span><span class="comment">//用来声明加载的类是一个WebApplicationContext</span></span><br><span class="line"><span class="meta">@RunWith</span>(SpringRunner.class)</span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="meta">@MapperScan</span>(<span class="string">"springboot.demo.dao"</span>)<span class="comment">//扫描dao层</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(<span class="string">"springboot.demo.dao"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoApplicationTests</span> </span>&#123;</span><br><span class="line">   <span class="keyword">protected</span> MockMvc mockMvc;</span><br><span class="line">   <span class="meta">@Autowired</span></span><br><span class="line">   <span class="keyword">private</span> WebApplicationContext wac;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Before</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();  <span class="comment">//初始化MockMvc对象</span></span><br><span class="line">      <span class="comment">//两种方式都可以初始化mockMvc，推荐用这种，上面的会自动跳转地址status判断方法无效</span></span><br><span class="line">   &#125;<span class="comment">//这个方法在每个方法执行之前都会执行一遍</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RedisDaoTest</span> <span class="keyword">extends</span> <span class="title">DemoApplicationTests</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    RedisDao redisDao;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        redisDao.setKey(<span class="string">"name"</span>,<span class="string">"haha"</span>);</span><br><span class="line">        redisDao.setKey(<span class="string">"age"</span>,<span class="string">"11"</span>);</span><br><span class="line">        System.out.println(redisDao.getValue(<span class="string">"name"</span>));</span><br><span class="line">        System.out.println(redisDao.getValue(<span class="string">"age"</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>控制台打印</p>
+<p>/*</p>
+<p>haha</p>
+<p>11</p>
+<p>*/</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/05/11/springbootmybatis-plus的分页/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="York">
+      <meta itemprop="description" content="先生卖我几两仁义道德">
+      <meta itemprop="image" content="/images/timg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天下不易其乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/11/springbootmybatis-plus的分页/" itemprop="url">
+                  springbootmybatis-plus的分页
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-11 16:09:13 / 修改时间：16:10:06" itemprop="dateCreated datePublished" datetime="2019-05-11T16:09:13+08:00">2019-05-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/mybatis-plus/" itemprop="url" rel="index"><span itemprop="name">mybatis-plus</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在已经整合了mybatis-plus基础上。</p>
+<h3 id="加入分页插件"><a href="#加入分页插件" class="headerlink" title="加入分页插件"></a>加入分页插件</h3><p>其中@MapperScan(“mybatisplus.demo.mapper”)如果springboot启动类已经有的话是不用加的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableTransactionManagement</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@MapperScan</span>(<span class="string">"mybatisplus.demo.mapper"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MybatisPlusConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 分页插件</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> PaginationInterceptor <span class="title">paginationInterceptor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> PaginationInterceptor();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="XML-自定义分页"><a href="#XML-自定义分页" class="headerlink" title="XML 自定义分页"></a>XML 自定义分页</h3><h4 id="dao接口内容"><a href="#dao接口内容" class="headerlink" title="dao接口内容"></a>dao接口内容</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">PersonMapper</span> <span class="keyword">extends</span> <span class="title">MyBaseMapper</span>&lt;<span class="title">Person</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//分页方法</span></span><br><span class="line">    <span class="comment">//IPage和Page都是mybatis-plus准备好的，Page可以自己实现，就是封装分页参数的类而已。</span></span><br><span class="line">    <span class="function">IPage&lt;Person&gt; <span class="title">selectPageVo</span><span class="params">(Page page)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="编写Mapper-xml"><a href="#编写Mapper-xml" class="headerlink" title="编写Mapper.xml"></a>编写Mapper.xml</h4><p>xml分页方法，等同于编写一个普通 list 查询。</p>
+<p>由于mybatis-plus自带的方法都是单表查询，所以如果要联表查询需要自定义xml，只不过不用分页</p>
+<p>但是还是要有查询对应逻辑的list。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE mapper</span></span><br><span class="line"><span class="meta">        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"</span></span><br><span class="line"><span class="meta">        "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"mybatisplus.demo.mapper.PersonMapper"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectPageVo"</span> <span class="attr">resultType</span>=<span class="string">"mybatisplus.demo.entity.Person"</span>&gt;</span></span><br><span class="line">        SELECT * from person</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun27</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Page&lt;Person&gt; page = <span class="keyword">new</span> Page&lt;&gt;();</span><br><span class="line">    <span class="comment">//相当于start</span></span><br><span class="line">    page.setCurrent(<span class="number">2</span>);</span><br><span class="line">    <span class="comment">//相当于pageSize</span></span><br><span class="line">    page.setSize(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">    IPage&lt;Person&gt; iPage = personMapper.selectPageVo(page);</span><br><span class="line">    List&lt;Person&gt; personList = iPage.getRecords();</span><br><span class="line">    <span class="keyword">for</span> (Person person : personList) &#123;</span><br><span class="line">        System.out.println(person);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="当使用单表查询，分页时"><a href="#当使用单表查询，分页时" class="headerlink" title="当使用单表查询，分页时"></a>当使用单表查询，分页时</h3><p>mybatis-plus是有默认方法的</p>
+<p>即：selectPage，需要一个传入IPage实现类和和Wrapper实现类</p>
+<p>刚好Page就是实现IPage的，Wrapper实现类的话查询的就用QueryWrapper。</p>
+<p>由于是mybatis-plus默认方法，在继承MyBaseMapper<person> 就不用加自己的方法，直接调用就好了。</person></p>
+<p>也不用编写mapper.xml。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun28</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Page&lt;Person&gt; page = <span class="keyword">new</span> Page&lt;&gt;();</span><br><span class="line">    <span class="comment">//相当于start</span></span><br><span class="line">    page.setCurrent(<span class="number">1</span>);</span><br><span class="line">    <span class="comment">//相当于pageSize</span></span><br><span class="line">    page.setSize(<span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">    QueryWrapper&lt;Person&gt; wrapper = <span class="keyword">new</span> QueryWrapper&lt;&gt;();</span><br><span class="line">    IPage&lt;Person&gt; iPage = personMapper.selectPage(page, wrapper.like(<span class="string">"pname"</span>, <span class="string">"东"</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (Person person : iPage.getRecords()) &#123;</span><br><span class="line">        System.out.println(person);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/05/11/JackJson的使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="York">
+      <meta itemprop="description" content="先生卖我几两仁义道德">
+      <meta itemprop="image" content="/images/timg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天下不易其乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/11/JackJson的使用/" itemprop="url">
+                  JackJson的使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-11 16:02:51 / 修改时间：16:04:31" itemprop="dateCreated datePublished" datetime="2019-05-11T16:02:51+08:00">2019-05-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JackJson/" itemprop="url" rel="index"><span itemprop="name">JackJson</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="JackJson的使用"><a href="#JackJson的使用" class="headerlink" title="JackJson的使用"></a>JackJson的使用</h1><p>需要包：<br>jackson-core-2.2.3.jar（核心jar包）<br>jackson-annotations-2.2.3.jar（该包提供Json注解支持）<br>jackson-databind-2.2.3.jar</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-annotations<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-databind<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/04/22/java遇到的注解5/#more" rel="contents">
+            <a class="btn" href="/2019/05/11/JackJson的使用/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -533,7 +872,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/04/22/java遇到的注解4/">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/05/11/mybatis-plus的主键/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -552,8 +891,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/22/java遇到的注解4/" itemprop="url">
-                  java遇到的注解4
+                <a class="post-title-link" href="/2019/05/11/mybatis-plus的主键/" itemprop="url">
+                  mybatis-plus的主键
                 </a>
               
             
@@ -579,7 +918,7 @@
                 
               
 
-              <time title="创建时间：2019-04-22 21:33:05 / 修改时间：21:33:58" itemprop="dateCreated datePublished" datetime="2019-04-22T21:33:05+08:00">2019-04-22</time>
+              <time title="创建时间：2019-05-11 16:00:44 / 修改时间：16:02:00" itemprop="dateCreated datePublished" datetime="2019-05-11T16:00:44+08:00">2019-05-11</time>
             
 
             
@@ -601,7 +940,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/mybatis-plus/" itemprop="url" rel="index"><span itemprop="name">mybatis-plus</span></a></span>
 
                 
                 
@@ -636,10 +975,191 @@
 
       
         
-          <h3 id="Cacheable"><a href="#Cacheable" class="headerlink" title="@Cacheable"></a>@Cacheable</h3><p>@Cacheable可以标记在一个方法上，也可以标记在一个类上。当标记在一个方法上时表示该方法是支持缓存的，当标记在一个类上时则表示该类所有的方法都是支持缓存的。对于一个支持缓存的方法，Spring会在其被调用后将其返回值缓存起来，以保证下次利用同样的参数来执行该方法时可以直接从缓存中获取结果，而不需要再次执行该方法。Spring在缓存方法的返回值时是以键值对进行缓存的，值就是方法的返回结果，至于键的话，Spring又支持两种策略，默认策略和自定义策略，这个稍后会进行说明。需要注意的是当一个支持缓存的方法在对象内部被调用时是不会触发缓存功能的。@Cacheable可以指定三个属性，value、key和condition。</p>
+          
+            <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@TableId</span>(value = <span class="string">"id"</span>,type = IdType.UUID)</span><br><span class="line"><span class="keyword">private</span> String id; <span class="comment">// 主键</span></span><br></pre></td></tr></table></figure>
+<p>IdType生成不同类型的主键id，IdType是一个枚举类，定义了生成ID的类型</p>
+<ul>
+<li><p>AUTO 数据库ID自增</p>
+</li>
+<li><p>INPUT 用户输入ID</p>
+</li>
+<li><p>ID_WORKER 全局唯一ID，Long类型的主键</p>
+</li>
+<li><p>ID_WORKER_STR 字符串全局唯一ID</p>
+</li>
+<li><p>UUID 全局唯一ID，UUID类型的主键</p>
+</li>
+<li><p>NONE 该类型为未设置主键类型</p>
+<p>​</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/05/11/springbootmybatis-plus快速开始/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="York">
+      <meta itemprop="description" content="先生卖我几两仁义道德">
+      <meta itemprop="image" content="/images/timg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天下不易其乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/11/springbootmybatis-plus快速开始/" itemprop="url">
+                  springbootmybatis-plus快速开始
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-11 15:56:19 / 修改时间：15:58:32" itemprop="dateCreated datePublished" datetime="2019-05-11T15:56:19+08:00">2019-05-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/springboot/" itemprop="url" rel="index"><span itemprop="name">springboot</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/springboot/mybatis-plus/" itemprop="url" rel="index"><span itemprop="name">mybatis-plus</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="1-建立springboot项目后添加依赖"><a href="#1-建立springboot项目后添加依赖" class="headerlink" title="1.建立springboot项目后添加依赖"></a>1.建立springboot项目后添加依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">   <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mybatis-plus<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>demo<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>demo<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">description</span>&gt;</span>Demo project for Spring Boot<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.5.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span> <span class="comment">&lt;!-- lookup parent from repository --&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">project.build.sourceEncoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">project.build.sourceEncoding</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">project.reporting.outputEncoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">project.reporting.outputEncoding</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">&lt;!--lombok--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--mybatis-plus--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.baomidou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-plus-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- mysql 依赖 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">       </span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/04/22/java遇到的注解4/#more" rel="contents">
+            <a class="btn" href="/2019/05/11/springbootmybatis-plus快速开始/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -695,7 +1215,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/04/22/java遇到的注解3/">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/05/11/vue-cli中js是怎样引入html的/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -714,8 +1234,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/22/java遇到的注解3/" itemprop="url">
-                  java遇到的注解3
+                <a class="post-title-link" href="/2019/05/11/vue-cli中js是怎样引入html的/" itemprop="url">
+                  vue-cli中js是怎样引入html的
                 </a>
               
             
@@ -741,7 +1261,7 @@
                 
               
 
-              <time title="创建时间：2019-04-22 21:31:55 / 修改时间：21:32:46" itemprop="dateCreated datePublished" datetime="2019-04-22T21:31:55+08:00">2019-04-22</time>
+              <time title="创建时间：2019-05-11 15:53:18 / 修改时间：15:54:12" itemprop="dateCreated datePublished" datetime="2019-05-11T15:53:18+08:00">2019-05-11</time>
             
 
             
@@ -763,7 +1283,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a></span>
 
                 
                 
@@ -798,66 +1318,11 @@
 
       
         
-          <h3 id="RestController"><a href="#RestController" class="headerlink" title="@RestController"></a>@RestController</h3><p>@RestController = @Controller + @ResponseBody。</p>
-<h3 id="Transactional"><a href="#Transactional" class="headerlink" title="@Transactional"></a>@Transactional</h3><table>
-<thead>
-<tr>
-<th>属性</th>
-<th>类型</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>value</td>
-<td>String</td>
-<td>可选的限定描述符，指定使用的事务管理器</td>
-</tr>
-<tr>
-<td>propagation</td>
-<td>enum: Propagation</td>
-<td>可选的事务传播行为设置</td>
-</tr>
-<tr>
-<td>isolation</td>
-<td>enum: Isolation</td>
-<td>可选的事务隔离级别设置</td>
-</tr>
-<tr>
-<td>readOnly</td>
-<td>boolean</td>
-<td>读写或只读事务，默认读写</td>
-</tr>
-<tr>
-<td>timeout</td>
-<td>int (in seconds granularity)</td>
-<td>事务超时时间设置</td>
-</tr>
-<tr>
-<td>rollbackFor</td>
-<td>Class对象数组，必须继承自Throwable</td>
-<td>导致事务回滚的异常类数组</td>
-</tr>
-<tr>
-<td>rollbackForClassName</td>
-<td>类名数组，必须继承自Throwable</td>
-<td>导致事务回滚的异常类名字数组</td>
-</tr>
-<tr>
-<td>noRollbackFor</td>
-<td>Class对象数组，必须继承自Throwable</td>
-<td>不会导致事务回滚的异常类数组</td>
-</tr>
-<tr>
-<td>noRollbackForClassName</td>
-<td>类名数组，必须继承自Throwable</td>
-<td>不会导致事务回滚的异常类名字数组</td>
-</tr>
-</tbody>
-</table>
+          <p>vue-cli是怎么通过webpack把js文件引入index.html的过程呢？<br>vue新手在用vue-cli写项目时候会发现，项目目录下index.html并没有通过标签引入任何js。index.html如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">meta</span> <span class="attr">charsets</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">meta</span> <span class="attr">name</span>=<span class="string">'viewport'</span> <span class="attr">content</span>=<span class="string">'width=device-width,user-scalable=no,scalable=1.0'</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/04/22/java遇到的注解3/#more" rel="contents">
+            <a class="btn" href="/2019/05/11/vue-cli中js是怎样引入html的/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -913,7 +1378,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/04/22/java遇到的注解2/">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/05/11/ssm整合redis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -932,8 +1397,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/22/java遇到的注解2/" itemprop="url">
-                  java遇到的注解2
+                <a class="post-title-link" href="/2019/05/11/ssm整合redis/" itemprop="url">
+                  ssm整合redis
                 </a>
               
             
@@ -959,7 +1424,7 @@
                 
               
 
-              <time title="创建时间：2019-04-22 21:30:26 / 修改时间：21:31:35" itemprop="dateCreated datePublished" datetime="2019-04-22T21:30:26+08:00">2019-04-22</time>
+              <time title="创建时间：2019-05-11 15:48:42 / 修改时间：15:51:05" itemprop="dateCreated datePublished" datetime="2019-05-11T15:48:42+08:00">2019-05-11</time>
             
 
             
@@ -981,7 +1446,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/redis/" itemprop="url" rel="index"><span itemprop="name">redis</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/redis/spring/" itemprop="url" rel="index"><span itemprop="name">spring</span></a></span>
 
                 
                 
@@ -1016,14 +1488,15 @@
 
       
         
-          <h2 id="Resource-和-Autowired"><a href="#Resource-和-Autowired" class="headerlink" title="@Resource 和 @Autowired"></a>@Resource 和 @Autowired</h2><p><strong>@Resource默认按照名称方式进行bean匹配。</strong> </p>
-<p><strong>@Autowired默认按照类型方式进行bean匹配</strong></p>
-<p>@Resource的作用相当于@Autowired，只不过@Autowired按byType自动注入，而@Resource默认按 byName自动注入罢了。@Resource有两个属性是比较重要的，分是name和type，Spring将@Resource注解的name属性解析为bean的名字，而type属性则解析为bean的类型。所以如果使用name属性，则使用byName的自动注入策略，而使用type属性时则使用byType自动注入策略。如果既不指定name也不指定type属性，这时将通过反射机制使用byName自动注入策略。<br>@Autowired默认按类型装配（这个注解是属业spring的），默认情况下必须要求依赖对象必须存在，如果我们想使用名称装配可以结合@Qualifier注解进行使用。 </p>
-<p>如果一个接口有许多实现类，就无法光靠type决定。<br>推荐用@Resource，稳妥，而且@Resource属于J2EE的，减少了与spring的耦合。 </p>
-<p><strong>@Resource 默认的名字是把类名前面的大写变成小写</strong></p>
+          <h1 id="ssm整合redis"><a href="#ssm整合redis" class="headerlink" title="ssm整合redis"></a>ssm整合redis</h1><h3 id="在java程序中使用redis："><a href="#在java程序中使用redis：" class="headerlink" title="在java程序中使用redis："></a>在java程序中使用redis：</h3><ul>
+<li><p>导入jedis.jar包</p>
+</li>
+<li><p>直接 Jedis jedis = new Jedis(“192.168.80.131”, 6379);获取jedis对象，然后进行操作</p>
+</li>
+<li><p>也可以创建jedis连接池JedisPoolUtil，然后需要的时候从连接池中get，使用完release即可</p></li></ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/04/22/java遇到的注解2/#more" rel="contents">
+            <a class="btn" href="/2019/05/11/ssm整合redis/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1079,7 +1552,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/04/22/java遇到的注解1/">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/05/11/spring集成redis作为cache/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -1098,8 +1571,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/22/java遇到的注解1/" itemprop="url">
-                  java遇到的注解1
+                <a class="post-title-link" href="/2019/05/11/spring集成redis作为cache/" itemprop="url">
+                  spring集成redis作为cache
                 </a>
               
             
@@ -1125,7 +1598,7 @@
                 
               
 
-              <time title="创建时间：2019-04-22 21:27:54 / 修改时间：21:30:07" itemprop="dateCreated datePublished" datetime="2019-04-22T21:27:54+08:00">2019-04-22</time>
+              <time title="创建时间：2019-05-11 15:45:56 / 修改时间：15:46:57" itemprop="dateCreated datePublished" datetime="2019-05-11T15:45:56+08:00">2019-05-11</time>
             
 
             
@@ -1147,7 +1620,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/cache/" itemprop="url" rel="index"><span itemprop="name">cache</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/cache/spring/" itemprop="url" rel="index"><span itemprop="name">spring</span></a></span>
 
                 
                 
@@ -1182,10 +1662,18 @@
 
       
         
-          <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面:"></a>写在前面:</h2><p>注解的可用的类型包括以下几种：所有基本类型、String、Class、enum、Annotation、以上类型的数组形式。元素不能有不确定的值，即要么有默认值，要么在使用注解的时候提供元素的值。而且元素不能使用null作为默认值。注解在只有一个元素且该元素的名称是value的情况下，在使用注解的时候可以省略“value=”，直接写需要的值即可。</p>
+          <h2 id="很烦这个！！"><a href="#很烦这个！！" class="headerlink" title="很烦这个！！"></a>很烦这个！！</h2><h3 id="在spring中不管使用什么缓存，思路都是一样的。"><a href="#在spring中不管使用什么缓存，思路都是一样的。" class="headerlink" title="在spring中不管使用什么缓存，思路都是一样的。"></a>在spring中不管使用什么缓存，思路都是一样的。</h3><p>1.实现cache接口，当然有默认的实现，例如EhCacheCache。</p>
+<p>2.实现缓存管理类，当然也有默认的实现例如EhCacheCacheManager/EhCacheManagerFactoryBean；</p>
+<p>3.创建xml文件，把cache接口实现类注入缓存管理实现类。</p>
+<p>4.开启缓存注解</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 开启缓存注解--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">cache:annotation-driven</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>5.在方法上注解@Cacheable(value = “studentCache”)</p>
+<p>value属性在上面的xml中配置</p>
+<p>6.这一步是因为这里使用了redis作为缓存，所以还需要xml配置redis，把redis交给spring管理，可以另外</p>
+<p>创建一个xml，或者和缓存的xml放在一块。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/04/22/java遇到的注解1/#more" rel="contents">
+            <a class="btn" href="/2019/05/11/spring集成redis作为cache/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1241,7 +1729,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/12/30/spring整合shiro注解/">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/05/11/springboot集成springcache/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -1260,8 +1748,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/30/spring整合shiro注解/" itemprop="url">
-                  spring整合shiro注解
+                <a class="post-title-link" href="/2019/05/11/springboot集成springcache/" itemprop="url">
+                  springboot集成springcache
                 </a>
               
             
@@ -1287,7 +1775,7 @@
                 
               
 
-              <time title="创建时间：2018-12-30 22:15:41 / 修改时间：22:17:33" itemprop="dateCreated datePublished" datetime="2018-12-30T22:15:41+08:00">2018-12-30</time>
+              <time title="创建时间：2019-05-11 15:43:28 / 修改时间：15:45:16" itemprop="dateCreated datePublished" datetime="2019-05-11T15:43:28+08:00">2019-05-11</time>
             
 
             
@@ -1309,7 +1797,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/shiro/" itemprop="url" rel="index"><span itemprop="name">shiro</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/springboot/" itemprop="url" rel="index"><span itemprop="name">springboot</span></a></span>
 
                 
                 
@@ -1344,41 +1832,19 @@
 
       
         
-          
-            <h2 id="shiro注解权限控制-5个权限注解"><a href="#shiro注解权限控制-5个权限注解" class="headerlink" title="shiro注解权限控制-5个权限注解"></a>shiro注解权限控制-5个权限注解</h2><p><strong>RequiresAuthentication:</strong></p>
-<blockquote>
-<p>使用该注解标注的类，实例，方法在访问或调用时，当前Subject必须在当前session中已经过认证。</p>
-</blockquote>
-<p><strong>RequiresGuest:</strong></p>
-<blockquote>
-<p>使用该注解标注的类，实例，方法在访问或调用时，当前Subject可以是“gust”身份，不需要经过认证或者在原先的session中存在记录。</p>
-</blockquote>
-<p><strong>RequiresPermissions:</strong></p>
-<blockquote>
-<p>当前Subject需要拥有某些特定的权限时，才能执行被该注解标注的方法。如果当前Subject不具有这样的权限，则方法不会被执行。</p>
-</blockquote>
-<p><strong>RequiresRoles:</strong></p>
-<blockquote>
-<p>当前Subject必须拥有所有指定的角色时，才能访问被该注解标注的方法。如果当天Subject不同时拥有所有指定角色，则方法不会执行还会抛出AuthorizationException异常。</p>
-</blockquote>
-<p><strong>RequiresUser</strong></p>
-<blockquote>
-<p>当前Subject必须是应用的用户，才能访问或调用被该注解标注的类，实例，方法。</p>
-</blockquote>
-<h2 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h2><p><strong>Shiro的认证注解处理是有内定的处理顺序的，如果有个多个注解的话，前面的通过了会继续检查后面的，若不通过则直接返回，处理顺序依次为（与实际声明顺序无关）：</strong></p>
-<blockquote>
-<p><strong>RequiresRoles</strong><br>      <strong>RequiresPermissions</strong><br>      <strong>RequiresAuthentication</strong><br>      <strong>RequiresUser</strong><br>      <strong>RequiresGuest</strong></p>
-</blockquote>
-<p>例如：你同时声明了RequiresRoles和RequiresPermissions，那就要求拥有此角色的同时还得拥有相应的权限。</p>
-<h3 id="RequiresRoles"><a href="#RequiresRoles" class="headerlink" title="@RequiresRoles"></a>@RequiresRoles</h3><p>可以用在Controller或者方法上。可以多个roles，多个roles时默认逻辑为 AND也就是所有具备所有role才能访问。</p>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//属于user角色</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@RequiresRoles</span>(<span class="string">"user"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//必须同时属于user和admin角色</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@RequiresRoles</span>(&#123;<span class="string">"user"</span>,<span class="string">"admin"</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//属于user或者admin之一;修改logical为OR 即可</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@RequiresRoles</span>(value=&#123;<span class="string">"user"</span>,<span class="string">"admin"</span>&#125;,logical=Logical.OR)</span><br></pre></td></tr></table></figure>
-<h3 id="RequiresPermissions"><a href="#RequiresPermissions" class="headerlink" title="@RequiresPermissions"></a>@RequiresPermissions</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//符合index:hello权限要求</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@RequiresPermissions</span>(<span class="string">"index:hello"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//必须同时复核index:hello和index:world权限要求</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@RequiresPermissions</span>(&#123;<span class="string">"index:hello"</span>,<span class="string">"index:world"</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//符合index:hello或index:world权限要求即可</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@RequiresPermissions</span>(value=&#123;<span class="string">"index:hello"</span>,<span class="string">"index:world"</span>&#125;,logical=Logical.OR)</span><br></pre></td></tr></table></figure>
-<p>  <strong>RequiresAuthentication，RequiresUser，RequiresGuest都一样。</strong></p>
-<h3 id="spring整合shiro开启注解"><a href="#spring整合shiro开启注解" class="headerlink" title="spring整合shiro开启注解"></a>spring整合shiro开启注解</h3><p><strong>需要引入aspectj依赖，如果有spring aop的话就不用了</strong></p>
-<p><strong>在xml文件中加入以下即可使用上述注解</strong></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">&lt;!--开启aop，对类代理--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">aop:config</span> <span class="attr">proxy-target-class</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"securityManager"</span> <span class="attr">ref</span>=<span class="string">"securityManager"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-          
+          <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>在未开启事物的情况之下，每次查询，spring都会关闭旧的sqlSession而创建新的sqlSession,因此此时的一级缓存是没有启作用的</li>
+<li>在开启事物的情况之下，spring使用threadLocal获取当前资源绑定同一个sqlSession，因此此时一级缓存是有效的</li>
+</ul>
+<p><strong>如果开启事务即使用@Transactional注解进行本次测试，如果连续进行查询，只会打印一次sql，即只访问一次数据库。因为有mybatis的一级缓存存在。</strong></p>
+<p><strong>所以要关闭事务，不要使用@Transactional注解</strong></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/05/11/springboot集成springcache/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1430,7 +1896,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/12/30/shiro未完待续3/">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/05/11/springboot整合通用mapper/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -1449,8 +1915,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/30/shiro未完待续3/" itemprop="url">
-                  shiro未完待续3
+                <a class="post-title-link" href="/2019/05/11/springboot整合通用mapper/" itemprop="url">
+                  springboot整合通用mapper
                 </a>
               
             
@@ -1476,7 +1942,7 @@
                 
               
 
-              <time title="创建时间：2018-12-30 19:10:57 / 修改时间：19:12:27" itemprop="dateCreated datePublished" datetime="2018-12-30T19:10:57+08:00">2018-12-30</time>
+              <time title="创建时间：2019-05-11 15:33:20 / 修改时间：15:34:11" itemprop="dateCreated datePublished" datetime="2019-05-11T15:33:20+08:00">2019-05-11</time>
             
 
             
@@ -1505,7 +1971,7 @@
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/shiro/" itemprop="url" rel="index"><span itemprop="name">shiro</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/springboot/" itemprop="url" rel="index"><span itemprop="name">springboot</span></a></span>
 
                 
                 
@@ -1540,565 +2006,11 @@
 
       
         
-          <p>转自<a href="http://blog.51cto.com/luchunli/1833372" target="_blank" rel="noopener">http://blog.51cto.com/luchunli/1833372</a></p>
-<p><a href="https://www.cnblogs.com/yoohot/p/6085830.html" target="_blank" rel="noopener">https://www.cnblogs.com/yoohot/p/6085830.html</a></p>
-<h2 id="1-AbstractFilter"><a href="#1-AbstractFilter" class="headerlink" title="1.AbstractFilter"></a>1.AbstractFilter</h2><p>Shiro通过抽象类对Servlet的Filter接口进行了封装，并通过继承ServletContextSupport对ServletContext也进行了封装。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractFilter</span> <span class="keyword">extends</span> <span class="title">ServletContextSupport</span> <span class="keyword">implements</span> <span class="title">Filter</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">transient</span> Logger log = LoggerFactory.getLogger(AbstractFilter.class);</span><br><span class="line">    <span class="keyword">protected</span> FilterConfig filterConfig;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AbstractFilter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> FilterConfig <span class="title">getFilterConfig</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.filterConfig;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 初始化 FilterConfig 与 ServletContext</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFilterConfig</span><span class="params">(FilterConfig filterConfig)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.filterConfig = filterConfig;</span><br><span class="line">        <span class="comment">// 调用ServletContextSupport的方法来封装ServletContext</span></span><br><span class="line">        <span class="keyword">this</span>.setServletContext(filterConfig.getServletContext());</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">// 从 FilterConfig 中获取初始参数</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> String <span class="title">getInitParam</span><span class="params">(String paramName)</span> </span>&#123;</span><br><span class="line">        FilterConfig config = <span class="keyword">this</span>.getFilterConfig();</span><br><span class="line">        <span class="keyword">return</span> config != <span class="keyword">null</span> ? StringUtils.clean(config.getInitParameter(paramName)) : <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(FilterConfig filterConfig)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.setFilterConfig(filterConfig);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.onFilterConfigSet();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception var3) &#123;</span><br><span class="line">            <span class="keyword">if</span> (var3 <span class="keyword">instanceof</span> ServletException) &#123;</span><br><span class="line">                <span class="keyword">throw</span> (ServletException)var3;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (log.isErrorEnabled()) &#123;</span><br><span class="line">                    log.error(<span class="string">"Unable to start Filter: ["</span> + var3.getMessage() + <span class="string">"]."</span>, var3);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> ServletException(var3);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onFilterConfigSet</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h3 id="1-引入依赖"><a href="#1-引入依赖" class="headerlink" title="1.引入依赖"></a>1.引入依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--通用mapper--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>tk.mybatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mapper-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-增加application-properties"><a href="#2-增加application-properties" class="headerlink" title="2.增加application.properties"></a>2.增加application.properties</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#通用mapper</span><br><span class="line">#通用mapper的所在接口名称 不只是包名</span><br><span class="line">mapper.mappers=springboot.demo.mapper.MyBaseMapper</span><br><span class="line">mapper.notEmpty=true</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/12/30/shiro未完待续3/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/12/30/Filter/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="York">
-      <meta itemprop="description" content="先生卖我几两仁义道德">
-      <meta itemprop="image" content="/images/timg.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="天下不易其乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/30/Filter/" itemprop="url">
-                  Filter
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-12-30 15:09:25 / 修改时间：15:13:02" itemprop="dateCreated datePublished" datetime="2018-12-30T15:09:25+08:00">2018-12-30</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/filter/" itemprop="url" rel="index"><span itemprop="name">filter</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>参考自<a href="https://blog.csdn.net/u013087513/article/details/56835894" target="_blank" rel="noopener">https://blog.csdn.net/u013087513/article/details/56835894</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Filter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(FilterConfig var1)</span> <span class="keyword">throws</span> ServletException</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">doFilter</span><span class="params">(ServletRequest var1, ServletResponse var2, FilterChain var3)</span> <span class="keyword">throws</span> IOException, ServletException</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="init-FilterConfig-filterConfig-throws-ServletException"><a href="#init-FilterConfig-filterConfig-throws-ServletException" class="headerlink" title="init(FilterConfig  filterConfig) throws ServletException"></a>init(FilterConfig  filterConfig) throws ServletException</h3><p>和我们编写的Servlet程序一样，Filter的创建与销毁<strong>由WEB服务器负责</strong>。web应用程序<strong>启动时</strong>，web服务器将创建Filter的实例对象，并调用init方法进行初始化（注意：<strong>filter对象只会创建一次，init方法也只会执行一次</strong>）</p>
-<p>开发人员通过init方法的参数，可以获得代表当前filter配置信息的FilterConfig对象。</p>
-<h3 id="doFilter-ServletRequest-ServletResponse-FilterChain"><a href="#doFilter-ServletRequest-ServletResponse-FilterChain" class="headerlink" title="doFilter(ServletRequest, ServletResponse, FilterChain)"></a>doFilter(ServletRequest, ServletResponse, FilterChain)</h3><p>每次filter进行拦截都会执行</p>
-<p>在实际开发中方法中参数request和response通常转换为<strong>HttpServletRequest</strong>和<strong>HttpServletResponse</strong>类型进行操作。</p>
-<h3 id="destroy"><a href="#destroy" class="headerlink" title="destroy()"></a>destroy()</h3><p>在web容器卸载Filter对象之前被调用</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/30/Filter/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/12/25/shiro未完待续2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="York">
-      <meta itemprop="description" content="先生卖我几两仁义道德">
-      <meta itemprop="image" content="/images/timg.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="天下不易其乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/25/shiro未完待续2/" itemprop="url">
-                  shiro未完待续2
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-12-25 22:15:13 / 修改时间：22:16:11" itemprop="dateCreated datePublished" datetime="2018-12-25T22:15:13+08:00">2018-12-25</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/shiro/" itemprop="url" rel="index"><span itemprop="name">shiro</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>转自<a href="https://www.cnblogs.com/koal/p/5152671.html" target="_blank" rel="noopener">https://www.cnblogs.com/koal/p/5152671.html</a></p>
-<h2 id="shiro内置filter"><a href="#shiro内置filter" class="headerlink" title="shiro内置filter"></a>shiro内置filter</h2><table>
-<thead>
-<tr>
-<th><strong>anon</strong></th>
-<th>org.apache.shiro.web.filter.authc.AnonymousFilter</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>authc</strong></td>
-<td>org.apache.shiro.web.filter.authc.FormAuthenticationFilter</td>
-</tr>
-<tr>
-<td><strong>authcBasic</strong></td>
-<td>org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter</td>
-</tr>
-<tr>
-<td><strong>perms</strong></td>
-<td>org.apache.shiro.web.filter.authz.PermissionsAuthorizationFilter</td>
-</tr>
-<tr>
-<td><strong>port</strong></td>
-<td>org.apache.shiro.web.filter.authz.PortFilter</td>
-</tr>
-<tr>
-<td><strong>rest</strong></td>
-<td>org.apache.shiro.web.filter.authz.HttpMethodPermissionFilter</td>
-</tr>
-<tr>
-<td><strong>roles</strong></td>
-<td>org.apache.shiro.web.filter.authz.RolesAuthorizationFilter</td>
-</tr>
-<tr>
-<td><strong>ssl</strong></td>
-<td>org.apache.shiro.web.filter.authz.SslFilter</td>
-</tr>
-<tr>
-<td><strong>user</strong></td>
-<td>org.apache.shiro.web.filter.authc.UserFilter</td>
-</tr>
-</tbody>
-</table>
-<p><strong>rest：</strong>例子/admins/user/<strong>=rest[user],根据请求的方法，相当于/admins/user/</strong>=perms[user:method] ,其中method为post，get，delete等。</p>
-<p><strong>port：</strong>例子/admins/user/**=port[8081],当请求的url的端口不是8081是跳转到schemal://serverName:8081?queryString,其中schmal是协议http或https等，serverName是你访问的host,8081是url配置里port的端口，queryString</p>
-<p>是你访问的url里的？后面的参数。</p>
-<p><strong>perms：</strong>例子/admins/user/<strong>=perms[user:add:*],perms参数可以写多个，多个时必须加上引号，并且参数之间用逗号分割，例如/admins/user/</strong>=perms[“user:add:<em>,user:modify:</em>“]，当有多个参数时必须每个参数都通过才通过，想当于</p>
-<p>isPermitedAll()方法。</p>
-<p><strong>roles：</strong>例子/admins/user/<strong>=roles[admin],参数可以写多个，多个时必须加上引号，并且参数之间用逗号分割，当有多个参数时，例如/admins/user/</strong>=roles[“admin,guest”],每个参数通过才算通过，相当于hasAllRoles()方法。</p>
-<p><strong>anon：</strong>例子/admins/**=anon 没有参数，表示可以匿名使用。</p>
-<p><strong>authc：</strong>例如/admins/user/**=authc表示需要认证才能使用，没有参数</p>
-<p><strong>authcBasic：</strong>例如/admins/user/**=authcBasic没有参数表示httpBasic认证</p>
-<p><strong>ssl：</strong>例子/admins/user/**=ssl没有参数，表示安全的url请求，协议为https</p>
-<p><strong>user：</strong>例如/admins/user/**=user没有参数表示必须存在用户，当登入操作时不做检查</p>
-<p>这些过滤器分为两组，一组是认证过滤器，一组是授权过滤器。其中anon，authcBasic，auchc，user是第一组，</p>
-<p>perms，roles，ssl，rest，port是第二组</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/12/25/springboot项目使用mybatis-generator-maven-plugin生成代码/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="York">
-      <meta itemprop="description" content="先生卖我几两仁义道德">
-      <meta itemprop="image" content="/images/timg.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="天下不易其乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/25/springboot项目使用mybatis-generator-maven-plugin生成代码/" itemprop="url">
-                  springboot项目使用mybatis-generator-maven-plugin生成代码
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-12-25 22:09:46 / 修改时间：22:10:47" itemprop="dateCreated datePublished" datetime="2018-12-25T22:09:46+08:00">2018-12-25</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="springboot项目使用mybatis-generator-maven-plugin生成代码"><a href="#springboot项目使用mybatis-generator-maven-plugin生成代码" class="headerlink" title="springboot项目使用mybatis-generator-maven-plugin生成代码"></a>springboot项目使用mybatis-generator-maven-plugin生成代码</h1><p>原版想用mybatis-plus的，为什么最终选择了mybatis-generator-maven-plugin生成代码呢，因为mybatis-plus不太会分页。哈哈，言归正传。</p>
-<p>springboot项目的mybatis-generator-maven-plugin生成代码和ssm中使用mybatis-generator-maven-plugin是一样的。</p>
-<p>在做springboot项目时可以新建一个model专门用来生成代码，很方便。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/25/springboot项目使用mybatis-generator-maven-plugin生成代码/#more" rel="contents">
+            <a class="btn" href="/2019/05/11/springboot整合通用mapper/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2143,7 +2055,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2190,7 +2102,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">73</span>
+                    <span class="site-state-item-count">88</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2351,7 +2263,29 @@
                     
                       
                     
-                    <span class="site-state-item-count">74</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">85</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2470,7 +2404,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">53</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">58</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2556,7 +2500,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共93.9k字</span>
+  <span class="post-count">博客全站共110.1k字</span>
 </div>
 
         

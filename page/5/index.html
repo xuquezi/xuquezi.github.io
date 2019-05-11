@@ -355,7 +355,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/10/04/spring集成shiro示例（包括注解和缓存，加密）/">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/10/29/InitBinder/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -374,8 +374,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/10/04/spring集成shiro示例（包括注解和缓存，加密）/" itemprop="url">
-                  spring集成shiro示例（包括注解和缓存，加密）
+                <a class="post-title-link" href="/2018/10/29/InitBinder/" itemprop="url">
+                  @InitBinder
                 </a>
               
             
@@ -401,7 +401,7 @@
                 
               
 
-              <time title="创建时间：2018-10-04 22:01:58 / 修改时间：22:07:48" itemprop="dateCreated datePublished" datetime="2018-10-04T22:01:58+08:00">2018-10-04</time>
+              <time title="创建时间：2018-10-29 14:16:44 / 修改时间：14:19:58" itemprop="dateCreated datePublished" datetime="2018-10-29T14:16:44+08:00">2018-10-29</time>
             
 
             
@@ -430,14 +430,7 @@
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/shiro/" itemprop="url" rel="index"><span itemprop="name">shiro</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/shiro/spring/" itemprop="url" rel="index"><span itemprop="name">spring</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/注解/" itemprop="url" rel="index"><span itemprop="name">注解</span></a></span>
 
                 
                 
@@ -472,10 +465,12 @@
 
       
         
-          <h2 id="1-引入依赖"><a href="#1-引入依赖" class="headerlink" title="1.引入依赖"></a>1.引入依赖</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--shiro--&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.shiro<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>shiro-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">       <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.shiro<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>shiro-spring<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">       <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.shiro<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>shiro-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- shiro-encache--&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.shiro<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>shiro-ehcache<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">       <span class="comment">&lt;!--ehcache--&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.ehcache<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>ehcache<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+          <p>转自<a href="https://blog.csdn.net/zero__007/article/details/80466392" target="_blank" rel="noopener">https://blog.csdn.net/zero__007/article/details/80466392</a></p>
+<p><code>@InitBinder</code>用于在<code>@Controller</code>中标注于方法上，表示为当前控制器注册一个属性编辑器，只对当前的Controller有效。<code>@InitBinder</code>标注的方法必须有一个参数<code>WebDataBinder</code>。所谓的属性编辑器可以理解就是帮助我们完成参数绑定。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line">   <span class="meta">@RequestMapping</span>(value = <span class="string">"/test"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(@RequestParam String name,@RequestParam Date date)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">       System.out.println(name);</span><br><span class="line">       System.out.println(date);</span><br><span class="line">       <span class="keyword">return</span> name;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@InitBinder</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initBinder</span><span class="params">(WebDataBinder binder)</span></span>&#123;</span><br><span class="line">       binder.registerCustomEditor(String.class,</span><br><span class="line">               <span class="keyword">new</span> StringTrimmerEditor(<span class="keyword">true</span>));</span><br><span class="line">       binder.registerCustomEditor(Date.class,</span><br><span class="line">               <span class="keyword">new</span> CustomDateEditor(<span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd"</span>), <span class="keyword">false</span>));</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/10/04/spring集成shiro示例（包括注解和缓存，加密）/#more" rel="contents">
+            <a class="btn" href="/2018/10/29/InitBinder/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -531,7 +526,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/10/04/Springboot整合logback实现日志管理/">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/10/29/SpringBootServletInitializer和WebApplicationInitializer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -550,8 +545,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/10/04/Springboot整合logback实现日志管理/" itemprop="url">
-                  Springboot整合logback实现日志管理
+                <a class="post-title-link" href="/2018/10/29/SpringBootServletInitializer和WebApplicationInitializer/" itemprop="url">
+                  SpringBootServletInitializer和WebApplicationInitializer
                 </a>
               
             
@@ -577,24 +572,12 @@
                 
               
 
-              <time title="创建时间：2018-10-04 21:54:21" itemprop="dateCreated datePublished" datetime="2018-10-04T21:54:21+08:00">2018-10-04</time>
+              <time title="创建时间：2018-10-29 10:50:37 / 修改时间：10:53:21" itemprop="dateCreated datePublished" datetime="2018-10-29T10:50:37+08:00">2018-10-29</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-20 11:12:53" itemprop="dateModified" datetime="2019-04-20T11:12:53+08:00">2019-04-20</time>
               
             
           </span>
@@ -625,7 +608,7 @@
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/springboot/logback/" itemprop="url" rel="index"><span itemprop="name">logback</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/springboot/WebApplicationInitializer/" itemprop="url" rel="index"><span itemprop="name">WebApplicationInitializer</span></a></span>
 
                 
                 
@@ -660,11 +643,15 @@
 
       
         
-          <p>Spring Boot 默认实现的日志管理就是使用的logback。</p>
-<h4 id="保持默认依赖即可"><a href="#保持默认依赖即可" class="headerlink" title="保持默认依赖即可"></a>保持默认依赖即可</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">   <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>springboot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>demo<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>demo<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">description</span>&gt;</span>Demo project for Spring Boot<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.4.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span> <span class="comment">&lt;!-- lookup parent from repository --&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">project.build.sourceEncoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">project.build.sourceEncoding</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">project.reporting.outputEncoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">project.reporting.outputEncoding</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+          <p>转自：<a href="https://blog.csdn.net/zq17865815296/article/details/79464403" target="_blank" rel="noopener">https://blog.csdn.net/zq17865815296/article/details/79464403</a></p>
+<h2 id="WebApplicationInitializer"><a href="#WebApplicationInitializer" class="headerlink" title="WebApplicationInitializer"></a>WebApplicationInitializer</h2><p>现在JavaConfig配置方式在逐步取代xml配置方式。而WebApplicationInitializer可以看做是Web.xml的替代。</p>
+<p>通过实现WebApplicationInitializer，在其中可以添加servlet，listener等，在加载Web项目的时候会加载这个接口实现类，从而起到web.xml相同的作用。</p>
+<p>为了支持可以不使用web.xml。提供了ServletContainerInitializer，它可以通过SPI机制，当启动web容器的时候，会自动到添加的相应jar包下找到META-INF/services下以ServletContainerInitializer的全路径名称命名的文件，它的内容为ServletContainerInitializer实现类的全路径，将它们实例化。</p>
+<p>SpringServletContainerInitializer作为ServletContainerInitializer的实现类，通过SPI机制，在web容器加载的时候会自动的被调用。（这个类上还有一个注解@HandlesTypes，它的作用是将感兴趣的一些类注入到ServletContainerInitializerde），</p>
+<p>而这个类的方法又会扫描找到WebApplicationInitializer的实现类，调用它的onStartup方法，从而起到启动web.xml相同的作用。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/10/04/Springboot整合logback实现日志管理/#more" rel="contents">
+            <a class="btn" href="/2018/10/29/SpringBootServletInitializer和WebApplicationInitializer/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -720,7 +707,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/10/04/ssm和springboot设置控制台打印sql语句/">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/10/27/springboot整合多数据源方式2（动态）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -739,8 +726,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/10/04/ssm和springboot设置控制台打印sql语句/" itemprop="url">
-                  ssm和springboot设置控制台打印sql语句
+                <a class="post-title-link" href="/2018/10/27/springboot整合多数据源方式2（动态）/" itemprop="url">
+                  springboot整合多数据源方式2（动态）
                 </a>
               
             
@@ -766,7 +753,7 @@
                 
               
 
-              <time title="创建时间：2018-10-04 10:27:50 / 修改时间：10:34:45" itemprop="dateCreated datePublished" datetime="2018-10-04T10:27:50+08:00">2018-10-04</time>
+              <time title="创建时间：2018-10-27 10:43:29 / 修改时间：10:44:50" itemprop="dateCreated datePublished" datetime="2018-10-27T10:43:29+08:00">2018-10-27</time>
             
 
             
@@ -795,14 +782,7 @@
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/ssm/" itemprop="url" rel="index"><span itemprop="name">ssm</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/ssm/springboot/" itemprop="url" rel="index"><span itemprop="name">springboot</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/springboot/" itemprop="url" rel="index"><span itemprop="name">springboot</span></a></span>
 
                 
                 
@@ -837,14 +817,14 @@
 
       
         
-          <h3 id="springboot设置"><a href="#springboot设置" class="headerlink" title="springboot设置"></a>springboot设置</h3><p>springboot比较简单</p>
-<p>application.properties增加配置</p>
-<p>logging.level+包名=debug</p>
-<p><strong>即使使用的是mybatis-plus仍然是有效的，如果不能打印是下面的路径配置错了！！</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logging.level.springboot.demo.dao=debug</span><br></pre></td></tr></table></figure>
+          <h2 id="这个很厉害了！！"><a href="#这个很厉害了！！" class="headerlink" title="这个很厉害了！！"></a>这个很厉害了！！</h2><p>这里要用到一个类AbstractRoutingDataSource</p>
+<p>它继承于AbstractDataSource而AbstractDataSource又实现了DataSource接口，是一个标准的数据源。</p>
+<p>这个类的基本运作方式：</p>
+<p>它是一个abstract类，所以我们使用的话，推荐的方式是创建一个类来继承它并且实现它的determineCurrentLookupKey()方法，通过这个方法进行数据源的切换，这个时候你会又疑问，我没设置数据源，它是怎么切换的？上面我贴出了另外一个核心的方法setTargetDataSources(Map targetDataSources)，它需要一个Map，这个Map存储的就是我们配置的多个数据源的键值对。</p>
+<p><strong>我们整理一下这个类切换数据源的运作方式，这个类在连接数据库之前会执行determineCurrentLookupKey()方法，这个方法返回的数据将作为key去targetDataSources中查找相应的值，如果查找到相对应的DataSource，那么就使用此DataSource获取数据库连接。</strong></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/10/04/ssm和springboot设置控制台打印sql语句/#more" rel="contents">
+            <a class="btn" href="/2018/10/27/springboot整合多数据源方式2（动态）/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -900,7 +880,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/10/04/Mybatis注解开发/">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/10/27/MavenProfile区分生产-线上-测试环境/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -919,8 +899,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/10/04/Mybatis注解开发/" itemprop="url">
-                  Mybatis注解开发
+                <a class="post-title-link" href="/2018/10/27/MavenProfile区分生产-线上-测试环境/" itemprop="url">
+                  MavenProfile区分生产-线上-测试环境
                 </a>
               
             
@@ -946,7 +926,7 @@
                 
               
 
-              <time title="创建时间：2018-10-04 10:21:11 / 修改时间：10:23:36" itemprop="dateCreated datePublished" datetime="2018-10-04T10:21:11+08:00">2018-10-04</time>
+              <time title="创建时间：2018-10-27 10:39:48 / 修改时间：10:41:28" itemprop="dateCreated datePublished" datetime="2018-10-27T10:39:48+08:00">2018-10-27</time>
             
 
             
@@ -975,14 +955,7 @@
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/mybatis/" itemprop="url" rel="index"><span itemprop="name">mybatis</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/mybatis/注解/" itemprop="url" rel="index"><span itemprop="name">注解</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/maven/" itemprop="url" rel="index"><span itemprop="name">maven</span></a></span>
 
                 
                 
@@ -1017,10 +990,10 @@
 
       
         
-          <h1 id="Mybatis注解开发"><a href="#Mybatis注解开发" class="headerlink" title="Mybatis注解开发"></a>Mybatis注解开发</h1><h3 id="实体类"><a href="#实体类" class="headerlink" title="实体类"></a>实体类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String address;</span><br><span class="line">    <span class="keyword">private</span> String sex;</span><br><span class="line">    <span class="keyword">private</span> Date birthday;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+          <h3 id="dev：开发环境"><a href="#dev：开发环境" class="headerlink" title="dev：开发环境"></a>dev：开发环境</h3><h3 id="pro：线上环境"><a href="#pro：线上环境" class="headerlink" title="pro：线上环境"></a>pro：线上环境</h3><h3 id="test：测试环境"><a href="#test：测试环境" class="headerlink" title="test：测试环境"></a>test：测试环境</h3><h2 id="1-tomcat端口的区分"><a href="#1-tomcat端口的区分" class="headerlink" title="1.tomcat端口的区分"></a>1.tomcat端口的区分</h2><h3 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h3><p>使用<code>profile</code>标签区分端口如下</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/10/04/Mybatis注解开发/#more" rel="contents">
+            <a class="btn" href="/2018/10/27/MavenProfile区分生产-线上-测试环境/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1076,7 +1049,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/10/04/mybatis的mapper-xml参考配置实例/">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/10/27/PageHelper/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -1095,8 +1068,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/10/04/mybatis的mapper-xml参考配置实例/" itemprop="url">
-                  mybatis的mapper.xml参考配置实例
+                <a class="post-title-link" href="/2018/10/27/PageHelper/" itemprop="url">
+                  PageHelper
                 </a>
               
             
@@ -1122,7 +1095,7 @@
                 
               
 
-              <time title="创建时间：2018-10-04 10:16:56 / 修改时间：10:18:19" itemprop="dateCreated datePublished" datetime="2018-10-04T10:16:56+08:00">2018-10-04</time>
+              <time title="创建时间：2018-10-27 10:37:15 / 修改时间：10:38:27" itemprop="dateCreated datePublished" datetime="2018-10-27T10:37:15+08:00">2018-10-27</time>
             
 
             
@@ -1151,7 +1124,7 @@
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/mybatis/" itemprop="url" rel="index"><span itemprop="name">mybatis</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/pageHelper/" itemprop="url" rel="index"><span itemprop="name">pageHelper</span></a></span>
 
                 
                 
@@ -1186,10 +1159,11 @@
 
       
         
-          <h3 id="更新数据后返回主键id"><a href="#更新数据后返回主键id" class="headerlink" title="更新数据后返回主键id"></a>更新数据后返回主键id</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">"save"</span> <span class="attr">parameterType</span>=<span class="string">"category"</span>&gt;</span></span><br><span class="line">    /*往数据库插入一条数据，返回插入数据的id配置*/</span><br><span class="line">    <span class="tag">&lt;<span class="name">selectKey</span> <span class="attr">resultType</span>=<span class="string">"java.lang.Integer"</span> <span class="attr">keyProperty</span>=<span class="string">"id"</span> <span class="attr">order</span>=<span class="string">"AFTER"</span> <span class="attr">keyColumn</span>=<span class="string">"id"</span>&gt;</span></span><br><span class="line">        SELECT LAST_INSERT_ID()</span><br><span class="line">    <span class="tag">&lt;/<span class="name">selectKey</span>&gt;</span></span><br><span class="line">    insert into category values(null,#&#123;name&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br></pre></td></tr></table></figure>
+          <h2 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.pagehelper<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>pagehelper<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>最新版本<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="在-MyBatis-配置-xml-中配置拦截器插件"><a href="#在-MyBatis-配置-xml-中配置拦截器插件" class="headerlink" title="在 MyBatis 配置 xml 中配置拦截器插件"></a>在 MyBatis 配置 xml 中配置拦截器插件</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--使用mybatis-plus的SqlSession--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.mybatis.spring.SqlSessionFactoryBean"</span> <span class="attr">id</span>=<span class="string">"sqlSessionFactory"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 自动扫描mybatis配置文件 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"configLocation"</span> <span class="attr">value</span>=<span class="string">"classpath:mybatis-config.xml"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 注入数据库连接池 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 扫描sql配置文件:mapper需要的xml文件 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"mapperLocations"</span> <span class="attr">value</span>=<span class="string">"classpath:mapper/*.xml"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 传入PageHelper的插件 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"plugins"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 传入插件的对象 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"com.github.pagehelper.PageInterceptor"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"properties"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">props</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"helperDialect"</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"reasonable"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">props</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/10/04/mybatis的mapper-xml参考配置实例/#more" rel="contents">
+            <a class="btn" href="/2018/10/27/PageHelper/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1245,7 +1219,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/10/04/spring集成shiro简单版/">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/10/26/原生Quartz/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -1264,8 +1238,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/10/04/spring集成shiro简单版/" itemprop="url">
-                  spring集成shiro简单版
+                <a class="post-title-link" href="/2018/10/26/原生Quartz/" itemprop="url">
+                  原生Quartz
                 </a>
               
             
@@ -1291,7 +1265,7 @@
                 
               
 
-              <time title="创建时间：2018-10-04 09:57:14 / 修改时间：10:00:54" itemprop="dateCreated datePublished" datetime="2018-10-04T09:57:14+08:00">2018-10-04</time>
+              <time title="创建时间：2018-10-26 15:49:38 / 修改时间：15:51:49" itemprop="dateCreated datePublished" datetime="2018-10-26T15:49:38+08:00">2018-10-26</time>
             
 
             
@@ -1320,14 +1294,7 @@
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/shiro/" itemprop="url" rel="index"><span itemprop="name">shiro</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/shiro/spring/" itemprop="url" rel="index"><span itemprop="name">spring</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/Quartz/" itemprop="url" rel="index"><span itemprop="name">Quartz</span></a></span>
 
                 
                 
@@ -1362,10 +1329,17 @@
 
       
         
-          <h2 id="这里没有用自定义的Realm，使用了JdbcRealm。"><a href="#这里没有用自定义的Realm，使用了JdbcRealm。" class="headerlink" title="这里没有用自定义的Realm，使用了JdbcRealm。"></a>这里没有用自定义的Realm，使用了JdbcRealm。</h2><h2 id="spring集成shiro简单版，坑比较多。"><a href="#spring集成shiro简单版，坑比较多。" class="headerlink" title="spring集成shiro简单版，坑比较多。"></a>spring集成shiro简单版，坑比较多。</h2><h3 id="1-创建maven项目，引入依赖"><a href="#1-创建maven项目，引入依赖" class="headerlink" title="1.创建maven项目，引入依赖"></a>1.创建maven项目，引入依赖</h3>
+          <p>文章引用自<a href="https://www.cnblogs.com/drift-ice/p/3817269.html，写的非常可以说是好了。" target="_blank" rel="noopener">https://www.cnblogs.com/drift-ice/p/3817269.html，写的非常可以说是好了。</a></p>
+<p>几个基本概念：Job、Trigger、Cron expression、JobStores、Scheduler</p>
+<h3 id="Scheduler"><a href="#Scheduler" class="headerlink" title="Scheduler"></a>Scheduler</h3><p>调度器。所有的调度都是由它控制。</p>
+<h3 id="Job"><a href="#Job" class="headerlink" title="Job"></a>Job</h3><p>对于任务内容的构建，我们需要创建 Job 的继承类，并实现 execute 方法。</p>
+<h3 id="JobDetail"><a href="#JobDetail" class="headerlink" title="JobDetail"></a>JobDetail</h3><p>定义的是任务数据，而真正的执行逻辑是在Job中</p>
+<p> 为什么设计成JobDetail + Job，不直接使用Job？这是因为任务是有可能并发执行，如果Scheduler直接使用Job，就会存在对同一个Job实例并发访问的问题。而JobDetail &amp; Job 方式，sheduler每次执行，都会根据JobDetail创建一个新的Job实例，这样就可以规避并发访问的问题。</p>
+<h3 id="Trigger"><a href="#Trigger" class="headerlink" title="Trigger"></a>Trigger</h3><p>其作用是设置调度策略。Quartz 设计了多种类型的 Trigger，其中最常用的是 SimpleTrigger 和 CronTrigger。<br>SimpleTrigger 适用于在某一特定的时间以某一特定时间间隔执行多次。</p>
+<p>CronTrigger 的用途更广，主要适用于基于日历的调度安排。例如：每星期二的 16:38:10 执行，每月一号执行，等等。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/10/04/spring集成shiro简单版/#more" rel="contents">
+            <a class="btn" href="/2018/10/26/原生Quartz/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1421,7 +1395,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/09/30/mybatis-plus操作示例/">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/10/25/springboot整合多数据源/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -1440,8 +1414,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/30/mybatis-plus操作示例/" itemprop="url">
-                  mybatis-plus操作示例
+                <a class="post-title-link" href="/2018/10/25/springboot整合多数据源/" itemprop="url">
+                  springboot整合多数据源
                 </a>
               
             
@@ -1467,7 +1441,7 @@
                 
               
 
-              <time title="创建时间：2018-09-30 09:02:38 / 修改时间：09:04:20" itemprop="dateCreated datePublished" datetime="2018-09-30T09:02:38+08:00">2018-09-30</time>
+              <time title="创建时间：2018-10-25 18:34:55 / 修改时间：18:36:01" itemprop="dateCreated datePublished" datetime="2018-10-25T18:34:55+08:00">2018-10-25</time>
             
 
             
@@ -1496,14 +1470,7 @@
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/mybatis/" itemprop="url" rel="index"><span itemprop="name">mybatis</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/mybatis/mybatis-plus/" itemprop="url" rel="index"><span itemprop="name">mybatis-plus</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/springboot/" itemprop="url" rel="index"><span itemprop="name">springboot</span></a></span>
 
                 
                 
@@ -1538,11 +1505,10 @@
 
       
         
-          <h3 id="实体类映射"><a href="#实体类映射" class="headerlink" title="实体类映射"></a>实体类映射</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="meta">@Setter</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="meta">@TableName</span>(<span class="string">"person"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="meta">@TableId</span></span><br><span class="line">    <span class="keyword">private</span> Integer pid;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String pname;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String page;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fun2</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Person person = <span class="keyword">new</span> Person();</span><br><span class="line">    person.setPage(<span class="string">"10"</span>);</span><br><span class="line">    person.setPname(<span class="string">"南北"</span>);</span><br><span class="line">   personMapper.insert(person);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h2 id="springboot整合-多数据源方式1"><a href="#springboot整合-多数据源方式1" class="headerlink" title="springboot整合  多数据源方式1"></a>springboot整合  多数据源方式1</h2><h3 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">&lt;!--lombok--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!--mybatis-plus--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.baomidou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-plus-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">&lt;!-- mysql 依赖 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!--druid--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>druid<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/09/30/mybatis-plus操作示例/#more" rel="contents">
+            <a class="btn" href="/2018/10/25/springboot整合多数据源/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1598,7 +1564,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/09/30/mybatis-plus条件构造器/">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/10/25/spring整合cache/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -1617,8 +1583,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/30/mybatis-plus条件构造器/" itemprop="url">
-                  mybatis-plus条件构造器
+                <a class="post-title-link" href="/2018/10/25/spring整合cache/" itemprop="url">
+                  spring整合cache
                 </a>
               
             
@@ -1644,7 +1610,7 @@
                 
               
 
-              <time title="创建时间：2018-09-30 08:58:16 / 修改时间：09:00:43" itemprop="dateCreated datePublished" datetime="2018-09-30T08:58:16+08:00">2018-09-30</time>
+              <time title="创建时间：2018-10-25 18:29:40 / 修改时间：18:31:46" itemprop="dateCreated datePublished" datetime="2018-10-25T18:29:40+08:00">2018-10-25</time>
             
 
             
@@ -1673,14 +1639,14 @@
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/mybatis/" itemprop="url" rel="index"><span itemprop="name">mybatis</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/cache/" itemprop="url" rel="index"><span itemprop="name">cache</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/mybatis/mybatis-plus/" itemprop="url" rel="index"><span itemprop="name">mybatis-plus</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/cache/spring/" itemprop="url" rel="index"><span itemprop="name">spring</span></a></span>
 
                 
                 
@@ -1715,23 +1681,15 @@
 
       
         
-          <h4 id="你可能在网上看到很多EntityWrapper，这里却没用，因为从2-x升级到3-xEntityWrapper已经废弃"><a href="#你可能在网上看到很多EntityWrapper，这里却没用，因为从2-x升级到3-xEntityWrapper已经废弃" class="headerlink" title="你可能在网上看到很多EntityWrapper，这里却没用，因为从2.x升级到3.xEntityWrapper已经废弃"></a>你可能在网上看到很多EntityWrapper，这里却没用，因为从2.x升级到3.xEntityWrapper已经废弃</h4><h4 id="Wrapper分为QueryWrapper、UpdateWrapper、LambdaQueryWrapper、LambdaUpdateWrapper了。"><a href="#Wrapper分为QueryWrapper、UpdateWrapper、LambdaQueryWrapper、LambdaUpdateWrapper了。" class="headerlink" title="Wrapper分为QueryWrapper、UpdateWrapper、LambdaQueryWrapper、LambdaUpdateWrapper了。"></a>Wrapper分为QueryWrapper、UpdateWrapper、LambdaQueryWrapper、LambdaUpdateWrapper了。</h4><ul>
-<li><p>以下出现的第一个入参<code>boolean condition</code>表示该条件<strong>是否</strong>加入最后生成的sql中</p>
-</li>
-<li><p>以下代码块内的多个方法均为从上往下补全个别<code>boolean</code>类型的入参,默认为<code>true</code></p>
-</li>
-<li><p>以下出现的泛型<code>This</code>均为具体使用的<code>Wrapper</code>的实例</p>
-</li>
-<li><p>以下方法在入参中出现的<code>R</code>为泛型,在普通wrapper中是<code>String</code>,在LambdaWrapper中是<strong>函数</strong>(例:<code>Entity::getId</code>,<code>Entity</code>为实体类,<code>getId</code>为字段<code>id</code>的<strong>getMethod</strong>)</p>
-</li>
-<li><p>以下方法入参中的<code>R column</code>均表示数据库字段,当<code>R</code>为<code>String</code>时则为数据库字段名(<strong>字段名是数据库关键字的自己用转义符包裹!</strong>)!而不是实体类数据字段名!!!</p>
-</li>
-<li><p>以下举例均为使用普通wrapper,入参为<code>Map</code>和<code>List</code>的均以<code>json</code>形式表现!</p>
-</li>
-<li><p>使用中如果入参的<code>Map</code>或者<code>List</code>为<strong>空</strong>,则不会加入最后生成的sql中!!!</p></li></ul>
+          <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ul>
+<li>在未开启事务的情况之下，每次查询，spring都会关闭旧的sqlSession而创建新的sqlSession,因此此时mybatis的一级缓存是没有作用的</li>
+<li>在开启事务的情况之下，spring使用threadLocal获取当前资源绑定同一个sqlSession，因此此时mybatis一级缓存是有效的，测试时我们需要排除mybatis一级缓存的影响。</li>
+</ul>
+<p><strong>如果开启事务即使用@Transactional注解进行本次测试，如果连续进行查询，只会打印一次sql，即只访问一次数据库。因为有mybatis的一级缓存存在。</strong></p>
+<p><strong>所以要关闭事务，不要使用@Transactional注解</strong></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/09/30/mybatis-plus条件构造器/#more" rel="contents">
+            <a class="btn" href="/2018/10/25/spring整合cache/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1787,7 +1745,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/09/30/MyBatis-PlusCRUD操作/">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/10/24/注册短信业务逻辑代码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -1806,8 +1764,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/30/MyBatis-PlusCRUD操作/" itemprop="url">
-                  MyBatis-PlusCRUD操作
+                <a class="post-title-link" href="/2018/10/24/注册短信业务逻辑代码/" itemprop="url">
+                  注册短信业务逻辑代码
                 </a>
               
             
@@ -1833,7 +1791,7 @@
                 
               
 
-              <time title="创建时间：2018-09-30 08:51:13 / 修改时间：08:55:57" itemprop="dateCreated datePublished" datetime="2018-09-30T08:51:13+08:00">2018-09-30</time>
+              <time title="创建时间：2018-10-24 13:43:29 / 修改时间：13:46:18" itemprop="dateCreated datePublished" datetime="2018-10-24T13:43:29+08:00">2018-10-24</time>
             
 
             
@@ -1862,14 +1820,28 @@
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/mybatis-plus/" itemprop="url" rel="index"><span itemprop="name">mybatis-plus</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/activeMQ/" itemprop="url" rel="index"><span itemprop="name">activeMQ</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/mybatis-plus/mybatis/" itemprop="url" rel="index"><span itemprop="name">mybatis</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/activeMQ/短信/" itemprop="url" rel="index"><span itemprop="name">短信</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/activeMQ/短信/微服务/" itemprop="url" rel="index"><span itemprop="name">微服务</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/activeMQ/短信/微服务/阿里大于/" itemprop="url" rel="index"><span itemprop="name">阿里大于</span></a></span>
 
                 
                 
@@ -1904,17 +1876,14 @@
 
       
         
-          <h2 id="Mapper-CRUD-接口"><a href="#Mapper-CRUD-接口" class="headerlink" title="Mapper CRUD 接口"></a>Mapper CRUD 接口</h2><ul>
-<li><p>通用 CRUD 封装<a href="https://gitee.com/baomidou/mybatis-plus/blob/3.0/mybatis-plus-core/src/main/java/com/baomidou/mybatisplus/core/mapper/BaseMapper.java" target="_blank" rel="noopener">BaseMapper </a>接口，为 <code>Mybatis-Plus</code> 启动时自动解析实体表关系映射转换为 <code>Mybatis</code> 内部对象注入容器</p>
-</li>
-<li><p>泛型 <code>T</code> 为任意实体对象</p>
-</li>
-<li><p>参数 <code>Serializable</code> 为任意类型主键 <code>Mybatis-Plus</code> 不推荐使用复合主键约定每一张表都有自己的唯一 <code>id</code> 主键</p>
-</li>
-<li><p>对象 <code>Wrapper</code> 为 条件构造器</p></li></ul>
+          <h2 id="总体思路"><a href="#总体思路" class="headerlink" title="总体思路"></a>总体思路</h2><p>点击页面上的”获取短信验证码”链接，向后端传递手机号。后端随机生成6位数字作为短信验证码，将其保存在redis中（手机号作为KEY）。同时发送参数（手机号，验证码，短信模板号，签名）给消息中间件（此处用的是ActiveMQ）。</p>
+<p>短信微服务通过监听消息，获得 手机号，验证码，短信模板号，签名后，通过短信平台发送短信此处使用的是阿里大于。</p>
+<p>用户注册时，后端根据手机号查询redis中的验证码与用户填写的验证码是否相同，如果不同则提示用户不能注册。</p>
+<h2 id="短信微服务"><a href="#短信微服务" class="headerlink" title="短信微服务"></a>短信微服务</h2><p>使用的是springboot。</p>
+<p>构建一个通用的短信发送服务（独立于品优购的单独工程），接收activeMQ的消息（MAP类型）  消息包括手机号（mobile）、短信模板号（template_code）、签名（sign_name）、参数字符串（param ）</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/09/30/MyBatis-PlusCRUD操作/#more" rel="contents">
+            <a class="btn" href="/2018/10/24/注册短信业务逻辑代码/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1970,7 +1939,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/09/28/Springboot结合Swagger2构建RESTfulAPI文档/">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/10/14/Spring整合JMS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="York">
@@ -1989,8 +1958,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/28/Springboot结合Swagger2构建RESTfulAPI文档/" itemprop="url">
-                  Springboot结合Swagger2构建RESTfulAPI文档
+                <a class="post-title-link" href="/2018/10/14/Spring整合JMS/" itemprop="url">
+                  Spring整合JMS
                 </a>
               
             
@@ -2016,7 +1985,7 @@
                 
               
 
-              <time title="创建时间：2018-09-28 14:29:26 / 修改时间：14:34:12" itemprop="dateCreated datePublished" datetime="2018-09-28T14:29:26+08:00">2018-09-28</time>
+              <time title="创建时间：2018-10-14 19:54:14 / 修改时间：19:56:11" itemprop="dateCreated datePublished" datetime="2018-10-14T19:54:14+08:00">2018-10-14</time>
             
 
             
@@ -2045,21 +2014,14 @@
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/swagger2/" itemprop="url" rel="index"><span itemprop="name">swagger2</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/activeMQ/" itemprop="url" rel="index"><span itemprop="name">activeMQ</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/swagger2/springboot/" itemprop="url" rel="index"><span itemprop="name">springboot</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/swagger2/springboot/Restful/" itemprop="url" rel="index"><span itemprop="name">Restful</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/activeMQ/spring/" itemprop="url" rel="index"><span itemprop="name">spring</span></a></span>
 
                 
                 
@@ -2094,17 +2056,17 @@
 
       
         
-          
-            <h3 id="Swagger2类"><a href="#Swagger2类" class="headerlink" title="Swagger2类"></a>Swagger2类</h3><p>该类要和springboot类同级</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span><span class="comment">//让Spring来加载该类配置</span></span><br><span class="line"><span class="meta">@EnableSwagger</span>2<span class="comment">//注解来启用Swagger2。</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Swagger2</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">createRestApi</span><span class="params">()</span> </span>&#123;<span class="comment">//通过createRestApi函数创建Docket的Bean</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">                .apiInfo(apiInfo())</span><br><span class="line">                .select()<span class="comment">//select()函数返回一个ApiSelectorBuilder实例用来控制哪些接口暴露给Swagger来展现</span></span><br><span class="line">                .apis(RequestHandlerSelectors.basePackage(<span class="string">"springboot.demo.controller"</span>))<span class="comment">//扫描的包路径</span></span><br><span class="line">                .paths(PathSelectors.any())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//创建该Api的基本信息</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> ApiInfo <span class="title">apiInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ApiInfoBuilder()</span><br><span class="line">                .title(<span class="string">"RESTful APIs"</span>)</span><br><span class="line">                .description(<span class="string">"Springboot中使用Swagger2构建RESTful APIs"</span>)</span><br><span class="line">                .contact(<span class="string">"天下不易其乐"</span>)</span><br><span class="line">                .version(<span class="string">"1.0"</span>)</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="修改controller代码"><a href="#修改controller代码" class="headerlink" title="修改controller代码"></a>修改controller代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/student"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RestFulController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> StudentService studentService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation</span>(value=<span class="string">"获取学生列表"</span>, notes=<span class="string">"获取学生列表"</span>)</span><br><span class="line">    <span class="meta">@RequestMapping</span>(method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Student&gt; <span class="title">getStudentList</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> studentService.getStudentList();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation</span>(value=<span class="string">"保存学生"</span>, notes=<span class="string">"根据Student对象保存学生"</span>)</span><br><span class="line">    <span class="meta">@ApiImplicitParam</span>(name = <span class="string">"student"</span>, value = <span class="string">"学生详细实体student"</span>, required = <span class="keyword">true</span>, dataType = <span class="string">"Student"</span>)</span><br><span class="line">    <span class="meta">@RequestMapping</span>(method = RequestMethod.POST)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">postStudent</span><span class="params">(Student student)</span></span>&#123;</span><br><span class="line">        <span class="comment">//System.out.println(student);</span></span><br><span class="line">        studentService.save(student);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation</span>(value=<span class="string">"获取学生信息"</span>, notes=<span class="string">"根据id获得学生详细信息"</span>)</span><br><span class="line">    <span class="meta">@ApiImplicitParam</span>(name = <span class="string">"id"</span>, value = <span class="string">"学生id"</span>, required = <span class="keyword">true</span>, dataType = <span class="string">"Integer"</span>)</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/&#123;id&#125;"</span>,method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Student <span class="title">getStudent</span><span class="params">(@PathVariable Integer id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> studentService.getStudent(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation</span>(value=<span class="string">"更新学生信息"</span>, notes=<span class="string">"根据id更新学生详细信息"</span>)</span><br><span class="line">    <span class="meta">@ApiImplicitParam</span>(name = <span class="string">"id"</span>, value = <span class="string">"学生id"</span>, required = <span class="keyword">true</span>, dataType = <span class="string">"Integer"</span>)</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/&#123;id&#125;"</span>,method = RequestMethod.PUT)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">putStudent</span><span class="params">(@PathVariable Integer id,Student student)</span></span>&#123;</span><br><span class="line">        studentService.updateStudnet(id,student);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation</span>(value=<span class="string">"删除学生"</span>, notes=<span class="string">"根据id删除学生"</span>)</span><br><span class="line">    <span class="meta">@ApiImplicitParam</span>(name = <span class="string">"id"</span>, value = <span class="string">"学生id"</span>, required = <span class="keyword">true</span>, dataType = <span class="string">"Integer"</span>)</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/&#123;id&#125;"</span>,method = RequestMethod.DELETE)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">deleteStudent</span><span class="params">(@PathVariable Integer id)</span></span>&#123;</span><br><span class="line">        studentService.deleteStudent(id);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="启动Spring-Boot程序"><a href="#启动Spring-Boot程序" class="headerlink" title="启动Spring Boot程序"></a>启动Spring Boot程序</h3><p>访问：<a href="http://localhost:8080/swagger-ui.html" target="_blank" rel="noopener">http://localhost:8080/swagger-ui.html</a></p>
-<p>下面截取几个方法说明。</p>
-<p><img src="/2018/09/28/Springboot结合Swagger2构建RESTfulAPI文档/20180916114208.png" alt=""></p>
-<p><img src="/2018/09/28/Springboot结合Swagger2构建RESTfulAPI文档/20180916114239.png" alt=""></p>
-<p><img src="/2018/09/28/Springboot结合Swagger2构建RESTfulAPI文档/20180916114258.png" alt=""></p>
-
-          
+          <h2 id="点对点模式"><a href="#点对点模式" class="headerlink" title="点对点模式"></a>点对点模式</h2><h3 id="消息生产者"><a href="#消息生产者" class="headerlink" title="消息生产者"></a>消息生产者</h3><p>1.创建工程springjms_producer，在POM文件中引入SpringJms 、activeMQ以及单元测试相关依赖 。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-jms<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.9<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.activemq<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>activemq-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.13.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>2.在src/main/resources下创建spring配置文件applicationContext-jms-producer.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"com.demo"</span>&gt;</span><span class="tag">&lt;/<span class="name">context:component-scan</span>&gt;</span>        </span><br><span class="line">    <span class="comment">&lt;!-- 真正可以产生Connection的ConnectionFactory，由对应的 JMS服务厂商提供--&gt;</span>  </span><br><span class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"targetConnectionFactory"</span> <span class="attr">class</span>=<span class="string">"org.apache.activemq.ActiveMQConnectionFactory"</span>&gt;</span>  </span><br><span class="line">	    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"brokerURL"</span> <span class="attr">value</span>=<span class="string">"tcp://192.168.25.135:61616"</span>/&gt;</span>  </span><br><span class="line">	<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>          </span><br><span class="line">    <span class="comment">&lt;!-- Spring用于管理真正的ConnectionFactory的ConnectionFactory --&gt;</span>  </span><br><span class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"connectionFactory"</span> <span class="attr">class</span>=<span class="string">"org.springframework.jms.connection.SingleConnectionFactory"</span>&gt;</span>  </span><br><span class="line">	<span class="comment">&lt;!-- 目标ConnectionFactory对应真实的可以产生JMS Connection的ConnectionFactory --&gt;</span>  </span><br><span class="line">	    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"targetConnectionFactory"</span> <span class="attr">ref</span>=<span class="string">"targetConnectionFactory"</span>/&gt;</span>  </span><br><span class="line">	<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>  	   </span><br><span class="line">    <span class="comment">&lt;!-- Spring提供的JMS工具类，它可以进行消息发送、接收等 --&gt;</span>  </span><br><span class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"jmsTemplate"</span> <span class="attr">class</span>=<span class="string">"org.springframework.jms.core.JmsTemplate"</span>&gt;</span>  </span><br><span class="line">	    <span class="comment">&lt;!-- 这个connectionFactory对应的是我们定义的Spring提供的那个ConnectionFactory对象 --&gt;</span>  </span><br><span class="line">	    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connectionFactory"</span> <span class="attr">ref</span>=<span class="string">"connectionFactory"</span>/&gt;</span>  </span><br><span class="line">	<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>      </span><br><span class="line">    <span class="comment">&lt;!--这个是队列目的地，点对点的  文本信息--&gt;</span>  </span><br><span class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"queueTextDestination"</span> <span class="attr">class</span>=<span class="string">"org.apache.activemq.command.ActiveMQQueue"</span>&gt;</span>  </span><br><span class="line">	    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">"queue_text"</span>/&gt;</span>  </span><br><span class="line">	<span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/14/Spring整合JMS/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2145,7 +2107,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2192,7 +2154,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">73</span>
+                    <span class="site-state-item-count">88</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2353,7 +2315,29 @@
                     
                       
                     
-                    <span class="site-state-item-count">74</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">85</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2472,7 +2456,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">53</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">58</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2558,7 +2552,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共93.9k字</span>
+  <span class="post-count">博客全站共110.1k字</span>
 </div>
 
         

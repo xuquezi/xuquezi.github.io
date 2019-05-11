@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "e080c7a7"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.icon?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.icon?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: 'IE1WYPLC4A',
+      apiKey: 'your API Key',
+      indexName: 'your Index name',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="RestTemplate转自https://www.jianshu.com/p/0fd5f3f64137 这个作者写的真全！！！ RestTemplate默认依赖jdk的HTTP连接工具。当然你也可以 通过setRequestFactory属性切换到不同的HTTP源，比如Apache HttpComponents、Netty和OkHttp。 1.创建RestTemplate创建RestTempla">
+<meta name="keywords" content="RestTemplate">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RestTemplate">
+<meta property="og:url" content="http://neverloseyourself.top/2019/05/11/RestTemplate/index.html">
+<meta property="og:site_name" content="天下不易其乐">
+<meta property="og:description" content="RestTemplate转自https://www.jianshu.com/p/0fd5f3f64137 这个作者写的真全！！！ RestTemplate默认依赖jdk的HTTP连接工具。当然你也可以 通过setRequestFactory属性切换到不同的HTTP源，比如Apache HttpComponents、Netty和OkHttp。 1.创建RestTemplate创建RestTempla">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-11T07:14:37.510Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RestTemplate">
+<meta name="twitter:description" content="RestTemplate转自https://www.jianshu.com/p/0fd5f3f64137 这个作者写的真全！！！ RestTemplate默认依赖jdk的HTTP连接工具。当然你也可以 通过setRequestFactory属性切换到不同的HTTP源，比如Apache HttpComponents、Netty和OkHttp。 1.创建RestTemplate创建RestTempla">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="天下不易其乐" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://neverloseyourself.top/2019/05/11/RestTemplate/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>RestTemplate | 天下不易其乐</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">天下不易其乐</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Talk is cheap,show me your code.</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2019/05/11/RestTemplate/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="York">
+      <meta itemprop="description" content="先生卖我几两仁义道德">
+      <meta itemprop="image" content="/images/timg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天下不易其乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">RestTemplate
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-11 15:13:29 / 修改时间：15:14:37" itemprop="dateCreated datePublished" datetime="2019-05-11T15:13:29+08:00">2019-05-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/RestTemplate/" itemprop="url" rel="index"><span itemprop="name">RestTemplate</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="RestTemplate"><a href="#RestTemplate" class="headerlink" title="RestTemplate"></a>RestTemplate</h1><p>转自<a href="https://www.jianshu.com/p/0fd5f3f64137" target="_blank" rel="noopener">https://www.jianshu.com/p/0fd5f3f64137</a></p>
+<p>这个作者写的真全！！！</p>
+<p>RestTemplate默认依赖jdk的HTTP连接工具。当然你也可以 通过setRequestFactory属性切换到不同的HTTP源，比如Apache HttpComponents、Netty和OkHttp。</p>
+<h3 id="1-创建RestTemplate"><a href="#1-创建RestTemplate" class="headerlink" title="1.创建RestTemplate"></a>1.创建RestTemplate</h3><p>创建RestTemplate很简单，只需要<code>new RestTemplate()</code>，如果使用Spring架构，将创建的RestTemplate实例通过XML或注解的方式注册到Spring容器中即可</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> RestTemplate <span class="title">restTemplate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> RestTemplate();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="2-RestTemplate构造方法"><a href="#2-RestTemplate构造方法" class="headerlink" title="2.RestTemplate构造方法"></a>2.RestTemplate构造方法</h3><p><strong>RestTemplate无参构造</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Create a new instance of the &#123;<span class="doctag">@link</span> RestTemplate&#125; using default settings.</span></span><br><span class="line"><span class="comment"> * Default &#123;<span class="doctag">@link</span> HttpMessageConverter&#125;s are initialized.</span></span><br><span class="line"><span class="comment"> * 使用默认配置创建一个RestTemplate实例</span></span><br><span class="line"><span class="comment"> * 默认的HttpMessageConverter集合被初始化</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">RestTemplate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.messageConverters.add(<span class="keyword">new</span> ByteArrayHttpMessageConverter());</span><br><span class="line">    <span class="keyword">this</span>.messageConverters.add(<span class="keyword">new</span> StringHttpMessageConverter());</span><br><span class="line">    <span class="keyword">this</span>.messageConverters.add(<span class="keyword">new</span> ResourceHttpMessageConverter());</span><br><span class="line">    <span class="keyword">this</span>.messageConverters.add(<span class="keyword">new</span> SourceHttpMessageConverter&lt;Source&gt;());</span><br><span class="line">    <span class="keyword">this</span>.messageConverters.add(<span class="keyword">new</span> AllEncompassingFormHttpMessageConverter());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (romePresent) &#123;</span><br><span class="line">        <span class="keyword">this</span>.messageConverters.add(<span class="keyword">new</span> AtomFeedHttpMessageConverter());</span><br><span class="line">        <span class="keyword">this</span>.messageConverters.add(<span class="keyword">new</span> RssChannelHttpMessageConverter());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (jackson2XmlPresent) &#123;</span><br><span class="line">        <span class="keyword">this</span>.messageConverters.add(<span class="keyword">new</span> MappingJackson2XmlHttpMessageConverter());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (jaxb2Present) &#123;</span><br><span class="line">        <span class="keyword">this</span>.messageConverters.add(<span class="keyword">new</span> Jaxb2RootElementHttpMessageConverter());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 如果类路径下包含com.fasterxml.jackson.databind.ObjectMapper 和 com.fasterxml.jackson.core.JsonGenerator</span></span><br><span class="line"><span class="comment">     * 使用jackson做http请求、响应的json转换</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">if</span> (jackson2Present) &#123;</span><br><span class="line">        <span class="keyword">this</span>.messageConverters.add(<span class="keyword">new</span> MappingJackson2HttpMessageConverter());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (gsonPresent) &#123;</span><br><span class="line">        <span class="keyword">this</span>.messageConverters.add(<span class="keyword">new</span> GsonHttpMessageConverter());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>参数为ClientHttpRequestFactory的构造</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Create a new instance of the &#123;<span class="doctag">@link</span> RestTemplate&#125; based on the given &#123;<span class="doctag">@link</span> ClientHttpRequestFactory&#125;.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> requestFactory HTTP request factory to use</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> org.springframework.http.client.SimpleClientHttpRequestFactory</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> org.springframework.http.client.HttpComponentsClientHttpRequestFactory</span></span><br><span class="line"><span class="comment"> * 使用指定的ClientHttpRequestFactory创建一个RestTemplate实例</span></span><br><span class="line"><span class="comment"> * requestFactory是用于创建HTTP请求的工厂，默认的实现有</span></span><br><span class="line"><span class="comment"> * SimpleClientHttpRequestFactory、HttpComponentsClientHttpRequestFactory</span></span><br><span class="line"><span class="comment"> * 如果没有设置默认是SimpleClientHttpRequestFactory</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">RestTemplate</span><span class="params">(ClientHttpRequestFactory requestFactory)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>();  <span class="comment">//也会调用无参构造初始化默认的messageConverters</span></span><br><span class="line">    setRequestFactory(requestFactory);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>参数为messageConverters的构造</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Create a new instance of the &#123;<span class="doctag">@link</span> RestTemplate&#125; using the given list of</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@link</span> HttpMessageConverter&#125; to use</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> messageConverters the list of &#123;<span class="doctag">@link</span> HttpMessageConverter&#125; to use</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 3.2.7</span></span><br><span class="line"><span class="comment"> * 传入自定义的HttpMessageConverter集合，并赋值给messageConverters，之后使用自定义的HttpMessageConverter</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">RestTemplate</span><span class="params">(List&lt;HttpMessageConverter&lt;?&gt;&gt; messageConverters)</span> </span>&#123;</span><br><span class="line">    Assert.notEmpty(messageConverters, <span class="string">"At least one HttpMessageConverter required"</span>);</span><br><span class="line">    <span class="keyword">this</span>.messageConverters.addAll(messageConverters);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-RestTemplate-API使用"><a href="#3-RestTemplate-API使用" class="headerlink" title="3.RestTemplate API使用"></a>3.RestTemplate API使用</h3><p><strong>DELETE</strong></p>
+<ul>
+<li>void   delete(String url, Object… uriVariables)</li>
+<li>void   delete(String url, Map&lt;String,?&gt; uriVariables)</li>
+<li>void   delete(URI url)</li>
+</ul>
+<p><strong>GET</strong></p>
+<ul>
+<li><t> T   getForObject(String url, Class<t> responseType, Object… uriVariables)</t></t></li>
+<li><t> T   getForObject(String url, Class<t> responseType, Map&lt;String,?&gt; uriVariables)</t></t></li>
+<li><t> T   getForObject(URI url, Class<t> responseType)</t></t></li>
+<li><t> ResponseEntity<t>  getForEntity(String url, Class<t> responseType, Object… uriVariables)</t></t></t></li>
+<li><t> ResponseEntity<t>  getForEntity(String url, Class<t> responseType, Map&lt;String,?&gt; uriVariables)</t></t></t></li>
+<li><t> ResponseEntity<t>  getForEntity(URI url, Class<t> responseType)</t></t></t></li>
+</ul>
+<p><strong>HEAD</strong></p>
+<ul>
+<li>HttpHeaders   headForHeaders(String url, Object… uriVariables)</li>
+<li>HttpHeaders   headForHeaders(String url, Map&lt;String,?&gt; uriVariables)</li>
+<li>HttpHeaders   headForHeaders(URI url)</li>
+</ul>
+<p><strong>OPTIONS</strong></p>
+<ul>
+<li>Set<httpmethod>  optionsForAllow(String url, Object… uriVariables)</httpmethod></li>
+<li>Set<httpmethod>  optionsForAllow(String url, Map&lt;String,?&gt; uriVariables)</httpmethod></li>
+<li>Set<httpmethod>  optionsForAllow(URI url)</httpmethod></li>
+</ul>
+<p><strong>POST</strong></p>
+<ul>
+<li><t> T  postForObject(String url, Object request, Class<t> responseType, Object… uriVariables)</t></t></li>
+<li><t> T  postForObject(String url, Object request, Class<t> responseType, Map&lt;String,?&gt; uriVariables)</t></t></li>
+<li><t> T  postForObject(URI url, Object request, Class<t> responseType)</t></t></li>
+<li><t> ResponseEntity<t>  postForEntity(String url, Object request, Class<t> responseType, Object… uriVariables)</t></t></t></li>
+<li><t> ResponseEntity<t>  postForEntity(String url, Object request, Class<t> responseType, Map&lt;String,?&gt; uriVariables)</t></t></t></li>
+<li><t> ResponseEntity<t>  postForEntity(URI url, Object request, Class<t> responseType)</t></t></t></li>
+</ul>
+<p><strong>PUT</strong></p>
+<ul>
+<li>void   put(String url, Object request, Object… uriVariables)</li>
+<li>void   put(String url, Object request, Map&lt;String,?&gt; uriVariables)</li>
+<li>void   put(URI url, Object request)</li>
+</ul>
+<p><strong>PATCH and others</strong><br>exchange()、execute()</p>
+<ul>
+<li>注意，使用字符串类型的url默认会对url进行转义，如<code>http://example.com/hotel list</code>在执行时会转义为<code>http://example.com/hotel%20list</code>，这样其实是没有问题的，但如果字符串类型的url本身已经转义过了，执行时就会再转义一次，变成<code>http://example.com/hotel%2520list</code>。如果不需要这种隐式的转义，可以使用<code>java.net.URI</code>参数的方法，这种方法不会在执行时存在隐式的url转义，可以在创建<code>URI</code>对象时自行决定是否转义，推荐使用<code>UriComponentsBuilder</code>创建<code>URI</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">UriComponents uriComponents = UriComponentsBuilder.fromUriString(</span><br><span class="line">        <span class="string">"http://example.com/hotels/&#123;hotel&#125;/bookings/&#123;booking&#125;"</span>)</span><br><span class="line">        .build() <span class="comment">//build(true)就不会对url转义，但如果包含http://example.com/hotel list这种需要转义的url，会报错</span></span><br><span class="line">        .expand(<span class="string">"42"</span>, <span class="string">"21"</span>)</span><br><span class="line">        .encode();</span><br><span class="line"></span><br><span class="line">URI uri = uriComponents.toUri();</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>exchange</code> 和<code>execute</code> 方法比上面列出的其它方法（如getForObject、postForEntity等）使用范围更广，允许调用者指定HTTP请求的方法（GET、POST、PUT等），并且可以支持像HTTP PATCH（部分更新），但需要底层的HTTP库支持，JDK自带的<code>HttpURLConnection</code>不支持PATCH方法，Apache的HTTPClient 4.2及以后版本支持作</li>
+</ul>
+<h3 id="4-getForEntity"><a href="#4-getForEntity" class="headerlink" title="4.getForEntity()"></a>4.getForEntity()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 参数1： String类型 或 URI类型的请求地址</span></span><br><span class="line"><span class="comment"> * 参数2： 指定返回的实体类型，class对象</span></span><br><span class="line"><span class="comment"> * 参数3： uri参数，可以是变长数组或map</span></span><br><span class="line"><span class="comment"> * 返回值：ResponseEntity&lt;T&gt;是Spring对HTTP响应的封装，包括了几个重要的元素，如响应码、contentType、contentLength、response header信息，response body信息等</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function">ResponseEntity&lt;T&gt; <span class="title">getForEntity</span><span class="params">(String url, Class&lt;T&gt; responseType, Object... uriVariables)</span></span></span><br><span class="line"><span class="function">        <span class="keyword">throws</span> RestClientException </span>&#123;</span><br><span class="line">    RequestCallback requestCallback = acceptHeaderRequestCallback(responseType);</span><br><span class="line">    ResponseExtractor&lt;ResponseEntity&lt;T&gt;&gt; responseExtractor = responseEntityExtractor(responseType);</span><br><span class="line">    <span class="keyword">return</span> execute(url, HttpMethod.GET, requestCallback, responseExtractor, uriVariables);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function">ResponseEntity&lt;T&gt; <span class="title">getForEntity</span><span class="params">(String url, Class&lt;T&gt; responseType, Map&lt;String, ?&gt; uriVariables)</span></span></span><br><span class="line"><span class="function">        <span class="keyword">throws</span> RestClientException </span>&#123;</span><br><span class="line">    RequestCallback requestCallback = acceptHeaderRequestCallback(responseType);</span><br><span class="line">    ResponseExtractor&lt;ResponseEntity&lt;T&gt;&gt; responseExtractor = responseEntityExtractor(responseType);</span><br><span class="line">    <span class="keyword">return</span> execute(url, HttpMethod.GET, requestCallback, responseExtractor, uriVariables);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function">ResponseEntity&lt;T&gt; <span class="title">getForEntity</span><span class="params">(URI url, Class&lt;T&gt; responseType)</span> <span class="keyword">throws</span> RestClientException </span>&#123;</span><br><span class="line">    RequestCallback requestCallback = acceptHeaderRequestCallback(responseType);</span><br><span class="line">    ResponseExtractor&lt;ResponseEntity&lt;T&gt;&gt; responseExtractor = responseEntityExtractor(responseType);</span><br><span class="line">    <span class="keyword">return</span> execute(url, HttpMethod.GET, requestCallback, responseExtractor);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ResponseEntity&lt;Book&gt; responseEntity = restTemplate.getForEntity(<span class="string">"http://127.0.0.1:8080/getbook?bookname=&#123;1&#125;"</span>, Book.class, <span class="string">"java"</span>);</span><br><span class="line"></span><br><span class="line">Book book = responseEntity.getBody();  <span class="comment">//响应体转换为Book类型</span></span><br><span class="line"><span class="keyword">int</span> statusCodeValue = responseEntity.getStatusCodeValue();  <span class="comment">//响应状态码</span></span><br><span class="line">HttpHeaders headers = responseEntity.getHeaders();  <span class="comment">//响应头信息</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-getForObject"><a href="#5-getForObject" class="headerlink" title="5.getForObject()"></a>5.getForObject()</h3><p>发送GET请求，返回指定的Object类型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 参数1： String类型 或 URI类型的请求地址</span></span><br><span class="line"><span class="comment"> * 参数2： 指定返回的实体类型，class对象</span></span><br><span class="line"><span class="comment"> * 参数3： uri参数，可以是变长数组或map</span></span><br><span class="line"><span class="comment"> * 返回值：responseType指定的Object类型</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">getForObject</span><span class="params">(String url, Class&lt;T&gt; responseType, Object... uriVariables)</span> <span class="keyword">throws</span> RestClientException </span>&#123;</span><br><span class="line">    RequestCallback requestCallback = acceptHeaderRequestCallback(responseType);</span><br><span class="line">    HttpMessageConverterExtractor&lt;T&gt; responseExtractor =</span><br><span class="line">            <span class="keyword">new</span> HttpMessageConverterExtractor&lt;T&gt;(responseType, getMessageConverters(), logger);</span><br><span class="line">    <span class="keyword">return</span> execute(url, HttpMethod.GET, requestCallback, responseExtractor, uriVariables);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">getForObject</span><span class="params">(String url, Class&lt;T&gt; responseType, Map&lt;String, ?&gt; uriVariables)</span> <span class="keyword">throws</span> RestClientException </span>&#123;</span><br><span class="line">    RequestCallback requestCallback = acceptHeaderRequestCallback(responseType);</span><br><span class="line">    HttpMessageConverterExtractor&lt;T&gt; responseExtractor =</span><br><span class="line">            <span class="keyword">new</span> HttpMessageConverterExtractor&lt;T&gt;(responseType, getMessageConverters(), logger);</span><br><span class="line">    <span class="keyword">return</span> execute(url, HttpMethod.GET, requestCallback, responseExtractor, uriVariables);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">getForObject</span><span class="params">(URI url, Class&lt;T&gt; responseType)</span> <span class="keyword">throws</span> RestClientException </span>&#123;</span><br><span class="line">    RequestCallback requestCallback = acceptHeaderRequestCallback(responseType);</span><br><span class="line">    HttpMessageConverterExtractor&lt;T&gt; responseExtractor =</span><br><span class="line">            <span class="keyword">new</span> HttpMessageConverterExtractor&lt;T&gt;(responseType, getMessageConverters(), logger);</span><br><span class="line">    <span class="keyword">return</span> execute(url, HttpMethod.GET, requestCallback, responseExtractor);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Book book = restTemplate.getForObject(<span class="string">"http://127.0.0.1:8080/getbook?bookname=&#123;1&#125;"</span>, Book.class, <span class="string">"java"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="6-postForEntity"><a href="#6-postForEntity" class="headerlink" title="6.postForEntity()"></a>6.postForEntity()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 参数1： String类型 或 URI类型的请求地址</span></span><br><span class="line"><span class="comment"> * 参数2： 请求body，可以是HttpEntity类型（可设置request header），或其它Object类型</span></span><br><span class="line"><span class="comment"> * 参数3： 指定返回的实体类型，class对象</span></span><br><span class="line"><span class="comment"> * 参数4： uri参数，可以是变长数组或map</span></span><br><span class="line"><span class="comment"> * 返回值：ResponseEntity&lt;T&gt;是Spring对HTTP响应的封装，包括了几个重要的元素，如响应码、contentType、contentLength、response header信息，response body信息等</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function">ResponseEntity&lt;T&gt; <span class="title">postForEntity</span><span class="params">(String url, Object request, Class&lt;T&gt; responseType, Object... uriVariables)</span>  <span class="keyword">throws</span> RestClientException </span>&#123;</span><br><span class="line">    RequestCallback requestCallback = httpEntityCallback(request, responseType);</span><br><span class="line">    ResponseExtractor&lt;ResponseEntity&lt;T&gt;&gt; responseExtractor = responseEntityExtractor(responseType);</span><br><span class="line">    <span class="keyword">return</span> execute(url, HttpMethod.POST, requestCallback, responseExtractor, uriVariables);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function">ResponseEntity&lt;T&gt; <span class="title">postForEntity</span><span class="params">(String url, Object request, Class&lt;T&gt; responseType, Map&lt;String, ?&gt; uriVariables)</span>  <span class="keyword">throws</span> RestClientException </span>&#123;</span><br><span class="line">    RequestCallback requestCallback = httpEntityCallback(request, responseType);</span><br><span class="line">    ResponseExtractor&lt;ResponseEntity&lt;T&gt;&gt; responseExtractor = responseEntityExtractor(responseType);</span><br><span class="line">    <span class="keyword">return</span> execute(url, HttpMethod.POST, requestCallback, responseExtractor, uriVariables);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function">ResponseEntity&lt;T&gt; <span class="title">postForEntity</span><span class="params">(URI url, Object request, Class&lt;T&gt; responseType)</span> <span class="keyword">throws</span> RestClientException </span>&#123;</span><br><span class="line">    RequestCallback requestCallback = httpEntityCallback(request, responseType);</span><br><span class="line">    ResponseExtractor&lt;ResponseEntity&lt;T&gt;&gt; responseExtractor = responseEntityExtractor(responseType);</span><br><span class="line">    <span class="keyword">return</span> execute(url, HttpMethod.POST, requestCallback, responseExtractor);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//参数是Book类型，返回值是ResponseEntity&lt;Book&gt;类型</span></span><br><span class="line">ResponseEntity&lt;Book&gt; responseEntity = restTemplate.postForEntity(<span class="string">"http://127.0.0.1:8080/updateBook"</span>, book, Book.class);</span><br><span class="line"></span><br><span class="line">Book book = responseEntity.getBody();  <span class="comment">//响应体转换为Book类型</span></span><br><span class="line"><span class="keyword">int</span> statusCodeValue = responseEntity.getStatusCodeValue();  <span class="comment">//响应状态码</span></span><br><span class="line">HttpHeaders headers = responseEntity.getHeaders();  <span class="comment">//响应头信息</span></span><br></pre></td></tr></table></figure>
+<h3 id="7-postForObject"><a href="#7-postForObject" class="headerlink" title="7.postForObject()"></a>7.postForObject()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 参数1： String类型 或 URI类型的请求地址</span></span><br><span class="line"><span class="comment"> * 参数2： 请求body，可以是HttpEntity类型（可设置request header），或其它Object类型</span></span><br><span class="line"><span class="comment"> * 参数3： 指定返回的实体类型，class对象</span></span><br><span class="line"><span class="comment"> * 参数4： uri参数，可以是变长数组或map</span></span><br><span class="line"><span class="comment"> * 返回值：responseType指定的Object类型</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">postForObject</span><span class="params">(String url, Object request, Class&lt;T&gt; responseType, Object... uriVariables)</span></span></span><br><span class="line"><span class="function">        <span class="keyword">throws</span> RestClientException </span>&#123;</span><br><span class="line">    RequestCallback requestCallback = httpEntityCallback(request, responseType);</span><br><span class="line">    HttpMessageConverterExtractor&lt;T&gt; responseExtractor =</span><br><span class="line">            <span class="keyword">new</span> HttpMessageConverterExtractor&lt;T&gt;(responseType, getMessageConverters(), logger);</span><br><span class="line">    <span class="keyword">return</span> execute(url, HttpMethod.POST, requestCallback, responseExtractor, uriVariables);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">postForObject</span><span class="params">(String url, Object request, Class&lt;T&gt; responseType, Map&lt;String, ?&gt; uriVariables)</span></span></span><br><span class="line"><span class="function">        <span class="keyword">throws</span> RestClientException </span>&#123;</span><br><span class="line">    RequestCallback requestCallback = httpEntityCallback(request, responseType);</span><br><span class="line">    HttpMessageConverterExtractor&lt;T&gt; responseExtractor =</span><br><span class="line">            <span class="keyword">new</span> HttpMessageConverterExtractor&lt;T&gt;(responseType, getMessageConverters(), logger);</span><br><span class="line">    <span class="keyword">return</span> execute(url, HttpMethod.POST, requestCallback, responseExtractor, uriVariables);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">postForObject</span><span class="params">(URI url, Object request, Class&lt;T&gt; responseType)</span> <span class="keyword">throws</span> RestClientException </span>&#123;</span><br><span class="line">    RequestCallback requestCallback = httpEntityCallback(request, responseType);</span><br><span class="line">    HttpMessageConverterExtractor&lt;T&gt; responseExtractor =</span><br><span class="line">            <span class="keyword">new</span> HttpMessageConverterExtractor&lt;T&gt;(responseType, getMessageConverters());</span><br><span class="line">    <span class="keyword">return</span> execute(url, HttpMethod.POST, requestCallback, responseExtractor);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//参数是Book类型，返回值也是Book类型</span></span><br><span class="line">Book book = restTemplate.postForObject(<span class="string">"http://127.0.0.1:8080/updatebook"</span>, book, Book.class);</span><br></pre></td></tr></table></figure>
+<h3 id="8-exchange方法"><a href="#8-exchange方法" class="headerlink" title="8.exchange方法"></a>8.exchange方法</h3><ul>
+<li><p>可以支持多种HTTP方法，在参数中指定</p>
+</li>
+<li><p>可以在请求中增加header和body信息，返回类型是ResponseEntity，可以从中获取响应的状态码，header和body等信息</p>
+<p>​</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">HttpHeaders requestHeaders = <span class="keyword">new</span> HttpHeaders();</span><br><span class="line">requestHeaders.set(<span class="string">"MyRequestHeader"</span>, <span class="string">"MyValue"</span>);</span><br><span class="line">HttpEntity requestEntity = <span class="keyword">new</span> HttpEntity(requestHeaders);</span><br><span class="line"></span><br><span class="line">HttpEntity&lt;String&gt; response = template.exchange(</span><br><span class="line">        <span class="string">"http://example.com/hotels/&#123;hotel&#125;"</span>,</span><br><span class="line">        HttpMethod.GET,     <span class="comment">//GET请求</span></span><br><span class="line">        requestEntity,      <span class="comment">//requestEntity，可以设置请求header、body</span></span><br><span class="line">        String.class, <span class="string">"42"</span>);</span><br><span class="line"></span><br><span class="line">String responseHeader = response.getHeaders().getFirst(<span class="string">"MyResponseHeader"</span>);   <span class="comment">//响应头信息</span></span><br><span class="line">String body = response.getBody();</span><br></pre></td></tr></table></figure>
+<h3 id="9-RestTemplate扩展-配置"><a href="#9-RestTemplate扩展-配置" class="headerlink" title="9.RestTemplate扩展/配置"></a>9.RestTemplate扩展/配置</h3><h4 id="处理请求头和响应头"><a href="#处理请求头和响应头" class="headerlink" title="处理请求头和响应头"></a>处理请求头和响应头</h4><p>如果是发送post、put请求，要设置请求头，可以在调用方法时的第二个参数传入HttpEntity对象，HttpEntity可以用于设置请求头信息，如</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HttpHeaders requestHeaders = <span class="keyword">new</span> HttpHeaders();</span><br><span class="line">requestHeaders.set(<span class="string">"MyRequestHeader"</span>, <span class="string">"MyValue"</span>);</span><br><span class="line">HttpEntity requestEntity = <span class="keyword">new</span> HttpEntity(requestHeaders);</span><br><span class="line"></span><br><span class="line">Book book = restTemplate.postForObject(<span class="string">"http://127.0.0.1:8080/getbook"</span>, requestEntity, Book.class);</span><br></pre></td></tr></table></figure>
+<p>如果是其它HTTP方法调用要设置请求头，可以使用exchange()方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HttpHeaders requestHeaders = <span class="keyword">new</span> HttpHeaders();</span><br><span class="line">requestHeaders.set(<span class="string">"MyRequestHeader"</span>, <span class="string">"MyValue"</span>);</span><br><span class="line">HttpEntity requestEntity = <span class="keyword">new</span> HttpEntity(requestHeaders);</span><br><span class="line"></span><br><span class="line">HttpEntity&lt;String&gt; response = template.exchange(</span><br><span class="line">        <span class="string">"http://example.com/hotels/&#123;hotel&#125;"</span>,</span><br><span class="line">        HttpMethod.GET, requestEntity, String.class, <span class="string">"42"</span>);</span><br><span class="line"></span><br><span class="line">String responseHeader = response.getHeaders().getFirst(<span class="string">"MyResponseHeader"</span>);</span><br><span class="line">String body = response.getBody();</span><br></pre></td></tr></table></figure>
+<p>总之，设置request header信息，需要找到对应的restTemplate方法中可以使用HttpEntity作为参数的，提前设置好请求头信息</p>
+<p>注意：HttpEntity有4个构造方法，无参构造，只设置请求body，只设置headers，既设置headers又设置body</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Create a new, empty &#123;<span class="doctag">@code</span> HttpEntity&#125;.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="title">HttpEntity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>(<span class="keyword">null</span>, <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Create a new &#123;<span class="doctag">@code</span> HttpEntity&#125; with the given body and no headers.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> body the entity body</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HttpEntity</span><span class="params">(T body)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>(body, <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Create a new &#123;<span class="doctag">@code</span> HttpEntity&#125; with the given headers and no body.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> headers the entity headers</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HttpEntity</span><span class="params">(MultiValueMap&lt;String, String&gt; headers)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>(<span class="keyword">null</span>, headers);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Create a new &#123;<span class="doctag">@code</span> HttpEntity&#125; with the given body and headers.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> body the entity body</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> headers the entity headers</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HttpEntity</span><span class="params">(T body, MultiValueMap&lt;String, String&gt; headers)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.body = body;</span><br><span class="line">  HttpHeaders tempHeaders = <span class="keyword">new</span> HttpHeaders();</span><br><span class="line">  <span class="keyword">if</span> (headers != <span class="keyword">null</span>) &#123;</span><br><span class="line">      tempHeaders.putAll(headers);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.headers = HttpHeaders.readOnlyHttpHeaders(tempHeaders);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="处理响应头信息"><a href="#处理响应头信息" class="headerlink" title="处理响应头信息"></a>处理响应头信息</h4><p>使用RestTemplate中<code>xxxForEntity()</code>的方法，会返回ResponseEntity，可以从中获取到响应状态码，响应头和body等信息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">HttpHeaders requestHeaders = <span class="keyword">new</span> HttpHeaders();</span><br><span class="line">requestHeaders.set(<span class="string">"MyRequestHeader"</span>, <span class="string">"MyValue"</span>);</span><br><span class="line">HttpEntity requestEntity = <span class="keyword">new</span> HttpEntity(requestHeaders);</span><br><span class="line"></span><br><span class="line">HttpEntity&lt;String&gt; response = template.exchange(</span><br><span class="line">        <span class="string">"http://example.com/hotels/&#123;hotel&#125;"</span>,</span><br><span class="line">        HttpMethod.GET, requestEntity, String.class, <span class="string">"42"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//response相关信息</span></span><br><span class="line">String responseHeader = response.getHeaders().getFirst(<span class="string">"MyResponseHeader"</span>);</span><br><span class="line">String body = response.getBody();</span><br></pre></td></tr></table></figure>
+<h3 id="10-ClientHttpRequestFactory"><a href="#10-ClientHttpRequestFactory" class="headerlink" title="10.ClientHttpRequestFactory"></a>10.ClientHttpRequestFactory</h3><p>ClientHttpRequestFactory是Spring定义的一个接口，其用于生产</p>
+<p><code>org.springframework.http.client.ClientHttpRequest</code>对象，RestTemplate只是模板类，抽象了很多调用方</p>
+<p>法，而底层真正使用何种框架发送HTTP请求是通过ClientHttpRequestFactory指定的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Factory for &#123;<span class="doctag">@link</span> ClientHttpRequest&#125; objects.</span></span><br><span class="line"><span class="comment"> * Requests are created by the &#123;<span class="doctag">@link</span> #createRequest(URI, HttpMethod)&#125; method.</span></span><br><span class="line"><span class="comment"> * ClientHttpRequest对象的工厂</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Arjen Poutsma</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 3.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ClientHttpRequestFactory</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Create a new &#123;<span class="doctag">@link</span> ClientHttpRequest&#125; for the specified URI and HTTP method.</span></span><br><span class="line"><span class="comment">     * &lt;p&gt;The returned request can be written to, and then executed by calling</span></span><br><span class="line"><span class="comment">     * &#123;<span class="doctag">@link</span> ClientHttpRequest#execute()&#125;.</span></span><br><span class="line"><span class="comment">     * 使用指定的URI和HTTP方法新建一个ClientHttpRequest对象</span></span><br><span class="line"><span class="comment">     * 可以修改返回的request，并通过ClientHttpRequest的execute()方法执行调用</span></span><br><span class="line"><span class="comment">     * 即调用的逻辑也被Spring封装到ClientHttpRequest中</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> uri the URI to create a request for</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> httpMethod the HTTP method to execute</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the created request</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException in case of I/O errors</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function">ClientHttpRequest <span class="title">createRequest</span><span class="params">(URI uri, HttpMethod httpMethod)</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>RestTemplate可以在构造时设置ClientHttpRequestFactory，也可以通过setRequestFactory()方法设置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">构造方法设置：</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Create a new instance of the &#123;<span class="doctag">@link</span> RestTemplate&#125; based on the given &#123;<span class="doctag">@link</span> ClientHttpRequestFactory&#125;.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> requestFactory HTTP request factory to use</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> org.springframework.http.client.SimpleClientHttpRequestFactory</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> org.springframework.http.client.HttpComponentsClientHttpRequestFactory</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">RestTemplate</span><span class="params">(ClientHttpRequestFactory requestFactory)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>();</span><br><span class="line">    setRequestFactory(requestFactory);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到上面注释中已经给出了Spring的两种ClientHttpRequestFactory的实现类<code>SimpleClientHttpRequestFactory</code>和<code>HttpComponentsClientHttpRequestFactory</code></p>
+<h3 id="11-SimpleClientHttpRequestFactory"><a href="#11-SimpleClientHttpRequestFactory" class="headerlink" title="11.SimpleClientHttpRequestFactory"></a>11.SimpleClientHttpRequestFactory</h3><p>如果什么都不设置，RestTemplate默认使用的是SimpleClientHttpRequestFactory，其内部使用的是jdk的</p>
+<p><code>java.net.HttpURLConnection</code>创建底层连接，默认是没有连接池的，connectTimeout和readTimeout都是 </p>
+<p><strong>-1</strong>，即没有超时时间</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleClientHttpRequestFactory</span> <span class="keyword">implements</span> <span class="title">ClientHttpRequestFactory</span>, <span class="title">AsyncClientHttpRequestFactory</span> </span>&#123;</span><br><span class="line">    。。。。。。</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> connectTimeout = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> readTimeout = -<span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//创建Request</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ClientHttpRequest <span class="title">createRequest</span><span class="params">(URI uri, HttpMethod httpMethod)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        HttpURLConnection connection = openConnection(uri.toURL(), <span class="keyword">this</span>.proxy);</span><br><span class="line">        prepareConnection(connection, httpMethod.name());</span><br><span class="line"></span><br><span class="line">         <span class="comment">//bufferRequestBody默认为true</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.bufferRequestBody) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> SimpleBufferingClientHttpRequest(connection, <span class="keyword">this</span>.outputStreaming);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> SimpleStreamingClientHttpRequest(connection, <span class="keyword">this</span>.chunkSize, <span class="keyword">this</span>.outputStreaming);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Opens and returns a connection to the given URL.</span></span><br><span class="line"><span class="comment">     * 打开并返回一个指定URL的连接</span></span><br><span class="line"><span class="comment">     * &lt;p&gt;The default implementation uses the given &#123;<span class="doctag">@linkplain</span> #setProxy(java.net.Proxy) proxy&#125; -</span></span><br><span class="line"><span class="comment">     * if any - to open a connection.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> url the URL to open a connection to</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> proxy the proxy to use, may be &#123;<span class="doctag">@code</span> null&#125;</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the opened connection  返回类型为 java.net.HttpURLConnection</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException in case of I/O errors</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> HttpURLConnection <span class="title">openConnection</span><span class="params">(URL url, Proxy proxy)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        URLConnection urlConnection = (proxy != <span class="keyword">null</span> ? url.openConnection(proxy) : url.openConnection());</span><br><span class="line">        <span class="keyword">if</span> (!HttpURLConnection.class.isInstance(urlConnection)) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"HttpURLConnection required for ["</span> + url + <span class="string">"] but got: "</span> + urlConnection);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (HttpURLConnection) urlConnection;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Template method for preparing the given &#123;<span class="doctag">@link</span> HttpURLConnection&#125;.</span></span><br><span class="line"><span class="comment">     * &lt;p&gt;The default implementation prepares the connection for input and output, and sets the HTTP method.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> connection the connection to prepare</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> httpMethod the HTTP request method (&#123;<span class="doctag">@code</span> GET&#125;, &#123;<span class="doctag">@code</span> POST&#125;, etc.)</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException in case of I/O errors</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">prepareConnection</span><span class="params">(HttpURLConnection connection, String httpMethod)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">         <span class="comment">//如果connectTimeout大于等于0，设置连接超时时间</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.connectTimeout &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            connection.setConnectTimeout(<span class="keyword">this</span>.connectTimeout);</span><br><span class="line">        &#125;</span><br><span class="line">         <span class="comment">//如果readTimeout大于等于0，设置读超时时间</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.readTimeout &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            connection.setReadTimeout(<span class="keyword">this</span>.readTimeout);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        connection.setDoInput(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="string">"GET"</span>.equals(httpMethod)) &#123;</span><br><span class="line">            connection.setInstanceFollowRedirects(<span class="keyword">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            connection.setInstanceFollowRedirects(<span class="keyword">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="string">"POST"</span>.equals(httpMethod) || <span class="string">"PUT"</span>.equals(httpMethod) ||</span><br><span class="line">                <span class="string">"PATCH"</span>.equals(httpMethod) || <span class="string">"DELETE"</span>.equals(httpMethod)) &#123;</span><br><span class="line">            connection.setDoOutput(<span class="keyword">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            connection.setDoOutput(<span class="keyword">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        connection.setRequestMethod(httpMethod);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    。。。。。。</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="12-HttpComponentsClientHttpRequestFactory"><a href="#12-HttpComponentsClientHttpRequestFactory" class="headerlink" title="12.HttpComponentsClientHttpRequestFactory"></a>12.HttpComponentsClientHttpRequestFactory</h3><p>HttpComponentsClientHttpRequestFactory底层使用Apache HttpClient创建请求，访问远程的Http服务，<strong>可</strong></p>
+<p><strong>以使用一个已经配置好的HttpClient实例创建HttpComponentsClientHttpRequestFactory请求工厂，</strong></p>
+<p><strong>HttpClient实例中可以配置连接池和证书等信息</strong></p>
+<h4 id="添加HttpClient依赖"><a href="#添加HttpClient依赖" class="headerlink" title="添加HttpClient依赖"></a>添加HttpClient依赖</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.httpcomponents<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>httpclient<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>x.x.x<span class="tag">&lt;/<span class="name">version</span>&gt;</span>   <span class="comment">&lt;!-- springboot项目不用指定 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="设置超时时间"><a href="#设置超时时间" class="headerlink" title="设置超时时间"></a>设置超时时间</h4><p>设置超时时间，可以直接使用Spring的底层基于HttpClient的HttpComponentsClientHttpRequestFactory，此处设置的是ClientHttpRequestFactory级别的全局超时时间</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RestTemplateConfig</span> </span>&#123;  </span><br><span class="line">  </span><br><span class="line">    <span class="meta">@Bean</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> RestTemplate <span class="title">restTemplate</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RestTemplate(clientHttpRequestFactory());  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="meta">@Bean</span> </span><br><span class="line">    <span class="function"><span class="keyword">private</span> ClientHttpRequestFactory <span class="title">clientHttpRequestFactory</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        HttpComponentsClientHttpRequestFactory factory = <span class="keyword">new</span> HttpComponentsClientHttpRequestFactory();  </span><br><span class="line">        factory.setConnectTimeout(<span class="number">30</span> * <span class="number">1000</span>);  <span class="comment">//连接超时时间</span></span><br><span class="line">        factory.setReadTimeout(<span class="number">60</span> * <span class="number">1000</span>);  <span class="comment">//读超时时间</span></span><br><span class="line">        <span class="keyword">return</span> factory;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong>如果通过一个HttpClient实例创建HttpComponentsClientHttpRequestFactory，并通过HttpClient指定了</p>
+<p>DefaultRequestConfig，设置了connectTimeout、readTimeout等，在实际执行请求创建request时会与</p>
+<p>HttpComponentsClientHttpRequestFactory的配置合并，connectTimeout、socketTimeout、</p>
+<p>connectionRequestTimeout 以HttpComponentsClientHttpRequestFactory的配置为准</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">HttpComponentsClientHttpRequestFactory：</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Merge the given &#123;<span class="doctag">@link</span> HttpClient&#125;-level &#123;<span class="doctag">@link</span> RequestConfig&#125; with</span></span><br><span class="line"><span class="comment"> * the factory-level &#123;<span class="doctag">@link</span> RequestConfig&#125;, if necessary.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> clientConfig the config held by the current    httpClient级别的requestConfig配置</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> the merged request config</span></span><br><span class="line"><span class="comment"> * (may be &#123;<span class="doctag">@code</span> null&#125; if the given client config is &#123;<span class="doctag">@code</span> null&#125;)</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 4.2</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> RequestConfig <span class="title">mergeRequestConfig</span><span class="params">(RequestConfig clientConfig)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.requestConfig == <span class="keyword">null</span>) &#123;  <span class="comment">// nothing to merge</span></span><br><span class="line">        <span class="keyword">return</span> clientConfig;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    RequestConfig.Builder builder = RequestConfig.copy(clientConfig);</span><br><span class="line">    <span class="keyword">int</span> connectTimeout = <span class="keyword">this</span>.requestConfig.getConnectTimeout();  <span class="comment">//HttpComponentsClientHttpRequestFactory级别的配置</span></span><br><span class="line">    <span class="keyword">if</span> (connectTimeout &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">        builder.setConnectTimeout(connectTimeout);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> connectionRequestTimeout = <span class="keyword">this</span>.requestConfig.getConnectionRequestTimeout();</span><br><span class="line">    <span class="keyword">if</span> (connectionRequestTimeout &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">        builder.setConnectionRequestTimeout(connectionRequestTimeout);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> socketTimeout = <span class="keyword">this</span>.requestConfig.getSocketTimeout();</span><br><span class="line">    <span class="keyword">if</span> (socketTimeout &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">        builder.setSocketTimeout(socketTimeout);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> builder.build();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上例中虽然没有指定http连接池，但<strong><br>HttpComponentsClientHttpRequestFactory无参构造会创建一个HttpClient，并默认使用了连接池配置，MaxTotal=10，DefaultMaxPerRoute=5
+ </strong>，具体如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">HttpComponentsClientHttpRequestFactory：</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Create a new instance of the &#123;<span class="doctag">@code</span> HttpComponentsClientHttpRequestFactory&#125;</span></span><br><span class="line"><span class="comment"> * with a default &#123;<span class="doctag">@link</span> HttpClient&#125;.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HttpComponentsClientHttpRequestFactory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(HttpClients.createSystem());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">HttpClients：</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Creates &#123;<span class="doctag">@link</span> CloseableHttpClient&#125; instance with default</span></span><br><span class="line"><span class="comment"> * configuration based on system properties.</span></span><br><span class="line"><span class="comment"> * 创建CloseableHttpClient实例使用基于system properties的默认配置</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> CloseableHttpClient <span class="title">createSystem</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> HttpClientBuilder.create().useSystemProperties().build();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">HttpClientBuilder：</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Use system properties when creating and configuring default</span></span><br><span class="line"><span class="comment"> * implementations.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> HttpClientBuilder <span class="title">useSystemProperties</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.systemProperties = <span class="keyword">true</span>;  <span class="comment">//设置systemProperties为true</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> CloseableHttpClient <span class="title">build</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    HttpClientConnectionManager connManagerCopy = <span class="keyword">this</span>.connManager; <span class="comment">//没有设置，为null</span></span><br><span class="line">    <span class="keyword">if</span> (connManagerCopy == <span class="keyword">null</span>) &#123;</span><br><span class="line">        。。。。。。</span><br><span class="line">        <span class="comment">//创建连接池管理器PoolingHttpClientConnectionManager</span></span><br><span class="line">        <span class="meta">@SuppressWarnings</span>(<span class="string">"resource"</span>)</span><br><span class="line">        <span class="keyword">final</span> PoolingHttpClientConnectionManager poolingmgr = <span class="keyword">new</span> PoolingHttpClientConnectionManager(</span><br><span class="line">                RegistryBuilder.&lt;ConnectionSocketFactory&gt;create()</span><br><span class="line">                    .register(<span class="string">"http"</span>, PlainConnectionSocketFactory.getSocketFactory())</span><br><span class="line">                    .register(<span class="string">"https"</span>, sslSocketFactoryCopy)</span><br><span class="line">                    .build(),</span><br><span class="line">                <span class="keyword">null</span>,</span><br><span class="line">                <span class="keyword">null</span>,</span><br><span class="line">                dnsResolver,</span><br><span class="line">                connTimeToLive,</span><br><span class="line">                connTimeToLiveTimeUnit != <span class="keyword">null</span> ? connTimeToLiveTimeUnit : TimeUnit.MILLISECONDS);</span><br><span class="line">        <span class="keyword">if</span> (defaultSocketConfig != <span class="keyword">null</span>) &#123;</span><br><span class="line">            poolingmgr.setDefaultSocketConfig(defaultSocketConfig);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (defaultConnectionConfig != <span class="keyword">null</span>) &#123;</span><br><span class="line">            poolingmgr.setDefaultConnectionConfig(defaultConnectionConfig);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//由于是HttpClientBuilder.create().useSystemProperties().build(),systemProperties为true</span></span><br><span class="line">        <span class="keyword">if</span> (systemProperties) &#123;</span><br><span class="line">            String s = System.getProperty(<span class="string">"http.keepAlive"</span>, <span class="string">"true"</span>);  <span class="comment">//http.keepAlive默认值为true</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="string">"true"</span>.equalsIgnoreCase(s)) &#123;</span><br><span class="line">                s = System.getProperty(<span class="string">"http.maxConnections"</span>, <span class="string">"5"</span>);  <span class="comment">//默认值为5</span></span><br><span class="line">                <span class="keyword">final</span> <span class="keyword">int</span> max = Integer.parseInt(s);</span><br><span class="line">                poolingmgr.setDefaultMaxPerRoute(max);  <span class="comment">//DefaultMaxPerRoute=5</span></span><br><span class="line">                poolingmgr.setMaxTotal(<span class="number">2</span> * max);  <span class="comment">//MaxTotal=10</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (maxConnTotal &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            poolingmgr.setMaxTotal(maxConnTotal);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (maxConnPerRoute &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            poolingmgr.setDefaultMaxPerRoute(maxConnPerRoute);</span><br><span class="line">        &#125;</span><br><span class="line">        connManagerCopy = poolingmgr;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="配置连接池"><a href="#配置连接池" class="headerlink" title="配置连接池"></a>配置连接池</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RestTemplateConfig</span> </span>&#123;  </span><br><span class="line">  </span><br><span class="line">    <span class="meta">@Bean</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> RestTemplate <span class="title">restTemplate</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RestTemplate(clientHttpRequestFactory());  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> HttpComponentsClientHttpRequestFactory <span class="title">clientHttpRequestFactory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();</span><br><span class="line"></span><br><span class="line">            <span class="comment">//开始设置连接池</span></span><br><span class="line">            PoolingHttpClientConnectionManager poolingHttpClientConnectionManager </span><br><span class="line">                                                    = <span class="keyword">new</span> PoolingHttpClientConnectionManager();</span><br><span class="line">            poolingHttpClientConnectionManager.setMaxTotal(<span class="number">100</span>);  <span class="comment">//最大连接数</span></span><br><span class="line">            poolingHttpClientConnectionManager.setDefaultMaxPerRoute(<span class="number">20</span>);  <span class="comment">//同路由并发数</span></span><br><span class="line">            httpClientBuilder.setConnectionManager(poolingHttpClientConnectionManager);</span><br><span class="line"></span><br><span class="line">            HttpClient httpClient = httpClientBuilder.build();</span><br><span class="line">            <span class="comment">// httpClient连接配置</span></span><br><span class="line">            HttpComponentsClientHttpRequestFactory clientHttpRequestFactory </span><br><span class="line">                                                    = <span class="keyword">new</span> HttpComponentsClientHttpRequestFactory(httpClient);</span><br><span class="line">            clientHttpRequestFactory.setConnectTimeout(<span class="number">30</span> * <span class="number">1000</span>);  <span class="comment">//连接超时</span></span><br><span class="line">            clientHttpRequestFactory.setReadTimeout(<span class="number">60</span> * <span class="number">1000</span>);     <span class="comment">//数据读取超时时间</span></span><br><span class="line">            clientHttpRequestFactory.setConnectionRequestTimeout(<span class="number">30</span> * <span class="number">1000</span>);  <span class="comment">//连接不够用的等待时间</span></span><br><span class="line">            <span class="keyword">return</span> clientHttpRequestFactory;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            logger.error(<span class="string">"初始化clientHttpRequestFactory出错"</span>, e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="13-自定义messageConverter"><a href="#13-自定义messageConverter" class="headerlink" title="13.自定义messageConverter"></a>13.自定义messageConverter</h3><p>RestTemplate的无参构造中默认会初始化很多messageConverters，用于请求/响应中的消息转换</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Create a new instance of the &#123;<span class="doctag">@link</span> RestTemplate&#125; using default settings.</span></span><br><span class="line"><span class="comment"> * Default &#123;<span class="doctag">@link</span> HttpMessageConverter&#125;s are initialized.</span></span><br><span class="line"><span class="comment"> * 使用默认配置创建一个RestTemplate实例</span></span><br><span class="line"><span class="comment"> * 默认的HttpMessageConverter集合被初始化</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">RestTemplate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.messageConverters.add(<span class="keyword">new</span> ByteArrayHttpMessageConverter());</span><br><span class="line">    <span class="keyword">this</span>.messageConverters.add(<span class="keyword">new</span> StringHttpMessageConverter());</span><br><span class="line">    <span class="keyword">this</span>.messageConverters.add(<span class="keyword">new</span> ResourceHttpMessageConverter());</span><br><span class="line">    <span class="keyword">this</span>.messageConverters.add(<span class="keyword">new</span> SourceHttpMessageConverter&lt;Source&gt;());</span><br><span class="line">    <span class="keyword">this</span>.messageConverters.add(<span class="keyword">new</span> AllEncompassingFormHttpMessageConverter());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (romePresent) &#123;</span><br><span class="line">        <span class="keyword">this</span>.messageConverters.add(<span class="keyword">new</span> AtomFeedHttpMessageConverter());</span><br><span class="line">        <span class="keyword">this</span>.messageConverters.add(<span class="keyword">new</span> RssChannelHttpMessageConverter());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (jackson2XmlPresent) &#123;</span><br><span class="line">        <span class="keyword">this</span>.messageConverters.add(<span class="keyword">new</span> MappingJackson2XmlHttpMessageConverter());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (jaxb2Present) &#123;</span><br><span class="line">        <span class="keyword">this</span>.messageConverters.add(<span class="keyword">new</span> Jaxb2RootElementHttpMessageConverter());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 如果类路径下包含com.fasterxml.jackson.databind.ObjectMapper 和 com.fasterxml.jackson.core.JsonGenerator</span></span><br><span class="line"><span class="comment">     * 使用jackson做http请求、响应的json转换</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">if</span> (jackson2Present) &#123;</span><br><span class="line">        <span class="keyword">this</span>.messageConverters.add(<span class="keyword">new</span> MappingJackson2HttpMessageConverter());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (gsonPresent) &#123;  <span class="comment">//类路径下包含 com.google.gson.Gson</span></span><br><span class="line">        <span class="keyword">this</span>.messageConverters.add(<span class="keyword">new</span> GsonHttpMessageConverter());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>springboot项目默认使用jackson做json转换</p>
+<h3 id="14-使用fastjson做json转换"><a href="#14-使用fastjson做json转换" class="headerlink" title="14.使用fastjson做json转换"></a>14.使用fastjson做json转换</h3><ol>
+<li>引入fastjson依赖</li>
+<li>排除jackson的HttpMessageConverter转换器</li>
+<li>添加fastjson的转换器</li>
+</ol>
+<p>排除jackson的HttpMessageConverter转换器有两种方式：</p>
+<h4 id="1-类路径下去掉jackson的支持"><a href="#1-类路径下去掉jackson的支持" class="headerlink" title="1.类路径下去掉jackson的支持"></a>1.类路径下去掉jackson的支持</h4><p>从RestTemplate的无参构造可以看出，需要判断类路径下是否有jackson的相关类，有才会添加</p>
+<p>MappingJackson2HttpMessageConverter，故可以在pom.xml中排除jackson的支持，以springboot项目举例</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-databind<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span> </span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-在初始化配置RestTemplate时，去掉其默认的MappingJackson2HttpMessageConverter"><a href="#2-在初始化配置RestTemplate时，去掉其默认的MappingJackson2HttpMessageConverter" class="headerlink" title="2.在初始化配置RestTemplate时，去掉其默认的MappingJackson2HttpMessageConverter"></a>2.在初始化配置RestTemplate时，去掉其默认的MappingJackson2HttpMessageConverter</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> RestTemplate <span class="title">restTemplate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    RestTemplate restTemplate = <span class="keyword">new</span> RestTemplate();</span><br><span class="line">    restTemplate.setRequestFactory(clientHttpRequestFactory());</span><br><span class="line"></span><br><span class="line">    <span class="comment">//restTemplate默认的HttpMessageConverter</span></span><br><span class="line">    List&lt;HttpMessageConverter&lt;?&gt;&gt; messageConverters = restTemplate.getMessageConverters();</span><br><span class="line">    List&lt;HttpMessageConverter&lt;?&gt;&gt; messageConvertersNew = <span class="keyword">new</span> ArrayList&lt;HttpMessageConverter&lt;?&gt;&gt;();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(HttpMessageConverter httpMessageConverter : messageConverters)&#123;</span><br><span class="line">        <span class="comment">//跳过MappingJackson2HttpMessageConverter</span></span><br><span class="line">        <span class="keyword">if</span> (httpMessageConverter <span class="keyword">instanceof</span> MappingJackson2HttpMessageConverter) <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">        messageConvertersNew.add(httpMessageConverter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//添加fastjson转换器</span></span><br><span class="line">    messageConvertersNew.add(fastJsonHttpMessageConverter());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> restTemplate;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> HttpMessageConverter <span class="title">fastJsonHttpMessageConverter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//MediaType</span></span><br><span class="line">    List&lt;MediaType&gt; mediaTypes = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    mediaTypes.add(MediaType.APPLICATION_JSON_UTF8);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//FastJsonConfig</span></span><br><span class="line">    FastJsonConfig fastJsonConfig = <span class="keyword">new</span> FastJsonConfig();</span><br><span class="line">    fastJsonConfig.setSerializerFeatures(SerializerFeature.WriteMapNullValue,</span><br><span class="line">                                         SerializerFeature.QuoteFieldNames);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建FastJsonHttpMessageConverter4    Spring 4.2后使用</span></span><br><span class="line">    FastJsonHttpMessageConverter4 fastJsonHttpMessageConverter = <span class="keyword">new</span> FastJsonHttpMessageConverter4();</span><br><span class="line">    fastJsonHttpMessageConverter.setSupportedMediaTypes(mediaTypes);</span><br><span class="line">    fastJsonHttpMessageConverter.setFastJsonConfig(fastJsonConfig);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> fastJsonHttpMessageConverter;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="15-SpringBoot中使用RestTemplate"><a href="#15-SpringBoot中使用RestTemplate" class="headerlink" title="15.SpringBoot中使用RestTemplate"></a>15.SpringBoot中使用RestTemplate</h3><p>SpringBoot没有提供自动配置好的RestTemplate，但是自动配置好了可以用于创建RestTemplate的<code>RestTemplateBuilder</code>实例，可以按如下使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBean</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> RestTemplate restTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyBean</span><span class="params">(RestTemplateBuilder restTemplateBuilder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.restTemplate = restTemplateBuilder.build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Details <span class="title">someRestCall</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.restTemplate.getForObject(<span class="string">"/&#123;name&#125;/details"</span>, Details.class, name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="16-RestTemplate自定义"><a href="#16-RestTemplate自定义" class="headerlink" title="16.RestTemplate自定义"></a>16.RestTemplate自定义</h3><p>RestTemplate自定义主要有三种方法，具体取决于希望自定义应用的范围</p>
+<ul>
+<li>类范围。为了尽量缩小自定义的范围，在类中注入自动配置的<code>RestTemplateBuilder</code>，然后根据需求调用它的配置方法，每次调用配置方法都会 new RestTemplateBuilder()并返回，所以对RestTemplateBuilder的配置只会影响由它创建的RestTemplate</li>
+</ul>
+<ul>
+<li>应用范围。可以使用<code>RestTemplateCustomizer</code>来自定义应用范围的的RestTemplate，所有注册到Spring容器的<code>RestTemplateCustomizer</code>都会自动生效。如下，通过RestTemplateCustomizer设置连接池</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RestTemplateCustomizer <span class="title">restTemplateCustomizer</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RestTemplateCustomizer()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">customize</span><span class="params">(RestTemplate restTemplate)</span> </span>&#123;</span><br><span class="line">                HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();</span><br><span class="line"></span><br><span class="line">                <span class="comment">//创建连接管理器</span></span><br><span class="line">                PoolingHttpClientConnectionManager poolingHttpClientConnectionManager </span><br><span class="line">                                         = <span class="keyword">new</span> PoolingHttpClientConnectionManager();</span><br><span class="line">                poolingHttpClientConnectionManager.setMaxTotal(<span class="number">100</span>);</span><br><span class="line">                poolingHttpClientConnectionManager.setDefaultMaxPerRoute(<span class="number">20</span>);</span><br><span class="line">                httpClientBuilder.setConnectionManager(poolingHttpClientConnectionManager);</span><br><span class="line"></span><br><span class="line">                <span class="comment">//创建httpClient</span></span><br><span class="line">                HttpClient httpClient = httpClientBuilder.build();</span><br><span class="line"></span><br><span class="line">                <span class="comment">//创建HttpComponentsClientHttpRequestFactory</span></span><br><span class="line">                HttpComponentsClientHttpRequestFactory httpComponentsClientHttpRequestFactory </span><br><span class="line">                                             = <span class="keyword">new</span> HttpComponentsClientHttpRequestFactory(httpClient);</span><br><span class="line">                httpComponentsClientHttpRequestFactory.setConnectTimeout(<span class="number">10</span> * <span class="number">1000</span>);</span><br><span class="line">                httpComponentsClientHttpRequestFactory.setReadTimeout(<span class="number">60</span> * <span class="number">1000</span>);</span><br><span class="line">                httpComponentsClientHttpRequestFactory.setConnectionRequestTimeout(<span class="number">20</span> * <span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line">                restTemplate.setRequestFactory(httpComponentsClientHttpRequestFactory);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>最后，最极端的（也是很少使用的）选项是创建你自己的<code>RestTemplateBuilder</code> bean。这将关闭<code>RestTemplateBuilder</code>的自动配置，并阻止使用任何<code>RestTemplateCustomizer</code> bean</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/RestTemplate/" rel="tag"># RestTemplate</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/11/GridFS/" rel="next" title="GridFS">
+                <i class="fa fa-chevron-left"></i> GridFS
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/11/freemarker静态化/" rel="prev" title="freemarker静态化">
+                freemarker静态化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/timg.jpg"
+                alt="York" />
+            
+              <p class="site-author-name" itemprop="name">York</p>
+              <p class="site-description motion-element" itemprop="description">先生卖我几两仁义道德</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">88</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">85</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">58</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/xuquezi" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RestTemplate"><span class="nav-number">1.</span> <span class="nav-text">RestTemplate</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-创建RestTemplate"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.创建RestTemplate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-RestTemplate构造方法"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.RestTemplate构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-RestTemplate-API使用"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.RestTemplate API使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-getForEntity"><span class="nav-number">1.0.4.</span> <span class="nav-text">4.getForEntity()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-getForObject"><span class="nav-number">1.0.5.</span> <span class="nav-text">5.getForObject()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-postForEntity"><span class="nav-number">1.0.6.</span> <span class="nav-text">6.postForEntity()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-postForObject"><span class="nav-number">1.0.7.</span> <span class="nav-text">7.postForObject()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-exchange方法"><span class="nav-number">1.0.8.</span> <span class="nav-text">8.exchange方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-RestTemplate扩展-配置"><span class="nav-number">1.0.9.</span> <span class="nav-text">9.RestTemplate扩展/配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#处理请求头和响应头"><span class="nav-number">1.0.9.1.</span> <span class="nav-text">处理请求头和响应头</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#处理响应头信息"><span class="nav-number">1.0.9.2.</span> <span class="nav-text">处理响应头信息</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-ClientHttpRequestFactory"><span class="nav-number">1.0.10.</span> <span class="nav-text">10.ClientHttpRequestFactory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-SimpleClientHttpRequestFactory"><span class="nav-number">1.0.11.</span> <span class="nav-text">11.SimpleClientHttpRequestFactory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-HttpComponentsClientHttpRequestFactory"><span class="nav-number">1.0.12.</span> <span class="nav-text">12.HttpComponentsClientHttpRequestFactory</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加HttpClient依赖"><span class="nav-number">1.0.12.1.</span> <span class="nav-text">添加HttpClient依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置超时时间"><span class="nav-number">1.0.12.2.</span> <span class="nav-text">设置超时时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置连接池"><span class="nav-number">1.0.12.3.</span> <span class="nav-text">配置连接池</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-自定义messageConverter"><span class="nav-number">1.0.13.</span> <span class="nav-text">13.自定义messageConverter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-使用fastjson做json转换"><span class="nav-number">1.0.14.</span> <span class="nav-text">14.使用fastjson做json转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-类路径下去掉jackson的支持"><span class="nav-number">1.0.14.1.</span> <span class="nav-text">1.类路径下去掉jackson的支持</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-在初始化配置RestTemplate时，去掉其默认的MappingJackson2HttpMessageConverter"><span class="nav-number">1.0.14.2.</span> <span class="nav-text">2.在初始化配置RestTemplate时，去掉其默认的MappingJackson2HttpMessageConverter</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-SpringBoot中使用RestTemplate"><span class="nav-number">1.0.15.</span> <span class="nav-text">15.SpringBoot中使用RestTemplate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-RestTemplate自定义"><span class="nav-number">1.0.16.</span> <span class="nav-text">16.RestTemplate自定义</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">York</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.1</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共110.1k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
