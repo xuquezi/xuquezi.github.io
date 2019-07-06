@@ -119,14 +119,14 @@
 
 
   <meta name="description" content="总体思路点击页面上的”获取短信验证码”链接，向后端传递手机号。后端随机生成6位数字作为短信验证码，将其保存在redis中（手机号作为KEY）。同时发送参数（手机号，验证码，短信模板号，签名）给消息中间件（此处用的是ActiveMQ）。 短信微服务通过监听消息，获得 手机号，验证码，短信模板号，签名后，通过短信平台发送短信此处使用的是阿里大于。 用户注册时，后端根据手机号查询redis中的验证码与用">
-<meta name="keywords" content="java,activeMQ,短信,微服务,阿里大于">
+<meta name="keywords" content="业务逻辑">
 <meta property="og:type" content="article">
 <meta property="og:title" content="注册短信业务逻辑代码">
 <meta property="og:url" content="http://neverloseyourself.top/2018/10/24/注册短信业务逻辑代码/index.html">
 <meta property="og:site_name" content="天下不易其乐">
 <meta property="og:description" content="总体思路点击页面上的”获取短信验证码”链接，向后端传递手机号。后端随机生成6位数字作为短信验证码，将其保存在redis中（手机号作为KEY）。同时发送参数（手机号，验证码，短信模板号，签名）给消息中间件（此处用的是ActiveMQ）。 短信微服务通过监听消息，获得 手机号，验证码，短信模板号，签名后，通过短信平台发送短信此处使用的是阿里大于。 用户注册时，后端根据手机号查询redis中的验证码与用">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-24T05:46:18.036Z">
+<meta property="og:updated_time" content="2019-07-06T15:05:25.610Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="注册短信业务逻辑代码">
 <meta name="twitter:description" content="总体思路点击页面上的”获取短信验证码”链接，向后端传递手机号。后端随机生成6位数字作为短信验证码，将其保存在redis中（手机号作为KEY）。同时发送参数（手机号，验证码，短信模板号，签名）给消息中间件（此处用的是ActiveMQ）。 短信微服务通过监听消息，获得 手机号，验证码，短信模板号，签名后，通过短信平台发送短信此处使用的是阿里大于。 用户注册时，后端根据手机号查询redis中的验证码与用">
@@ -398,12 +398,24 @@
                 
               
 
-              <time title="创建时间：2018-10-24 13:43:29 / 修改时间：13:46:18" itemprop="dateCreated datePublished" datetime="2018-10-24T13:43:29+08:00">2018-10-24</time>
+              <time title="创建时间：2018-10-24 13:43:29" itemprop="dateCreated datePublished" datetime="2018-10-24T13:43:29+08:00">2018-10-24</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-06 23:05:25" itemprop="dateModified" datetime="2019-07-06T23:05:25+08:00">2019-07-06</time>
               
             
           </span>
@@ -420,35 +432,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/activeMQ/" itemprop="url" rel="index"><span itemprop="name">activeMQ</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/activeMQ/短信/" itemprop="url" rel="index"><span itemprop="name">短信</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/activeMQ/短信/微服务/" itemprop="url" rel="index"><span itemprop="name">微服务</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/activeMQ/短信/微服务/阿里大于/" itemprop="url" rel="index"><span itemprop="name">阿里大于</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/业务逻辑/" itemprop="url" rel="index"><span itemprop="name">业务逻辑</span></a></span>
 
                 
                 
@@ -545,15 +529,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java/" rel="tag"># java</a>
-          
-            <a href="/tags/activeMQ/" rel="tag"># activeMQ</a>
-          
-            <a href="/tags/短信/" rel="tag"># 短信</a>
-          
-            <a href="/tags/微服务/" rel="tag"># 微服务</a>
-          
-            <a href="/tags/阿里大于/" rel="tag"># 阿里大于</a>
+            <a href="/tags/业务逻辑/" rel="tag"># 业务逻辑</a>
           
         </div>
       
@@ -652,7 +628,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">88</span>
+                    <span class="site-state-item-count">89</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -761,81 +737,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">85</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -926,45 +828,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">58</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1066,7 +930,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共110.1k字</span>
+  <span class="post-count">博客全站共112.2k字</span>
 </div>
 
         
