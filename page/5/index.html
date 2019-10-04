@@ -363,6 +363,190 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/10/31/UsernamePasswordAuthenticationFilter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="York">
+      <meta itemprop="description" content="先生卖我几两仁义道德">
+      <meta itemprop="image" content="/images/timg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天下不易其乐">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/31/UsernamePasswordAuthenticationFilter/" itemprop="url">
+                  UsernamePasswordAuthenticationFilter
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-10-31 13:46:28" itemprop="dateCreated datePublished" datetime="2018-10-31T13:46:28+08:00">2018-10-31</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-06 23:02:39" itemprop="dateModified" datetime="2019-07-06T23:02:39+08:00">2019-07-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/springsecurity/" itemprop="url" rel="index"><span itemprop="name">springsecurity</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>内容转载参考自：</p>
+<p><a href="https://www.cnblogs.com/xuwenjin/p/9565356.html" target="_blank" rel="noopener">https://www.cnblogs.com/xuwenjin/p/9565356.html</a></p>
+<p><a href="https://www.cnblogs.com/zsxneil/p/6622564.html" target="_blank" rel="noopener">https://www.cnblogs.com/zsxneil/p/6622564.html</a></p>
+<p><a href="https://blog.csdn.net/yecong111/article/details/17015199" target="_blank" rel="noopener">https://blog.csdn.net/yecong111/article/details/17015199</a></p>
+<h3 id="UsernamePasswordAuthenticationFilter"><a href="#UsernamePasswordAuthenticationFilter" class="headerlink" title="UsernamePasswordAuthenticationFilter"></a>UsernamePasswordAuthenticationFilter</h3><p>UsernamePasswordAuthenticationFilter，实现了我们最常用的基于用户名和密码的认证逻辑。</p>
+<p>UsernamePasswordAuthenticationFilter继承虚拟类AbstractAuthenticationProcessingFilter。</p>
+<p>AbstractAuthenticationProcessingFilter要求设置一个authenticationManager。</p>
+<p>authenticationManager的实现类将实现处理请求的认证。</p>
+<p>AbstractAuthenticationProcessingFilter将拦截符合过滤规则的request，并试图执行认证。子类必须实现 <code>attemptAuthentication</code> 方法，这个方法执行具体的认证。</p>
+<p>认证处理：如果认证成功，将会把返回的Authentication对象存放在SecurityContext；然后setAuthenticationSuccessHandler(AuthenticationSuccessHandler)方法将会调用；这里处理认证成功后跳转url的逻辑；可以重新实现AuthenticationSuccessHandler的onAuthenticationSuccess方法，实现自己的逻辑，比如需要返回json格式数据时，就可以在这里重新相关逻辑。</p>
+<p>如果认证失败，默认会返回401代码给客户端，当然也可以在<code>&lt;form-login&gt;</code>节点中配置失败后跳转的url，还可以重写AuthenticationFailureHandler的onAuthenticationFailure方法实现自己的逻辑。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/31/UsernamePasswordAuthenticationFilter/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/10/29/spring集成Quartz/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1951,184 +2135,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://neverloseyourself.top/2018/10/24/注册短信业务逻辑代码/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="York">
-      <meta itemprop="description" content="先生卖我几两仁义道德">
-      <meta itemprop="image" content="/images/timg.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="天下不易其乐">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/24/注册短信业务逻辑代码/" itemprop="url">
-                  注册短信业务逻辑代码
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-10-24 13:43:29" itemprop="dateCreated datePublished" datetime="2018-10-24T13:43:29+08:00">2018-10-24</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-06 23:05:25" itemprop="dateModified" datetime="2019-07-06T23:05:25+08:00">2019-07-06</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/业务逻辑/" itemprop="url" rel="index"><span itemprop="name">业务逻辑</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="总体思路"><a href="#总体思路" class="headerlink" title="总体思路"></a>总体思路</h2><p>点击页面上的”获取短信验证码”链接，向后端传递手机号。后端随机生成6位数字作为短信验证码，将其保存在redis中（手机号作为KEY）。同时发送参数（手机号，验证码，短信模板号，签名）给消息中间件（此处用的是ActiveMQ）。</p>
-<p>短信微服务通过监听消息，获得 手机号，验证码，短信模板号，签名后，通过短信平台发送短信此处使用的是阿里大于。</p>
-<p>用户注册时，后端根据手机号查询redis中的验证码与用户填写的验证码是否相同，如果不同则提示用户不能注册。</p>
-<h2 id="短信微服务"><a href="#短信微服务" class="headerlink" title="短信微服务"></a>短信微服务</h2><p>使用的是springboot。</p>
-<p>构建一个通用的短信发送服务（独立于品优购的单独工程），接收activeMQ的消息（MAP类型）  消息包括手机号（mobile）、短信模板号（template_code）、签名（sign_name）、参数字符串（param ）</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/10/24/注册短信业务逻辑代码/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2180,7 +2186,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">89</span>
+                    <span class="site-state-item-count">90</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2466,7 +2472,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共112.2k字</span>
+  <span class="post-count">博客全站共115.8k字</span>
 </div>
 
         
